@@ -1,0 +1,39 @@
+mkdir -p .github/workflows
+cat > .github/workflows/snapshot.yml <<'EOF'
+name: Update sparklines
+
+on:
+  schedule:
+    - cron: "17 * * * *"   # óránként (17. percben)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Update sparklines
+        run: node tools/update_sparklines.mjs
+
+      - name: Commit & push if changed
+        run: |
+          git config user.name "rwa.watch bot"
+          git config user.email "actions@users.noreply.github.com"
+          if git status --porcelain | grep -q .; then
+            git add data/sparklines_rwa_7d.json data/sparklines_all_7d.json
+            git commit -m "Auto-update sparklines"
+            git push
+          else
+            echo "No changes."
+          fi
+EOF
