@@ -1,11 +1,9 @@
-mkdir -p .github/workflows
-cat > .github/workflows/snapshot.yml <<'EOF'
 name: Update sparklines
 
 on:
   schedule:
-    - cron: "17 * * * *"   # óránként (17. percben)
-  workflow_dispatch: {}
+    - cron: "17 * * * *"
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -36,4 +34,3 @@ jobs:
           else
             echo "No changes."
           fi
-EOF
