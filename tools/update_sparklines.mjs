@@ -3,22 +3,12 @@ import path from "path";
 
 const ROOT = process.cwd();
 const INDEX_HTML = path.join(ROOT, "index.html");
-const OUT_RWA = path.join(ROOT, "data", "sparklines_rwa_7d.json");
-const OUT_ALL = path.join(ROOT, "data", "sparklines_all_7d.json");
 
 const WINDOW_DAYS = 7;
-const CONCURRENCY = 6;
-const SLEEP_MS = 250;
+const CONCURRENCY = 2;   // keep low to reduce rate-limits
+const SLEEP_MS = 200;
 
 function sleep(ms){ return new Promise(r => setTimeout(r, ms)); }
-
-function isoDateFromUnixDay(unixSec){
-  const d = new Date(unixSec * 1000);
-  const y = d.getUTCFullYear();
-  const m = String(d.getUTCMonth()+1).padStart(2,"0");
-  const day = String(d.getUTCDate()).padStart(2,"0");
-  return `${y}-${m}-${day}`;
-}
 
 function lastNDatesUTC(n){
   const now = new Date();
@@ -34,6 +24,14 @@ function lastNDatesUTC(n){
   return out;
 }
 
+function isoDateFromUnixDay(unixSec){
+  const d = new Date(unixSec * 1000);
+  const y = d.getUTCFullYear();
+  const m = String(d.getUTCMonth()+1).padStart(2,"0");
+  const day = String(d.getUTCDate()).padStart(2,"0");
+  return `${y}-${m}-${day}`;
+}
+
 function extractSlugsFromIndex(html){
   const re = /"slug"\s*:\s*"([^"]+)"/g;
   const slugs = new Set();
@@ -45,20 +43,20 @@ function extractSlugsFromIndex(html){
   return Array.from(slugs);
 }
 
-async function fetchJson(url, tries=4){
+async function fetchJson(url, tries=5){
   let lastErr;
   for (let i=0;i<tries;i++){
     try{
       const res = await fetch(url, { headers: { "User-Agent": "rwa.watch-snapshot-bot" } });
       if (res.status === 429){
-        await sleep(1200 + i*800);
+        await sleep(1500 + i*1200);
         continue;
       }
       if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`);
       return await res.json();
     } catch(e){
       lastErr = e;
-      await sleep(800 + i*700);
+      await sleep(900 + i*900);
     }
   }
   throw lastErr;
@@ -76,6 +74,7 @@ function buildSeriesFromProtocol(protocolJson, dates){
     map.set(d, isFinite(v) ? v : 0);
   }
 
+  // fill missing days by carrying forward last known value
   const out = [];
   let last = 0;
   for (const d of dates){
@@ -85,6 +84,36 @@ function buildSeriesFromProtocol(protocolJson, dates){
     } else {
       out.push(last);
     }
+  }
+  return out;
+}
+
+function pickPart(slugs, partIndex, partCount){
+  const out = [];
+  for (let i=0;i<slugs.length;i++){
+    if ((i % partCount) === partIndex) out.push(slugs[i]);
+  }
+  return out;
+}
+
+function parseArgs(){
+  const args = process.argv.slice(2);
+  const out = { mode: "all", partIndex: 0, partCount: 1, outPath: "" };
+
+  for (let i=0;i<args.length;i++){
+    const a = args[i];
+    if (a === "--mode") out.mode = args[++i];
+    else if (a === "--part") {
+      const [pi, pc] = String(args[++i]).split("/").map(x => parseInt(x,10));
+      out.partIndex = pi;
+      out.partCount = pc;
+    } else if (a === "--out") out.outPath = args[++i];
+  }
+
+  if (!out.outPath) {
+    out.outPath = out.mode === "rwa"
+      ? path.join(ROOT, "data", "sparklines_rwa_7d.json")
+      : path.join(ROOT, "data", "sparklines_all_7d.json");
   }
   return out;
 }
@@ -103,7 +132,7 @@ async function buildSparklineFile(slugs, outPath, dates){
         const url = `https://api.llama.fi/protocol/${encodeURIComponent(slug)}`;
         const pj = await fetchJson(url);
         series[slug] = buildSeriesFromProtocol(pj, dates);
-      } catch(e){
+      } catch(_){
         series[slug] = dates.map(_ => 0);
       }
 
@@ -121,25 +150,30 @@ async function buildSparklineFile(slugs, outPath, dates){
   };
 
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
-  fs.writeFileSync(outPath, JSON.stringify(payload));
+  fs.writeFileSync(outPath, JSON.stringify(payload, null, 2)); // pretty
   console.log("Wrote", outPath, "series:", Object.keys(series).length);
 }
 
 async function main(){
+  const { mode, partIndex, partCount, outPath } = parseArgs();
+
   const html = fs.readFileSync(INDEX_HTML, "utf-8");
   const allSlugs = extractSlugsFromIndex(html);
+  const dates = lastNDatesUTC(WINDOW_DAYS);
 
+  // RWA set: reuse existing keys if available, so it's stable
   let rwaSlugs = null;
+  const rwaFile = path.join(ROOT, "data", "sparklines_rwa_7d.json");
   try{
-    const prev = JSON.parse(fs.readFileSync(OUT_RWA, "utf-8"));
+    const prev = JSON.parse(fs.readFileSync(rwaFile, "utf-8"));
     const keys = prev?.series ? Object.keys(prev.series) : [];
     if (keys.length) rwaSlugs = keys;
   } catch(_){}
 
-  const dates = lastNDatesUTC(WINDOW_DAYS);
+  const base = (mode === "rwa") ? (rwaSlugs ?? allSlugs) : allSlugs;
+  const slugs = (partCount > 1) ? pickPart(base, partIndex, partCount) : base;
 
-  await buildSparklineFile(rwaSlugs ?? allSlugs, OUT_RWA, dates);
-  await buildSparklineFile(allSlugs, OUT_ALL, dates);
+  await buildSparklineFile(slugs, outPath, dates);
 }
 
 main().catch(e => {
