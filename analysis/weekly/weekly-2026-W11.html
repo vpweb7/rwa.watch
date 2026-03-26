@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Weekly RWA Market Recap — Week 11, 2026 — RWA.watch</title>
+<meta name="description" content="Weekly RWA market recap covering category shifts, concentration and rank pressure." />
+<link rel="canonical" href="/analysis/weekly/weekly-2026-W11.html" />
+<style>
+:root{
+  --bg:#010409; --panel:#11161d; --panel2:#151b23; --border:rgba(255,255,255,0.10);
+  --text:rgba(255,255,255,0.86); --muted:rgba(255,255,255,0.62); --link:#7ab7ff;
+  --betaBg:#1d4ed8; --betaBorder:#1e40af; --blue:#4da3ff;
+}
+*{box-sizing:border-box;}
+html,body{height:100%;}
+body{
+  margin:0;
+  background:
+    radial-gradient(1200px 700px at 35% 8%, rgba(77,163,255,0.16), transparent 55%),
+    radial-gradient(900px 600px at 88% 38%, rgba(77,163,255,0.10), transparent 58%),
+    linear-gradient(180deg, #010409 0%, #020711 100%);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial;
+}
+a{color:var(--link);text-decoration:none;}
+a:hover{text-decoration:underline;}
+.container{max-width:1200px;margin:0 auto;padding:28px 20px 40px;}
+.topbar{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:12px;}
+.brand h1{margin:0;color:#fff;font-size:34px;letter-spacing:0.2px;}
+.beta{font-size:12px;padding:6px 10px;border-radius:999px;background:var(--betaBg);border:1px solid var(--betaBorder);color:#fff;font-weight:900;}
+.updated{color:var(--muted);font-size:12px;margin-top:8px;}
+.headline{margin-top:14px;}
+.headline h2{margin:0;color:#fff;font-size:22px;}
+.headline p{margin:10px 0 0 0;color:var(--muted);line-height:1.7;max-width:980px;}
+.tabs{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;}
+.tab{
+  border:1px solid var(--border);
+  background: rgba(255,255,255,0.03);
+  padding:10px 14px;border-radius:12px;
+  font-weight:900;color:var(--text);
+  backdrop-filter: blur(8px);
+}
+.tab.active{border-color: rgba(122,183,255,0.8); background: rgba(122,183,255,0.06);}
+.footer{margin-top:32px;color:var(--muted);font-size:12px;text-align:center;line-height:1.7;}
+:root{
+  --posBlue:#5ED6FF; --negBlue:#4DA3FF; --posClassic:#5EE6A8; --negClassic:#FF6B7A;
+  --pos:var(--posBlue); --neg:var(--negBlue); --zero:#FFFFFF;
+}
+html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic); }
+.chg{font-weight:900;}
+.chg.pos{color:var(--pos)!important;text-shadow:0 0 10px rgba(94,214,255,0.34);}
+.chg.neg{color:var(--neg)!important;text-shadow:0 0 8px rgba(255,107,122,0.20);}
+.chg.zero{color:var(--zero)!important;}
+.chg.na{color:var(--zero)!important;font-weight:800;}
+.modeToggle{display:inline-flex;gap:6px;align-items:center;margin-left:10px;flex-wrap:wrap;}
+.modeBtn{
+  border:1px solid var(--border); background:rgba(0,0,0,0.18); color:#fff; padding:6px 10px;
+  border-radius:999px; cursor:pointer; font-weight:900; font-size:12px; line-height:1;
+}
+.modeBtn.active{border-color:var(--link);}
+</style>
+<style>
+.heroShell,.sectionCard,.metricCard,.rowCard,.chartCard,.highlightCard,.textPanel,.miniPanel{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  background: linear-gradient(180deg, rgba(255,255,255,0.040), rgba(255,255,255,0.022));
+  border:1px solid var(--border);
+  border-radius:20px;
+  backdrop-filter: blur(12px);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.012),
+    0 18px 50px rgba(0,0,0,0.24);
+}
+.heroShell::before,.sectionCard::before,.metricCard::before,.rowCard::before,.miniPanel::before{
+  content:"";
+  position:absolute;
+  inset:-20% auto auto -20%;
+  width:52%;
+  height:52%;
+  border-radius:999px;
+  background:radial-gradient(circle, rgba(94,214,255,0.12), rgba(94,214,255,0.00) 70%);
+  pointer-events:none;
+  z-index:0;
+}
+.heroShell > *, .sectionCard > *, .metricCard > *, .rowCard > *, .miniPanel > *{position:relative;z-index:1;}
+
+.heroShell{margin-top:18px;padding:22px;}
+.heroTop{display:grid;grid-template-columns:1.02fr 1.18fr;gap:18px;align-items:stretch;}
+@media (max-width: 980px){ .heroTop{grid-template-columns:1fr;} }
+
+.heroEyebrow{color:var(--muted);font-size:12px;letter-spacing:0.10em;text-transform:uppercase;}
+.heroTitle{margin:8px 0 10px 0;color:#fff;font-size:30px;line-height:1.03;letter-spacing:-0.02em;}
+.heroDate{color:var(--muted);font-size:13px;}
+.heroSummary{margin:14px 0 0 0;color:var(--text);line-height:1.75;max-width:680px;font-size:15px;}
+.heroLeft{display:flex;flex-direction:column;justify-content:space-between;gap:18px;}
+.heroChartWrap{position:relative;border-radius:18px;overflow:hidden;border:1px solid rgba(94,214,255,0.10);background:#07111b;min-height:100%;}
+.heroChartWrap img{display:block;width:100%;height:auto;}
+.heroChartLabel{
+  position:absolute;right:18px;bottom:18px;padding:10px 14px;border-radius:14px;
+  background:rgba(6,10,18,0.84);border:1px solid var(--border);font-size:14px;font-weight:900;color:#fff;
+  box-shadow:0 0 24px rgba(77,163,255,0.18);
+}
+.heroChartCaption{position:absolute;left:18px;top:18px;padding:8px 12px;border-radius:999px;background:rgba(6,10,18,0.84);border:1px solid var(--border);font-size:11px;color:var(--muted);}
+.kpiStrip{margin-top:16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.kpiStrip .badgePill{font-size:12px;}
+.marketRegime{
+  margin-top:16px;padding:14px 16px;border-radius:16px;border:1px solid rgba(94,214,255,0.16);
+  background:linear-gradient(90deg, rgba(22,87,160,0.24), rgba(7,18,35,0.18));
+  color:#d9edff;font-size:14px;font-weight:700;
+}
+.quickNav{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;}
+.quickNav a{
+  display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;
+  border:1px solid var(--border);background:rgba(4,11,18,0.46);color:#fff;font-size:12px;font-weight:800;
+}
+.quickNav a:hover{text-decoration:none;border-color:rgba(122,183,255,0.7);}
+
+.metricGridPrimary{margin-top:18px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;}
+.metricGridSecondary{margin-top:14px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;}
+@media (max-width: 1100px){ .metricGridPrimary{grid-template-columns:repeat(2,minmax(0,1fr));} .metricGridSecondary{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media (max-width: 640px){ .metricGridPrimary,.metricGridSecondary{grid-template-columns:1fr;} }
+
+.metricCard{padding:18px;}
+.metricCard.primary{padding:20px;min-height:148px;background:linear-gradient(180deg, rgba(18,72,136,0.22), rgba(255,255,255,0.02));}
+.metricCard.secondary{min-height:132px;}
+.metricCardLabel{color:var(--muted);font-size:12px;letter-spacing:0.05em;text-transform:uppercase;}
+.metricCardValue{margin-top:10px;color:#fff;font-size:28px;font-weight:900;letter-spacing:-0.02em;line-height:1.08;}
+.metricCard.primary .metricCardValue{font-size:34px;}
+.metricCardSub{margin-top:10px;color:var(--muted);font-size:12px;line-height:1.55;}
+.metricCardMini{margin-top:12px;font-size:12px;color:#dce7f5;}
+
+.sectionGrid{margin-top:18px;display:grid;grid-template-columns:1.10fr 0.90fr;gap:16px;}
+.sectionGrid.equal{grid-template-columns:1fr 1fr;}
+@media (max-width: 980px){ .sectionGrid,.sectionGrid.equal{grid-template-columns:1fr;} }
+
+.sectionCard{padding:18px 18px 16px 18px;}
+.sectionCard h3{margin:0;color:#fff;font-size:18px;letter-spacing:-0.01em;}
+.sectionCard p.sub{margin:8px 0 0 0;color:var(--muted);font-size:13px;line-height:1.6;}
+
+.inlineList{margin-top:14px;display:flex;flex-direction:column;gap:10px;}
+.rowCard{padding:12px 14px;border-radius:16px;background:rgba(0,0,0,0.18);}
+.rowTitle{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;}
+.rowTitle b{color:#fff;}
+.rowMeta{margin-top:6px;color:var(--muted);font-size:12px;line-height:1.55;}
+
+.badgePill{
+  display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border-radius:999px;border:1px solid var(--border);
+  background:rgba(0,0,0,0.18);color:var(--muted);font-size:11px;
+}
+.badgeWrap{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+
+.watchList,.signalList,.recapList{margin-top:14px;display:flex;flex-direction:column;gap:10px;}
+.watchItem,.signalItem,.recapItem{
+  padding:12px 14px;border-radius:14px;border:1px solid var(--border);background:rgba(0,0,0,0.18);line-height:1.7;color:var(--text);
+}
+.signalItem b, .watchItem b{color:#fff;}
+.shareActions{margin-top:14px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
+@media (max-width:640px){ .shareActions{grid-template-columns:1fr;} }
+.shareBtn{
+  display:flex;align-items:center;justify-content:center;padding:12px 14px;border-radius:14px;border:1px solid var(--border);
+  background:rgba(8,13,24,0.70);color:#fff;font-weight:800;text-decoration:none;
+}
+.shareBtn:hover{text-decoration:none;border-color:rgba(122,183,255,0.7);}
+
+.miniTable{width:100%;border-collapse:collapse;margin-top:14px;}
+.miniTable th,.miniTable td{padding:11px 0;border-bottom:1px solid rgba(255,255,255,0.06);text-align:left;font-size:13px;vertical-align:top;}
+.miniTable th{color:var(--muted);font-size:12px;font-weight:700;}
+.miniTable td{color:var(--text);}
+.miniTable tr:last-child td{border-bottom:none;}
+
+.previewBox{margin-top:12px;padding:12px 13px;border:1px dashed var(--border);border-radius:14px;color:var(--muted);font-size:13px;line-height:1.6;}
+.copyBox{margin-top:10px;padding:12px;border-radius:12px;background:rgba(0,0,0,0.18);border:1px solid var(--border);color:var(--muted);font-size:12px;line-height:1.6;word-break:break-word;}
+.archiveNote{margin-top:8px;color:var(--muted);font-size:12px;line-height:1.6;}
+
+.categoryBar{
+  display:grid;grid-template-columns:150px 1fr auto;gap:12px;align-items:center;padding:12px 0;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.categoryBar:last-child{border-bottom:none;}
+.barTrack{height:10px;border-radius:999px;background:rgba(255,255,255,0.06);overflow:hidden;}
+.barFill{height:100%;border-radius:999px;background:linear-gradient(90deg, rgba(94,214,255,0.92), rgba(94,214,255,0.28));box-shadow:0 0 18px rgba(94,214,255,0.35);}
+.dim{color:var(--muted);font-size:12px;}
+
+.dualPanels{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;}
+@media (max-width: 740px){ .dualPanels{grid-template-columns:1fr;} }
+.miniPanel{padding:14px;border-radius:16px;background:rgba(0,0,0,0.18);}
+.miniPanel h4{margin:0 0 10px 0;font-size:14px;color:#fff;}
+.smallMuted{color:var(--muted);font-size:12px;line-height:1.55;}
+
+.recentRow{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px;}
+@media (max-width:980px){ .recentRow{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+<div class="container">
+  
+    <div class="topbar">
+      <div>
+        <div class="brand">
+          <h1>RWA.watch</h1>
+          <span class="beta">Beta Version</span>
+          <div class="modeToggle" title="Delta color mode">
+            <button id="modeBlue" class="modeBtn active" type="button">Blue</button>
+            <button id="modeClassic" class="modeBtn" type="button">Classic</button>
+          </div>
+        </div>
+      </div>
+      <div class="updated">Updated: 2026-03-14T21:12:51Z</div>
+    </div>
+    <div class="headline">
+      <h2>Real-World Asset Intelligence &amp; Monitoring</h2>
+      <p>Daily and weekly intelligence on tokenized real-world assets. TVL trends, capital flows, market structure and monitoring signals.</p>
+    </div>
+    <div class="tabs"><a class="tab" href="../../index.html">Protocols</a><a class="tab" href="../../index.html">Dashboard</a><a class="tab active" href="../index.html">Analysis</a><a class="tab" href="../../about.html">About</a></div>
+    
+
+  <section class="heroShell">
+    <div class="heroEyebrow">Weekly recap</div>
+    <h1 class="heroTitle">Weekly RWA Market Recap — Week 11, 2026</h1>
+    <div class="heroDate">Week 11, 2026 (UTC)</div>
+    <p class="heroSummary">This weekly recap aggregates the UTC snapshots available for 2026-W11. It tracks market value, investor-facing category shifts, concentration, asset-level changes, and rank pressure using the analytics namespace.</p>
+    <div class="quickNav">
+      <a href="../index.html">Latest</a>
+      <a href="weekly-2026-W11.html">Weekly</a>
+      <a href="../index.html#recent-analysis">Last 7 Days</a>
+    </div>
+  </section>
+
+  <section class="metricGridPrimary">
+    
+    <div class="metricCard primary">
+      <div class="metricCardLabel">Total RWA TVL</div>
+      <div class="metricCardValue">$23.69B</div>
+      <div class="metricCardSub">Aggregate tracked market value.</div>
+      
+    </div>
+    
+    <div class="metricCard primary">
+      <div class="metricCardLabel">7D Change</div>
+      <div class="metricCardValue"><span class="chg na">N/A</span></div>
+      <div class="metricCardSub"><span class="chg na">N/A</span></div>
+      
+    </div>
+    
+    <div class="metricCard primary">
+      <div class="metricCardLabel">Top 3 Concentration</div>
+      <div class="metricCardValue">+36.4%</div>
+      <div class="metricCardSub">Share held by the three largest assets.</div>
+      
+    </div>
+    
+    <div class="metricCard primary">
+      <div class="metricCardLabel">Top 10 Concentration</div>
+      <div class="metricCardValue">+74.9%</div>
+      <div class="metricCardSub">Share held by the ten largest assets.</div>
+      
+    </div>
+    
+  </section>
+
+  <div class="sectionGrid equal">
+    <section class="sectionCard">
+      <h3>Category Shifts</h3>
+      <p class="sub">Investor-facing category changes based on the latest available weekly comparison window.</p>
+      <div class="inlineList"><div class="rowCard"><div class="rowTitle"><b>Commodities</b><span>+0.3%</span></div><div class="rowMeta"><span class="chg pos">+$6.33B</span> · <span class="chg na">N/A</span></div></div><div class="rowCard"><div class="rowTitle"><b>Treasury</b><span>+0.2%</span></div><div class="rowMeta"><span class="chg pos">+$5.24B</span> · <span class="chg na">N/A</span></div></div><div class="rowCard"><div class="rowTitle"><b>Funds</b><span>+0.2%</span></div><div class="rowMeta"><span class="chg pos">+$3.94B</span> · <span class="chg na">N/A</span></div></div><div class="rowCard"><div class="rowTitle"><b>Other RWA</b><span>+0.1%</span></div><div class="rowMeta"><span class="chg pos">+$3.39B</span> · <span class="chg na">N/A</span></div></div><div class="rowCard"><div class="rowTitle"><b>Stablecoins</b><span>+0.1%</span></div><div class="rowMeta"><span class="chg pos">+$3.21B</span> · <span class="chg na">N/A</span></div></div><div class="rowCard"><div class="rowTitle"><b>Private Credit</b><span>+0.1%</span></div><div class="rowMeta"><span class="chg pos">+$1.41B</span> · <span class="chg na">N/A</span></div></div></div>
+    </section>
+
+    <section class="sectionCard">
+      <h3>What to Watch Next Week</h3>
+      <p class="sub">Concise factual watchpoints for the next weekly rollup.</p>
+      <div class="watchList"><div class="watchItem">Capital remained concentrated in Tether Gold, BlackRock BUIDL, Paxos Gold. The next snapshot will show whether participation broadens beyond the current leaders.</div><div class="watchItem">Tether Gold, BlackRock BUIDL, Paxos Gold remain relevant to the Top 10 threshold, making rank reordering a key point to monitor in the next UTC update.</div><div class="watchItem">Breadth closed at 100.0% today. The next update will show whether positive participation stays above the recent pattern.</div></div>
+    </section>
+  </div>
+
+  <div class="sectionGrid equal">
+    <section class="sectionCard">
+      <h3>Largest Asset Changes</h3>
+      <p class="sub">Assets contributing the most visible change into the current weekly window.</p>
+      <table class="miniTable">
+        <thead><tr><th>Asset</th><th>Category</th><th>TVL</th><th>Change</th></tr></thead>
+        <tbody>
+        <tr>
+          <td>Tether Gold</td>
+          <td>Commodities</td>
+          <td>$3.59B</td>
+          <td><span class="chg pos">+$3.59B</span></td>
+        </tr>
+        
+        <tr>
+          <td>BlackRock BUIDL</td>
+          <td>Treasury</td>
+          <td>$2.53B</td>
+          <td><span class="chg pos">+$2.53B</span></td>
+        </tr>
+        
+        <tr>
+          <td>Paxos Gold</td>
+          <td>Commodities</td>
+          <td>$2.51B</td>
+          <td><span class="chg pos">+$2.51B</span></td>
+        </tr>
+        
+        <tr>
+          <td>Circle USYC</td>
+          <td>Stablecoins</td>
+          <td>$2.27B</td>
+          <td><span class="chg pos">+$2.27B</span></td>
+        </tr>
+        
+        <tr>
+          <td>Ondo Yield Assets</td>
+          <td>Funds</td>
+          <td>$2.03B</td>
+          <td><span class="chg pos">+$2.03B</span></td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="sectionCard">
+      <h3>New Entrants</h3>
+      <p class="sub">Assets crossing the tracked threshold in the current weekly window.</p>
+      <div class="inlineList"><div class="rowCard"><div class="rowTitle"><b>Tether Gold</b><span>Rank #1</span></div><div class="rowMeta">$3.59B · Commodities</div></div><div class="rowCard"><div class="rowTitle"><b>BlackRock BUIDL</b><span>Rank #2</span></div><div class="rowMeta">$2.53B · Treasury</div></div><div class="rowCard"><div class="rowTitle"><b>Paxos Gold</b><span>Rank #3</span></div><div class="rowMeta">$2.51B · Commodities</div></div><div class="rowCard"><div class="rowTitle"><b>Circle USYC</b><span>Rank #4</span></div><div class="rowMeta">$2.27B · Stablecoins</div></div><div class="rowCard"><div class="rowTitle"><b>Ondo Yield Assets</b><span>Rank #5</span></div><div class="rowMeta">$2.03B · Funds</div></div><div class="rowCard"><div class="rowTitle"><b>Centrifuge Protocol</b><span>Rank #6</span></div><div class="rowMeta">$1.24B · Private Credit</div></div></div>
+    </section>
+  </div>
+
+  
+    <div class="footer">
+      Data source: DeFiLlama (public APIs)<br/>
+      Disclaimer: This information is provided for educational and informational purposes only and does not constitute investment advice.<br/>
+      © 2026 RWA.watch — All rights reserved.
+    </div>
+    
+</div>
+
+<script id="delta-toggle-script">
+(function(){
+  const root = document.documentElement;
+  const KEY = "rwa.watch.delta.mode";
+  const btnBlue = document.getElementById("modeBlue");
+  const btnClassic = document.getElementById("modeClassic");
+  function apply(mode){
+    root.setAttribute("data-delta-mode", mode === "classic" ? "classic" : "blue");
+    if(btnBlue) btnBlue.classList.toggle("active", mode !== "classic");
+    if(btnClassic) btnClassic.classList.toggle("active", mode === "classic");
+    localStorage.setItem(KEY, mode);
+  }
+  const saved = localStorage.getItem(KEY) || "blue";
+  apply(saved);
+  if(btnBlue) btnBlue.addEventListener("click", function(){ apply("blue"); });
+  if(btnClassic) btnClassic.addEventListener("click", function(){ apply("classic"); });
+})();
+</script>
+
+</body>
+</html>

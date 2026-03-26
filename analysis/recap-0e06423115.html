@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>RWA Market Recap — March 23, 2026 | TVL, Capital Flows &amp; Monitoring Signals | RWA.watch</title>
+<style>:root{
+  --bg:#010409; --panel:#11161d; --panel2:#151b23; --border:(1.0, 1.0, 1.0, 0.1);
+  --text:(1.0, 1.0, 1.0, 0.86); --muted:(1.0, 1.0, 1.0, 0.62); --link:#7ab7ff;
+  --betaBg:#1d4ed8; --betaBorder:#1e40af; --blue:#4da3ff;
+}
+*{box-sizing:border-box;}
+html,body{height:100%;}
+body{
+  margin:0;
+  background: radial-gradient(1200px 600px at 35% 10%, rgba(77,163,255,0.12), transparent 55%),
+              radial-gradient(900px 500px at 85% 40%, rgba(77,163,255,0.08), transparent 60%),
+              var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial;
+}
+a{color:var(--link);text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+.container{max-width:1200px;margin:0 auto;padding:28px 20px 40px;}
+.topbar{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:12px;}
+.brand h1{margin:0;color:#fff;font-size:34px;letter-spacing:0.2px;}
+.beta{font-size:12px;padding:6px 10px;border-radius:999px;background:var(--betaBg);border:1px solid var(--betaBorder);
+color:#fff;font-weight:900;}
+.updated{color:var(--muted);font-size:12px;margin-top:8px;}
+
+.headline{margin-top:14px;}
+.headline h2{margin:0;color:#fff;font-size:22px;}
+.headline p{margin:10px 0 0 0;color:var(--muted);line-height:1.7;max-width:980px;}
+
+.tabs{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;}
+.tab{
+  border:1px solid rgba(122,183,255,0.28);
+  background: rgba(0,0,0,0.22);
+  padding:10px 14px;border-radius:12px;
+  font-weight:900;color:#fff !important;
+  backdrop-filter: blur(10px);
+}
+.tab:hover{border-color: rgba(122,183,255,0.55);}
+.tab.active{border-color: rgba(122,183,255,0.85); background: rgba(122,183,255,0.10); box-shadow: 0 0 0 1px rgba(122,183,255,0.18) inset;}
+
+.linkBlue{color:var(--accent);font-weight:800;text-decoration:none;}
+.linkBlue:hover{text-decoration:underline;}
+/* Tabs: match analytics (less blue) */
+.tab{  border:1px solid var(--border);  background: rgba(255,255,255,0.03);  padding:10px 14px;border-radius:12px;  font-weight:900;color:rgba(255,255,255,0.86);  backdrop-filter: blur(8px);}.tab.active{  border-color: rgba(122,183,255,0.92);  background: rgba(122,183,255,0.08);  box-shadow: 0 0 0 1px rgba(122,183,255,0.20), 0 12px 30px rgba(0,0,0,0.18);}
+
+.gridTop{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap:14px;
+}
+@media (max-width: 980px){
+  .gridTop{grid-template-columns:1fr;}
+}
+.card{
+  background: rgba(255,255,255,0.03);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:16px;
+  backdrop-filter: blur(10px);
+}
+.cardTitle{display:flex;align-items:center;justify-content:space-between;gap:10px;color:#fff;font-weight:900;}
+.subtle{color:var(--muted);font-size:12px;}
+.kpis{margin-top:14px;display:grid;grid-template-columns: repeat(4,1fr);gap:10px;}
+@media (max-width: 980px){ .kpis{grid-template-columns: repeat(2,1fr);} }
+.kpi{
+  background: rgba(0,0,0,0.18);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:12px;
+}
+.kpiLabel{color:var(--muted);font-size:12px;}
+.kpiValue{margin-top:6px;color:#fff;font-size:22px;font-weight:900;letter-spacing:0.2px;}
+.kpiDelta{margin-top:6px;color:rgba(135,255,199,0.9);font-weight:900;font-size:12px;}
+.kpiDelta.neg{color:rgba(255,155,155,0.95);}
+
+.rightList{margin-top:12px;display:flex;flex-direction:column;gap:10px;}
+.bulletRow{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;}
+.bulletRow b{color:#fff;}
+.sparkMini{opacity:0.9;}
+
+.panel{
+  margin-top:14px;
+  background: rgba(255,255,255,0.03);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:16px;
+  backdrop-filter: blur(10px);
+}
+.controls{margin-top:12px;display:grid;grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr 1fr;gap:10px;}
+input,select{
+  width:100%;
+  background: rgba(0,0,0,0.22);
+  border:1px solid var(--border);
+  color:#fff;
+  padding:11px 12px;
+  border-radius:12px;
+  outline:none;
+}
+.btnPager{
+  border:1px solid var(--border);
+  background: rgba(255,255,255,0.03);
+  color:#fff;padding:10px 12px;border-radius:12px;
+  cursor:pointer;font-weight:900;
+}
+.btnPager:disabled{opacity:0.5;cursor:not-allowed;}
+
+.filterToggleRow{display:none;margin-top:12px;}
+.filterToggleBtn{
+  width:100%;
+  border:1px solid var(--border);
+  background: rgba(255,255,255,0.03);
+  color:#fff;
+  padding:12px 14px;
+  border-radius:14px;
+  cursor:pointer;
+  font-weight:900;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.filterPanel{margin-top:12px;}
+@media (max-width: 900px){
+  .controls{grid-template-columns:1fr;}
+  .filterToggleRow{display:block;}
+  .filterPanel{display:none;}
+  .filterPanel.open{display:block;}
+}
+
+.tableWrap{
+  margin-top:14px;
+  border:1px solid var(--border);
+  border-radius:18px;
+  overflow:hidden;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  background: rgba(255,255,255,0.02);
+}
+table{width:100%;border-collapse:collapse;min-width:980px;}
+thead th{
+  text-align:left;font-size:12px;color:var(--muted);
+  padding:12px 14px;border-bottom:1px solid var(--border);
+  background: rgba(0,0,0,0.20);
+}
+tbody td{
+  padding:12px 14px;
+  border-top:1px solid rgba(255,255,255,0.06);
+  vertical-align:middle;
+  font-size:13px;
+}
+tbody tr:hover{background: rgba(122,183,255,0.06); cursor:pointer;}
+.assetCell{display:flex;align-items:center;gap:10px;}
+.logo{width:34px;height:34px;border-radius:50%;border:1px solid var(--border);background: rgba(0,0,0,0.25);}
+.assetName{font-weight:900;color:#fff !important;}
+.assetLink{color:#fff;text-decoration:none;}
+.assetLink:hover{color:#fff;text-decoration:none;}
+
+.badges{margin-top:4px;display:flex;gap:6px;flex-wrap:wrap;}
+.badge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:3px 8px;border-radius:999px;
+  border:1px solid var(--border);
+  font-size:11px;color:var(--muted);
+  background: rgba(0,0,0,0.18);
+}
+.badge.dim{opacity:0.9;}
+.spark svg{display:block;}
+
+th.stickyCol, td.stickyCol{position:sticky;left:0;background: rgba(15,20,28,0.95);z-index:2;}
+thead th.stickyCol{z-index:3;}
+
+.hideMobile{display:table-cell;}
+@media (max-width:640px){
+  .hideMobile{display:none;}
+  table{min-width:0;}
+}
+.footer{margin-top:24px;color:var(--muted);font-size:12px;text-align:center;line-height:1.7;}
+
+
+/* --- Compact legal footer (shared) --- */
+.footer{margin-top:24px;color:var(--muted);font-size:12px;text-align:center;line-height:1.7;}
+.footLine{max-width:980px;margin:0 auto;}
+.legal{margin-top:10px;display:inline-block;text-align:left;max-width:980px;}
+.legal summary{cursor:pointer;color:var(--link);font-weight:900;outline:none;}
+.legal summary::-webkit-details-marker{display:none;}
+.legalBody{margin-top:8px;color:var(--muted);line-height:1.7;}
+
+/* --- Mobile header fixes (shared) --- */
+@media (max-width: 520px){
+  .topbar{flex-direction:column;align-items:flex-start;}
+  .brand{flex-wrap:wrap;row-gap:8px;}
+  .modeToggle{margin-left:0;}
+  .updated{margin-top:6px;}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px;}
+  .tabs::-webkit-scrollbar{display:none;}
+  .tab{flex:0 0 auto;}
+}</style>
+</head>
+<body>
+<div class="container">
+  <div class="topRow">
+    <div class="brandLeft">
+      <h1>RWA.watch</h1>
+      <span class="beta">Beta Version</span>
+    </div>
+    <div style="font-size:13px;"><a href="index.html">← Back to Analysis</a></div>
+  </div>
+
+  <div class="tabs">
+    <a class="tab" href="../index.html#protocols">Protocols</a>
+    <a class="tab" href="../index.html#dashboard">Dashboard</a>
+    <a class="tab active" href="./index.html">Analysis</a>
+    <a class="tab" href="../about.html">About</a>
+  </div>
+
+  <div class="panel" style="margin-top:16px;">
+    <div style="font-size:22px;font-weight:900;color:#fff;">RWA Market Recap — March 23, 2026 | TVL, Capital Flows &amp; Monitoring Signals</div>
+    <div style="margin-top:8px;color:var(--muted);font-size:13px;">Date: 2026-03-23 · Updated: 2026-03-23T18:14:28Z · Coverage: RWA only</div>
+
+    <div class="panel" style="margin-top:14px;padding:0;overflow:hidden;">
+      <img src="./charts/recap-0e06423115.png" alt="Total RWA TVL — last 7 days" style="display:block;width:100%;height:auto;" loading="lazy">
+    </div>
+    <div style="margin-top:8px;color:var(--muted);font-size:12px;">7-day Total RWA TVL trend (USD).</div>
+
+    <div class="panel" style="margin-top:14px;background:var(--panel2);">
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+        <div><div style="color:var(--muted);font-size:12px;">Total RWA TVL</div><div style="margin-top:6px;font-weight:900;color:#fff;">$23,845,320,109</div></div>
+        <div><div style="color:var(--muted);font-size:12px;">24h Change</div><div style="margin-top:6px;font-weight:900;color:#fff;">N/A</div></div>
+        <div><div style="color:var(--muted);font-size:12px;">Protocols tracked</div><div style="margin-top:6px;font-weight:900;color:#fff;">141</div></div>
+        <div><div style="color:var(--muted);font-size:12px;">Top 3 share</div><div style="margin-top:6px;font-weight:900;color:#fff;">0.0%</div></div>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:14px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;">
+        <div style="font-weight:900;color:#fff;">Post to X</div>
+        <a href="./charts/recap-0e06423115.png" target="_blank" rel="noreferrer">Open chart image</a>
+      </div>
+      <textarea readonly style="margin-top:10px;width:100%;min-height:150px;background:var(--panel2);border:1px solid var(--border);color:#fff;padding:10px;border-radius:10px;outline:none;resize:vertical;">RWA Market Recap — 2026-03-23
+Total RWA TVL: $23.85B
+24h change: N/A
+Top 3 share: 34.1%
+Monitoring flags: 2 low-coverage · 2 high-APY
+
+Full report + chart:
+https://rwa.watch/analysis/recap-0e06423115.html
+
+#RWA #RealWorldAssets #DeFi</textarea>
+    </div>
+
+    <div class='panel' style='margin-top:14px;'><h2 style='margin:0 0 10px 0;color:#fff;'>Overview</h2><p style='line-height:1.75;'>Total RWA TVL stands at <strong>$23.85B</strong>. Current sector concentration (Top 3) is <strong>0.0%</strong> across <strong>141</strong> tracked protocols.</p><p style='line-height:1.75;'>Monitoring flags: 2 low-coverage · 2 high-APY</p></div><div class='panel' style='margin-top:14px;'><h2 style='margin:0 0 10px 0;color:#fff;'>Largest Movers (24h)</h2><div style='display:grid;grid-template-columns:1fr 1fr;gap:12px;'><div class='panel' style='margin:0;background:var(--panel2);'><div style='color:var(--muted);font-size:12px;'>Top inflows</div><div style='margin-top:6px;font-weight:900;color:#fff;'>N/A</div></div><div class='panel' style='margin:0;background:var(--panel2);'><div style='color:var(--muted);font-size:12px;'>Top outflows</div><div style='margin-top:6px;font-weight:900;color:#fff;'>N/A</div></div></div></div>
+
+    <div class="panel" style="margin-top:14px;"><h3>Legal Disclaimer</h3><p>This report is provided for informational and educational purposes only and does not constitute investment advice, financial advice, trading advice, or any other professional advice. RWA.watch does not recommend the purchase, sale, or holding of any asset. Data is compiled from publicly available sources and third-party datasets and is provided “as is” without warranties of accuracy or completeness. Past performance and historical observations do not guarantee future results.</p></div>
+  </div>
+</div>
+</body></html>

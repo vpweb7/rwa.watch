@@ -1,0 +1,87 @@
+{
+  "week": "2026-W09",
+  "start_date": "2026-02-23",
+  "end_date": "2026-03-01",
+  "summary": "Weekly RWA TVL closed at $10.62B after a +5.1% move, with Commodities remaining the largest category by TVL.",
+  "weekly_open_tvl": 10103127630.823627,
+  "weekly_close_tvl": 10615480451.022493,
+  "weekly_change_usd": 512352820.1988659,
+  "weekly_change_pct": 5.071229810417607,
+  "top3_open_pct": 0.5940059187099624,
+  "top3_close_pct": 0.5948675674867977,
+  "top3_change_pct_points": 0.08616487768352554,
+  "largest_asset_weekly_increase": {
+    "slug": "blackrock-buidl",
+    "name": "BlackRock BUIDL",
+    "category": "Treasury",
+    "change_7d_usd": 128760552.71470547,
+    "change_7d_pct": 12.252711233022417,
+    "tvl_usd": 1179634520.654809
+  },
+  "largest_asset_weekly_decline": {
+    "slug": "centrifuge",
+    "name": "Centrifuge",
+    "category": "Private Credit",
+    "change_7d_usd": -19605664.47613579,
+    "change_7d_pct": -4.420445497751683,
+    "tvl_usd": 423916701.90317094
+  },
+  "new_assets_this_week": [],
+  "categories": [
+    {
+      "category": "Commodities",
+      "tvl_usd": 4853561411.341907,
+      "asset_count": 2,
+      "eligible_count": 2,
+      "share": 0.4572154255038364,
+      "rank_by_tvl": 1,
+      "change_7d_usd": 111414254.5672903,
+      "change_7d_pct": 2.3494474313839935,
+      "open_tvl_usd": 4742147156.774616
+    },
+    {
+      "category": "Treasury",
+      "tvl_usd": 4718925115.623536,
+      "asset_count": 11,
+      "eligible_count": 11,
+      "share": 0.444532410699226,
+      "rank_by_tvl": 2,
+      "change_7d_usd": 411286541.14041805,
+      "change_7d_pct": 9.54784237416597,
+      "open_tvl_usd": 4307638574.483118
+    },
+    {
+      "category": "Private Credit",
+      "tvl_usd": 793319341.5796309,
+      "asset_count": 3,
+      "eligible_count": 3,
+      "share": 0.07473230677027129,
+      "rank_by_tvl": 3,
+      "change_7d_usd": -8806309.036447048,
+      "change_7d_pct": -1.0978715154768215,
+      "open_tvl_usd": 802125650.6160779
+    },
+    {
+      "category": "Real Estate",
+      "tvl_usd": 142870426.32460362,
+      "asset_count": 2,
+      "eligible_count": 2,
+      "share": 0.013458686772000244,
+      "rank_by_tvl": 4,
+      "change_7d_usd": -3469879.131917894,
+      "change_7d_pct": -2.3711028353352823,
+      "open_tvl_usd": 146340305.4565215
+    },
+    {
+      "category": "Equities",
+      "tvl_usd": 106804156.15281515,
+      "asset_count": 2,
+      "eligible_count": 2,
+      "share": 0.010061170254665927,
+      "rank_by_tvl": 5,
+      "change_7d_usd": 1928212.6595207304,
+      "change_7d_pct": 1.8385652565252173,
+      "open_tvl_usd": 104875943.49329442
+    }
+  ]
+}

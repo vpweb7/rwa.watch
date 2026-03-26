@@ -1,0 +1,130 @@
+{
+  "date": "2026-03-05",
+  "title": "RWA Daily Recap: Commodities Led Capital Allocation",
+  "summary": "Total RWA TVL increased over the last 24 hours, with Commodities recording the largest capital increase while the top three assets accounted for 61.1% of market TVL.",
+  "total_rwa_tvl": 11476739419.96374,
+  "change_1d_usd": 253923639.68699265,
+  "change_1d_pct": 2.26256622810511,
+  "market_breadth_ratio": 0.65,
+  "market_breadth_positive_assets": 13,
+  "market_breadth_eligible_assets": 20,
+  "top3_concentration": 0.6114662466085911,
+  "top3_assets": [
+    {
+      "name": "Tether Gold",
+      "slug": "tether-gold",
+      "tvl_usd": 4614957179.916308
+    },
+    {
+      "name": "BlackRock BUIDL",
+      "slug": "blackrock-buidl",
+      "tvl_usd": 1310896963.3794694
+    },
+    {
+      "name": "Ondo USDY",
+      "slug": "ondo-usdy",
+      "tvl_usd": 1091784633.134308
+    }
+  ],
+  "largest_capital_increase": {
+    "category": "Commodities",
+    "tvl_usd": 5458230606.870294,
+    "asset_count": 2,
+    "eligible_count": 2,
+    "share": 0.47559070630947015,
+    "rank_by_tvl": 1,
+    "change_1d_usd": 189903906.30533504,
+    "change_1d_pct": 3.604634205486352,
+    "prev_tvl_usd": 5268326700.564959
+  },
+  "strongest_category_growth": {
+    "category": "Commodities",
+    "tvl_usd": 5458230606.870294,
+    "asset_count": 2,
+    "eligible_count": 2,
+    "share": 0.47559070630947015,
+    "rank_by_tvl": 1,
+    "change_1d_usd": 189903906.30533504,
+    "change_1d_pct": 3.604634205486352,
+    "prev_tvl_usd": 5268326700.564959
+  },
+  "largest_asset_increase": {
+    "slug": "tether-gold",
+    "name": "Tether Gold",
+    "category": "Commodities",
+    "today_tvl": 4614957179.916308,
+    "yesterday_tvl": 4454313206.946393,
+    "delta_usd": 160643972.9699154,
+    "delta_pct": 3.6064813026482962,
+    "is_eligible_today": true
+  },
+  "largest_asset_decline": {
+    "slug": "ondo-usdy",
+    "name": "Ondo USDY",
+    "category": "Treasury",
+    "today_tvl": 1091784633.134308,
+    "yesterday_tvl": 1107476453.2378554,
+    "delta_usd": -15691820.103547335,
+    "delta_pct": -1.416898757320772,
+    "is_eligible_today": true
+  },
+  "new_entrants": [],
+  "new_top10_entrants": [],
+  "categories": [
+    {
+      "category": "Commodities",
+      "tvl_usd": 5458230606.870294,
+      "asset_count": 2,
+      "eligible_count": 2,
+      "share": 0.47559070630947015,
+      "rank_by_tvl": 1,
+      "change_1d_usd": 189903906.30533504,
+      "change_1d_pct": 3.604634205486352,
+      "prev_tvl_usd": 5268326700.564959
+    },
+    {
+      "category": "Treasury",
+      "tvl_usd": 4985177180.238169,
+      "asset_count": 11,
+      "eligible_count": 11,
+      "share": 0.43437225485545783,
+      "rank_by_tvl": 2,
+      "change_1d_usd": 48329315.096933365,
+      "change_1d_pct": 0.9789508694036035,
+      "prev_tvl_usd": 4936847865.141235
+    },
+    {
+      "category": "Private Credit",
+      "tvl_usd": 773856743.0373373,
+      "asset_count": 3,
+      "eligible_count": 3,
+      "share": 0.06742827511542318,
+      "rank_by_tvl": 3,
+      "change_1d_usd": 14366939.631172538,
+      "change_1d_pct": 1.8916566840976132,
+      "prev_tvl_usd": 759489803.4061648
+    },
+    {
+      "category": "Real Estate",
+      "tvl_usd": 147287066.0281369,
+      "asset_count": 2,
+      "eligible_count": 2,
+      "share": 0.012833528813238687,
+      "rank_by_tvl": 4,
+      "change_1d_usd": 3671599.8566584587,
+      "change_1d_pct": 2.556549064342783,
+      "prev_tvl_usd": 143615466.17147845
+    },
+    {
+      "category": "Equities",
+      "tvl_usd": 112187823.78980286,
+      "asset_count": 2,
+      "eligible_count": 2,
+      "share": 0.009775234906410146,
+      "rank_by_tvl": 5,
+      "change_1d_usd": -2348121.2031072527,
+      "change_1d_pct": -2.0501172826160414,
+      "prev_tvl_usd": 114535944.99291012
+    }
+  ]
+}

@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Zunami Protocol | RWA.watch</title>
+<meta name="description" content="Zunami Protocol — monitoring overview on RWA.watch." />
+<style>
+:root{
+  --bg:#010409; --panel:#11161d; --panel2:#151b23; --border:(1.0, 1.0, 1.0, 0.1);
+  --text:(1.0, 1.0, 1.0, 0.86); --muted:(1.0, 1.0, 1.0, 0.62); --link:#7ab7ff;
+  --betaBg:#1d4ed8; --betaBorder:#1e40af; --blue:#4da3ff;
+}
+*{box-sizing:border-box;}
+html,body{height:100%;}
+body{
+  margin:0;
+  background: radial-gradient(1200px 600px at 35% 10%, rgba(77,163,255,0.12), transparent 55%),
+              radial-gradient(900px 500px at 85% 40%, rgba(77,163,255,0.08), transparent 60%),
+              var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial;
+}
+a{color:var(--link);text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+.container{max-width:1200px;margin:0 auto;padding:28px 20px 40px;}
+.topbar{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:12px;}
+.brand h1{margin:0;color:#fff;font-size:34px;letter-spacing:0.2px;}
+.beta{font-size:12px;padding:6px 10px;border-radius:999px;background:var(--betaBg);border:1px solid var(--betaBorder);
+color:#fff;font-weight:900;}
+.updated{color:var(--muted);font-size:12px;margin-top:8px;}
+
+.headline{margin-top:14px;}
+.headline h2{margin:0;color:#fff;font-size:22px;}
+.headline p{margin:10px 0 0 0;color:var(--muted);line-height:1.7;max-width:980px;}
+
+.tabs{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;}
+.tab{
+  border:1px solid rgba(122,183,255,0.28);
+  background: rgba(0,0,0,0.22);
+  padding:10px 14px;border-radius:12px;
+  font-weight:900;color:#fff !important;
+  backdrop-filter: blur(10px);
+}
+.tab:hover{border-color: rgba(122,183,255,0.55);}
+.tab.active{border-color: rgba(122,183,255,0.85); background: rgba(122,183,255,0.10); box-shadow: 0 0 0 1px rgba(122,183,255,0.18) inset;}
+
+.linkBlue{color:var(--accent);font-weight:800;text-decoration:none;}
+.linkBlue:hover{text-decoration:underline;}
+/* Tabs: match analytics (less blue) */
+.tab{  border:1px solid var(--border);  background: rgba(255,255,255,0.03);  padding:10px 14px;border-radius:12px;  font-weight:900;color:rgba(255,255,255,0.86);  backdrop-filter: blur(8px);}.tab.active{  border-color: rgba(122,183,255,0.92);  background: rgba(122,183,255,0.08);  box-shadow: 0 0 0 1px rgba(122,183,255,0.20), 0 12px 30px rgba(0,0,0,0.18);}
+
+.gridTop{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap:14px;
+}
+@media (max-width: 980px){
+  .gridTop{grid-template-columns:1fr;}
+}
+.card{
+  background: rgba(255,255,255,0.03);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:16px;
+  backdrop-filter: blur(10px);
+}
+.cardTitle{display:flex;align-items:center;justify-content:space-between;gap:10px;color:#fff;font-weight:900;}
+.subtle{color:var(--muted);font-size:12px;}
+.kpis{margin-top:14px;display:grid;grid-template-columns: repeat(4,1fr);gap:10px;}
+@media (max-width: 980px){ .kpis{grid-template-columns: repeat(2,1fr);} }
+.kpi{
+  background: rgba(0,0,0,0.18);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:12px;
+}
+.kpiLabel{color:var(--muted);font-size:12px;}
+.kpiValue{margin-top:6px;color:#fff;font-size:22px;font-weight:900;letter-spacing:0.2px;}
+.kpiDelta{margin-top:6px;color:rgba(135,255,199,0.9);font-weight:900;font-size:12px;}
+.kpiDelta.neg{color:rgba(255,155,155,0.95);}
+
+.rightList{margin-top:12px;display:flex;flex-direction:column;gap:10px;}
+.bulletRow{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;}
+.bulletRow b{color:#fff;}
+.sparkMini{opacity:0.9;}
+
+.panel{
+  margin-top:14px;
+  background: rgba(255,255,255,0.03);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:16px;
+  backdrop-filter: blur(10px);
+}
+.controls{margin-top:12px;display:grid;grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr 1fr;gap:10px;}
+input,select{
+  width:100%;
+  background: rgba(0,0,0,0.22);
+  border:1px solid var(--border);
+  color:#fff;
+  padding:11px 12px;
+  border-radius:12px;
+  outline:none;
+}
+.btnPager{
+  border:1px solid var(--border);
+  background: rgba(255,255,255,0.03);
+  color:#fff;padding:10px 12px;border-radius:12px;
+  cursor:pointer;font-weight:900;
+}
+.btnPager:disabled{opacity:0.5;cursor:not-allowed;}
+
+.filterToggleRow{display:none;margin-top:12px;}
+.filterToggleBtn{
+  width:100%;
+  border:1px solid var(--border);
+  background: rgba(255,255,255,0.03);
+  color:#fff;
+  padding:12px 14px;
+  border-radius:14px;
+  cursor:pointer;
+  font-weight:900;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.filterPanel{margin-top:12px;}
+@media (max-width: 900px){
+  .controls{grid-template-columns:1fr;}
+  .filterToggleRow{display:block;}
+  .filterPanel{display:none;}
+  .filterPanel.open{display:block;}
+}
+
+.tableWrap{
+  margin-top:14px;
+  border:1px solid var(--border);
+  border-radius:18px;
+  overflow:hidden;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  background: rgba(255,255,255,0.02);
+}
+table{width:100%;border-collapse:collapse;min-width:980px;}
+thead th{
+  text-align:left;font-size:12px;color:var(--muted);
+  padding:12px 14px;border-bottom:1px solid var(--border);
+  background: rgba(0,0,0,0.20);
+}
+tbody td{
+  padding:12px 14px;
+  border-top:1px solid rgba(255,255,255,0.06);
+  vertical-align:middle;
+  font-size:13px;
+}
+tbody tr:hover{background: rgba(122,183,255,0.06); cursor:pointer;}
+.assetCell{display:flex;align-items:center;gap:10px;}
+.logo{width:34px;height:34px;border-radius:50%;border:1px solid var(--border);background: rgba(0,0,0,0.25);}
+.assetName{font-weight:900;color:#fff !important;}
+.assetLink{color:#fff;text-decoration:none;}
+.assetLink:hover{color:#fff;text-decoration:none;}
+
+.badges{margin-top:4px;display:flex;gap:6px;flex-wrap:wrap;}
+.badge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:3px 8px;border-radius:999px;
+  border:1px solid var(--border);
+  font-size:11px;color:var(--muted);
+  background: rgba(0,0,0,0.18);
+}
+.badge.dim{opacity:0.9;}
+.spark svg{display:block;}
+
+th.stickyCol, td.stickyCol{position:sticky;left:0;background: rgba(15,20,28,0.95);z-index:2;}
+thead th.stickyCol{z-index:3;}
+
+.hideMobile{display:table-cell;}
+@media (max-width:640px){
+  .hideMobile{display:none;}
+  table{min-width:0;}
+}
+.footer{margin-top:24px;color:var(--muted);font-size:12px;text-align:center;line-height:1.7;}
+</style>
+<style id="contrast-override">
+:root{
+  --text:#E6EDF3 !important;
+  --muted:#A8B3C2 !important;
+  --panel:#161b22 !important;
+  --panel2:#1f2630 !important;
+  --border:rgba(230,237,243,.12) !important;
+}
+body,.panel,.tableWrap{ color:var(--text) !important; }
+.small,.muted,.subtle,.meta{ color:var(--muted) !important; }
+a{ color:#4DA3FF !important; }
+</style>
+<style id="clean-bg-override">
+body{ background:#0b1220 !important; background-image:none !important; }
+html,body,.container{ background-image:none !important; }
+tbody td, thead th{ border-bottom:none !important; }
+td,th,.panel,.tableWrap{ border-left:none !important; border-right:none !important; }
+tbody tr:hover{ background:rgba(77,163,255,0.04) !important; }
+</style>
+<style id="delta-blue-override">
+.chg.pos{ color:#6EC1FF !important; font-weight:700 !important; }
+.chg.neg{ color:#2F6BFF !important; font-weight:700 !important; }
+.chg.na { color:var(--muted) !important; font-weight:600 !important; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <div class="brand">
+      <h1>RWA.watch</h1>
+      <span class="beta">Beta Version</span>
+    </div>
+    <div style="font-size:13px;"><a href="../index.html#dashboard">← Back</a></div>
+  </div>
+
+  <div class="tabs"><a id="tabProtocols" class="tab" href="../index.html#protocols">Protocols</a><a id="tabDashboard" class="tab active" href="../index.html#dashboard">Dashboard</a><a class="tab" href="../analysis/index.html">Analysis</a><a class="tab" href="../about.html">About</a></div>
+
+  <div class="panel">
+    <div style="display:flex;gap:14px;align-items:center;">
+      <img class="logo" src="https://icons.llama.fi/zunami-protocol.png" onerror="this.style.display='none'">
+      <div style="flex:1;">
+        <div style="font-size:20px;font-weight:900;color:#fff !important;">Zunami Protocol</div>
+        <div style="margin-top:6px;color:var(--muted);font-size:13px;">
+          Updated: 2026-03-17T13:51:25Z · Chains: Ethereum
+        </div>
+        <div class='badges'><span class='badge'>Yield Aggregator</span></div>
+        <div class='metaLinks' style='margin-top:10px;font-size:13px;'>
+          
+        </div>
+        <div style='margin-top:10px;color:var(--muted);line-height:1.7;'>
+          Snapshot view of tracked TVL, recent changes, chain footprint and monitoring flags based on public datasets.
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;">
+      <div class="panel" style="margin:0;background:rgba(0,0,0,0.18);">
+        <div style="color:var(--muted);font-size:12px;">TVL</div>
+        <div style="margin-top:6px;font-weight:900;color:#fff !important;">$540,500</div>
+      </div>
+      <div class="panel" style="margin:0;background:rgba(0,0,0,0.18);">
+        <div style="color:var(--muted);font-size:12px;">TVL Change (7D)</div>
+        <div style="margin-top:6px;font-weight:900;color:#fff !important;">+4.32%</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+  <div class="footLine">Data source: DeFiLlama (public APIs) • Educational only • Not investment advice.</div>
+  <details class="legal">
+    <summary>Legal &amp; disclaimer</summary>
+    <div class="legalBody">
+      Data is provided as-is, without warranties of accuracy or completeness.<br/>
+      Nothing on this site constitutes an offer, solicitation, or recommendation to buy or sell any asset.<br/>
+      We are not responsible for any losses arising from use of this information.<br/>
+      Third-party sources may change methodology or availability over time.
+    </div>
+  </details>
+  <div style="margin-top:10px;">© 2026 RWA.watch — All rights reserved.</div>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "date": "2026-03-13",
+  "generated_at": "2026-03-13T19:01:53Z",
+  "status": "ok",
+  "checks": {
+    "schema_validation": "ok",
+    "duplicate_slug": {
+      "status": "ok",
+      "items": []
+    },
+    "missing_name": {
+      "status": "ok",
+      "items": []
+    },
+    "negative_tvl": {
+      "status": "ok",
+      "items": []
+    },
+    "reconciliation": {
+      "status": "ok",
+      "total_tvl": 23711684450.884922,
+      "asset_tvl_count": 140
+    },
+    "anomaly_detection": {
+      "status": "ok",
+      "notes": []
+    }
+  },
+  "errors": [],
+  "warnings": []
+}
