@@ -2,7 +2,7 @@ name: Update sparklines
 
 on:
   schedule:
-    - cron: "23 2 * * *"   # daily 02:23 UTC
+    - cron: "10 0 * * *"   # daily 00:10 UTC
   workflow_dispatch:
 
 # Prevent overlapping runs
@@ -51,10 +51,11 @@ jobs:
           mkdir -p data/parts
           node tools/update_sparklines.mjs --mode all --part ${{ matrix.part }}/20 --out data/parts/all_part_${{ matrix.part }}.json
 
+      # IMPORTANT: unique artifact name per part (fixes 409 Conflict)
       - name: Upload part artifact
         uses: actions/upload-artifact@v4
         with:
-          name: all_parts
+          name: all_part_${{ matrix.part }}
           path: data/parts/all_part_${{ matrix.part }}.json
 
   # 3) Merge + commit
@@ -70,8 +71,9 @@ jobs:
       - name: Download ALL parts
         uses: actions/download-artifact@v4
         with:
-          name: all_parts
+          pattern: all_part_*
           path: data/parts
+          merge-multiple: true
 
       - name: Download RWA file
         uses: actions/download-artifact@v4
