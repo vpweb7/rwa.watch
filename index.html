@@ -321,7 +321,7 @@ html[data-delta-mode="classic"]{
         <p>Daily and weekly intelligence on tokenized real-world assets. TVL trends, capital flows, market structure and monitoring signals.</p>
       </div>
     </div>
-    <div class="updated">Updated: 2026-03-17T13:51:25Z</div>
+    <div class="updated" id="updated">Updated: —</div>
   </div>
 
   <div class="tabs"><a id="tabProtocols" class="tab active" href="#protocols">Protocols</a><a id="tabDashboard" class="tab" href="#dashboard">Dashboard</a><a class="tab" href="analysis/index.html">Analysis</a><a class="tab" href="about.html">About</a></div>
@@ -997,5 +997,17 @@ function applyHash() {
   else wire();
 })();
 </script>
+
+<script id="update-timestamp">
+(async function(){
+  try{
+    const r = await fetch('data/sparklines_all_7d.json', { cache: 'no-store' });
+    const j = await r.json();
+    const el = document.getElementById('updated');
+    if (el && j && j.generated_at) el.textContent = 'Updated: ' + j.generated_at;
+  } catch(e) {}
+})();
+</script>
+
 </body>
 </html>
