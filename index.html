@@ -58,7 +58,7 @@ color:#fff;font-weight:900;}
 .gridTop{
   margin-top:18px;
   display:grid;
-  grid-template-columns: minmax(0, 1fr) minmax(340px, 420px);
+  grid-template-columns: 1.6fr 1fr;
   grid-template-areas:
     "snapshot side"
     "monitor  side";
@@ -239,12 +239,6 @@ select:focus{
   box-shadow: 0 0 0 3px rgba(122,183,255,0.15);
 }
 
-
-/* --- Mobile overflow guard (prevents horizontal jump) --- */
-html, body { overflow-x: hidden; }
-.container { width: 100%; }
-.gridTop, .card, .panel, .tableWrap { min-width: 0; }
-img, svg { max-width: 100%; }
 </style>
 <style id="contrast-override">
 :root{
