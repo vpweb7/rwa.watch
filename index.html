@@ -239,6 +239,12 @@ select:focus{
   box-shadow: 0 0 0 3px rgba(122,183,255,0.15);
 }
 
+
+/* --- Mobile overflow guard (prevents horizontal jump) --- */
+html, body { overflow-x: hidden; }
+.container { width: 100%; }
+.gridTop, .card, .panel, .tableWrap { min-width: 0; }
+img, svg { max-width: 100%; }
 </style>
 <style id="contrast-override">
 :root{
