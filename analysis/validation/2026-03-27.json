@@ -1,6 +1,6 @@
 {
-  "date": "2026-03-23",
-  "generated_at": "2026-03-23T17:50:55Z",
+  "date": "2026-03-27",
+  "generated_at": "2026-03-27T11:43:48Z",
   "status": "ok",
   "checks": {
     "schema_validation": "ok",
@@ -18,25 +18,25 @@
     },
     "reconciliation": {
       "status": "ok",
-      "total_tvl": 23845320108.62469,
-      "asset_tvl_count": 141
+      "total_tvl": 24282392260.972805,
+      "asset_tvl_count": 140
     },
     "anomaly_detection": {
       "status": "ok",
       "notes": [
         {
-          "prev_date": "2026-03-22",
+          "prev_date": "2026-03-26",
           "note": "previous-day snapshot not found; skipping day-over-day anomaly check"
         }
       ]
     },
     "identity_registry": {
       "status": "ok",
-      "new_assets_count": 141,
+      "new_assets_count": 140,
       "alias_matches_count": 0,
       "conflicts_count": 0,
       "details": {
-        "date": "2026-03-23",
+        "date": "2026-03-27",
         "new_assets": [
           "afi-protocol",
           "aktionariat",
@@ -79,7 +79,6 @@
           "estate-protocol",
           "ethena-usdtb",
           "etherfuse",
-          "exod",
           "fortunafi",
           "fractit-fleet",
           "frax-usd",
