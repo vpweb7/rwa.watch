@@ -27,11 +27,7 @@ body{
 a{color:var(--link);text-decoration:none;}
 a:hover{text-decoration:underline;}
 
-.container{max-width:1320px;margin:0 auto;padding:28px 20px 40px;}
-@media (min-width: 1400px){
-  .container{max-width:1400px;}
-}
-
+.container{max-width:1200px;margin:0 auto;padding:28px 20px 40px;}
 .topbar{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;}
 .brand{display:flex;align-items:center;gap:12px;}
 .brand h1{margin:0;color:#fff;font-size:34px;letter-spacing:0.2px;}
@@ -62,7 +58,7 @@ color:#fff;font-weight:900;}
 .gridTop{
   margin-top:18px;
   display:grid;
-  grid-template-columns: 1.6fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 420px);
   grid-template-areas:
     "snapshot side"
     "monitor  side";
