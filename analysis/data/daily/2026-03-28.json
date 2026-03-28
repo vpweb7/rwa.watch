@@ -1,18 +1,18 @@
 {
-  "title": "Daily RWA Structure Note",
-  "date": "2026-03-27",
-  "display_date": "March 27, 2026",
-  "summary": "Tracked RWA market value closed at +$24.28B on March 27, 2026 (UTC). A 24-hour comparison was not available in local history. A 7-day comparison becomes available once the local analytics history reaches seven UTC snapshots. The largest share remained concentrated in Tether Gold, BlackRock BUIDL, Circle USYC.",
-  "permalink": "/analysis/recap-2026-03-27.html",
-  "x_share_text": "Daily RWA Structure Note | Total RWA TVL: +$24.28B | 24H Change: N/A | 7D Change: N/A | Market Breadth: N/A | Largest capital increase: Commodities | /analysis/recap-2026-03-27.html",
+  "title": "Capital Allocation Update",
+  "date": "2026-03-28",
+  "display_date": "March 28, 2026",
+  "summary": "Tracked RWA market value closed at +$24.29B on March 28, 2026 (UTC). A 24-hour comparison was not available in local history. A 7-day comparison becomes available once the local analytics history reaches seven UTC snapshots. The largest share remained concentrated in Tether Gold, BlackRock BUIDL, Circle USYC.",
+  "permalink": "/analysis/recap-2026-03-28.html",
+  "x_share_text": "Capital Allocation Update | Total RWA TVL: +$24.29B | 24H Change: N/A | 7D Change: N/A | Market Breadth: N/A | Largest capital increase: Commodities | /analysis/recap-2026-03-28.html",
   "market_regime": "Mixed conditions with moderate concentration.",
   "main_chart": {
     "title": "Total RWA TVL — Last 7 Days",
-    "image": "charts/total-rwa-tvl-7d-2026-03-27.png"
+    "image": "charts/total-rwa-tvl-7d-2026-03-28.png"
   },
   "headline_metrics": {
-    "total_rwa_tvl": 24282392260.972813,
-    "top500_rwa_tvl": 24282392260.972813,
+    "total_rwa_tvl": 24294503391.621468,
+    "top500_rwa_tvl": 24294503391.621468,
     "top500_change_1d_usd": null,
     "top500_change_1d_pct": null,
     "top500_change_7d_usd": null,
@@ -27,40 +27,40 @@
       {
         "slug": "tether-gold",
         "name": "Tether Gold",
-        "tvl_usd": 3167353726.019306,
-        "share_pct": 13.043829009837493,
+        "tvl_usd": 3206692007.588247,
+        "share_pct": 13.199249047807868,
         "rank_by_tvl": 1
       },
       {
         "slug": "blackrock-buidl",
         "name": "BlackRock BUIDL",
-        "tvl_usd": 2663582297.490449,
-        "share_pct": 10.969192280825709,
+        "tvl_usd": 2699183962.2604494,
+        "share_pct": 11.110266049691415,
         "rank_by_tvl": 2
       },
       {
         "slug": "circle-usyc",
         "name": "Circle USYC",
-        "tvl_usd": 2611170974.0373144,
-        "share_pct": 10.753351424250093,
+        "tvl_usd": 2611424493.1341004,
+        "share_pct": 10.749034261118965,
         "rank_by_tvl": 3
       }
     ],
-    "top4_10_share_pct": 41.309203067673074,
+    "top4_10_share_pct": 41.15183230424579,
     "near_top10_focus": {
       "name": "Ondo Global Markets",
       "slug": "ondo-global-markets",
       "rank_by_tvl": 11,
-      "tvl_usd": 692026561.6348791,
-      "gap_to_top10_usd": 70828926.85535395,
-      "gap_to_top10_pct": 9.284710921531342,
+      "tvl_usd": 685654789.4339519,
+      "gap_to_top10_usd": 77706084.83040833,
+      "gap_to_top10_pct": 10.179469167226125,
       "previous_rank": null,
       "rank_change": null
     },
     "biggest_asset_gainer": null,
     "category_leader_24h": null,
-    "top3_concentration": 34.766372714913295,
-    "top10_concentration": 76.07557578258637,
+    "top3_concentration": 35.058549358618244,
+    "top10_concentration": 76.21038166286404,
     "top3_assets": [
       "Tether Gold",
       "BlackRock BUIDL",
@@ -85,8 +85,8 @@
   "capital_allocation": [
     {
       "category": "Commodities",
-      "tvl_usd": 5652273984.635029,
-      "share": 0.23277253426629987,
+      "tvl_usd": 5715216426.060561,
+      "share": 0.23524730404786082,
       "change_1d_usd": null,
       "change_1d_pct": null,
       "change_7d_usd": null,
@@ -95,8 +95,8 @@
     },
     {
       "category": "Treasury",
-      "tvl_usd": 5364753261.675333,
-      "share": 0.22093182599218944,
+      "tvl_usd": 5346601803.841345,
+      "share": 0.2200745459849674,
       "change_1d_usd": null,
       "change_1d_pct": null,
       "change_7d_usd": null,
@@ -105,8 +105,8 @@
     },
     {
       "category": "Funds",
-      "tvl_usd": 4597763672.453857,
-      "share": 0.18934558107124738,
+      "tvl_usd": 4584497050.977025,
+      "share": 0.18870511477744784,
       "change_1d_usd": null,
       "change_1d_pct": null,
       "change_7d_usd": null,
@@ -115,8 +115,8 @@
     },
     {
       "category": "Stablecoins",
-      "tvl_usd": 3594957177.496163,
-      "share": 0.14804789984692143,
+      "tvl_usd": 3596863970.7835984,
+      "share": 0.14805258262756102,
       "change_1d_usd": null,
       "change_1d_pct": null,
       "change_7d_usd": null,
@@ -125,8 +125,8 @@
     },
     {
       "category": "Other RWA",
-      "tvl_usd": 3172549243.2022295,
-      "share": 0.13065225242659553,
+      "tvl_usd": 3151541875.192127,
+      "share": 0.12972242422041072,
       "change_1d_usd": null,
       "change_1d_pct": null,
       "change_7d_usd": null,
@@ -135,8 +135,8 @@
     },
     {
       "category": "Private Credit",
-      "tvl_usd": 1726081238.2074783,
-      "share": 0.07108365681834708,
+      "tvl_usd": 1725782763.3737845,
+      "share": 0.07103593498309421,
       "change_1d_usd": null,
       "change_1d_pct": null,
       "change_7d_usd": null,
@@ -145,8 +145,8 @@
     },
     {
       "category": "Real Estate",
-      "tvl_usd": 174013683.30272356,
-      "share": 0.00716624957839933,
+      "tvl_usd": 173999501.3930279,
+      "share": 0.007162093358658063,
       "change_1d_usd": null,
       "change_1d_pct": null,
       "change_7d_usd": null,
@@ -155,8 +155,8 @@
     }
   ],
   "market_structure": {
-    "top3_concentration_pct": 34.766372714913295,
-    "top10_concentration_pct": 76.07557578258637,
+    "top3_concentration_pct": 35.058549358618244,
+    "top10_concentration_pct": 76.21038166286404,
     "top3_assets": [
       "Tether Gold",
       "BlackRock BUIDL",
@@ -167,71 +167,71 @@
         "name": "Tether Gold",
         "slug": "tether-gold",
         "analytics_category": "Commodities",
-        "tvl_usd": 3167353726.019306,
-        "share": 0.13043829009837493
+        "tvl_usd": 3206692007.588247,
+        "share": 0.13199249047807868
       },
       {
         "name": "BlackRock BUIDL",
         "slug": "blackrock-buidl",
         "analytics_category": "Treasury",
-        "tvl_usd": 2663582297.490449,
-        "share": 0.10969192280825708
+        "tvl_usd": 2699183962.2604494,
+        "share": 0.11110266049691415
       },
       {
         "name": "Circle USYC",
         "slug": "circle-usyc",
         "analytics_category": "Stablecoins",
-        "tvl_usd": 2611170974.0373144,
-        "share": 0.10753351424250093
+        "tvl_usd": 2611424493.1341004,
+        "share": 0.10749034261118964
       },
       {
         "name": "Paxos Gold",
         "slug": "paxos-gold",
         "analytics_category": "Commodities",
-        "tvl_usd": 2278847222.8162675,
-        "share": 0.09384772300540092
+        "tvl_usd": 2306758331.3391757,
+        "share": 0.0949498038364808
       },
       {
         "name": "Ondo Yield Assets",
         "slug": "ondo-yield-assets",
         "analytics_category": "Funds",
-        "tvl_usd": 2242605835.853223,
-        "share": 0.09235522644354888
+        "tvl_usd": 2231222270.5428534,
+        "share": 0.09184062067769383
       },
       {
         "name": "Centrifuge Protocol",
         "slug": "centrifuge-protocol",
         "analytics_category": "Private Credit",
-        "tvl_usd": 1553703448.5176697,
-        "share": 0.06398477678061464
+        "tvl_usd": 1553496879.3209023,
+        "share": 0.06394437681145038
       },
       {
         "name": "Spiko",
         "slug": "spiko",
         "analytics_category": "Treasury",
-        "tvl_usd": 1225344987.1437762,
-        "share": 0.05046228452182519
+        "tvl_usd": 1173624253.763228,
+        "share": 0.04830822161065371
       },
       {
         "name": "Anemoy Capital",
         "slug": "anemoy-capital",
         "analytics_category": "Funds",
-        "tvl_usd": 1090076535.3649776,
-        "share": 0.04489164509202712
+        "tvl_usd": 1090059424.1094112,
+        "share": 0.04486856168812835
       },
       {
         "name": "Ethena USDtb",
         "slug": "ethena-usdtb",
         "analytics_category": "Stablecoins",
-        "tvl_usd": 877429210.5880388,
-        "share": 0.036134380878043146
+        "tvl_usd": 879111261.5294431,
+        "share": 0.03618560327652655
       },
       {
         "name": "WisdomTree",
         "slug": "wisdomtree",
         "analytics_category": "Funds",
-        "tvl_usd": 762855488.4902331,
-        "share": 0.031415993955270664
+        "tvl_usd": 763360874.2643602,
+        "share": 0.031421135141524364
       }
     ]
   },
@@ -241,7 +241,7 @@
         "name": "Tether Gold",
         "slug": "tether-gold",
         "analytics_category": "Commodities",
-        "tvl_usd": 3167353726.019306,
+        "tvl_usd": 3206692007.588247,
         "change_1d_usd": null,
         "change_1d_pct": null
       },
@@ -249,7 +249,7 @@
         "name": "BlackRock BUIDL",
         "slug": "blackrock-buidl",
         "analytics_category": "Treasury",
-        "tvl_usd": 2663582297.490449,
+        "tvl_usd": 2699183962.2604494,
         "change_1d_usd": null,
         "change_1d_pct": null
       },
@@ -257,7 +257,7 @@
         "name": "Circle USYC",
         "slug": "circle-usyc",
         "analytics_category": "Stablecoins",
-        "tvl_usd": 2611170974.0373144,
+        "tvl_usd": 2611424493.1341004,
         "change_1d_usd": null,
         "change_1d_pct": null
       },
@@ -265,7 +265,7 @@
         "name": "Paxos Gold",
         "slug": "paxos-gold",
         "analytics_category": "Commodities",
-        "tvl_usd": 2278847222.8162675,
+        "tvl_usd": 2306758331.3391757,
         "change_1d_usd": null,
         "change_1d_pct": null
       },
@@ -273,7 +273,7 @@
         "name": "Ondo Yield Assets",
         "slug": "ondo-yield-assets",
         "analytics_category": "Funds",
-        "tvl_usd": 2242605835.853223,
+        "tvl_usd": 2231222270.5428534,
         "change_1d_usd": null,
         "change_1d_pct": null
       }
@@ -283,7 +283,7 @@
         "name": "Tether Gold",
         "slug": "tether-gold",
         "analytics_category": "Commodities",
-        "tvl_usd": 3167353726.019306,
+        "tvl_usd": 3206692007.588247,
         "change_1d_usd": null,
         "change_1d_pct": null
       },
@@ -291,7 +291,7 @@
         "name": "BlackRock BUIDL",
         "slug": "blackrock-buidl",
         "analytics_category": "Treasury",
-        "tvl_usd": 2663582297.490449,
+        "tvl_usd": 2699183962.2604494,
         "change_1d_usd": null,
         "change_1d_pct": null
       },
@@ -299,7 +299,7 @@
         "name": "Circle USYC",
         "slug": "circle-usyc",
         "analytics_category": "Stablecoins",
-        "tvl_usd": 2611170974.0373144,
+        "tvl_usd": 2611424493.1341004,
         "change_1d_usd": null,
         "change_1d_pct": null
       },
@@ -307,7 +307,7 @@
         "name": "Paxos Gold",
         "slug": "paxos-gold",
         "analytics_category": "Commodities",
-        "tvl_usd": 2278847222.8162675,
+        "tvl_usd": 2306758331.3391757,
         "change_1d_usd": null,
         "change_1d_pct": null
       },
@@ -315,7 +315,7 @@
         "name": "Ondo Yield Assets",
         "slug": "ondo-yield-assets",
         "analytics_category": "Funds",
-        "tvl_usd": 2242605835.853223,
+        "tvl_usd": 2231222270.5428534,
         "change_1d_usd": null,
         "change_1d_pct": null
       }
@@ -355,9 +355,9 @@
     }
   ],
   "monitoring_signals": [
-    "Top 3 concentration stood at 34.8% of tracked market value.",
+    "Top 3 concentration stood at 35.1% of tracked market value.",
     "Commodities led category-level 24H value change by absolute dollars.",
-    "Top 10 concentration ended the day at 76.1% of tracked market value."
+    "Top 10 concentration ended the day at 76.2% of tracked market value."
   ],
   "new_entrants": []
 }
