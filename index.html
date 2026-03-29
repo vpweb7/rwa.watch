@@ -20,7 +20,7 @@
   --betaBg:#1d4ed8; --betaBorder:#1e40af; --blue:#4da3ff;
 }
 *{box-sizing:border-box;}
-html,body{height:100%;}
+html,body{height:100%;overflow-x:hidden;}
 body{
   margin:0;
   background: radial-gradient(1200px 600px at 35% 10%, rgba(77,163,255,0.12), transparent 55%),
@@ -168,6 +168,7 @@ input,select{
   overflow-x:auto;
   -webkit-overflow-scrolling:touch;
   background: rgba(255,255,255,0.02);
+  max-width:100%;
 }
 table{width:100%;border-collapse:collapse;min-width:980px;}
 thead th{
@@ -245,6 +246,7 @@ select:focus{
 }
 
 </style>
+<link rel="stylesheet" href="mobile-fix.css">
 <style id="contrast-override">
 :root{
   --text:#E6EDF3 !important;
