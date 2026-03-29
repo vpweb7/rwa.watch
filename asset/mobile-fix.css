@@ -1,0 +1,11 @@
+/* --- Mobile overflow hardening (main page) --- */
+@media (max-width: 980px){
+  html, body { overflow-x: hidden; }
+  .container { overflow-x: hidden; }
+  .tableWrap{ max-width:100%; overflow-x:auto; }
+  .assetCell, .bulletRow, .rowTitle { min-width:0; }
+  .assetName { overflow-wrap:anywhere; word-break:break-word; }
+  .badgeWrap, .badges { overflow-wrap:anywhere; }
+  .sparkMini { min-width:0 !important; }
+  .spark svg { max-width:110px; height:auto; }
+}
