@@ -246,6 +246,16 @@ select:focus{
   box-shadow: 0 0 0 3px rgba(122,183,255,0.15);
 }
 
+
+
+/* --- Mobile pan override (hotfix) --- */
+@media (max-width: 980px){
+  html, body { overflow-x: auto !important; }
+  body { touch-action: pan-x pan-y !important; }
+  .container { overflow-x: visible !important; }
+  .tableWrap { overflow-x: auto !important; -webkit-overflow-scrolling: touch; }
+}
+
 </style><style id="contrast-override">
 :root{
   --text:#E6EDF3 !important;
