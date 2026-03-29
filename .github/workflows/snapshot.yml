@@ -91,6 +91,9 @@ jobs:
           if git status --porcelain | grep -q .; then
             git add data/sparklines_rwa_7d.json data/sparklines_all_7d.json
             git commit -m "Auto-update sparklines"
+
+            # pull latest remote commits (e.g., analysis publisher) and replay our commit on top
+            git pull --rebase origin main
             git push
           else
             echo "No changes."
