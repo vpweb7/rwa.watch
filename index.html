@@ -618,6 +618,17 @@ function buildSparkline(slug) {
 
   const min = Math.min.apply(null, clean);
   const max = Math.max.apply(null, clean);
+  // If the whole series is zeros, treat as missing (avoid misleading flat line)
+  if (min === 0 && max === 0) {
+    const na = document.createElement("span");
+    na.textContent = "N/A";
+    na.style.opacity = "0.6";
+    na.style.fontSize = "12px";
+    na.style.letterSpacing = "0.02em";
+    cache[slug] = na.outerHTML;
+    return cache[slug];
+  }
+
   const range = (max - min) || 1;
 
   const stepX = (W - P*2) / (values.length - 1);
