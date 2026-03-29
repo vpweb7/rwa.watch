@@ -64,10 +64,10 @@ color:#fff;font-weight:900;}
 .gridTop{
   margin-top:18px;
   display:grid;
-  grid-template-columns: 1.6fr 1fr;
+  grid-template-columns: 1fr;
   grid-template-areas:
-    "snapshot side"
-    "monitor  side";
+    "snapshot"
+    "monitor";
   gap:14px;
   align-items:start;
 }
@@ -375,39 +375,7 @@ html[data-delta-mode="classic"]{
         </div>
       </div>
 
-    </div>
-
-    <div class="card sideCard">
-      <div class="cardTitle">
-        <span>Unusual Activity</span>
-        <a class="linkBlue" href="analysis/index.html">Read daily &amp; weekly analysis →</a>
-      </div>
-
-      <div class="rightList" id="unusualList">
-        <div class='bulletRow'><div><b>Anemoy Capital</b> <span style='color:rgba(135,255,199,0.95);font-weight:900;'>+34.5%</span><div class='subtle'>Largest 7D growth among Top protocols</div></div><div class='sparkMini' style='min-width:110px;display:flex;justify-content:flex-end;align-items:center;'><div class='spark' data-slug='anemoy-capital'></div></div></div>
-<div class='bulletRow'><div><b>Circle USYC</b> <span style='color:rgba(135,255,199,0.95);font-weight:900;'>+18.9%</span><div class='subtle'>Largest 7D growth among Top protocols</div></div><div class='sparkMini' style='min-width:110px;display:flex;justify-content:flex-end;align-items:center;'><div class='spark' data-slug='circle-usyc'></div></div></div>
-<div class='bulletRow'><div><b>Spiko</b> <span style='color:rgba(135,255,199,0.95);font-weight:900;'>+2.5%</span><div class='subtle'>Largest 7D growth among Top protocols</div></div><div class='sparkMini' style='min-width:110px;display:flex;justify-content:flex-end;align-items:center;'><div class='spark' data-slug='spiko'></div></div></div>
-      </div>
-
-      <div class="panel" style="margin-top:14px;">
-        <div class="cardTitle"><span>Attention vs Capital Divergence</span><span class="subtle">Engagement is a proxy</span></div>
-        <div style="margin-top:12px;">
-          <div style="display:grid;grid-template-columns: 1.2fr 0.8fr 0.8fr 0.8fr;gap:10px;color:var(--muted);font-size:12px;">
-            <div>Protocol</div><div>TVL 7D %</div><div>Engagement 7D %</div><div>Trend</div>
-          </div>
-          <div id="divergenceRows" style="margin-top:10px;display:flex;flex-direction:column;gap:10px;">
-            <div style='display:grid;grid-template-columns: 1.2fr 0.8fr 0.8fr 0.8fr;gap:10px;align-items:center;padding:10px;border:1px solid var(--border);border-radius:14px;background:rgba(0,0,0,0.18);'><div style='font-weight:900;color:#fff !important;'>Exod</div><div style='color:#fff;font-weight:900;'>-16.6%</div><div style='color:rgba(255,255,255,0.78);font-weight:900;'>+13.3%</div><div class='spark' data-slug='exod'></div></div>
-<div style='display:grid;grid-template-columns: 1.2fr 0.8fr 0.8fr 0.8fr;gap:10px;align-items:center;padding:10px;border:1px solid var(--border);border-radius:14px;background:rgba(0,0,0,0.18);'><div style='font-weight:900;color:#fff !important;'>Centrifuge Protocol</div><div style='color:#fff;font-weight:900;'>-9.6%</div><div style='color:rgba(255,255,255,0.78);font-weight:900;'>+7.7%</div><div class='spark' data-slug='centrifuge-protocol'></div></div>
-<div style='display:grid;grid-template-columns: 1.2fr 0.8fr 0.8fr 0.8fr;gap:10px;align-items:center;padding:10px;border:1px solid var(--border);border-radius:14px;background:rgba(0,0,0,0.18);'><div style='font-weight:900;color:#fff !important;'>Anemoy Capital</div><div style='color:#fff;font-weight:900;'>+34.5%</div><div style='color:rgba(255,255,255,0.78);font-weight:900;'>+25.0%</div><div class='spark' data-slug='anemoy-capital'></div></div>
-<div style='display:grid;grid-template-columns: 1.2fr 0.8fr 0.8fr 0.8fr;gap:10px;align-items:center;padding:10px;border:1px solid var(--border);border-radius:14px;background:rgba(0,0,0,0.18);'><div style='font-weight:900;color:#fff !important;'>WisdomTree</div><div style='color:#fff;font-weight:900;'>-3.7%</div><div style='color:rgba(255,255,255,0.78);font-weight:900;'>+2.9%</div><div class='spark' data-slug='wisdomtree'></div></div>
-<div style='display:grid;grid-template-columns: 1.2fr 0.8fr 0.8fr 0.8fr;gap:10px;align-items:center;padding:10px;border:1px solid var(--border);border-radius:14px;background:rgba(0,0,0,0.18);'><div style='font-weight:900;color:#fff !important;'>Re</div><div style='color:#fff;font-weight:900;'>+31.4%</div><div style='color:rgba(255,255,255,0.78);font-weight:900;'>+25.0%</div><div class='spark' data-slug='re'></div></div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="card monitorCard">
+    </div><div class="card monitorCard">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;">
         <div style="font-weight:900;color:#fff !important;">Monitoring Dashboard</div>
         <div class="subtle">Sorted by TVL · Sparklines show 7D TVL trend</div>
