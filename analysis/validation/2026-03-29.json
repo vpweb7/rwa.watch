@@ -1,6 +1,6 @@
 {
-  "date": "2026-03-28",
-  "generated_at": "2026-03-28T05:16:31Z",
+  "date": "2026-03-29",
+  "generated_at": "2026-03-29T05:55:32Z",
   "status": "ok",
   "checks": {
     "schema_validation": "ok",
@@ -18,14 +18,14 @@
     },
     "reconciliation": {
       "status": "ok",
-      "total_tvl": 24294503391.621483,
+      "total_tvl": 24285530047.884224,
       "asset_tvl_count": 140
     },
     "anomaly_detection": {
       "status": "ok",
       "notes": [
         {
-          "prev_date": "2026-03-27",
+          "prev_date": "2026-03-28",
           "note": "previous-day snapshot not found; skipping day-over-day anomaly check"
         }
       ]
@@ -36,7 +36,7 @@
       "alias_matches_count": 0,
       "conflicts_count": 0,
       "details": {
-        "date": "2026-03-28",
+        "date": "2026-03-29",
         "new_assets": [
           "afi-protocol",
           "aktionariat",
