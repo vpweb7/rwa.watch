@@ -1,17 +1,28 @@
-/* Mobile: shrink Trend (sparkline) column */
+/* Mobile: shrink Trend (sparkline) column and prevent overflow */
 @media (max-width: 520px){
-  /* reduce the space used by the sparkline cell */
+  :root{ --trendW: 72px; }
+
+  /* Make the last column truly fixed */
   td:last-child, th:last-child{
-    width: 72px !important;
-    max-width: 72px !important;
+    width: var(--trendW) !important;
+    max-width: var(--trendW) !important;
+    overflow: hidden !important;
   }
+
+  /* Wrapper */
   .sparkMini{
+    width: var(--trendW) !important;
+    max-width: var(--trendW) !important;
     min-width: 0 !important;
-    width: 72px !important;
+    overflow: hidden !important;
     justify-content: flex-start !important;
   }
+
+  /* SVG must be fluid (ignore inline width attrs) */
   .spark svg{
-    max-width: 72px !important;
+    width: 100% !important;
+    max-width: 100% !important;
     height: auto !important;
+    display: block !important;
   }
 }
