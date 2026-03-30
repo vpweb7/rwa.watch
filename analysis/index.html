@@ -496,5 +496,47 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
 })();
 </script>
 
+
+<script id="live-rwa-tvl">
+(async function(){
+  try{
+    const r = await fetch('../data/dataset.json?ts=' + Date.now(), { cache: 'no-store' });
+    if (!r.ok) return;
+    const ds = await r.json();
+    const assets = Array.isArray(ds.assets) ? ds.assets : [];
+    const rwa = assets.filter(x => x && x.protocol_category === 'RWA');
+    const total = rwa.reduce((a,x)=>a + (Number(x.tvl_usd)||0), 0);
+
+    function fmtUsdCompact(n){
+      if (!isFinite(n)) return 'N/A';
+      const abs = Math.abs(n);
+      if (abs >= 1e12) return '$' + (n/1e12).toFixed(2) + 'T';
+      if (abs >= 1e9) return '$' + (n/1e9).toFixed(2) + 'B';
+      if (abs >= 1e6) return '$' + (n/1e6).toFixed(2) + 'M';
+      if (abs >= 1e3) return '$' + (n/1e3).toFixed(2) + 'K';
+      return '$' + n.toFixed(0);
+    }
+
+    const txt = fmtUsdCompact(total);
+
+    // Update top-right updated label if present
+    const up = document.querySelector('.updated');
+    if (up && ds.generated_at) up.textContent = 'Updated: ' + ds.generated_at.replace('.000Z','Z');
+
+    // Update hero chart label + first "Total RWA TVL" metric card
+    const hero = document.querySelector('.heroChartLabel');
+    if (hero) hero.textContent = txt;
+
+    const metric = Array.from(document.querySelectorAll('.metricCardLabel'))
+      .find(el => (el.textContent||'').trim() === 'Total RWA TVL');
+    if (metric){
+      const card = metric.closest('.metricCard');
+      const val = card ? card.querySelector('.metricCardValue') : null;
+      if (val) val.textContent = txt;
+    }
+  }catch(e){ console.error(e); }
+})();
+</script>
+
 </body>
 </html>
