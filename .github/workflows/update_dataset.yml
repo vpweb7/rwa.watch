@@ -1,0 +1,39 @@
+name: Update dataset
+
+on:
+  schedule:
+    - cron: "15 0 * * *"   # daily 00:15 UTC (sparklines után picivel)
+  workflow_dispatch:
+
+concurrency:
+  group: dataset
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  build_commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Build dataset.json
+        run: node tools/update_dataset.mjs --out data/dataset.json
+
+      - name: Commit & push if changed
+        run: |
+          git config user.name "rwa.watch bot"
+          git config user.email "actions@users.noreply.github.com"
+          if git status --porcelain | grep -q .; then
+            git add data/dataset.json
+            git commit -m "Auto-update dataset"
+
+            git pull --rebase origin main
+            git push
+          else
+            echo "No changes."
+          fi
