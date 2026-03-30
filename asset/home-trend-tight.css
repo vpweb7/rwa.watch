@@ -1,0 +1,17 @@
+/* Mobile: shrink Trend (sparkline) column */
+@media (max-width: 520px){
+  /* reduce the space used by the sparkline cell */
+  td:last-child, th:last-child{
+    width: 84px !important;
+    max-width: 84px !important;
+  }
+  .sparkMini{
+    min-width: 0 !important;
+    width: 84px !important;
+    justify-content: flex-start !important;
+  }
+  .spark svg{
+    max-width: 84px !important;
+    height: auto !important;
+  }
+}
