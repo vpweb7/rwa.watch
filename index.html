@@ -1,18 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
-<link rel="icon" href="favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="stylesheet" href="asset/home-trend-tight.css">
-<link rel="stylesheet" href="asset/home-tight-table.css">
-<link rel="stylesheet" href="asset/home-mobile.css">
-
-<link rel="prefetch" href="analysis/index.html">
 <title>RWA.watch — Real-World Asset Intelligence & Monitoring</title>
 <meta name="description" content="RWA intelligence and daily monitoring: TVL trends, capital flows, and monitoring signals." />
 <style>
@@ -23,7 +13,7 @@
   --betaBg:#1d4ed8; --betaBorder:#1e40af; --blue:#4da3ff;
 }
 *{box-sizing:border-box;}
-html,body{height:100%;overflow-x:hidden;}
+html,body{height:100%;}
 body{
   margin:0;
   background: radial-gradient(1200px 600px at 35% 10%, rgba(77,163,255,0.12), transparent 55%),
@@ -66,10 +56,10 @@ color:#fff;font-weight:900;}
 .gridTop{
   margin-top:18px;
   display:grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1.6fr 1fr;
   grid-template-areas:
-    "snapshot"
-    "monitor";
+    "snapshot side"
+    "monitor  side";
   gap:14px;
   align-items:start;
 }
@@ -171,7 +161,6 @@ input,select{
   overflow-x:auto;
   -webkit-overflow-scrolling:touch;
   background: rgba(255,255,255,0.02);
-  max-width:100%;
 }
 table{width:100%;border-collapse:collapse;min-width:980px;}
 thead th{
@@ -232,33 +221,8 @@ thead th.stickyCol{z-index:3;}
   .tabs::-webkit-scrollbar{display:none;}
   .tab{flex:0 0 auto;}
 }
-
-/* --- Dropdown / select readability (dark theme) --- */
-:root { color-scheme: dark; }
-select, option, optgroup{
-  background-color:#0b1220;
-  color:#ffffff;
-}
-select{
-  border:1px solid rgba(122,183,255,0.22);
-}
-select:focus{
-  outline:none;
-  border-color: rgba(122,183,255,0.55);
-  box-shadow: 0 0 0 3px rgba(122,183,255,0.15);
-}
-
-
-
-/* --- Mobile pan override (hotfix) --- */
-@media (max-width: 980px){
-  html, body { overflow-x: auto !important; }
-  body { touch-action: pan-x pan-y !important; }
-  .container { overflow-x: visible !important; }
-  .tableWrap { overflow-x: auto !important; -webkit-overflow-scrolling: touch; }
-}
-
-</style><style id="contrast-override">
+</style>
+<style id="contrast-override">
 :root{
   --text:#E6EDF3 !important;
   --muted:#A8B3C2 !important;
@@ -339,7 +303,7 @@ html[data-delta-mode="classic"]{
         <p>Daily and weekly intelligence on tokenized real-world assets. TVL trends, capital flows, market structure and monitoring signals.</p>
       </div>
     </div>
-    <div class="updated" id="updated">Updated: —</div>
+    <div class="updated">Updated: 2026-03-17T13:51:25Z</div>
   </div>
 
   <div class="tabs"><a id="tabProtocols" class="tab active" href="#protocols">Protocols</a><a id="tabDashboard" class="tab" href="#dashboard">Dashboard</a><a class="tab" href="analysis/index.html">Analysis</a><a class="tab" href="about.html">About</a></div>
@@ -377,7 +341,39 @@ html[data-delta-mode="classic"]{
         </div>
       </div>
 
-    </div><div class="card monitorCard">
+    </div>
+
+    <div class="card sideCard">
+      <div class="cardTitle">
+        <span>Unusual Activity</span>
+        <a class="linkBlue" href="analysis/index.html">Read daily &amp; weekly analysis →</a>
+      </div>
+
+      <div class="rightList" id="unusualList">
+        <div class='bulletRow'><div><b>Anemoy Capital</b> <span style='color:rgba(135,255,199,0.95);font-weight:900;'>+34.5%</span><div class='subtle'>Largest 7D growth among Top protocols</div></div><div class='sparkMini' style='min-width:110px;display:flex;justify-content:flex-end;align-items:center;'><div class='spark' data-slug='anemoy-capital'></div></div></div>
+<div class='bulletRow'><div><b>Circle USYC</b> <span style='color:rgba(135,255,199,0.95);font-weight:900;'>+18.9%</span><div class='subtle'>Largest 7D growth among Top protocols</div></div><div class='sparkMini' style='min-width:110px;display:flex;justify-content:flex-end;align-items:center;'><div class='spark' data-slug='circle-usyc'></div></div></div>
+<div class='bulletRow'><div><b>Spiko</b> <span style='color:rgba(135,255,199,0.95);font-weight:900;'>+2.5%</span><div class='subtle'>Largest 7D growth among Top protocols</div></div><div class='sparkMini' style='min-width:110px;display:flex;justify-content:flex-end;align-items:center;'><div class='spark' data-slug='spiko'></div></div></div>
+      </div>
+
+      <div class="panel" style="margin-top:14px;">
+        <div class="cardTitle"><span>Attention vs Capital Divergence</span><span class="subtle">Engagement is a proxy</span></div>
+        <div style="margin-top:12px;">
+          <div style="display:grid;grid-template-columns: 1.2fr 0.8fr 0.8fr 0.8fr;gap:10px;color:var(--muted);font-size:12px;">
+            <div>Protocol</div><div>TVL 7D %</div><div>Engagement 7D %</div><div>Trend</div>
+          </div>
+          <div id="divergenceRows" style="margin-top:10px;display:flex;flex-direction:column;gap:10px;">
+            <div style='display:grid;grid-template-columns: 1.2fr 0.8fr 0.8fr 0.8fr;gap:10px;align-items:center;padding:10px;border:1px solid var(--border);border-radius:14px;background:rgba(0,0,0,0.18);'><div style='font-weight:900;color:#fff !important;'>Exod</div><div style='color:#fff;font-weight:900;'>-16.6%</div><div style='color:rgba(255,255,255,0.78);font-weight:900;'>+13.3%</div><div class='spark' data-slug='exod'></div></div>
+<div style='display:grid;grid-template-columns: 1.2fr 0.8fr 0.8fr 0.8fr;gap:10px;align-items:center;padding:10px;border:1px solid var(--border);border-radius:14px;background:rgba(0,0,0,0.18);'><div style='font-weight:900;color:#fff !important;'>Centrifuge Protocol</div><div style='color:#fff;font-weight:900;'>-9.6%</div><div style='color:rgba(255,255,255,0.78);font-weight:900;'>+7.7%</div><div class='spark' data-slug='centrifuge-protocol'></div></div>
+<div style='display:grid;grid-template-columns: 1.2fr 0.8fr 0.8fr 0.8fr;gap:10px;align-items:center;padding:10px;border:1px solid var(--border);border-radius:14px;background:rgba(0,0,0,0.18);'><div style='font-weight:900;color:#fff !important;'>Anemoy Capital</div><div style='color:#fff;font-weight:900;'>+34.5%</div><div style='color:rgba(255,255,255,0.78);font-weight:900;'>+25.0%</div><div class='spark' data-slug='anemoy-capital'></div></div>
+<div style='display:grid;grid-template-columns: 1.2fr 0.8fr 0.8fr 0.8fr;gap:10px;align-items:center;padding:10px;border:1px solid var(--border);border-radius:14px;background:rgba(0,0,0,0.18);'><div style='font-weight:900;color:#fff !important;'>WisdomTree</div><div style='color:#fff;font-weight:900;'>-3.7%</div><div style='color:rgba(255,255,255,0.78);font-weight:900;'>+2.9%</div><div class='spark' data-slug='wisdomtree'></div></div>
+<div style='display:grid;grid-template-columns: 1.2fr 0.8fr 0.8fr 0.8fr;gap:10px;align-items:center;padding:10px;border:1px solid var(--border);border-radius:14px;background:rgba(0,0,0,0.18);'><div style='font-weight:900;color:#fff !important;'>Re</div><div style='color:#fff;font-weight:900;'>+31.4%</div><div style='color:rgba(255,255,255,0.78);font-weight:900;'>+25.0%</div><div class='spark' data-slug='re'></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="card monitorCard">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;">
         <div style="font-weight:900;color:#fff !important;">Monitoring Dashboard</div>
         <div class="subtle">Sorted by TVL · Sparklines show 7D TVL trend</div>
@@ -423,8 +419,8 @@ html[data-delta-mode="classic"]{
           <thead>
             <tr>
               <th class="stickyCol">Asset</th>
-              <th class="hideMobile">TVL</th>
-              <th>TVL Change (7D)</th>
+              <th>TVL</th>
+              <th class="hideMobile">TVL Change (7D)</th>
               <th class="hideMobile">Chains</th>
               <th>Trend</th>
             </tr>
@@ -455,7 +451,17 @@ html[data-delta-mode="classic"]{
   </div>
 
   <div class="footer">
-  <div class="footLine">Data source: DeFiLlama (public APIs) • Educational only • Not investment advice. • <a href="terms.html">Terms</a> • <a href="privacy.html">Privacy</a></div><div style="margin-top:10px;">© 2026 RWA.watch — All rights reserved.</div>
+  <div class="footLine">Data source: DeFiLlama (public APIs) • Educational only • Not investment advice.</div>
+  <details class="legal">
+    <summary>Legal &amp; disclaimer</summary>
+    <div class="legalBody">
+      Data is provided as-is, without warranties of accuracy or completeness.<br/>
+      Nothing on this site constitutes an offer, solicitation, or recommendation to buy or sell any asset.<br/>
+      We are not responsible for any losses arising from use of this information.<br/>
+      Third-party sources may change methodology or availability over time.
+    </div>
+  </details>
+  <div style="margin-top:10px;">© 2026 RWA.watch — All rights reserved.</div>
 </div>
 
 </div>
@@ -478,6 +484,9 @@ const W = 96, H = 24, P = 2;
 let currentTab = 'protocols';
 let filtered = [];
 let activeData = DATA_RWA;
+let LIVE_DATA_ALL = null;
+let LIVE_DATA_RWA = null;
+let DATA_META = { generated_at: null };
 
 // Pagination
 let page = 1;
@@ -562,6 +571,27 @@ async function loadSparkFiles() {
   }
 }
 
+async function loadDatasetFiles() {
+  try {
+    const url = 'data/dataset.json?ts=' + Date.now();
+    const res = await fetch(url, { cache: 'no-store' });
+    const ds = await res.json();
+
+    const assets = (ds && Array.isArray(ds.assets)) ? ds.assets : [];
+    LIVE_DATA_ALL = assets;
+    LIVE_DATA_RWA = assets.filter(function(r){
+      return String(r && r.protocol_category ? r.protocol_category : '').toLowerCase() === 'rwa';
+    });
+
+    DATA_META.generated_at = (ds && ds.generated_at) ? ds.generated_at : null;
+
+    const upd = document.getElementById('updated');
+    if (upd) upd.textContent = 'Updated: ' + (DATA_META.generated_at || '—');
+  } catch (e) {
+    // keep embedded fallback data
+  }
+}
+
 function getSparkData() {
   return (currentTab === 'protocols') ? SPARK_RWA : SPARK_ALL;
 }
@@ -589,17 +619,6 @@ function buildSparkline(slug) {
 
   const min = Math.min.apply(null, clean);
   const max = Math.max.apply(null, clean);
-  // If the whole series is zeros, treat as missing (avoid misleading flat line)
-  if (min === 0 && max === 0) {
-    const na = document.createElement("span");
-    na.textContent = "N/A";
-    na.style.opacity = "0.6";
-    na.style.fontSize = "12px";
-    na.style.letterSpacing = "0.02em";
-    cache[slug] = na.outerHTML;
-    return cache[slug];
-  }
-
   const range = (max - min) || 1;
 
   const stepX = (W - P*2) / (values.length - 1);
@@ -830,8 +849,8 @@ function render() {
           '</div>' +
         '</div>' +
       '</td>' +
-      '<td class="hideMobile" style="font-weight:900;color:#fff !important;">' + tvlTxt + '</td>' +
-      '<td><span class="chg ' + (ch7==='N/A'?'na':(Number(r.tvl_change_7d_pct)>=0?'pos':'neg')) + '">' + ch7 + '</span></td>' /* delta-blue-patched */ +
+      '<td style="font-weight:900;color:#fff !important;">' + tvlTxt + '</td>' +
+      '<td class="hideMobile"><span class="chg ' + (ch7==='N/A'?'na':(Number(r.tvl_change_7d_pct)>=0?'pos':'neg')) + '">' + ch7 + '</span></td>' /* delta-blue-patched */ +
       '<td class="hideMobile">' + chainsSummary(r.chains || r.chain || '') + '</td>' +
       '<td>' + spark + '</td>';
 
@@ -850,11 +869,11 @@ function applyHash() {
   const h = (window.location.hash || '').replace('#','').toLowerCase();
   if (h === 'dashboard') {
     currentTab = 'dashboard';
-    activeData = DATA_ALL;
+    activeData = (LIVE_DATA_ALL || DATA_ALL);
     SPARK_CACHE_ALL = {};
   } else {
     currentTab = 'protocols';
-    activeData = DATA_RWA;
+    activeData = (LIVE_DATA_RWA || DATA_RWA);
     SPARK_CACHE_RWA = {};
   }
 
@@ -869,6 +888,7 @@ function applyHash() {
 
 (async function init(){
   await loadSparkFiles();
+  await loadDatasetFiles();
   applyHash();
   window.addEventListener('hashchange', applyHash);
 })();
@@ -902,11 +922,6 @@ function applyHash() {
 
   function patchHtmlPercentsIn(el, decimals){
     if (!el) return;
-
-    // Don't patch percent strings inside tables (the monitoring table formats TVL Change (7D) separately)
-    if (el.closest && el.closest('table')) return;
-    if (el.querySelector && el.querySelector('table')) return;
-
     var html = el.innerHTML || '';
     if (!/%/.test(html)) return;
     html = html.replace(/([+\-]?\d+(?:\.\d+)?)%/g, function(_, n){
@@ -984,17 +999,5 @@ function applyHash() {
   else wire();
 })();
 </script>
-
-<script id="update-timestamp">
-(async function(){
-  try{
-    const r = await fetch('data/sparklines_all_7d.json', { cache: 'no-store' });
-    const j = await r.json();
-    const el = document.getElementById('updated');
-    if (el && j && j.generated_at) el.textContent = 'Updated: ' + j.generated_at;
-  } catch(e) {}
-})();
-</script>
-
 </body>
 </html>
