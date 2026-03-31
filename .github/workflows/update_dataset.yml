@@ -22,7 +22,7 @@ jobs:
           node-version: "20"
 
       - name: Build dataset.json
-        run: node tools/update_dataset.mjs --out data/dataset.json
+        run: node tools/update_dataset.cjs --out data/dataset.json
 
       - name: Commit & push if changed
         run: |
