@@ -580,6 +580,118 @@ async function loadDatasetFiles() {
 }
 
 
+
+function updateSnapshotKPIs() {
+  try {
+    // Snapshot should reflect the full RWA universe (not filtered / paginated)
+    const base = (DATASET_RWA || DATA_RWA) || [];
+
+    let total = 0;
+    let totalPast = 0;
+    let lowCov = 0;
+    let highApy = 0;
+
+    // Keep per-asset today/past for concentration + net flow
+    const rows = [];
+
+    // category momentum proxy: weighted avg 7D TVL change
+    const catAgg = new Map(); // cat -> {w,sum}
+
+    for (const r of base) {
+      const tvl = Number(r && r.tvl_usd) || 0;
+      total += tvl;
+
+      if (r && r.flag_low_yield_coverage) lowCov += 1;
+      if (r && r.reported_high_apy_detected) highApy += 1;
+
+      // If 7D % change is available, infer past TVL; otherwise assume unchanged (past=today)
+      const chgRaw = (r && r.tvl_change_7d_pct !== null && r.tvl_change_7d_pct !== undefined) ? Number(r.tvl_change_7d_pct) : null;
+      let past = tvl;
+
+      if (chgRaw !== null && isFinite(chgRaw) && tvl > 0 && chgRaw > -99) {
+        const inferred = tvl / (1 + chgRaw / 100);
+        if (isFinite(inferred) && inferred > 0) past = inferred;
+
+        const cat = String((r && r.protocol_category) ? r.protocol_category : "Unknown");
+        const cur = catAgg.get(cat) || { w: 0, sum: 0 };
+        cur.w += tvl;
+        cur.sum += tvl * chgRaw;
+        catAgg.set(cat, cur);
+      }
+
+      totalPast += past;
+      rows.push({ tvl, past });
+    }
+
+    // Total TVL
+    const elTotal = document.getElementById("kpiTotal");
+    if (elTotal) elTotal.textContent = total > 0 ? fmtUsdCompact(total) : "N/A";
+
+    // Total 7D %
+    const elDelta = document.getElementById("kpiTotalDelta");
+    if (elDelta) {
+      if (totalPast > 0 && total > 0) {
+        const pct = ((total / totalPast) - 1) * 100;
+        const s = (pct > 0 ? "+" : "") + pct.toFixed(2) + "%";
+        elDelta.textContent = s;
+      } else {
+        elDelta.textContent = "N/A";
+      }
+    }
+
+    // 7D Net Capital Flow (proxy): total change in TVL vs inferred past
+    const elFlow = document.getElementById("kpiFlow");
+    if (elFlow) {
+      if (total > 0 && totalPast > 0) {
+        const flow = total - totalPast;
+        const s = (flow > 0 ? "+" : "") + fmtUsdCompact(Math.abs(flow));
+        elFlow.textContent = s;
+      } else {
+        elFlow.textContent = "N/A";
+      }
+    }
+
+    // Flags line
+    const elFlags = document.getElementById("kpiFlags");
+    if (elFlags) elFlags.textContent = `Flags: ${lowCov} low-coverage · ${highApy} high-APY`;
+
+    // Sector momentum (proxy): best weighted avg % change
+    let bestCat = "RWA";
+    let bestScore = -Infinity;
+    for (const [cat, v] of catAgg.entries()) {
+      if (!v.w) continue;
+      const score = v.sum / v.w; // weighted avg %
+      if (isFinite(score) && score > bestScore) {
+        bestScore = score;
+        bestCat = cat;
+      }
+    }
+    const elSector = document.getElementById("kpiSector");
+    if (elSector) elSector.textContent = bestCat;
+
+    // Concentration Change (Top3): change in top-3 share vs 7D ago (proxy)
+    const elConc = document.getElementById("kpiConc");
+    if (elConc) {
+      if (rows.length >= 3 && total > 0 && totalPast > 0) {
+        // Top3 by today's TVL
+        const top3 = rows.slice().sort((a,b) => (b.tvl||0) - (a.tvl||0)).slice(0,3);
+        const topToday = top3.reduce((s,r)=>s+(r.tvl||0),0);
+        const topPast = top3.reduce((s,r)=>s+(r.past||0),0);
+
+        const shareToday = topToday / total;
+        const sharePast = topPast / totalPast;
+        const diffPp = (shareToday - sharePast) * 100; // percentage points
+        const s = (diffPp > 0 ? "+" : "") + diffPp.toFixed(2) + "pp";
+        elConc.textContent = s;
+      } else {
+        elConc.textContent = "N/A";
+      }
+    }
+  } catch (e) {
+    // ignore KPI errors
+  }
+}
+
 async function loadSparkFiles() {
   try {
     const rwaRes = await fetch('data/sparklines_rwa_7d.json');
@@ -892,6 +1004,8 @@ function applyHash() {
   const td = document.getElementById('tabDashboard');
   if (tp) tp.classList.toggle('active', currentTab === 'protocols');
   if (td) td.classList.toggle('active', currentTab === 'dashboard');
+
+  updateSnapshotKPIs();
 
   rebuildFilters();
   applyFilters();
