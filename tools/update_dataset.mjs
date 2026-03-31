@@ -5,8 +5,8 @@ const ROOT = process.cwd();
 const INDEX_HTML = path.join(ROOT, "index.html");
 
 const WINDOW_DAYS = 7;
-const CONCURRENCY = 2;   // keep low to reduce rate-limits
-const SLEEP_MS = 200;
+const CONCURRENCY = 4;   // per-part concurrency (tune 2-6)
+const SLEEP_MS = 120;
 
 function sleep(ms){ return new Promise(r => setTimeout(r, ms)); }
 
@@ -43,6 +43,14 @@ function extractSlugsFromIndex(html){
   return Array.from(slugs);
 }
 
+function pickPart(slugs, partIndex, partCount){
+  const out = [];
+  for (let i=0;i<slugs.length;i++){
+    if ((i % partCount) === partIndex) out.push(slugs[i]);
+  }
+  return out;
+}
+
 async function fetchJson(url, tries=5){
   let lastErr;
   for (let i=0;i<tries;i++){
@@ -62,7 +70,6 @@ async function fetchJson(url, tries=5){
   throw lastErr;
 }
 
-// returns series aligned to dates, carry-forward filled
 function buildSeriesFromProtocol(protocolJson, dates){
   const tvlArr = Array.isArray(protocolJson?.tvl) ? protocolJson.tvl : [];
   if (!tvlArr.length) return dates.map(_ => 0);
@@ -95,22 +102,38 @@ function pctChange(today, past){
 
 function parseArgs(){
   const args = process.argv.slice(2);
-  const out = { outPath: "" };
+  const out = { outPath: "", partIndex: 0, partCount: 1 };
+
   for (let i=0;i<args.length;i++){
     const a = args[i];
     if (a === "--out") out.outPath = args[++i];
+    else if (a === "--part") {
+      const [pi, pc] = String(args[++i]).split("/").map(x => parseInt(x,10));
+      out.partIndex = pi;
+      out.partCount = pc;
+    }
   }
-  if (!out.outPath) out.outPath = path.join(ROOT, "data", "dataset.json");
+
+  if (!out.outPath){
+    if (out.partCount > 1){
+      out.outPath = path.join(ROOT, "data", "parts", `dataset_part_${out.partIndex}.json`);
+    } else {
+      out.outPath = path.join(ROOT, "data", "dataset.json");
+    }
+  }
   return out;
 }
 
 async function main(){
-  const { outPath } = parseArgs();
+  const { outPath, partIndex, partCount } = parseArgs();
 
   const html = fs.readFileSync(INDEX_HTML, "utf-8");
-  const slugs = extractSlugsFromIndex(html);
-  const dates = lastNDatesUTC(WINDOW_DAYS); // [d-6 ... d]
-  const seriesDates = dates; // aligned
+  const allSlugs = extractSlugsFromIndex(html);
+  const slugs = (partCount > 1) ? pickPart(allSlugs, partIndex, partCount) : allSlugs;
+
+  const dates = lastNDatesUTC(WINDOW_DAYS);
+
+  console.log(`Dataset build: part ${partIndex}/${partCount} slugs=${slugs.length} (total=${allSlugs.length})`);
 
   const assets = [];
   let idx = 0;
@@ -127,23 +150,21 @@ async function main(){
       try{
         const pj = await fetchJson(apiUrl);
 
-        const s = buildSeriesFromProtocol(pj, seriesDates);
+        const s = buildSeriesFromProtocol(pj, dates);
         const today = s[s.length - 1] ?? 0;
-        const past7 = s[0] ?? 0; // 7-day window start
+        const past7 = s[0] ?? 0;
         const chg7 = pctChange(today, past7);
 
         assets.push({
-          id: slug,                 // keep simple/compatible
+          id: slug,
           name: pj?.name ?? slug,
           slug,
           logo: pj?.logo ?? null,
           chains: Array.isArray(pj?.chains) ? pj.chains : [],
           protocol_category: pj?.category ?? null,
-
           tvl_usd: today,
           tvl_change_7d_pct: chg7,
 
-          // fields your frontend already tolerates (can be improved later)
           confidence: "LOW",
           yield_coverage_pct: null,
           flag_low_yield_coverage: false,
@@ -153,8 +174,7 @@ async function main(){
           defillama_url: defillamaUrl,
           project_url: pj?.url ?? null
         });
-      } catch(e){
-        // keep the row but mark empty
+      } catch(_){
         assets.push({
           id: slug,
           name: slug,
@@ -169,27 +189,25 @@ async function main(){
           flag_low_yield_coverage: false,
           reported_high_apy_detected: false,
           reported_strong_apy_detected: false,
-          defillama_url: `https://defillama.com/protocol/${encodeURIComponent(slug)}`,
+          defillama_url: defillamaUrl,
           project_url: null
         });
       }
 
+      if ((i+1) % 200 === 0) console.log(`Part ${partIndex}: processed ${i+1}/${slugs.length}`);
       await sleep(SLEEP_MS);
     }
   }
 
   await Promise.all(Array.from({length: CONCURRENCY}, () => worker()));
 
-  // sort biggest first (like your UI expects)
+  // per-part sort (merge will re-sort globally)
   assets.sort((a,b) => (b.tvl_usd ?? 0) - (a.tvl_usd ?? 0));
 
   const payload = {
     generated_at: new Date().toISOString(),
-    version: "public-dataset-v1",
-    definition: "Monitoring dataset (public).",
-    integrity_rules: {
-      window_days: WINDOW_DAYS
-    },
+    window_days: WINDOW_DAYS,
+    part: `${partIndex}/${partCount}`,
     assets
   };
 
