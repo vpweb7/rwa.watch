@@ -107,6 +107,8 @@ color:#fff;font-weight:900;}
 .kpiLabel{color:var(--muted);font-size:12px;}
 .kpiValue{margin-top:6px;color:#fff;font-size:22px;font-weight:900;letter-spacing:0.2px;}
 .kpiDelta{margin-top:6px;color:rgba(135,255,199,0.9);font-weight:900;font-size:12px;}
+.kpiNote{margin-top:6px;font-size:12px;color:var(--muted);}
+
 .kpiDelta.neg{color:rgba(255,155,155,0.95);}
 
 .rightList{margin-top:12px;display:flex;flex-direction:column;gap:10px;}
@@ -356,6 +358,7 @@ html[data-delta-mode="classic"]{
           <div class="kpiLabel">Total RWA TVL</div>
           <div class="kpiValue" id="kpiTotal">$23.82B</div>
           <div class="kpiDelta" id="kpiTotalDelta">N/A</div>
+          <div class="kpiNote" id="kpiTotalNote">Based on selected protocols list</div>
         </div>
 
         <div class="kpi">
@@ -555,6 +558,30 @@ function fmtUsdCompact(v) {
   return "$" + Math.round(x).toLocaleString();
 }
 
+// --- Display guards for % changes ---
+const MIN_PAST_USD_FOR_PCT = 10_000_000; // hide % if inferred past TVL is tiny (low base)
+const MAX_ABS_PCT_DISPLAY = 200;         // hide extreme % swings to reduce obvious artifacts
+
+function safePctFromTvl(pct, tvlNow){
+  if (pct === null || pct === undefined) return null;
+  const p = Number(pct);
+  if (!isFinite(p)) return null;
+  if (Math.abs(p) > MAX_ABS_PCT_DISPLAY) return null;
+  const denom = 1 + (p / 100);
+  if (!(denom > 0)) return null;
+  const now = Number(tvlNow) || 0;
+  const past = now / denom;
+  if (past > 0 && past < MIN_PAST_USD_FOR_PCT) return null;
+  return p;
+}
+
+function fmtPctSignedSafe(pct, tvlNow){
+  const p = safePctFromTvl(pct, tvlNow);
+  if (p === null) return "N/A";
+  return (p > 0 ? "+" : "") + p.toFixed(2) + "%";
+}
+
+
 
 
 async function loadDatasetFiles() {
@@ -631,9 +658,14 @@ function updateSnapshotKPIs() {
     const elDelta = document.getElementById("kpiTotalDelta");
     if (elDelta) {
       if (totalPast > 0 && total > 0) {
-        const pct = ((total / totalPast) - 1) * 100;
-        const s = (pct > 0 ? "+" : "") + pct.toFixed(2) + "%";
-        elDelta.textContent = s;
+        const pct = (((total / totalPast) - 1) * 100);
+        const pSafe = safePctFromTvl(pct, total);
+        if (pSafe === null) {
+          elDelta.textContent = "N/A";
+        } else {
+          const s = (pSafe > 0 ? "+" : "") + pSafe.toFixed(2) + "%";
+          elDelta.textContent = s;
+        }
       } else {
         elDelta.textContent = "N/A";
       }
@@ -954,7 +986,7 @@ function render() {
 
     const logo = r.logo ? '<img class="logo" src="' + r.logo + '" onerror="this.style.visibility=\'hidden\'">' : '<span class="logo"></span>';
     const tvlTxt = (r.tvl_usd || 0) ? fmtUsdCompact(r.tvl_usd) : 'N/A';
-    const ch7 = (r.tvl_change_7d_pct === null || r.tvl_change_7d_pct === undefined) ? 'N/A' : ((Number(r.tvl_change_7d_pct) > 0 ? '+' : '') + Number(r.tvl_change_7d_pct).toFixed(2) + '%');
+    const ch7 = fmtPctSignedSafe(r.tvl_change_7d_pct, r.tvl_usd);
     const spark = '<div class="spark" data-slug="' + r.slug + '"></div>';
 
     const tr = document.createElement('tr');
