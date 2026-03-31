@@ -2,7 +2,7 @@ name: Update dataset
 
 on:
   schedule:
-    - cron: "15 0 * * *"   # daily 00:15 UTC (sparklines után picivel)
+    - cron: "15 0 * * *"
   workflow_dispatch:
 
 concurrency:
@@ -13,16 +13,48 @@ permissions:
   contents: write
 
 jobs:
-  build_commit:
+  dataset_parts:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        part: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
 
-      - name: Build dataset.json
-        run: node tools/update_dataset.cjs --out data/dataset.json
+      - name: Build dataset part
+        run: |
+          mkdir -p data/parts
+          node tools/update_dataset.mjs --part ${{ matrix.part }}/20 --out data/parts/dataset_part_${{ matrix.part }}.json
+
+      - name: Upload dataset part artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dataset_part_${{ matrix.part }}
+          path: data/parts/dataset_part_${{ matrix.part }}.json
+
+  merge_commit:
+    runs-on: ubuntu-latest
+    needs: [dataset_parts]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Download dataset parts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: dataset_part_*
+          path: data/parts
+          merge-multiple: true
+
+      - name: Merge dataset parts
+        run: node tools/merge_dataset_parts.mjs
 
       - name: Commit & push if changed
         run: |
@@ -30,8 +62,7 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           if git status --porcelain | grep -q .; then
             git add data/dataset.json
-            git commit -m "Auto-update dataset"
-
+            git commit -m "Auto-update dataset (parted)"
             git pull --rebase origin main
             git push
           else
