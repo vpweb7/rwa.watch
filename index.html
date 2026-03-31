@@ -470,6 +470,11 @@ const DATA_ALL = [{"id": "binance-cex", "name": "Binance CEX", "slug": "binance-
 let SPARK_RWA = null;
 let SPARK_ALL = null;
 
+// Public dataset (JSON) - loaded at runtime (preferred), with embedded DATA_* as fallback.
+let DATASET_ALL = null;
+let DATASET_RWA = null;
+let DATASET_META = null;
+
 // Sparkline SVG cache per tab
 let SPARK_CACHE_RWA = {};
 let SPARK_CACHE_ALL = {};
@@ -549,6 +554,31 @@ function fmtUsdCompact(v) {
   if (x >= 1e6)  return "$" + (x/1e6).toFixed(2)  + "M";
   return "$" + Math.round(x).toLocaleString();
 }
+
+
+
+async function loadDatasetFiles() {
+  try {
+    // cache-bust + no-store to avoid stale GH Pages/browser caches
+    const res = await fetch('data/dataset.json?ts=' + Date.now(), { cache: 'no-store' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const j = await res.json();
+
+    if (j && Array.isArray(j.assets) && j.assets.length) {
+      DATASET_META = j;
+      DATASET_ALL = j.assets;
+
+      // RWA-ish view: include categories containing "rwa" (case-insensitive)
+      DATASET_RWA = j.assets.filter(a => String((a && a.protocol_category) ? a.protocol_category : '').toLowerCase().includes('rwa'));
+      if (!DATASET_RWA.length) DATASET_RWA = DATASET_ALL;
+    }
+  } catch (e) {
+    DATASET_META = null;
+    DATASET_ALL = null;
+    DATASET_RWA = null;
+  }
+}
+
 
 async function loadSparkFiles() {
   try {
@@ -850,11 +880,11 @@ function applyHash() {
   const h = (window.location.hash || '').replace('#','').toLowerCase();
   if (h === 'dashboard') {
     currentTab = 'dashboard';
-    activeData = DATA_ALL;
+    activeData = (DATASET_ALL || DATA_ALL);
     SPARK_CACHE_ALL = {};
   } else {
     currentTab = 'protocols';
-    activeData = DATA_RWA;
+    activeData = (DATASET_RWA || DATA_RWA);
     SPARK_CACHE_RWA = {};
   }
 
@@ -868,6 +898,7 @@ function applyHash() {
 }
 
 (async function init(){
+  await loadDatasetFiles();
   await loadSparkFiles();
   applyHash();
   window.addEventListener('hashchange', applyHash);
