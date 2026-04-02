@@ -1,0 +1,46 @@
+name: Sync private snapshots
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "05 0 * * *" # daily 00:05 UTC
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-private
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download latest snapshot from private repo
+        env:
+          RWA_DATA_TOKEN: ${{ secrets.RWA_DATA_TOKEN }}
+        run: |
+          mkdir -p data/private_snapshots
+          curl -fL \
+            -H "Authorization: Bearer $RWA_DATA_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://raw.githubusercontent.com/vpweb7/rwa.watch-data/main/_private/snapshots/latest.json" \
+            -o data/private_snapshots/latest.json
+
+          echo "Downloaded:"
+          ls -lah data/private_snapshots/latest.json
+
+      - name: Commit & push if changed
+        run: |
+          git config user.name "rwa.watch bot"
+          git config user.email "actions@users.noreply.github.com"
+          if git status --porcelain | grep -q .; then
+            git add data/private_snapshots/latest.json
+            git commit -m "Sync private latest snapshot"
+            git pull --rebase origin main
+            git push
+          else
+            echo "No changes."
+          fi
