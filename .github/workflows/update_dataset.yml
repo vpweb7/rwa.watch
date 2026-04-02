@@ -1,9 +1,8 @@
-cat > .github/workflows/update_dataset.yml <<'YAML'
 name: Update dataset
 
 on:
   schedule:
-    - cron: "15 0 * * *"   # daily 00:15 UTC
+    - cron: "15 0 * * *" # daily 00:15 UTC
   workflow_dispatch:
 
 concurrency:
@@ -39,4 +38,3 @@ jobs:
           else
             echo "No changes."
           fi
-YAML
