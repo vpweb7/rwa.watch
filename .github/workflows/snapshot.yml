@@ -2,13 +2,12 @@ name: Update sparklines
 
 on:
   schedule:
-    - cron: "10 0 * * *"   # daily 00:10 UTC
+    - cron: "10 0 * * *" # daily 00:10 UTC
   workflow_dispatch:
 
-# Prevent overlapping runs
 concurrency:
   group: sparklines
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 permissions:
   contents: write
@@ -31,6 +30,7 @@ jobs:
         with:
           name: rwa_json
           path: data/sparklines_rwa_7d.json
+          if-no-files-found: error
 
   # 2) ALL (split across parts)
   all_parts:
@@ -51,12 +51,12 @@ jobs:
           mkdir -p data/parts
           node tools/update_sparklines.mjs --mode all --part ${{ matrix.part }}/20 --out data/parts/all_part_${{ matrix.part }}.json
 
-      # IMPORTANT: unique artifact name per part (fixes 409 Conflict)
       - name: Upload part artifact
         uses: actions/upload-artifact@v4
         with:
           name: all_part_${{ matrix.part }}
           path: data/parts/all_part_${{ matrix.part }}.json
+          if-no-files-found: error
 
   # 3) Merge + commit
   merge_commit:
@@ -68,18 +68,28 @@ jobs:
         with:
           node-version: "20"
 
+      # Download to repo root so artifact-internal paths (data/parts/...) land correctly
       - name: Download ALL parts
         uses: actions/download-artifact@v4
         with:
           pattern: all_part_*
-          path: data/parts
+          path: .
           merge-multiple: true
 
       - name: Download RWA file
         uses: actions/download-artifact@v4
         with:
           name: rwa_json
-          path: data
+          path: .
+          merge-multiple: true
+
+      # Optional sanity check
+      - name: Verify downloaded files
+        run: |
+          echo "Parts:"
+          ls -lah data/parts | sed -n '1,200p'
+          echo "RWA:"
+          ls -lah data | sed -n '1,200p'
 
       - name: Merge ALL parts
         run: node tools/merge_parts.mjs
@@ -92,7 +102,7 @@ jobs:
             git add data/sparklines_rwa_7d.json data/sparklines_all_7d.json
             git commit -m "Auto-update sparklines"
 
-            # pull latest remote commits (e.g., analysis publisher) and replay our commit on top
+            # pull latest remote commits and replay our commit on top
             git pull --rebase origin main
             git push
           else
