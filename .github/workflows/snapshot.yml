@@ -1,9 +1,8 @@
-cat > .github/workflows/snapshot.yml <<'YAML'
 name: Update sparklines
 
 on:
   schedule:
-    - cron: "10 0 * * *"   # daily 00:10 UTC
+    - cron: "10 0 * * *" # daily 00:10 UTC
   workflow_dispatch:
 
 concurrency:
@@ -44,4 +43,3 @@ jobs:
           else
             echo "No changes."
           fi
-YAML
