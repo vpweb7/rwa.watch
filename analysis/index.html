@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>RWA Market Brief — RWA.watch</title>
-<meta name="description" content="Tracked RWA market value closed at +$24.67B on March 31, 2026 (UTC). A 24-hour comparison was not available in local history. A 7-day comparison becomes available once the local analytics history reaches seven UTC snapsh" />
-<link rel="canonical" href="/analysis/recap-2026-03-31.html" />
-<meta property="og:title" content="RWA Market Brief — RWA.watch" />
-<meta property="og:description" content="Tracked RWA market value closed at +$24.67B on March 31, 2026 (UTC). A 24-hour comparison was not available in local history. A 7-day comparison becomes available once the local analytics history reaches seven UTC snapsh" />
-<meta property="og:image" content="charts/total-rwa-tvl-7d-2026-03-31.png" />
-<meta property="og:url" content="/analysis/recap-2026-03-31.html" />
+<title>Daily RWA Market Recap — RWA.watch</title>
+<meta name="description" content="Tracked RWA market value closed at +$24.31B on March 30, 2026 (UTC). A 24-hour comparison was not available in local history. A 7-day comparison becomes available once the local analytics history reaches seven UTC snapsh" />
+<link rel="canonical" href="/analysis/recap-2026-03-30.html" />
+<meta property="og:title" content="Daily RWA Market Recap — RWA.watch" />
+<meta property="og:description" content="Tracked RWA market value closed at +$24.31B on March 30, 2026 (UTC). A 24-hour comparison was not available in local history. A 7-day comparison becomes available once the local analytics history reaches seven UTC snapsh" />
+<meta property="og:image" content="charts/total-rwa-tvl-7d-2026-03-30.png" />
+<meta property="og:url" content="/analysis/recap-2026-03-30.html" />
 <meta name="twitter:card" content="summary_large_image" />
 <style>
 :root{
@@ -226,6 +226,41 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
 .recentRow{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px;}
 @media (max-width:980px){ .recentRow{grid-template-columns:1fr;} }
 </style>
+<style>
+
+/* Under Construction overlay (dismissible) */
+.uc-overlay{
+  position:fixed; inset:0; z-index:9999;
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(0,0,0,0.55);
+  backdrop-filter: blur(3px);
+}
+.uc-overlay[hidden]{ display:none !important; }
+.uc-card{
+  width:min(720px, calc(100vw - 32px));
+  border:1px solid rgba(255,255,255,0.12);
+  background:rgba(12,18,32,0.92);
+  box-shadow: 0 12px 50px rgba(0,0,0,0.55);
+  border-radius:16px;
+  padding:18px 18px 14px;
+  color: #fff;
+  position:relative;
+}
+.uc-card h2{ margin:6px 0 6px; font-size:38px; letter-spacing:0.5px; text-align:center; }
+.uc-card p{ margin: 0 0 12px; opacity:0.9; text-align:center; line-height:1.35; }
+.uc-close{
+  position:absolute; right:12px; top:10px;
+  width:36px; height:36px; border-radius:10px;
+  border:1px solid rgba(255,255,255,0.18);
+  background:rgba(255,255,255,0.06);
+  color:#fff; font-size:22px; cursor:pointer;
+}
+.uc-close:hover{ background:rgba(255,255,255,0.12); }
+.uc-actions{ display:flex; align-items:center; justify-content:center; gap:12px; flex-wrap:wrap; }
+.uc-actions label{ font-size:14px; opacity:0.9; user-select:none; }
+.uc-actions input{ transform: translateY(1px); }
+
+</style>
 </head>
 <body>
 <div class="container">
@@ -241,7 +276,7 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
           </div>
         </div>
       </div>
-      <div class="updated">Updated: 2026-03-31T05:58:32Z</div>
+      <div class="updated" id="updated">Updated: 2026-03-30T06:20:27Z</div>
     </div>
     <div class="headline">
       <h2>Real-World Asset Intelligence &amp; Monitoring</h2>
@@ -255,12 +290,12 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
     <div class="heroTop">
       <div class="heroLeft">
         <div>
-          <h1 class="heroTitle">RWA Market Brief</h1>
-          <div class="heroDate">March 31, 2026 (UTC)</div>
-          <p class="heroSummary">Tracked RWA market value closed at +$24.67B on March 31, 2026 (UTC). A 24-hour comparison was not available in local history. A 7-day comparison becomes available once the local analytics history reaches seven UTC snapshots. The largest share remained concentrated in Tether Gold, BlackRock BUIDL, Circle USYC.</p>
+          <h1 class="heroTitle">Daily RWA Market Recap</h1>
+          <div class="heroDate" id="heroDate">March 30, 2026 (UTC)</div>
+          <p class="heroSummary" id="heroSummary">Tracked RWA market value closed at +$24.31B on March 30, 2026 (UTC). A 24-hour comparison was not available in local history. A 7-day comparison becomes available once the local analytics history reaches seven UTC snapshots. The largest share remained concentrated in Tether Gold, BlackRock BUIDL, Circle USYC.</p>
           <div class="kpiStrip">
-            <span class="badgePill">Top 3 Assets: Tether Gold, BlackRock BUIDL, Circle USYC</span>
-            <span class="badgePill">Top 10 Concentration: 76.7%</span>
+            <span class="badgePill" id="top3Assets">Top 3 Assets: Tether Gold, BlackRock BUIDL, Circle USYC</span>
+            <span class="badgePill" id="top10Conc">Top 10 Concentration: 76.2%</span>
           </div>
           <div class="quickNav">
             <a href="index.html">Latest</a>
@@ -271,16 +306,16 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
       </div>
       <div class="heroChartWrap">
         <div class="heroChartCaption">Total RWA TVL — Last 7 Days</div>
-        <img src="charts/total-rwa-tvl-7d-2026-03-31.png" alt="Total RWA TVL — Last 7 Days" />
-        <div class="heroChartLabel">$24.67B</div>
+        <img src="charts/total-rwa-tvl-7d-2026-03-30.png" alt="Total RWA TVL — Last 7 Days" />
+        <div class="heroChartLabel" id="heroChartLabel">$24.31B</div>
       </div>
     </div>
     <div class="marketRegime"><b>Market Regime:</b> Mixed conditions with moderate concentration.</div>
   </section>
 
-  <section class="metricGridPrimary"><div class="metricCard primary"><div class="metricCardLabel">Total RWA TVL</div><div class="metricCardValue">$24.67B</div><div class="metricCardSub">Aggregate tracked market value.</div></div><div class="metricCard primary"><div class="metricCardLabel">24H Change</div><div class="metricCardValue"><span class="chg na">N/A</span></div><div class="metricCardSub"><span class="chg na">N/A</span></div></div><div class="metricCard primary"><div class="metricCardLabel">7D Change</div><div class="metricCardValue"><span class="chg na">N/A</span></div><div class="metricCardSub"><span class="chg na">N/A</span></div></div><div class="metricCard primary"><div class="metricCardLabel">Top 3 Concentration</div><div class="metricCardValue">35.1%</div><div class="metricCardSub">Share held by the three largest tracked assets.</div><div class="metricCardMini"><div class="miniRow"><span>Tether Gold</span><b>13.2%</b></div><div class="miniRow"><span>BlackRock BUIDL</span><b>11.2%</b></div><div class="miniRow"><span>Circle USYC</span><b>10.8%</b></div></div></div></section>
+  <section class="metricGridPrimary"><div class="metricCard primary"><div class="metricCardLabel">Total RWA TVL</div><div class="metricCardValue"><span id="totalTvlCard">$24.31B</span></div><div class="metricCardSub">Aggregate tracked market value.</div></div><div class="metricCard primary"><div class="metricCardLabel">24H Change</div><div class="metricCardValue"><span class="chg na">N/A</span></div><div class="metricCardSub"><span class="chg na">N/A</span></div></div><div class="metricCard primary"><div class="metricCardLabel">7D Change</div><div class="metricCardValue"><span class="chg na">N/A</span></div><div class="metricCardSub"><span class="chg na">N/A</span></div></div><div class="metricCard primary"><div class="metricCardLabel">Top 3 Concentration</div><div class="metricCardValue"><span id="top3ConcValue">35.0%</span></div><div class="metricCardSub">Share held by the three largest tracked assets.</div><div class="metricCardMini"><div class="miniRow"><span>Tether Gold</span><b>13.2%</b></div><div class="miniRow"><span>BlackRock BUIDL</span><b>11.1%</b></div><div class="miniRow"><span>Circle USYC</span><b>10.7%</b></div></div></div></section>
 
-  <section class="metricGridSecondary"><div class="metricCard secondary"><div class="metricCardLabel">Top 10 Concentration</div><div class="metricCardValue">76.7%</div><div class="metricCardSub">Share held by the ten largest tracked assets.</div><div class="metricCardMini"><div class="miniRow"><span>Ranks 4–10</span><b>41.6%</b></div><div class="miniRow"><span>Rest of market</span><b>23.3%</b></div></div></div><div class="metricCard secondary"><div class="metricCardLabel">Category Leader (24h)</div><div class="metricCardValue">N/A</div><div class="metricCardSub"><span class="chg na">N/A</span> <span class="chg na">N/A</span></div></div><div class="metricCard secondary"><div class="metricCardLabel">Biggest Asset Gainer (24h)</div><div class="metricCardValue">N/A</div><div class="metricCardSub"><span class="chg na">N/A</span> <span class="chg na">N/A</span></div></div><div class="metricCard secondary"><div class="metricCardLabel">Near Top 10</div><div class="metricCardValue">Ondo Global Markets</div><div class="metricCardSub">Gap to #10: $150.51M (17.8%)</div></div><div class="metricCard secondary"><div class="metricCardLabel">New Entrants</div><div class="metricCardValue">0</div><div class="metricCardSub">Assets crossing the $1M threshold today.</div></div><div class="metricCard secondary"><div class="metricCardLabel">Assets Tracked</div><div class="metricCardValue">139</div><div class="metricCardSub">Tracked assets in today’s universe.</div></div></section>
+  <section class="metricGridSecondary"><div class="metricCard secondary"><div class="metricCardLabel">Top 10 Concentration</div><div class="metricCardValue"><span id="top10ConcValue">76.2%</span></div><div class="metricCardSub">Share held by the ten largest tracked assets.</div><div class="metricCardMini"><div class="miniRow"><span>Ranks 4–10</span><b>41.1%</b></div><div class="miniRow"><span>Rest of market</span><b>23.8%</b></div></div></div><div class="metricCard secondary"><div class="metricCardLabel">Category Leader (24h)</div><div class="metricCardValue">N/A</div><div class="metricCardSub"><span class="chg na">N/A</span> <span class="chg na">N/A</span></div></div><div class="metricCard secondary"><div class="metricCardLabel">Biggest Asset Gainer (24h)</div><div class="metricCardValue">N/A</div><div class="metricCardSub"><span class="chg na">N/A</span> <span class="chg na">N/A</span></div></div><div class="metricCard secondary"><div class="metricCardLabel">Near Top 10</div><div class="metricCardValue">Ondo Global Markets</div><div class="metricCardSub">Gap to #10: $78.48M (10.3%)</div></div><div class="metricCard secondary"><div class="metricCardLabel">New Entrants</div><div class="metricCardValue">0</div><div class="metricCardSub">Assets crossing the $1M threshold today.</div></div><div class="metricCard secondary"><div class="metricCardLabel">Assets Tracked</div><div class="metricCardValue">140</div><div class="metricCardSub">Tracked assets in today’s universe.</div></div></section>
 
   <div class="sectionGrid">
     <section class="sectionCard">
@@ -289,8 +324,8 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
       
     <div class="categoryBar">
       <div><b>Commodities</b><div class="dim"></div></div>
-      <div class="barTrack"><div class="barFill" style="width:23.1%"></div></div>
-      <div style="text-align:right;"><b>23.1%</b><div class="dim"></div></div>
+      <div class="barTrack"><div class="barFill" style="width:23.5%"></div></div>
+      <div style="text-align:right;"><b>23.5%</b><div class="dim"></div></div>
     </div>
     
     <div class="categoryBar">
@@ -301,20 +336,20 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
     
     <div class="categoryBar">
       <div><b>Funds</b><div class="dim"></div></div>
-      <div class="barTrack"><div class="barFill" style="width:19.5%"></div></div>
-      <div style="text-align:right;"><b>19.5%</b><div class="dim"></div></div>
+      <div class="barTrack"><div class="barFill" style="width:18.9%"></div></div>
+      <div style="text-align:right;"><b>18.9%</b><div class="dim"></div></div>
     </div>
     
     <div class="categoryBar">
       <div><b>Stablecoins</b><div class="dim"></div></div>
-      <div class="barTrack"><div class="barFill" style="width:14.7%"></div></div>
-      <div style="text-align:right;"><b>14.7%</b><div class="dim"></div></div>
+      <div class="barTrack"><div class="barFill" style="width:14.8%"></div></div>
+      <div style="text-align:right;"><b>14.8%</b><div class="dim"></div></div>
     </div>
     
     <div class="categoryBar">
       <div><b>Other RWA</b><div class="dim"></div></div>
-      <div class="barTrack"><div class="barFill" style="width:12.8%"></div></div>
-      <div style="text-align:right;"><b>12.8%</b><div class="dim"></div></div>
+      <div class="barTrack"><div class="barFill" style="width:13.0%"></div></div>
+      <div style="text-align:right;"><b>13.0%</b><div class="dim"></div></div>
     </div>
     
     <div class="categoryBar">
@@ -329,8 +364,8 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
       <h3>Market Structure</h3>
       <p class="sub">Current concentration and the assets shaping the market-wide picture.</p>
       <div class="badgeWrap">
-        <span class="badgePill">Top 3 Concentration: 35.1%</span>
-        <span class="badgePill">Top 10 Concentration: 76.7%</span>
+        <span class="badgePill">Top 3 Concentration: <span id="top3ConcBadge">35.0%</span></span>
+        <span class="badgePill">Top 10 Concentration: <span id="top10ConcBadge">76.2%</span></span>
       </div>
       <div class="previewBox">Top 3 assets: Tether Gold, BlackRock BUIDL, Circle USYC</div>
       <table class="miniTable">
@@ -339,56 +374,56 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
         <tr>
           <td>Tether Gold</td>
           <td>Commodities</td>
-          <td>$3.25B</td>
+          <td>$3.21B</td>
           <td>13.2%</td>
         </tr>
         
         <tr>
           <td>BlackRock BUIDL</td>
           <td>Treasury</td>
-          <td>$2.76B</td>
-          <td>11.2%</td>
+          <td>$2.70B</td>
+          <td>11.1%</td>
         </tr>
         
         <tr>
           <td>Circle USYC</td>
           <td>Stablecoins</td>
-          <td>$2.66B</td>
-          <td>10.8%</td>
-        </tr>
-        
-        <tr>
-          <td>Ondo Yield Assets</td>
-          <td>Funds</td>
-          <td>$2.36B</td>
-          <td>9.6%</td>
+          <td>$2.61B</td>
+          <td>10.7%</td>
         </tr>
         
         <tr>
           <td>Paxos Gold</td>
           <td>Commodities</td>
-          <td>$2.34B</td>
+          <td>$2.31B</td>
           <td>9.5%</td>
+        </tr>
+        
+        <tr>
+          <td>Ondo Yield Assets</td>
+          <td>Funds</td>
+          <td>$2.23B</td>
+          <td>9.2%</td>
         </tr>
         
         <tr>
           <td>Centrifuge Protocol</td>
           <td>Private Credit</td>
-          <td>$1.58B</td>
+          <td>$1.55B</td>
           <td>6.4%</td>
         </tr>
         
         <tr>
           <td>Spiko</td>
           <td>Treasury</td>
-          <td>$1.15B</td>
-          <td>4.7%</td>
+          <td>$1.17B</td>
+          <td>4.8%</td>
         </tr>
         
         <tr>
           <td>Anemoy Capital</td>
           <td>Funds</td>
-          <td>$1.12B</td>
+          <td>$1.09B</td>
           <td>4.5%</td>
         </tr>
         </tbody>
@@ -403,7 +438,7 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
       <div class="dualPanels">
         <div class="miniPanel">
           <h4>Largest TVL Increase</h4>
-          <div class="inlineList"><div class="rowCard"><div class="rowTitle"><b>Tether Gold</b><span><span class="chg na">N/A</span></span></div><div class="rowMeta">$3.25B · Commodities</div></div><div class="rowCard"><div class="rowTitle"><b>BlackRock BUIDL</b><span><span class="chg na">N/A</span></span></div><div class="rowMeta">$2.76B · Treasury</div></div><div class="rowCard"><div class="rowTitle"><b>Circle USYC</b><span><span class="chg na">N/A</span></span></div><div class="rowMeta">$2.66B · Stablecoins</div></div><div class="rowCard"><div class="rowTitle"><b>Ondo Yield Assets</b><span><span class="chg na">N/A</span></span></div><div class="rowMeta">$2.36B · Funds</div></div></div>
+          <div class="inlineList"><div class="rowCard"><div class="rowTitle"><b>Tether Gold</b><span><span class="chg na">N/A</span></span></div><div class="rowMeta">$3.21B · Commodities</div></div><div class="rowCard"><div class="rowTitle"><b>BlackRock BUIDL</b><span><span class="chg na">N/A</span></span></div><div class="rowMeta">$2.70B · Treasury</div></div><div class="rowCard"><div class="rowTitle"><b>Circle USYC</b><span><span class="chg na">N/A</span></span></div><div class="rowMeta">$2.61B · Stablecoins</div></div><div class="rowCard"><div class="rowTitle"><b>Paxos Gold</b><span><span class="chg na">N/A</span></span></div><div class="rowMeta">$2.31B · Commodities</div></div></div>
         </div>
         <div class="miniPanel">
           <h4>Largest TVL Decline</h4>
@@ -427,7 +462,7 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
     <section class="sectionCard">
       <h3>Monitoring Signals</h3>
       <p class="sub">Validated factual observations from the current snapshot and local history.</p>
-      <div class="signalList"><div class="signalItem">Top 3 concentration stood at 35.1% of tracked market value.</div><div class="signalItem">Commodities led category-level 24H value change by absolute dollars.</div><div class="signalItem">Top 10 concentration ended the day at 76.7% of tracked market value.</div></div>
+      <div class="signalList"><div class="signalItem">Top 3 concentration stood at 35.0% of tracked market value.</div><div class="signalItem">Commodities led category-level 24H value change by absolute dollars.</div><div class="signalItem">Top 10 concentration ended the day at 76.2% of tracked market value.</div></div>
     </section>
 
     <section class="sectionCard">
@@ -442,17 +477,17 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
       <h3>Share Recap</h3>
       <p class="sub">Each daily note is designed to be linkable and shareable on X and elsewhere.</p>
       <div class="shareActions">
-        <a class="shareBtn" href="/analysis/recap-2026-03-31.html">Copy link</a>
-        <a class="shareBtn" href="https://x.com/intent/post?text=RWA%20Market%20Brief%20%7C%20Total%20RWA%20TVL%3A%20%2B%2424.67B%20%7C%2024H%20Change%3A%20N/A%20%7C%207D%20Change%3A%20N/A%20%7C%20Market%20Breadth%3A%20N/A%20%7C%20Largest%20capital%20increase%3A%20Commodities%20%7C%20/analysis/recap-2026-03-31.html" target="_blank" rel="noopener">Copy X text</a>
-        <a class="shareBtn" href="charts/total-rwa-tvl-7d-2026-03-31.png" target="_blank" rel="noopener">Share chart</a>
+        <a class="shareBtn" href="/analysis/recap-2026-03-30.html">Copy link</a>
+        <a class="shareBtn" href="https://x.com/intent/post?text=Daily%20RWA%20Market%20Recap%20%7C%20Total%20RWA%20TVL%3A%20%2B%2424.31B%20%7C%2024H%20Change%3A%20N/A%20%7C%207D%20Change%3A%20N/A%20%7C%20Market%20Breadth%3A%20N/A%20%7C%20Largest%20capital%20increase%3A%20Commodities%20%7C%20/analysis/recap-2026-03-30.html" target="_blank" rel="noopener">Copy X text</a>
+        <a class="shareBtn" href="charts/total-rwa-tvl-7d-2026-03-30.png" target="_blank" rel="noopener">Share chart</a>
       </div>
-      <div class="copyBox">RWA Market Brief | Total RWA TVL: +$24.67B | 24H Change: N/A | 7D Change: N/A | Market Breadth: N/A | Largest capital increase: Commodities | /analysis/recap-2026-03-31.html</div>
+      <div class="copyBox">Daily RWA Market Recap | Total RWA TVL: +$24.31B | 24H Change: N/A | 7D Change: N/A | Market Breadth: N/A | Largest capital increase: Commodities | /analysis/recap-2026-03-30.html</div>
     </section>
 
     <section class="sectionCard">
       <h3>Recent Analysis</h3>
       <p class="sub">Only the latest seven daily recaps are surfaced in the on-site navigation.</p>
-      <div class="recapList"><div class="recapItem"><a href="recap-2026-03-31.html">March 31, 2026 — Daily recap</a></div></div>
+      <div class="recapList"><div class="recapItem"><a href="recap-2026-03-30.html">March 30, 2026 — Daily recap</a></div></div>
       <div class="archiveNote">Older recap URLs remain retained and indexable, but they are not exposed as a full on-site archive list.</div>
       <div class="recapList" style="margin-top:12px;"><div class="recapItem"><a href="weekly/weekly-2026-W14.html">Open weekly recap</a></div></div>
     </section>
@@ -461,7 +496,7 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
   
     <div class="footer">
       <div class="legalLine">
-        Data: DeFiLlama (public APIs) • Educational only • Not investment advice •
+        Data: DeFiLlama (public APIs) • Educational only • Not investment advice • <a href="../terms.html">Terms</a> • <a href="../privacy.html">Privacy</a> •
         <details class="legalDetails">
           <summary>Legal &amp; disclaimer</summary>
           <div class="legalBody">
@@ -493,6 +528,161 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
   apply(saved);
   if(btnBlue) btnBlue.addEventListener("click", function(){ apply("blue"); });
   if(btnClassic) btnClassic.addEventListener("click", function(){ apply("classic"); });
+})();
+</script>
+
+
+<!-- Under Construction overlay -->
+<div id="ucOverlay" class="uc-overlay" hidden>
+  <div class="uc-card" role="dialog" aria-modal="true" aria-labelledby="ucTitle">
+    <button id="ucClose" class="uc-close" aria-label="Close">×</button>
+    <h2 id="ucTitle">Under Construction!</h2>
+    <p>Some metrics may be incomplete while data backfills (missing days / outliers). You can dismiss this anytime.</p>
+    <div class="uc-actions">
+      <label><input type="checkbox" id="ucHideForever"> Don’t show again on this device</label>
+    </div>
+  </div>
+</div>
+
+<script>
+
+// Under Construction overlay (easy toggle)
+const SHOW_UC_OVERLAY = true; // set to false to disable globally
+
+(function(){
+  try{
+    const params = new URLSearchParams(location.search);
+    if (params.get("uc") === "0") return; // quick bypass: ?uc=0
+    if (!SHOW_UC_OVERLAY) return;
+    if (localStorage.getItem("ucOverlayDismissed") === "1") return;
+
+    const el = document.getElementById("ucOverlay");
+    if (!el) return;
+
+    const closeBtn = document.getElementById("ucClose");
+    const cb = document.getElementById("ucHideForever");
+
+    function hide(){
+      el.hidden = true;
+      if (cb && cb.checked){
+        localStorage.setItem("ucOverlayDismissed","1");
+      }
+    }
+
+    // Show after first render tick
+    setTimeout(()=>{ el.hidden = false; }, 50);
+
+    if (closeBtn) closeBtn.addEventListener("click", hide);
+    // click outside card closes
+    el.addEventListener("click", (e)=>{ if (e.target === el) hide(); });
+    // ESC closes
+    window.addEventListener("keydown", (e)=>{ if (e.key === "Escape") hide(); });
+  } catch(_){}
+})();
+
+</script>
+
+<script id="analytics-latest-json-bind">
+(async () => {
+  function sanitizeJsonText(t){
+    // Replace bare NaN tokens with null to make it valid JSON
+    return t.replace(/\bNaN\b/g, "null");
+  }
+  function fmtUsdShort(x){
+    if (!isFinite(x)) return "N/A";
+    const abs = Math.abs(x);
+    if (abs >= 1e12) return "$" + (x/1e12).toFixed(2) + "T";
+    if (abs >= 1e9)  return "$" + (x/1e9).toFixed(2) + "B";
+    if (abs >= 1e6)  return "$" + (x/1e6).toFixed(2) + "M";
+    return "$" + Math.round(x).toLocaleString();
+  }
+  function fmtPct(x){
+    if (!isFinite(x)) return "N/A";
+    return (x*100).toFixed(1) + "%";
+  }
+  function utcHumanDate(isoOrDate){
+    try{
+      const d = new Date(isoOrDate);
+      return d.toLocaleDateString("en-US", { timeZone: "UTC", year:"numeric", month:"long", day:"numeric" }) + " (UTC)";
+    } catch(_){ return ""; }
+  }
+
+  try{
+    const res = await fetch("../data/latest.json", { cache: "no-store" });
+    const txt = sanitizeJsonText(await res.text());
+    const j = JSON.parse(txt);
+
+    const assets = Array.isArray(j.assets) ? j.assets : [];
+    assets.sort((a,b)=> (Number(b.tvl_usd)||0) - (Number(a.tvl_usd)||0));
+
+    const total = assets.reduce((s,a)=> s + (Number(a.tvl_usd)||0), 0);
+
+    // Updated
+    const updated = document.getElementById("updated");
+    if (updated) updated.textContent = "Updated: " + (j.generated_at || j.date || "—");
+
+    // Hero date
+    const heroDate = document.getElementById("heroDate");
+    if (heroDate) heroDate.textContent = utcHumanDate(j.date || j.generated_at || new Date().toISOString());
+
+    // Top 3
+    const top3 = assets.slice(0,3);
+    const top10 = assets.slice(0,10);
+    const top3Sum = top3.reduce((s,a)=> s + (Number(a.tvl_usd)||0), 0);
+    const top10Sum = top10.reduce((s,a)=> s + (Number(a.tvl_usd)||0), 0);
+
+    const top3AssetsEl = document.getElementById("top3Assets");
+    if (top3AssetsEl){
+      const names = top3.map(a=> a.name || a.slug).filter(Boolean).join(", ");
+      top3AssetsEl.textContent = "Top 3 Assets: " + (names || "N/A");
+    }
+
+    const top10ConcEl = document.getElementById("top10Conc");
+    if (top10ConcEl) top10ConcEl.textContent = "Top 10 Concentration: " + (total>0 ? fmtPct(top10Sum/total) : "N/A");
+
+    // Summary (simple, always current)
+    const heroSummary = document.getElementById("heroSummary");
+    if (heroSummary){
+      const names = top3.map(a=> a.name || a.slug).filter(Boolean).join(", ");
+      heroSummary.textContent =
+        `Tracked RWA market value closed at ${fmtUsdShort(total)} on ${utcHumanDate(j.date || j.generated_at)}. ` +
+        `The largest share remained concentrated in ${names || "the current leaders"}.`;
+    }
+
+    // Hero chart label + card TVL
+    const heroChartLabel = document.getElementById("heroChartLabel");
+    if (heroChartLabel) heroChartLabel.textContent = fmtUsdShort(total);
+
+    const totalTvlCard = document.getElementById("totalTvlCard");
+    if (totalTvlCard) totalTvlCard.textContent = fmtUsdShort(total);
+
+    // Top 3 concentration card + badge
+    const top3Conc = (total>0) ? (top3Sum/total) : NaN;
+    const top3ConcValue = document.getElementById("top3ConcValue");
+    if (top3ConcValue) top3ConcValue.textContent = total>0 ? fmtPct(top3Conc) : "N/A";
+
+    const top3ConcBadge = document.getElementById("top3ConcBadge");
+    if (top3ConcBadge) top3ConcBadge.textContent = total>0 ? fmtPct(top3Conc) : "N/A";
+
+    const top10ConcValue = document.getElementById("top10ConcValue");
+    if (top10ConcValue) top10ConcValue.textContent = total>0 ? fmtPct(top10Sum/total) : "N/A";
+
+    const top10ConcBadge = document.getElementById("top10ConcBadge");
+    if (top10ConcBadge) top10ConcBadge.textContent = total>0 ? fmtPct(top10Sum/total) : "N/A";
+
+    // Top 3 mini rows (names + shares)
+    const nameIds = ["top3Name1","top3Name2","top3Name3"];
+    const shareIds = ["top3Share1","top3Share2","top3Share3"];
+    for (let i=0;i<3;i++){
+      const a = top3[i];
+      const n = document.getElementById(nameIds[i]);
+      const s = document.getElementById(shareIds[i]);
+      if (n) n.textContent = a ? (a.name || a.slug || "—") : "—";
+      if (s) s.textContent = (a && total>0) ? fmtPct((Number(a.tvl_usd)||0)/total) : "N/A";
+    }
+  } catch (e){
+    console.warn("Failed to bind analytics page from data/latest.json", e);
+  }
 })();
 </script>
 
