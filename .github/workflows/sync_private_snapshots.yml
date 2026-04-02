@@ -18,15 +18,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Download latest snapshot from private repo
+      - name: Download latest snapshot from private repo (GitHub API)
         env:
           RWA_DATA_TOKEN: ${{ secrets.RWA_DATA_TOKEN }}
         run: |
+          set -euo pipefail
           mkdir -p data
+
           curl -fL \
             -H "Authorization: Bearer $RWA_DATA_TOKEN" \
-            "https://raw.githubusercontent.com/vpweb7/rwa.watch-data/main/_private/snapshots/latest.json" \
-            -o data/latest.json
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/vpweb7/rwa.watch-data/contents/_private/snapshots/latest.json?ref=main" \
+            | python -c "import sys, json, base64; print(base64.b64decode(json.load(sys.stdin)['content']).decode('utf-8'))" \
+            > data/latest.json
 
           echo "Downloaded data/latest.json:"
           ls -lah data/latest.json
