@@ -25,12 +25,32 @@ jobs:
           set -euo pipefail
           mkdir -p data
 
-          curl -fL \
+          echo "Fetching metadata JSON from GitHub API..."
+          curl --http1.1 -L --retry 5 --retry-all-errors --retry-delay 2 \
             -H "Authorization: Bearer $RWA_DATA_TOKEN" \
             -H "Accept: application/vnd.github+json" \
             "https://api.github.com/repos/vpweb7/rwa.watch-data/contents/_private/snapshots/latest.json?ref=main" \
-            | python -c "import sys, json, base64; print(base64.b64decode(json.load(sys.stdin)['content']).decode('utf-8'))" \
-            > data/latest.json
+            -o /tmp/latest_meta.json
+
+          echo "First lines of API response:"
+          head -n 20 /tmp/latest_meta.json || true
+
+          python - <<'PY'
+          import json, base64, sys
+          p = "/tmp/latest_meta.json"
+          with open(p, "r", encoding="utf-8") as f:
+              j = json.load(f)
+
+          if "content" not in j:
+              # show helpful error
+              msg = j.get("message") if isinstance(j, dict) else str(j)
+              raise SystemExit(f"No 'content' in API response. message={msg}")
+
+          data = base64.b64decode(j["content"])
+          with open("data/latest.json", "wb") as out:
+              out.write(data)
+          print("Wrote data/latest.json bytes:", len(data))
+          PY
 
           echo "Downloaded data/latest.json:"
           ls -lah data/latest.json
