@@ -13,7 +13,6 @@ permissions:
   contents: write
 
 jobs:
-  # 1) RWA (small, single job)
   rwa:
     runs-on: ubuntu-latest
     steps:
@@ -32,7 +31,6 @@ jobs:
           path: data/sparklines_rwa_7d.json
           if-no-files-found: error
 
-  # 2) ALL (split across parts)
   all_parts:
     runs-on: ubuntu-latest
     strategy:
@@ -58,7 +56,6 @@ jobs:
           path: data/parts/all_part_${{ matrix.part }}.json
           if-no-files-found: error
 
-  # 3) Merge + commit
   merge_commit:
     runs-on: ubuntu-latest
     needs: [rwa, all_parts]
@@ -68,7 +65,7 @@ jobs:
         with:
           node-version: "20"
 
-      # Download to repo root so artifact-internal paths (data/parts/...) land correctly
+      # Kulcs: repo root-ba töltsük le, hogy a data/parts/... útvonal a helyére essen
       - name: Download ALL parts
         uses: actions/download-artifact@v4
         with:
@@ -80,16 +77,12 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: rwa_json
-          path: .
-          merge-multiple: true
+          path: data
 
-      # Optional sanity check
-      - name: Verify downloaded files
+      - name: Verify parts present
         run: |
-          echo "Parts:"
+          echo "Parts dir:"
           ls -lah data/parts | sed -n '1,200p'
-          echo "RWA:"
-          ls -lah data | sed -n '1,200p'
 
       - name: Merge ALL parts
         run: node tools/merge_parts.mjs
@@ -101,8 +94,6 @@ jobs:
           if git status --porcelain | grep -q .; then
             git add data/sparklines_rwa_7d.json data/sparklines_all_7d.json
             git commit -m "Auto-update sparklines"
-
-            # pull latest remote commits and replay our commit on top
             git pull --rebase origin main
             git push
           else
