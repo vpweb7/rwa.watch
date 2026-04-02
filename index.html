@@ -1371,5 +1371,6 @@ function applyHash() {
   });
 })();
 </script>
+<script id="lock-updated-latest">(async()=>{const el=document.getElementById("updated")||document.querySelector(".updated");if(!el)return;const setUpdated=v=>{el.textContent="Updated: "+v;};try{const res=await fetch("data/latest.json",{cache:"no-store"});const txt=(await res.text()).replace(/\bNaN\b/g,"null");const j=JSON.parse(txt);const v=j.generated_at||j.date||"—";setUpdated(v);const good=el.textContent;const obs=new MutationObserver(()=>{if(el.textContent!==good)el.textContent=good;});obs.observe(el,{childList:true,characterData:true,subtree:true});}catch(e){console.warn("Failed to load latest.json for updated",e);}})();</script>
 </body>
 </html>
