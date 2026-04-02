@@ -2,12 +2,13 @@ name: Update dataset
 
 on:
   schedule:
-    - cron: "15 0 * * *"
+    - cron: "15 0 * * *" # daily 00:15 UTC
   workflow_dispatch:
 
+# Prevent overlapping runs (prefer the newest run)
 concurrency:
   group: dataset
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 permissions:
   contents: write
@@ -36,6 +37,7 @@ jobs:
         with:
           name: dataset_part_${{ matrix.part }}
           path: data/parts/dataset_part_${{ matrix.part }}.json
+          if-no-files-found: error
 
   merge_commit:
     runs-on: ubuntu-latest
@@ -46,12 +48,19 @@ jobs:
         with:
           node-version: "20"
 
+      # Download to repo root so artifact-internal paths (data/parts/...) land correctly
       - name: Download dataset parts
         uses: actions/download-artifact@v4
         with:
           pattern: dataset_part_*
-          path: data/parts
+          path: .
           merge-multiple: true
+
+      # Optional: quick sanity check (leave it in or remove later)
+      - name: Verify parts present
+        run: |
+          echo "Found parts:"
+          ls -lah data/parts | sed -n '1,200p'
 
       - name: Merge dataset parts
         run: node tools/merge_dataset_parts.mjs
