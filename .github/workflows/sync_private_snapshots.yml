@@ -1,4 +1,4 @@
-name: Sync private snapshots
+name: Publish latest (from private)
 
 on:
   workflow_dispatch:
@@ -9,11 +9,11 @@ permissions:
   contents: write
 
 concurrency:
-  group: sync-private
+  group: publish-latest
   cancel-in-progress: true
 
 jobs:
-  sync:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -22,23 +22,23 @@ jobs:
         env:
           RWA_DATA_TOKEN: ${{ secrets.RWA_DATA_TOKEN }}
         run: |
-          mkdir -p data/private_snapshots
+          mkdir -p data
           curl -fL \
             -H "Authorization: Bearer $RWA_DATA_TOKEN" \
-            -H "Accept: application/vnd.github+json" \
             "https://raw.githubusercontent.com/vpweb7/rwa.watch-data/main/_private/snapshots/latest.json" \
-            -o data/private_snapshots/latest.json
+            -o data/latest.json
 
-          echo "Downloaded:"
-          ls -lah data/private_snapshots/latest.json
+          echo "Downloaded data/latest.json:"
+          ls -lah data/latest.json
+          head -n 5 data/latest.json
 
       - name: Commit & push if changed
         run: |
           git config user.name "rwa.watch bot"
           git config user.email "actions@users.noreply.github.com"
           if git status --porcelain | grep -q .; then
-            git add data/private_snapshots/latest.json
-            git commit -m "Sync private latest snapshot"
+            git add data/latest.json
+            git commit -m "Publish latest snapshot"
             git pull --rebase origin main
             git push
           else
