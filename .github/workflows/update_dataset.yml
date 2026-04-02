@@ -1,11 +1,11 @@
+cat > .github/workflows/update_dataset.yml <<'YAML'
 name: Update dataset
 
 on:
   schedule:
-    - cron: "15 0 * * *" # daily 00:15 UTC
+    - cron: "15 0 * * *"   # daily 00:15 UTC
   workflow_dispatch:
 
-# Prevent overlapping runs (prefer the newest run)
 concurrency:
   group: dataset
   cancel-in-progress: true
@@ -14,56 +14,18 @@ permissions:
   contents: write
 
 jobs:
-  dataset_parts:
+  build:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      max-parallel: 4
-      matrix:
-        part: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
 
-      - name: Build dataset part
+      - name: Build dataset (single pass)
         run: |
-          mkdir -p data/parts
-          node tools/update_dataset.mjs --part ${{ matrix.part }}/20 --out data/parts/dataset_part_${{ matrix.part }}.json
-
-      - name: Upload dataset part artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: dataset_part_${{ matrix.part }}
-          path: data/parts/dataset_part_${{ matrix.part }}.json
-          if-no-files-found: error
-
-  merge_commit:
-    runs-on: ubuntu-latest
-    needs: [dataset_parts]
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-
-      # Download to repo root so artifact-internal paths (data/parts/...) land correctly
-      - name: Download dataset parts
-        uses: actions/download-artifact@v4
-        with:
-          pattern: dataset_part_*
-          path: .
-          merge-multiple: true
-
-      # Optional: quick sanity check (leave it in or remove later)
-      - name: Verify parts present
-        run: |
-          echo "Found parts:"
-          ls -lah data/parts | sed -n '1,200p'
-
-      - name: Merge dataset parts
-        run: node tools/merge_dataset_parts.mjs
+          mkdir -p data
+          node tools/update_dataset.mjs --part 0/1 --out data/dataset.json
 
       - name: Commit & push if changed
         run: |
@@ -71,9 +33,10 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           if git status --porcelain | grep -q .; then
             git add data/dataset.json
-            git commit -m "Auto-update dataset (parted)"
+            git commit -m "Auto-update dataset"
             git pull --rebase origin main
             git push
           else
             echo "No changes."
           fi
+YAML
