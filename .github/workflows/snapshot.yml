@@ -13,7 +13,8 @@ permissions:
   contents: write
 
 jobs:
-  build:
+  # 1) RWA (single file)
+  rwa:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -21,22 +22,83 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Build ALL sparklines (single pass)
-        run: |
-          mkdir -p data
-          node tools/update_sparklines.mjs --mode all --part 0/1 --out data/sparklines_all_7d.json
-
-      - name: Build RWA sparklines (single pass)
+      - name: Build RWA sparklines
         run: |
           mkdir -p data
           node tools/update_sparklines.mjs --mode rwa --part 0/1 --out data/sparklines_rwa_7d.json
+
+      - name: Upload RWA artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rwa_json
+          path: data/sparklines_rwa_7d.json
+          if-no-files-found: error
+
+  # 2) ALL (20 parts)
+  all_parts:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        part: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Build ALL part
+        run: |
+          mkdir -p data/parts
+          node tools/update_sparklines.mjs --mode all --part ${{ matrix.part }}/20 --out data/parts/all_part_${{ matrix.part }}.json
+
+      - name: Upload part artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: all_part_${{ matrix.part }}
+          path: data/parts/all_part_${{ matrix.part }}.json
+          if-no-files-found: error
+
+  # 3) Merge + commit
+  merge_commit:
+    runs-on: ubuntu-latest
+    needs: [rwa, all_parts]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Download ALL parts (staging)
+        uses: actions/download-artifact@v4
+        with:
+          pattern: all_part_*
+          path: _staging_parts
+          merge-multiple: true
+
+      - name: Move parts into data/parts
+        run: |
+          mkdir -p data/parts
+          cp -v _staging_parts/*.json data/parts/
+          echo "data/parts:"
+          ls -lah data/parts | sed -n '1,200p'
+
+      - name: Download RWA file
+        uses: actions/download-artifact@v4
+        with:
+          name: rwa_json
+          path: data
+
+      - name: Merge ALL parts
+        run: node tools/merge_parts.mjs
 
       - name: Commit & push if changed
         run: |
           git config user.name "rwa.watch bot"
           git config user.email "actions@users.noreply.github.com"
           if git status --porcelain | grep -q .; then
-            git add data/sparklines_all_7d.json data/sparklines_rwa_7d.json
+            git add data/sparklines_rwa_7d.json data/sparklines_all_7d.json
             git commit -m "Auto-update sparklines"
             git pull --rebase origin main
             git push
