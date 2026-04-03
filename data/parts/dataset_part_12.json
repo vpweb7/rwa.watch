@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-02T12:49:05.218Z",
+  "generated_at": "2026-04-03T06:03:12.778Z",
   "window_days": 7,
   "part": "12/20",
   "assets": [
@@ -9,44 +9,44 @@
       "slug": "morpho-v1",
       "logo": "https://icons.llama.fi/morpho-v1.png",
       "chains": [
-        "Optimism",
-        "Sonic",
-        "Fraxtal",
-        "Zircuit",
-        "Binance",
-        "Linea",
-        "Sei",
-        "xDai",
-        "Scroll",
-        "Lisk",
-        "Soneium",
         "Hemi",
-        "Citrea",
-        "Celo",
-        "Botanix",
-        "Mode",
+        "Sonic",
+        "Scroll",
+        "Optimism",
+        "Zircuit",
         "Ink",
-        "Bitlayer",
-        "Stable",
+        "Fraxtal",
+        "Sei",
         "Corn",
-        "World Chain",
+        "xDai",
+        "Soneium",
+        "Botanix",
         "Etherlink",
-        "Katana",
+        "Bitlayer",
+        "World Chain",
+        "Lisk",
+        "Celo",
+        "Stable",
+        "Linea",
         "Abstract",
-        "Flare",
+        "Binance",
         "Unichain",
+        "Citrea",
+        "Mode",
+        "Katana",
         "Plume Mainnet",
-        "TAC",
-        "Monad",
-        "Polygon",
         "Arbitrum",
         "Hyperliquid L1",
+        "Polygon",
+        "Flare",
+        "Monad",
+        "TAC",
         "Ethereum",
         "Base"
       ],
       "protocol_category": "Lending",
-      "tvl_usd": 6672584167,
-      "tvl_change_7d_pct": -2.6120849680279785,
+      "tvl_usd": 6681490400,
+      "tvl_change_7d_pct": -0.2618843356089841,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -62,17 +62,17 @@
       "logo": "https://icons.llama.fi/crypto-com.jpg",
       "chains": [
         "Fantom",
-        "Ethereum",
-        "Binance",
         "Optimism",
         "Avalanche",
-        "Arbitrum",
+        "Ethereum",
         "Polygon",
+        "Arbitrum",
+        "Binance",
         "Bitcoin"
       ],
       "protocol_category": "CEX",
-      "tvl_usd": 2044226981,
-      "tvl_change_7d_pct": -5.954118280891999,
+      "tvl_usd": 2067851327,
+      "tvl_change_7d_pct": 0.6593979547187845,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -87,32 +87,32 @@
       "slug": "bitkub",
       "logo": "https://icons.llama.fi/bitkub.jpg",
       "chains": [
-        "CORE",
-        "Algorand",
         "Fantom",
         "Litecoin",
-        "Aptos",
-        "zkSync Era",
-        "Polygon",
-        "Base",
-        "Avalanche",
-        "Optimism",
+        "CORE",
+        "Algorand",
         "Scroll",
-        "Arbitrum",
+        "zkSync Era",
+        "Base",
+        "Optimism",
         "Mantle",
-        "Tron",
-        "Binance",
+        "Arbitrum",
         "Cardano",
         "Solana",
+        "Avalanche",
+        "Binance",
+        "Tron",
+        "Polygon",
         "Ethereum",
-        "Bitcoin",
+        "Aptos",
         "TON",
         "Ripple",
-        "Doge"
+        "Doge",
+        "Bitcoin"
       ],
       "protocol_category": "CEX",
-      "tvl_usd": 1218688601,
-      "tvl_change_7d_pct": -3.33674056200835,
+      "tvl_usd": 1227153038,
+      "tvl_change_7d_pct": 0.2515228218859005,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -130,8 +130,8 @@
         "Hyperliquid L1"
       ],
       "protocol_category": "Liquid Staking",
-      "tvl_usd": 688881005,
-      "tvl_change_7d_pct": -12.153296920098294,
+      "tvl_usd": 703353790,
+      "tvl_change_7d_pct": -9.58206602036556,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -149,8 +149,8 @@
         "Ethereum"
       ],
       "protocol_category": "Restaking",
-      "tvl_usd": 411660326,
-      "tvl_change_7d_pct": -14.994031776707391,
+      "tvl_usd": 415369931,
+      "tvl_change_7d_pct": -10.451591704196307,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -158,25 +158,6 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/symbiotic",
       "project_url": "https://symbiotic.fi"
-    },
-    {
-      "id": "solstice-usx",
-      "name": "Solstice USX",
-      "slug": "solstice-usx",
-      "logo": "https://icons.llama.fi/solstice-usx.jpg",
-      "chains": [
-        "Solana"
-      ],
-      "protocol_category": "Basis Trading",
-      "tvl_usd": 356593331,
-      "tvl_change_7d_pct": 1.2250759743034743,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/solstice-usx",
-      "project_url": "https://solstice.finance/"
     },
     {
       "id": "xstocks",
@@ -188,8 +169,8 @@
         "Solana"
       ],
       "protocol_category": "RWA",
-      "tvl_usd": 355262279,
-      "tvl_change_7d_pct": -3.347742197364239,
+      "tvl_usd": 364671245,
+      "tvl_change_7d_pct": 2.4072110628188854,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -199,6 +180,25 @@
       "project_url": "https://defi.xstocks.fi/points?ref=8QG15V04"
     },
     {
+      "id": "solstice-usx",
+      "name": "Solstice USX",
+      "slug": "solstice-usx",
+      "logo": "https://icons.llama.fi/solstice-usx.jpg",
+      "chains": [
+        "Solana"
+      ],
+      "protocol_category": "Basis Trading",
+      "tvl_usd": 356738110,
+      "tvl_change_7d_pct": 1.2947709095766342,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/solstice-usx",
+      "project_url": "https://solstice.finance/"
+    },
+    {
       "id": "defi-saver",
       "name": "Defi Saver",
       "slug": "defi-saver",
@@ -206,12 +206,12 @@
       "chains": [
         "Base",
         "Ethereum",
-        "Arbitrum",
-        "Optimism"
+        "Optimism",
+        "Arbitrum"
       ],
       "protocol_category": "CDP Manager",
-      "tvl_usd": 260345062,
-      "tvl_change_7d_pct": -1.7654604090411374,
+      "tvl_usd": 262390636,
+      "tvl_change_7d_pct": 2.5248024318750732,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -231,8 +231,8 @@
         "Bitcoin"
       ],
       "protocol_category": "Restaking",
-      "tvl_usd": 213760240,
-      "tvl_change_7d_pct": -5.058467280646687,
+      "tvl_usd": 214194957,
+      "tvl_change_7d_pct": -1.6304850832092277,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -250,8 +250,8 @@
         "Avalanche"
       ],
       "protocol_category": "Lending",
-      "tvl_usd": 121323131,
-      "tvl_change_7d_pct": -4.2963367417982825,
+      "tvl_usd": 125701807,
+      "tvl_change_7d_pct": 2.4968961295649126,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -269,8 +269,8 @@
         "Aptos"
       ],
       "protocol_category": "Lending",
-      "tvl_usd": 116240579,
-      "tvl_change_7d_pct": -3.0092401511876825,
+      "tvl_usd": 116389478,
+      "tvl_change_7d_pct": 0.9008127558341005,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -288,8 +288,8 @@
         "Binance"
       ],
       "protocol_category": "Lending",
-      "tvl_usd": 109968341,
-      "tvl_change_7d_pct": 14.975223390861297,
+      "tvl_usd": 110740592,
+      "tvl_change_7d_pct": 3.8296392937859594,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -307,8 +307,8 @@
         "Ethereum"
       ],
       "protocol_category": "Insurance",
-      "tvl_usd": 98451455,
-      "tvl_change_7d_pct": -1.3121975819891056,
+      "tvl_usd": 99156623,
+      "tvl_change_7d_pct": 2.33515390359727,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -323,24 +323,24 @@
       "slug": "kaio",
       "logo": "https://icons.llama.fi/kaio.jpg",
       "chains": [
-        "Sui",
+        "Immutable zkEVM",
         "Ethereum",
-        "Solana",
+        "Sui",
         "Cardano",
+        "Solana",
         "Hedera",
         "Mantra",
-        "Injective",
-        "Immutable zkEVM",
-        "Near",
-        "XDC",
-        "Sei",
-        "Avalanche",
         "Polygon",
+        "XDC",
+        "Injective",
+        "Avalanche",
+        "Sei",
+        "Near",
         "Aptos"
       ],
       "protocol_category": "RWA",
-      "tvl_usd": 89396966,
-      "tvl_change_7d_pct": 0.028281886579519758,
+      "tvl_usd": 89389069,
+      "tvl_change_7d_pct": 0.01261610923867856,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -360,8 +360,8 @@
         "Bitcoin"
       ],
       "protocol_category": "CEX",
-      "tvl_usd": 88757403,
-      "tvl_change_7d_pct": -1.9369694576539216,
+      "tvl_usd": 88945788,
+      "tvl_change_7d_pct": 0.6434242480872997,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -376,14 +376,14 @@
       "slug": "curve-llamalend",
       "logo": "https://icons.llama.fi/curve-llamalend.jpg",
       "chains": [
-        "Ethereum",
         "Optimism",
-        "Fraxtal",
-        "Arbitrum"
+        "Arbitrum",
+        "Ethereum",
+        "Fraxtal"
       ],
       "protocol_category": "Lending",
-      "tvl_usd": 73968931,
-      "tvl_change_7d_pct": -1.0604805812168827,
+      "tvl_usd": 73723050,
+      "tvl_change_7d_pct": -0.45760064836525116,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -391,6 +391,34 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/curve-llamalend",
       "project_url": "https://www.curve.finance/lend/ethereum/markets/"
+    },
+    {
+      "id": "coinstore",
+      "name": "Coinstore",
+      "slug": "coinstore",
+      "logo": "https://icons.llama.fi/coinstore.jpg",
+      "chains": [
+        "Base",
+        "Arbitrum",
+        "Avalanche",
+        "Optimism",
+        "Ethereum",
+        "Binance",
+        "Polygon",
+        "Tron",
+        "Solana",
+        "Bitcoin"
+      ],
+      "protocol_category": "CEX",
+      "tvl_usd": 58898215,
+      "tvl_change_7d_pct": 0.08559021708984528,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/coinstore",
+      "project_url": "https://www.coinstore.com/"
     },
     {
       "id": "paradex-bridge",
@@ -401,8 +429,8 @@
         "Ethereum"
       ],
       "protocol_category": "Bridge",
-      "tvl_usd": 59858398,
-      "tvl_change_7d_pct": -11.658118335154603,
+      "tvl_usd": 58439836,
+      "tvl_change_7d_pct": -12.589194160301606,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -410,34 +438,6 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/paradex-bridge",
       "project_url": "https://app.paradex.trade/r/defillama"
-    },
-    {
-      "id": "coinstore",
-      "name": "Coinstore",
-      "slug": "coinstore",
-      "logo": "https://icons.llama.fi/coinstore.jpg",
-      "chains": [
-        "Base",
-        "Polygon",
-        "Optimism",
-        "Arbitrum",
-        "Avalanche",
-        "Ethereum",
-        "Binance",
-        "Tron",
-        "Solana",
-        "Bitcoin"
-      ],
-      "protocol_category": "CEX",
-      "tvl_usd": 58857392,
-      "tvl_change_7d_pct": -2.1015646962267063,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/coinstore",
-      "project_url": "https://www.coinstore.com/"
     },
     {
       "id": "pulsechain-bridge",
@@ -448,8 +448,8 @@
         "Ethereum"
       ],
       "protocol_category": "Canonical Bridge",
-      "tvl_usd": 54918321,
-      "tvl_change_7d_pct": 1.2763627647285911,
+      "tvl_usd": 54990377,
+      "tvl_change_7d_pct": 2.305803326208813,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -467,8 +467,8 @@
         "Stellar"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 39382542,
-      "tvl_change_7d_pct": 1.6410275786597353,
+      "tvl_usd": 40024425,
+      "tvl_change_7d_pct": 5.718604174245146,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -489,8 +489,8 @@
         "Avalanche"
       ],
       "protocol_category": "Lending",
-      "tvl_usd": 39014806,
-      "tvl_change_7d_pct": -7.5881748563121025,
+      "tvl_usd": 39082426,
+      "tvl_change_7d_pct": 4.770038143791758,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -509,8 +509,8 @@
         "Starknet"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 37281864,
-      "tvl_change_7d_pct": -6.307299407247381,
+      "tvl_usd": 37249574,
+      "tvl_change_7d_pct": -1.89245172171103,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -526,17 +526,17 @@
       "logo": "https://icons.llama.fi/pionex.jpg",
       "chains": [
         "Optimism",
+        "Avalanche",
         "Ethereum",
         "Binance",
-        "Avalanche",
         "Solana",
         "Arbitrum",
         "Tron",
         "Bitcoin"
       ],
       "protocol_category": "CEX",
-      "tvl_usd": 32573399,
-      "tvl_change_7d_pct": -1.5300428996421656,
+      "tvl_usd": 32900803,
+      "tvl_change_7d_pct": 0.09703394779546837,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -555,8 +555,8 @@
         "Filecoin"
       ],
       "protocol_category": "Liquid Staking",
-      "tvl_usd": 27997358,
-      "tvl_change_7d_pct": -6.401911078907359,
+      "tvl_usd": 28780504,
+      "tvl_change_7d_pct": -1.0870779678967546,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -572,15 +572,15 @@
       "logo": "https://icons.llama.fi/bitkan.jpg",
       "chains": [
         "Solana",
+        "Ethereum",
         "Polygon",
         "Binance",
-        "Ethereum",
         "Tron",
         "Bitcoin"
       ],
       "protocol_category": "CEX",
-      "tvl_usd": 25799482,
-      "tvl_change_7d_pct": -3.2931879553370487,
+      "tvl_usd": 26235125,
+      "tvl_change_7d_pct": -2.937737158124458,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -598,8 +598,8 @@
         "Aptos"
       ],
       "protocol_category": "Liquid Staking",
-      "tvl_usd": 22000027,
-      "tvl_change_7d_pct": -15.943477712841647,
+      "tvl_usd": 21858530,
+      "tvl_change_7d_pct": -12.624100309481786,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -607,25 +607,6 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/amnis-finance",
       "project_url": "https://amnis.finance"
-    },
-    {
-      "id": "vectis-finance",
-      "name": "Vectis Finance",
-      "slug": "vectis-finance",
-      "logo": "https://icons.llama.fi/vectis-finance.jpg",
-      "chains": [
-        "Solana"
-      ],
-      "protocol_category": "Yield",
-      "tvl_usd": 20467358,
-      "tvl_change_7d_pct": -4.963513722588394,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/vectis-finance",
-      "project_url": "https://vectis.finance"
     },
     {
       "id": "camelot-v3",
@@ -636,17 +617,17 @@
         "WINR",
         "Reya Network",
         "EDU Chain",
-        "Superposition",
-        "ApeChain",
         "Gravity",
+        "Superposition",
         "Xai",
         "Rari",
+        "ApeChain",
         "DuckChain",
         "Arbitrum"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 19515594,
-      "tvl_change_7d_pct": -0.9740326956894495,
+      "tvl_usd": 19308767,
+      "tvl_change_7d_pct": -0.7084909277453104,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -664,8 +645,8 @@
         "Ethereum"
       ],
       "protocol_category": "Canonical Bridge",
-      "tvl_usd": 18989655,
-      "tvl_change_7d_pct": 3.90742801680781,
+      "tvl_usd": 18531187,
+      "tvl_change_7d_pct": 2.1035004215563102,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -683,8 +664,8 @@
         "Solana"
       ],
       "protocol_category": "Staking Pool",
-      "tvl_usd": 18143543,
-      "tvl_change_7d_pct": 1.7330262799555491,
+      "tvl_usd": 18366195,
+      "tvl_change_7d_pct": 7.072561382136666,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -692,6 +673,25 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/adrastea-validator",
       "project_url": "https://adrastea.fi/"
+    },
+    {
+      "id": "vectis-finance",
+      "name": "Vectis Finance",
+      "slug": "vectis-finance",
+      "logo": "https://icons.llama.fi/vectis-finance.jpg",
+      "chains": [
+        "Solana"
+      ],
+      "protocol_category": "Yield",
+      "tvl_usd": 18124485,
+      "tvl_change_7d_pct": -15.843808542451354,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/vectis-finance",
+      "project_url": "https://vectis.finance"
     },
     {
       "id": "geth",
@@ -702,8 +702,8 @@
         "Ethereum"
       ],
       "protocol_category": "Liquid Staking",
-      "tvl_usd": 15611716,
-      "tvl_change_7d_pct": -1.0219172096548879,
+      "tvl_usd": 15728401,
+      "tvl_change_7d_pct": 3.1160741522561017,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -721,8 +721,8 @@
         "Avalanche"
       ],
       "protocol_category": "RWA",
-      "tvl_usd": 14045445,
-      "tvl_change_7d_pct": 3.771158634587704,
+      "tvl_usd": 14045387,
+      "tvl_change_7d_pct": 3.770730116502246,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -740,8 +740,8 @@
         "Solana"
       ],
       "protocol_category": "Liquid Restaking",
-      "tvl_usd": 12270713,
-      "tvl_change_7d_pct": 5.0516011390801525,
+      "tvl_usd": 12268762,
+      "tvl_change_7d_pct": 10.12439747483601,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -759,8 +759,8 @@
         "Sui"
       ],
       "protocol_category": "Yield Aggregator",
-      "tvl_usd": 10651767,
-      "tvl_change_7d_pct": 1.0356666930043033,
+      "tvl_usd": 10799898,
+      "tvl_change_7d_pct": 9.051248209346447,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -778,8 +778,8 @@
         "Sui"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 9737290,
-      "tvl_change_7d_pct": -6.335087810764997,
+      "tvl_usd": 9811127,
+      "tvl_change_7d_pct": -0.6283899323510009,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -812,8 +812,8 @@
         "Bitlayer"
       ],
       "protocol_category": "Basis Trading",
-      "tvl_usd": 9253348,
-      "tvl_change_7d_pct": -3.659951262285159,
+      "tvl_usd": 9312241,
+      "tvl_change_7d_pct": 0.3203337546994314,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -821,44 +821,6 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/desyn-basis-trading",
       "project_url": "https://www.desyn.io/#/"
-    },
-    {
-      "id": "3jane-lending",
-      "name": "3Jane Lending",
-      "slug": "3jane-lending",
-      "logo": "https://icons.llama.fi/3jane-lending.jpg",
-      "chains": [
-        "Ethereum"
-      ],
-      "protocol_category": "Uncollateralized Lending",
-      "tvl_usd": 8346769,
-      "tvl_change_7d_pct": -2.8036230669793216,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/3jane-lending",
-      "project_url": "https://www.3jane.xyz/"
-    },
-    {
-      "id": "etherex-legacy",
-      "name": "Etherex Legacy",
-      "slug": "etherex-legacy",
-      "logo": "https://icons.llama.fi/etherex-legacy.jpg",
-      "chains": [
-        "Linea"
-      ],
-      "protocol_category": "Dexs",
-      "tvl_usd": 7209738,
-      "tvl_change_7d_pct": 0.060413149332062065,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/etherex-legacy",
-      "project_url": "https://etherex.finance/"
     },
     {
       "id": "inverse-finance-frontier",
@@ -869,8 +831,8 @@
         "Ethereum"
       ],
       "protocol_category": "CDP",
-      "tvl_usd": 7193508,
-      "tvl_change_7d_pct": 0.052519342862849414,
+      "tvl_usd": 7198304,
+      "tvl_change_7d_pct": 0.07037160712791256,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -878,6 +840,25 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/inverse-finance-frontier",
       "project_url": "https://inverse.finance/"
+    },
+    {
+      "id": "etherex-legacy",
+      "name": "Etherex Legacy",
+      "slug": "etherex-legacy",
+      "logo": "https://icons.llama.fi/etherex-legacy.jpg",
+      "chains": [
+        "Linea"
+      ],
+      "protocol_category": "Dexs",
+      "tvl_usd": 7114636,
+      "tvl_change_7d_pct": -1.8641388113463275,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/etherex-legacy",
+      "project_url": "https://etherex.finance/"
     },
     {
       "id": "clever",
@@ -888,8 +869,8 @@
         "Ethereum"
       ],
       "protocol_category": "Yield",
-      "tvl_usd": 6418605,
-      "tvl_change_7d_pct": 0.38782834892758744,
+      "tvl_usd": 6485023,
+      "tvl_change_7d_pct": 2.9159467733624322,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -897,6 +878,25 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/clever",
       "project_url": "https://clever.aladdin.club/"
+    },
+    {
+      "id": "3jane-lending",
+      "name": "3Jane Lending",
+      "slug": "3jane-lending",
+      "logo": "https://icons.llama.fi/3jane-lending.jpg",
+      "chains": [
+        "Ethereum"
+      ],
+      "protocol_category": "Uncollateralized Lending",
+      "tvl_usd": 5973664,
+      "tvl_change_7d_pct": -29.93898695975569,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/3jane-lending",
+      "project_url": "https://www.3jane.xyz/"
     },
     {
       "id": "synatra",
@@ -907,8 +907,8 @@
         "Solana"
       ],
       "protocol_category": "Yield Aggregator",
-      "tvl_usd": 5664655,
-      "tvl_change_7d_pct": 70.07564248373,
+      "tvl_usd": 5640219,
+      "tvl_change_7d_pct": -6.547610072782335,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -926,8 +926,8 @@
         "Aptos"
       ],
       "protocol_category": "Yield Aggregator",
-      "tvl_usd": 5605532,
-      "tvl_change_7d_pct": -61.53256726015035,
+      "tvl_usd": 5605476,
+      "tvl_change_7d_pct": -61.49908261581525,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -945,8 +945,8 @@
         "Cardano"
       ],
       "protocol_category": "Lending",
-      "tvl_usd": 5215979,
-      "tvl_change_7d_pct": -3.3426241656642928,
+      "tvl_usd": 5317511,
+      "tvl_change_7d_pct": 2.901457085488438,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -964,8 +964,8 @@
         "Ethereum"
       ],
       "protocol_category": "Onchain Capital Allocator",
-      "tvl_usd": 5173975,
-      "tvl_change_7d_pct": -0.7291092668116661,
+      "tvl_usd": 5188800,
+      "tvl_change_7d_pct": 2.881955804062695,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -983,8 +983,8 @@
         "Chiliz"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 5084270,
-      "tvl_change_7d_pct": 8.440668039237057,
+      "tvl_usd": 4951166,
+      "tvl_change_7d_pct": 6.012444857069997,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -999,14 +999,14 @@
       "slug": "kinza-finance",
       "logo": "https://icons.llama.fi/kinza-finance.jpg",
       "chains": [
-        "Mantle",
         "Ethereum",
-        "Op_Bnb",
-        "Binance"
+        "Mantle",
+        "Binance",
+        "Op_Bnb"
       ],
       "protocol_category": "Lending",
-      "tvl_usd": 4175054,
-      "tvl_change_7d_pct": -5.251538592988796,
+      "tvl_usd": 4189984,
+      "tvl_change_7d_pct": -2.2883958515085774,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1024,8 +1024,8 @@
         "Solana"
       ],
       "protocol_category": "Liquid Staking",
-      "tvl_usd": 4152966,
-      "tvl_change_7d_pct": -17.06632451835469,
+      "tvl_usd": 4170983,
+      "tvl_change_7d_pct": -13.357138925154679,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1043,8 +1043,8 @@
         "Elrond"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 3989433,
-      "tvl_change_7d_pct": -4.958579636375592,
+      "tvl_usd": 4020098,
+      "tvl_change_7d_pct": -1.3248412583672409,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1062,8 +1062,8 @@
         "IOTA"
       ],
       "protocol_category": "CDP",
-      "tvl_usd": 3678866,
-      "tvl_change_7d_pct": 0.11917309817669787,
+      "tvl_usd": 3868841,
+      "tvl_change_7d_pct": 9.271297975502904,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1081,8 +1081,8 @@
         "Klaytn"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 3359698,
-      "tvl_change_7d_pct": 1.0858072998937902,
+      "tvl_usd": 3323901,
+      "tvl_change_7d_pct": 2.2571382161443108,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1101,8 +1101,8 @@
         "Ethereum"
       ],
       "protocol_category": "Yield",
-      "tvl_usd": 3094168,
-      "tvl_change_7d_pct": 0.7027000462478239,
+      "tvl_usd": 3125427,
+      "tvl_change_7d_pct": 3.150767666899893,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1120,8 +1120,8 @@
         "Ethereum"
       ],
       "protocol_category": "Insurance",
-      "tvl_usd": 2992920,
-      "tvl_change_7d_pct": -1.0866547689867143,
+      "tvl_usd": 3019529,
+      "tvl_change_7d_pct": 3.2182452690810055,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1140,8 +1140,8 @@
         "Optimism"
       ],
       "protocol_category": "Lending",
-      "tvl_usd": 2811716,
-      "tvl_change_7d_pct": -0.21070728013705023,
+      "tvl_usd": 2805149,
+      "tvl_change_7d_pct": -1.0918805859844944,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1159,8 +1159,8 @@
         "Sui"
       ],
       "protocol_category": "Yield",
-      "tvl_usd": 2737382,
-      "tvl_change_7d_pct": 8.168100671994893,
+      "tvl_usd": 2758198,
+      "tvl_change_7d_pct": 3.888965056942735,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1178,8 +1178,8 @@
         "Solana"
       ],
       "protocol_category": "RWA",
-      "tvl_usd": 2398118,
-      "tvl_change_7d_pct": 0.5252795223984705,
+      "tvl_usd": 2405297,
+      "tvl_change_7d_pct": 1.3045829504170032,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1199,8 +1199,8 @@
         "Pulse"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 2299739,
-      "tvl_change_7d_pct": -1.90848046243031,
+      "tvl_usd": 2270802,
+      "tvl_change_7d_pct": -3.098266754345276,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1219,8 +1219,8 @@
         "Near"
       ],
       "protocol_category": "Bridge",
-      "tvl_usd": 2037391,
-      "tvl_change_7d_pct": -1.221093806437287,
+      "tvl_usd": 2062873,
+      "tvl_change_7d_pct": 3.095710494620002,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1238,8 +1238,8 @@
         "TON"
       ],
       "protocol_category": "Bridge",
-      "tvl_usd": 2015980,
-      "tvl_change_7d_pct": 3.686727195765672,
+      "tvl_usd": 2037890,
+      "tvl_change_7d_pct": 1.589528236234823,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1257,8 +1257,8 @@
         "Ethereum"
       ],
       "protocol_category": "CDP",
-      "tvl_usd": 1833005,
-      "tvl_change_7d_pct": -1.0084366720347706,
+      "tvl_usd": 1827235,
+      "tvl_change_7d_pct": -0.8926111302755557,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1273,16 +1273,16 @@
       "slug": "rosen-bridge",
       "logo": "https://icons.llama.fi/rosen-bridge.jpg",
       "chains": [
-        "Ethereum",
         "Binance",
+        "Ethereum",
         "Cardano",
         "Ergo",
         "Doge",
         "Bitcoin"
       ],
       "protocol_category": "Bridge",
-      "tvl_usd": 1742331,
-      "tvl_change_7d_pct": -8.514803136789542,
+      "tvl_usd": 1751132,
+      "tvl_change_7d_pct": -6.119114122888376,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1290,6 +1290,40 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/rosen-bridge",
       "project_url": "https://rosen.tech"
+    },
+    {
+      "id": "bridgers",
+      "name": "Bridgers",
+      "slug": "bridgers",
+      "logo": "https://icons.llama.fi/bridgers.png",
+      "chains": [
+        "Solana",
+        "Sui",
+        "Base",
+        "Ethereum",
+        "Linea",
+        "Optimism",
+        "Arbitrum",
+        "zkSync Era",
+        "Aptos",
+        "Avalanche",
+        "Fantom",
+        "Tron",
+        "OKExChain",
+        "Polygon",
+        "Binance",
+        "TON"
+      ],
+      "protocol_category": "Dexs",
+      "tvl_usd": 1674927,
+      "tvl_change_7d_pct": 28.890805875830033,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/bridgers",
+      "project_url": "https://bridgers.ai/"
     },
     {
       "id": "cypher-v4",
@@ -1300,8 +1334,8 @@
         "Ethereum"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 1421941,
-      "tvl_change_7d_pct": -3.3569559032523566,
+      "tvl_usd": 1426694,
+      "tvl_change_7d_pct": -0.06150302751805163,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1320,8 +1354,8 @@
         "Arbitrum"
       ],
       "protocol_category": "Yield Aggregator",
-      "tvl_usd": 1327320,
-      "tvl_change_7d_pct": -0.3419242360763856,
+      "tvl_usd": 1339413,
+      "tvl_change_7d_pct": 1.8033164422845254,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1329,40 +1363,6 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/rari-capital",
       "project_url": ""
-    },
-    {
-      "id": "bridgers",
-      "name": "Bridgers",
-      "slug": "bridgers",
-      "logo": "https://icons.llama.fi/bridgers.png",
-      "chains": [
-        "Ethereum",
-        "Sui",
-        "Solana",
-        "Arbitrum",
-        "Fantom",
-        "Base",
-        "Aptos",
-        "Polygon",
-        "Optimism",
-        "zkSync Era",
-        "Linea",
-        "OKExChain",
-        "Avalanche",
-        "Tron",
-        "Binance",
-        "TON"
-      ],
-      "protocol_category": "Dexs",
-      "tvl_usd": 1237634,
-      "tvl_change_7d_pct": -32.76001264789837,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/bridgers",
-      "project_url": "https://bridgers.ai/"
     },
     {
       "id": "increment-swap",
@@ -1373,8 +1373,8 @@
         "Flow"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 1232053,
-      "tvl_change_7d_pct": -4.907474012762844,
+      "tvl_usd": 1228107,
+      "tvl_change_7d_pct": -1.9094834402810192,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1392,8 +1392,8 @@
         "Solana"
       ],
       "protocol_category": "Staking Pool",
-      "tvl_usd": 1202022,
-      "tvl_change_7d_pct": -10.417200775078253,
+      "tvl_usd": 1203173,
+      "tvl_change_7d_pct": -7.15469677210257,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1411,8 +1411,8 @@
         "Binance"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 1176325,
-      "tvl_change_7d_pct": -5.865609067694817,
+      "tvl_usd": 1184658,
+      "tvl_change_7d_pct": -3.625068946273159,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1430,8 +1430,8 @@
         "Base"
       ],
       "protocol_category": "Yield",
-      "tvl_usd": 1135718,
-      "tvl_change_7d_pct": 0.3565486094604231,
+      "tvl_usd": 1135786,
+      "tvl_change_7d_pct": 0.3651292709609121,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1441,23 +1441,23 @@
       "project_url": "https://sprinter.tech/"
     },
     {
-      "id": "perpl",
-      "name": "Perpl",
-      "slug": "perpl",
-      "logo": "https://icons.llama.fi/perpl.jpg",
+      "id": "cellana-finance",
+      "name": "Cellana Finance",
+      "slug": "cellana-finance",
+      "logo": "https://icons.llama.fi/cellana-finance.jpg",
       "chains": [
-        "Monad"
+        "Aptos"
       ],
-      "protocol_category": "Derivatives",
-      "tvl_usd": 1045620,
-      "tvl_change_7d_pct": 0.18492080981900755,
+      "protocol_category": "Dexs",
+      "tvl_usd": 1117898,
+      "tvl_change_7d_pct": null,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
       "reported_high_apy_detected": false,
       "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/perpl",
-      "project_url": "https://perpl.xyz/"
+      "defillama_url": "https://defillama.com/protocol/cellana-finance",
+      "project_url": "https://cellana.finance"
     },
     {
       "id": "angles-stake",
@@ -1468,8 +1468,8 @@
         "Sonic"
       ],
       "protocol_category": "Liquid Staking",
-      "tvl_usd": 1027664,
-      "tvl_change_7d_pct": -1.1580218985403539,
+      "tvl_usd": 1050072,
+      "tvl_change_7d_pct": 5.781627293415092,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1477,6 +1477,25 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/angles-stake",
       "project_url": "https://angles.fi/stake"
+    },
+    {
+      "id": "perpl",
+      "name": "Perpl",
+      "slug": "perpl",
+      "logo": "https://icons.llama.fi/perpl.jpg",
+      "chains": [
+        "Monad"
+      ],
+      "protocol_category": "Derivatives",
+      "tvl_usd": 1045806,
+      "tvl_change_7d_pct": 0.2274223644450578,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/perpl",
+      "project_url": "https://perpl.xyz/"
     },
     {
       "id": "larix",
@@ -1487,8 +1506,8 @@
         "Solana"
       ],
       "protocol_category": "Lending",
-      "tvl_usd": 950231,
-      "tvl_change_7d_pct": -6.465961886762737,
+      "tvl_usd": 955896,
+      "tvl_change_7d_pct": -2.9538340959460543,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1506,8 +1525,8 @@
         "Tezos"
       ],
       "protocol_category": "CDP",
-      "tvl_usd": 896935,
-      "tvl_change_7d_pct": -0.46375930237461627,
+      "tvl_usd": 903595,
+      "tvl_change_7d_pct": -1.8944806111325843,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1523,13 +1542,13 @@
       "logo": "https://icons.llama.fi/solo-top.png",
       "chains": [
         "Heco",
-        "Binance",
         "Polygon",
+        "Binance",
         "OKExChain"
       ],
       "protocol_category": "Yield",
-      "tvl_usd": 829204,
-      "tvl_change_7d_pct": -2.454506634167344,
+      "tvl_usd": 833427,
+      "tvl_change_7d_pct": -2.3905003056785947,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1537,25 +1556,6 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/solo-top",
       "project_url": "https://solo.top"
-    },
-    {
-      "id": "kyo-finance",
-      "name": "Kyo Finance",
-      "slug": "kyo-finance",
-      "logo": "https://icons.llama.fi/kyo-finance.jpg",
-      "chains": [
-        "Soneium"
-      ],
-      "protocol_category": "Dexs",
-      "tvl_usd": 822051,
-      "tvl_change_7d_pct": -2.975012304412947,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/kyo-finance",
-      "project_url": "https://www.kyo.finance"
     },
     {
       "id": "zo-perps",
@@ -1566,8 +1566,8 @@
         "Sui"
       ],
       "protocol_category": "Derivatives",
-      "tvl_usd": 820412,
-      "tvl_change_7d_pct": -2.981696400063385,
+      "tvl_usd": 826206,
+      "tvl_change_7d_pct": -0.03266882522904477,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1577,23 +1577,23 @@
       "project_url": "https://zofai.io"
     },
     {
-      "id": "merkle-trade",
-      "name": "Merkle Trade",
-      "slug": "merkle-trade",
-      "logo": "https://icons.llama.fi/merkle-trade.jpg",
+      "id": "kyo-finance",
+      "name": "Kyo Finance",
+      "slug": "kyo-finance",
+      "logo": "https://icons.llama.fi/kyo-finance.jpg",
       "chains": [
-        "Aptos"
+        "Soneium"
       ],
-      "protocol_category": "Derivatives",
-      "tvl_usd": 776505,
-      "tvl_change_7d_pct": -0.04428144980556067,
+      "protocol_category": "Dexs",
+      "tvl_usd": 815907,
+      "tvl_change_7d_pct": -1.1673514676383088,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
       "reported_high_apy_detected": false,
       "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/merkle-trade",
-      "project_url": "https://merkle.trade"
+      "defillama_url": "https://defillama.com/protocol/kyo-finance",
+      "project_url": "https://www.kyo.finance"
     },
     {
       "id": "shadeswap",
@@ -1604,8 +1604,8 @@
         "Secret"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 761992,
-      "tvl_change_7d_pct": -3.820220180799689,
+      "tvl_usd": 786573,
+      "tvl_change_7d_pct": 1.376870432664424,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1613,6 +1613,25 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/shadeswap",
       "project_url": "https://shadeprotocol.io"
+    },
+    {
+      "id": "merkle-trade",
+      "name": "Merkle Trade",
+      "slug": "merkle-trade",
+      "logo": "https://icons.llama.fi/merkle-trade.jpg",
+      "chains": [
+        "Aptos"
+      ],
+      "protocol_category": "Derivatives",
+      "tvl_usd": 776552,
+      "tvl_change_7d_pct": 0.011591037294806442,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/merkle-trade",
+      "project_url": "https://merkle.trade"
     },
     {
       "id": "wompie",
@@ -1624,8 +1643,8 @@
         "Binance"
       ],
       "protocol_category": "Yield",
-      "tvl_usd": 734423,
-      "tvl_change_7d_pct": -7.520638470411056,
+      "tvl_usd": 741171,
+      "tvl_change_7d_pct": -4.296125468401765,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1645,8 +1664,8 @@
         "Binance"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 639131,
-      "tvl_change_7d_pct": 0.05729806736436717,
+      "tvl_usd": 638922,
+      "tvl_change_7d_pct": 0.14074705653705816,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1664,8 +1683,8 @@
         "Aurora"
       ],
       "protocol_category": "Lending",
-      "tvl_usd": 631923,
-      "tvl_change_7d_pct": -1.5857219613614595,
+      "tvl_usd": 637742,
+      "tvl_change_7d_pct": 0.16302708951098155,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1686,8 +1705,8 @@
         "TON"
       ],
       "protocol_category": "Bridge",
-      "tvl_usd": 591798,
-      "tvl_change_7d_pct": -5.452552773726009,
+      "tvl_usd": 600703,
+      "tvl_change_7d_pct": -0.4913288573705127,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1705,8 +1724,8 @@
         "Ethereum"
       ],
       "protocol_category": "Yield Aggregator",
-      "tvl_usd": 515855,
-      "tvl_change_7d_pct": -0.2299610864839356,
+      "tvl_usd": 517204,
+      "tvl_change_7d_pct": 1.0590405327247432,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1721,13 +1740,13 @@
       "slug": "aktionariat",
       "logo": "https://icons.llama.fi/aktionariat.png",
       "chains": [
-        "Optimism",
         "Polygon",
-        "Ethereum"
+        "Ethereum",
+        "Optimism"
       ],
       "protocol_category": "RWA",
-      "tvl_usd": 515693,
-      "tvl_change_7d_pct": 7.523180243989399,
+      "tvl_usd": 515618,
+      "tvl_change_7d_pct": 7.379254619062693,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1745,8 +1764,8 @@
         "Binance"
       ],
       "protocol_category": "CDP",
-      "tvl_usd": 508138,
-      "tvl_change_7d_pct": -7.4497304385837095,
+      "tvl_usd": 512253,
+      "tvl_change_7d_pct": -4.235486783733308,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1764,8 +1783,8 @@
         "Binance"
       ],
       "protocol_category": "Yield",
-      "tvl_usd": 497821,
-      "tvl_change_7d_pct": -1.7544517486298896,
+      "tvl_usd": 498668,
+      "tvl_change_7d_pct": -0.8809381832637646,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1783,8 +1802,8 @@
         "Ethereum"
       ],
       "protocol_category": "Chain",
-      "tvl_usd": 484777,
-      "tvl_change_7d_pct": -1.4145888114078167,
+      "tvl_usd": 487911,
+      "tvl_change_7d_pct": 2.315091502733444,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1803,8 +1822,8 @@
         "Filecoin"
       ],
       "protocol_category": "Liquid Staking",
-      "tvl_usd": 440140,
-      "tvl_change_7d_pct": 3.382588863129758,
+      "tvl_usd": 449702,
+      "tvl_change_7d_pct": 9.220161315784999,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1812,27 +1831,6 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/filliquid",
       "project_url": "https://dapp.filliquid.io"
-    },
-    {
-      "id": "zkswap-v3",
-      "name": "zkSwap V3",
-      "slug": "zkswap-v3",
-      "logo": "https://icons.llama.fi/zkswap-v3.jpg",
-      "chains": [
-        "Sonic",
-        "zkSync Era",
-        "Monad"
-      ],
-      "protocol_category": "Dexs",
-      "tvl_usd": 425748,
-      "tvl_change_7d_pct": 0.3649222065063649,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/zkswap-v3",
-      "project_url": "https://zkswap.finance"
     },
     {
       "id": "obsidian",
@@ -1844,8 +1842,8 @@
         "Cronos"
       ],
       "protocol_category": "DEX Aggregator",
-      "tvl_usd": 425278,
-      "tvl_change_7d_pct": -6.326844375134912,
+      "tvl_usd": 428195,
+      "tvl_change_7d_pct": -6.435527819476583,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1853,6 +1851,27 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/obsidian",
       "project_url": "https://obsidian.finance"
+    },
+    {
+      "id": "zkswap-v3",
+      "name": "zkSwap V3",
+      "slug": "zkswap-v3",
+      "logo": "https://icons.llama.fi/zkswap-v3.jpg",
+      "chains": [
+        "Sonic",
+        "Monad",
+        "zkSync Era"
+      ],
+      "protocol_category": "Dexs",
+      "tvl_usd": 427419,
+      "tvl_change_7d_pct": 4.167743067571981,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/zkswap-v3",
+      "project_url": "https://zkswap.finance"
     },
     {
       "id": "pala",
@@ -1863,8 +1882,8 @@
         "Klaytn"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 394389,
-      "tvl_change_7d_pct": -0.022561460968672526,
+      "tvl_usd": 393372,
+      "tvl_change_7d_pct": 0.6939520453794978,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1872,25 +1891,6 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/pala",
       "project_url": ""
-    },
-    {
-      "id": "orchai-lst",
-      "name": "Orchai LST",
-      "slug": "orchai-lst",
-      "logo": "https://icons.llama.fi/orchai-lst.jpg",
-      "chains": [
-        "Orai"
-      ],
-      "protocol_category": "Liquid Staking",
-      "tvl_usd": 367161,
-      "tvl_change_7d_pct": -16.806734113541868,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/orchai-lst",
-      "project_url": "https://orchai.io"
     },
     {
       "id": "meshswap",
@@ -1901,8 +1901,8 @@
         "Polygon"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 359997,
-      "tvl_change_7d_pct": -1.461394442376333,
+      "tvl_usd": 362163,
+      "tvl_change_7d_pct": 0.6735420025574025,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1920,8 +1920,8 @@
         "Kucoin"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 354361,
-      "tvl_change_7d_pct": -5.268799957227257,
+      "tvl_usd": 360174,
+      "tvl_change_7d_pct": -2.555597640820302,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1929,6 +1929,25 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/mojitoswap",
       "project_url": "https://www.mojitoswap.finance"
+    },
+    {
+      "id": "orchai-lst",
+      "name": "Orchai LST",
+      "slug": "orchai-lst",
+      "logo": "https://icons.llama.fi/orchai-lst.jpg",
+      "chains": [
+        "Orai"
+      ],
+      "protocol_category": "Liquid Staking",
+      "tvl_usd": 348505,
+      "tvl_change_7d_pct": -20.57753094241327,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/orchai-lst",
+      "project_url": "https://orchai.io"
     },
     {
       "id": "probable",
@@ -1939,8 +1958,8 @@
         "Binance"
       ],
       "protocol_category": "Prediction Market",
-      "tvl_usd": 347656,
-      "tvl_change_7d_pct": -15.068098256928922,
+      "tvl_usd": 340166,
+      "tvl_change_7d_pct": -16.437760543970363,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1955,12 +1974,12 @@
       "slug": "renegade",
       "logo": "https://icons.llama.fi/renegade.jpg",
       "chains": [
-        "Base",
-        "Arbitrum"
+        "Arbitrum",
+        "Base"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 330113,
-      "tvl_change_7d_pct": -6.544990261357975,
+      "tvl_usd": 330440,
+      "tvl_change_7d_pct": -1.236781856547651,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -1977,12 +1996,12 @@
       "chains": [
         "zkSync Era",
         "Arbitrum",
-        "Polygon",
-        "Binance"
+        "Binance",
+        "Polygon"
       ],
       "protocol_category": "Options",
-      "tvl_usd": 309129,
-      "tvl_change_7d_pct": -0.2124040066239061,
+      "tvl_usd": 309896,
+      "tvl_change_7d_pct": -0.013228494823141479,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2000,8 +2019,8 @@
         "Injective"
       ],
       "protocol_category": "Yield",
-      "tvl_usd": 305342,
-      "tvl_change_7d_pct": -3.896790600617519,
+      "tvl_usd": 307130,
+      "tvl_change_7d_pct": -0.9970247209265592,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2020,8 +2039,8 @@
         "Binance"
       ],
       "protocol_category": "Lending",
-      "tvl_usd": 283503,
-      "tvl_change_7d_pct": -0.33887937792432865,
+      "tvl_usd": 283784,
+      "tvl_change_7d_pct": -0.1389968998412972,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2029,30 +2048,6 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/demeter",
       "project_url": ""
-    },
-    {
-      "id": "sturdy-v2",
-      "name": "Sturdy V2",
-      "slug": "sturdy-v2",
-      "logo": "https://icons.llama.fi/sturdy-v2.jpg",
-      "chains": [
-        "Flow",
-        "Optimism",
-        "Ethereum",
-        "Linea",
-        "Mode",
-        "Sei"
-      ],
-      "protocol_category": "Lending",
-      "tvl_usd": 257519,
-      "tvl_change_7d_pct": -2.8329189101487775,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/sturdy-v2",
-      "project_url": "https://v2.sturdy.finance/"
     },
     {
       "id": "diamondswap",
@@ -2067,8 +2062,8 @@
         "Binance"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 248541,
-      "tvl_change_7d_pct": -12.467687062850864,
+      "tvl_usd": 262184,
+      "tvl_change_7d_pct": -3.2374260027458335,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2076,6 +2071,30 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/diamondswap",
       "project_url": "https://diamondswap.com/exchange"
+    },
+    {
+      "id": "sturdy-v2",
+      "name": "Sturdy V2",
+      "slug": "sturdy-v2",
+      "logo": "https://icons.llama.fi/sturdy-v2.jpg",
+      "chains": [
+        "Flow",
+        "Sei",
+        "Linea",
+        "Mode",
+        "Ethereum",
+        "Optimism"
+      ],
+      "protocol_category": "Lending",
+      "tvl_usd": 259327,
+      "tvl_change_7d_pct": 0.7811376628827477,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/sturdy-v2",
+      "project_url": "https://v2.sturdy.finance/"
     },
     {
       "id": "radiant-v1",
@@ -2086,8 +2105,8 @@
         "Arbitrum"
       ],
       "protocol_category": "Lending",
-      "tvl_usd": 244082,
-      "tvl_change_7d_pct": -0.7945959347577805,
+      "tvl_usd": 244762,
+      "tvl_change_7d_pct": 0.6811843393416863,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2103,12 +2122,12 @@
       "logo": "https://icons.llama.fi/voltz.png",
       "chains": [
         "Ethereum",
-        "Avalanche",
-        "Arbitrum"
+        "Arbitrum",
+        "Avalanche"
       ],
       "protocol_category": "Derivatives",
-      "tvl_usd": 230460,
-      "tvl_change_7d_pct": -3.67679942488621,
+      "tvl_usd": 230608,
+      "tvl_change_7d_pct": -2.8090006026812997,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2126,8 +2145,8 @@
         "Arbitrum"
       ],
       "protocol_category": "Lending",
-      "tvl_usd": 220845,
-      "tvl_change_7d_pct": -0.7290968997649089,
+      "tvl_usd": 223692,
+      "tvl_change_7d_pct": 1.5093072434041548,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2135,6 +2154,25 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/tender-finance",
       "project_url": ""
+    },
+    {
+      "id": "myth-finance-dualstake",
+      "name": "Myth Finance dualSTAKE",
+      "slug": "myth-finance-dualstake",
+      "logo": "https://icons.llama.fi/myth-finance-dualstake.jpg",
+      "chains": [
+        "Algorand"
+      ],
+      "protocol_category": "Liquid Staking",
+      "tvl_usd": 221118,
+      "tvl_change_7d_pct": 43.46201258677739,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/myth-finance-dualstake",
+      "project_url": "https://myth.finance/dualSTAKE"
     },
     {
       "id": "iron-bank",
@@ -2148,8 +2186,8 @@
         "Avalanche"
       ],
       "protocol_category": "Lending",
-      "tvl_usd": 207984,
-      "tvl_change_7d_pct": -2.3508035550797923,
+      "tvl_usd": 209373,
+      "tvl_change_7d_pct": 0.20531817137606245,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2157,25 +2195,6 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/iron-bank",
       "project_url": ""
-    },
-    {
-      "id": "myth-finance-dualstake",
-      "name": "Myth Finance dualSTAKE",
-      "slug": "myth-finance-dualstake",
-      "logo": "https://icons.llama.fi/myth-finance-dualstake.jpg",
-      "chains": [
-        "Algorand"
-      ],
-      "protocol_category": "Liquid Staking",
-      "tvl_usd": 196132,
-      "tvl_change_7d_pct": 23.17218684451813,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/myth-finance-dualstake",
-      "project_url": "https://myth.finance/dualSTAKE"
     },
     {
       "id": "notional-exponent",
@@ -2186,8 +2205,8 @@
         "Ethereum"
       ],
       "protocol_category": "Leveraged Farming",
-      "tvl_usd": 179589,
-      "tvl_change_7d_pct": 85.87915045127102,
+      "tvl_usd": 201550,
+      "tvl_change_7d_pct": 108.57048243889314,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2195,25 +2214,6 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/notional-exponent",
       "project_url": "https://notional.finance"
-    },
-    {
-      "id": "voltage-v4",
-      "name": "Voltage V4",
-      "slug": "voltage-v4",
-      "logo": "https://icons.llama.fi/voltage-amm.jpg",
-      "chains": [
-        "Fuse"
-      ],
-      "protocol_category": "Dexs",
-      "tvl_usd": 176365,
-      "tvl_change_7d_pct": -0.6847579414464385,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/voltage-v4",
-      "project_url": "https://app.voltage.finance/"
     },
     {
       "id": "spartadex",
@@ -2225,8 +2225,8 @@
         "Linea"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 161776,
-      "tvl_change_7d_pct": -0.7594439741371907,
+      "tvl_usd": 161653,
+      "tvl_change_7d_pct": 0.5204705999403044,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2246,8 +2246,8 @@
         "Avalanche"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 149212,
-      "tvl_change_7d_pct": -0.03416787817476535,
+      "tvl_usd": 149230,
+      "tvl_change_7d_pct": 0.04156387428939183,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2265,8 +2265,8 @@
         "Filecoin"
       ],
       "protocol_category": "Staking Pool",
-      "tvl_usd": 131994,
-      "tvl_change_7d_pct": -6.919968689839006,
+      "tvl_usd": 135296,
+      "tvl_change_7d_pct": 0.8339730356171325,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2274,6 +2274,25 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/filfi",
       "project_url": "https://filfi.io"
+    },
+    {
+      "id": "voltage-v4",
+      "name": "Voltage V4",
+      "slug": "voltage-v4",
+      "logo": "https://icons.llama.fi/voltage-amm.jpg",
+      "chains": [
+        "Fuse"
+      ],
+      "protocol_category": "Dexs",
+      "tvl_usd": 133525,
+      "tvl_change_7d_pct": -19.068400157590084,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/voltage-v4",
+      "project_url": "https://app.voltage.finance/"
     },
     {
       "id": "ixs",
@@ -2286,8 +2305,8 @@
         "Ethereum"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 129571,
-      "tvl_change_7d_pct": -3.026606294203495,
+      "tvl_usd": 129738,
+      "tvl_change_7d_pct": -1.106791676194832,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2305,8 +2324,8 @@
         "Arbitrum"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 124227,
-      "tvl_change_7d_pct": -1.0726742797075828,
+      "tvl_usd": 124594,
+      "tvl_change_7d_pct": 1.2054260417512794,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2322,15 +2341,15 @@
       "logo": "https://icons.llama.fi/izumi-liquidbox.png",
       "chains": [
         "Ethereum",
-        "Polygon",
-        "Cronos",
-        "Aurora",
         "Binance",
+        "Polygon",
+        "Aurora",
+        "Cronos",
         "Arbitrum"
       ],
       "protocol_category": "Yield",
-      "tvl_usd": 121091,
-      "tvl_change_7d_pct": -0.23069761310362444,
+      "tvl_usd": 121193,
+      "tvl_change_7d_pct": -0.004950535895510689,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2338,6 +2357,25 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/izumi-liquidbox",
       "project_url": "https://izumi.finance"
+    },
+    {
+      "id": "mvcswap",
+      "name": "MVCSwap",
+      "slug": "mvcswap",
+      "logo": "https://icons.llama.fi/mvcswap.png",
+      "chains": [
+        "MVC"
+      ],
+      "protocol_category": "Dexs",
+      "tvl_usd": 118782,
+      "tvl_change_7d_pct": 19.46894644204174,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/mvcswap",
+      "project_url": "https://mvcswap.com"
     },
     {
       "id": "ea-finance",
@@ -2348,8 +2386,8 @@
         "Binance"
       ],
       "protocol_category": "Liquid Restaking",
-      "tvl_usd": 115769,
-      "tvl_change_7d_pct": -2.2080873098333376,
+      "tvl_usd": 118155,
+      "tvl_change_7d_pct": 2.2889594930352954,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2367,8 +2405,8 @@
         "xDai"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 114882,
-      "tvl_change_7d_pct": -7.787516856097092,
+      "tvl_usd": 115309,
+      "tvl_change_7d_pct": -1.4907649460932562,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2376,25 +2414,6 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/levinswap",
       "project_url": ""
-    },
-    {
-      "id": "mvcswap",
-      "name": "MVCSwap",
-      "slug": "mvcswap",
-      "logo": "https://icons.llama.fi/mvcswap.png",
-      "chains": [
-        "MVC"
-      ],
-      "protocol_category": "Dexs",
-      "tvl_usd": 114373,
-      "tvl_change_7d_pct": 13.938892818362042,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/mvcswap",
-      "project_url": "https://mvcswap.com"
     },
     {
       "id": "swim-protocol",
@@ -2405,8 +2424,8 @@
         "Solana"
       ],
       "protocol_category": "Cross Chain Bridge",
-      "tvl_usd": 102386,
-      "tvl_change_7d_pct": -0.09075030006147601,
+      "tvl_usd": 102481,
+      "tvl_change_7d_pct": 0.01073484922416317,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2424,8 +2443,8 @@
         "Sei"
       ],
       "protocol_category": "Derivatives",
-      "tvl_usd": 94770,
-      "tvl_change_7d_pct": -0.5039370078740157,
+      "tvl_usd": 94919,
+      "tvl_change_7d_pct": 0.7921591114225945,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2441,12 +2460,12 @@
       "logo": "https://icons.llama.fi/domani-protocol.png",
       "chains": [
         "Ethereum",
-        "zkSync Era",
-        "Avalanche"
+        "Avalanche",
+        "zkSync Era"
       ],
       "protocol_category": "Indexes",
-      "tvl_usd": 93879,
-      "tvl_change_7d_pct": -3.3997715649856457,
+      "tvl_usd": 93891,
+      "tvl_change_7d_pct": 0.26483559903035997,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2461,13 +2480,13 @@
       "slug": "barnbridge",
       "logo": "https://icons.llama.fi/barnbridge.png",
       "chains": [
-        "Arbitrum",
         "Ethereum",
+        "Arbitrum",
         "Optimism"
       ],
       "protocol_category": "Yield Aggregator",
-      "tvl_usd": 82422,
-      "tvl_change_7d_pct": -2.686045550609821,
+      "tvl_usd": 82075,
+      "tvl_change_7d_pct": -2.0724955853577054,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2482,12 +2501,12 @@
       "slug": "zomma-protocol",
       "logo": "https://icons.llama.fi/zomma-protocol.jpg",
       "chains": [
-        "zkSync Era",
-        "Arbitrum"
+        "Arbitrum",
+        "zkSync Era"
       ],
       "protocol_category": "Options",
-      "tvl_usd": 80538,
-      "tvl_change_7d_pct": 0.0062086349695156026,
+      "tvl_usd": 80549,
+      "tvl_change_7d_pct": 0.024835773448074607,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2505,8 +2524,8 @@
         "Soneium"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 79099,
-      "tvl_change_7d_pct": -3.2641131004794053,
+      "tvl_usd": 78655,
+      "tvl_change_7d_pct": -0.19794191166207764,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2514,6 +2533,25 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/sonex",
       "project_url": "https://sonex.so"
+    },
+    {
+      "id": "qielend",
+      "name": "QIELend",
+      "slug": "qielend",
+      "logo": "https://icons.llama.fi/qielend.jpg",
+      "chains": [
+        "QIE"
+      ],
+      "protocol_category": "Lending",
+      "tvl_usd": 76917,
+      "tvl_change_7d_pct": 539.8020296123773,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/qielend",
+      "project_url": "https://www.qielend.qie.digital/"
     },
     {
       "id": "dragonswap-v2-kaia",
@@ -2524,8 +2562,8 @@
         "Klaytn"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 75414,
-      "tvl_change_7d_pct": -8.933487900304304,
+      "tvl_usd": 74877,
+      "tvl_change_7d_pct": -7.551269862827652,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2540,12 +2578,12 @@
       "slug": "hot-cross",
       "logo": "https://icons.llama.fi/hot-cross.jpg",
       "chains": [
-        "Binance",
-        "Ethereum"
+        "Ethereum",
+        "Binance"
       ],
       "protocol_category": "Chain",
-      "tvl_usd": 71834,
-      "tvl_change_7d_pct": -10.642003259152371,
+      "tvl_usd": 71141,
+      "tvl_change_7d_pct": -10.114219290930684,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2563,8 +2601,8 @@
         "Cardano"
       ],
       "protocol_category": "Lending",
-      "tvl_usd": 63632,
-      "tvl_change_7d_pct": -6.40425970052658,
+      "tvl_usd": 64056,
+      "tvl_change_7d_pct": -2.247859726228082,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2583,8 +2621,8 @@
         "Binance"
       ],
       "protocol_category": "Lending",
-      "tvl_usd": 62745,
-      "tvl_change_7d_pct": -2.8324093288320378,
+      "tvl_usd": 62549,
+      "tvl_change_7d_pct": -0.8920649004943592,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2603,8 +2641,8 @@
         "Arbitrum"
       ],
       "protocol_category": "Liquidity Manager",
-      "tvl_usd": 59644,
-      "tvl_change_7d_pct": -5.272854329458103,
+      "tvl_usd": 59508,
+      "tvl_change_7d_pct": -1.378853165396089,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2621,12 +2659,12 @@
       "chains": [
         "Polygon",
         "Linea",
-        "Boba",
-        "XDC"
+        "XDC",
+        "Boba"
       ],
       "protocol_category": "Lending",
-      "tvl_usd": 58448,
-      "tvl_change_7d_pct": -0.3359195157302413,
+      "tvl_usd": 58426,
+      "tvl_change_7d_pct": 1.3232055217383765,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2644,8 +2682,8 @@
         "Starknet"
       ],
       "protocol_category": "Liquid Staking",
-      "tvl_usd": 54131,
-      "tvl_change_7d_pct": -4.65194109772423,
+      "tvl_usd": 54369,
+      "tvl_change_7d_pct": 1.480140361355831,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2663,8 +2701,8 @@
         "Ethereum"
       ],
       "protocol_category": "Yield",
-      "tvl_usd": 53019,
-      "tvl_change_7d_pct": -0.5962090106305192,
+      "tvl_usd": 53370,
+      "tvl_change_7d_pct": 3.1264492193538413,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2682,8 +2720,8 @@
         "Ethereum"
       ],
       "protocol_category": "NFT Marketplace",
-      "tvl_usd": 51116,
-      "tvl_change_7d_pct": -0.4207901503935167,
+      "tvl_usd": 51195,
+      "tvl_change_7d_pct": 2.941767875814365,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2701,8 +2739,8 @@
         "Wax"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 48303,
-      "tvl_change_7d_pct": 0.8139753302861437,
+      "tvl_usd": 50032,
+      "tvl_change_7d_pct": 9.20440903634181,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2722,8 +2760,8 @@
         "Pulse"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 46725,
-      "tvl_change_7d_pct": -2.6582779525426554,
+      "tvl_usd": 45941,
+      "tvl_change_7d_pct": -1.7788040108609668,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2741,8 +2779,8 @@
         "Polygon"
       ],
       "protocol_category": "Lending",
-      "tvl_usd": 44123,
-      "tvl_change_7d_pct": -0.03851381966470322,
+      "tvl_usd": 44119,
+      "tvl_change_7d_pct": 0.03627871119878466,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2760,8 +2798,8 @@
         "Nibiru"
       ],
       "protocol_category": "Derivatives",
-      "tvl_usd": 42394,
-      "tvl_change_7d_pct": -4.545966271136829,
+      "tvl_usd": 42125,
+      "tvl_change_7d_pct": -5.042604030476534,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2779,8 +2817,8 @@
         "X Layer"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 41750,
-      "tvl_change_7d_pct": -0.7205193446365301,
+      "tvl_usd": 41715,
+      "tvl_change_7d_pct": 1.9477980350945796,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2798,8 +2836,8 @@
         "Polygon"
       ],
       "protocol_category": "Luck Games",
-      "tvl_usd": 39613,
-      "tvl_change_7d_pct": -0.005048592704783542,
+      "tvl_usd": 39640,
+      "tvl_change_7d_pct": 0.06310740880979426,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2814,19 +2852,19 @@
       "slug": "altitude",
       "logo": "https://icons.llama.fi/altitude.jpg",
       "chains": [
-        "Ethereum",
-        "Fantom",
         "Binance",
         "Polygon",
+        "Avalanche",
+        "Fantom",
+        "Ethereum",
         "Mantle",
         "Optimism",
         "Linea",
-        "Arbitrum",
-        "Avalanche"
+        "Arbitrum"
       ],
       "protocol_category": "Cross Chain Bridge",
-      "tvl_usd": 38261,
-      "tvl_change_7d_pct": -1.2695791293577272,
+      "tvl_usd": 38549,
+      "tvl_change_7d_pct": 2.138201473159875,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2844,8 +2882,8 @@
         "Findora"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 35740,
-      "tvl_change_7d_pct": -3.093733900924595,
+      "tvl_usd": 35895,
+      "tvl_change_7d_pct": -1.0366408425463869,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2864,8 +2902,8 @@
         "Polygon"
       ],
       "protocol_category": "Yield Aggregator",
-      "tvl_usd": 35504,
-      "tvl_change_7d_pct": -0.35363457760314343,
+      "tvl_usd": 35505,
+      "tvl_change_7d_pct": 0.577887311974165,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2883,8 +2921,8 @@
         "Linea"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 35066,
-      "tvl_change_7d_pct": -0.3523728331912475,
+      "tvl_usd": 35225,
+      "tvl_change_7d_pct": 1.6095999076931953,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2902,8 +2940,8 @@
         "Metis"
       ],
       "protocol_category": "Yield",
-      "tvl_usd": 30458,
-      "tvl_change_7d_pct": -1.1873864521152349,
+      "tvl_usd": 30524,
+      "tvl_change_7d_pct": 0.24960588544403572,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2921,8 +2959,8 @@
         "Binance"
       ],
       "protocol_category": "CDP",
-      "tvl_usd": 29281,
-      "tvl_change_7d_pct": -6.593722087533495,
+      "tvl_usd": 29158,
+      "tvl_change_7d_pct": -4.493940386505077,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2930,25 +2968,6 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/fluity",
       "project_url": ""
-    },
-    {
-      "id": "marquee",
-      "name": "Marquee",
-      "slug": "marquee",
-      "logo": "https://icons.llama.fi/marquee.jpg",
-      "chains": [
-        "Arbitrum"
-      ],
-      "protocol_category": "Insurance",
-      "tvl_usd": 28641,
-      "tvl_change_7d_pct": -5.425307092854313,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/marquee",
-      "project_url": "https://marquee.fi/"
     },
     {
       "id": "rakeoff",
@@ -2959,8 +2978,8 @@
         "ICP"
       ],
       "protocol_category": "Staking Pool",
-      "tvl_usd": 28614,
-      "tvl_change_7d_pct": -3.0625381123382343,
+      "tvl_usd": 28714,
+      "tvl_change_7d_pct": 0.7120058924625583,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2968,6 +2987,25 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/rakeoff",
       "project_url": "https://rakeoff.io"
+    },
+    {
+      "id": "marquee",
+      "name": "Marquee",
+      "slug": "marquee",
+      "logo": "https://icons.llama.fi/marquee.jpg",
+      "chains": [
+        "Arbitrum"
+      ],
+      "protocol_category": "Insurance",
+      "tvl_usd": 28645,
+      "tvl_change_7d_pct": -5.69236847303615,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/marquee",
+      "project_url": "https://marquee.fi/"
     },
     {
       "id": "solidlizard-dex",
@@ -2978,8 +3016,8 @@
         "Arbitrum"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 26286,
-      "tvl_change_7d_pct": -1.0800436533323299,
+      "tvl_usd": 26416,
+      "tvl_change_7d_pct": 1.3621887111008786,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -2987,25 +3025,6 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/solidlizard-dex",
       "project_url": "https://solidlizard.finance/"
-    },
-    {
-      "id": "pods-yield",
-      "name": "Pods Yield",
-      "slug": "pods-yield",
-      "logo": "https://icons.llama.fi/pods-yield.png",
-      "chains": [
-        "Ethereum"
-      ],
-      "protocol_category": "Yield",
-      "tvl_usd": 26035,
-      "tvl_change_7d_pct": -0.06525410717027483,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/pods-yield",
-      "project_url": "https://yield.pods.finance"
     },
     {
       "id": "persistence-dex",
@@ -3017,8 +3036,8 @@
         "Persistence"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 25030,
-      "tvl_change_7d_pct": -17.885965487828884,
+      "tvl_usd": 26236,
+      "tvl_change_7d_pct": 2.7855044074436828,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3026,6 +3045,25 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/persistence-dex",
       "project_url": "https://app.persistence.one"
+    },
+    {
+      "id": "pods-yield",
+      "name": "Pods Yield",
+      "slug": "pods-yield",
+      "logo": "https://icons.llama.fi/pods-yield.png",
+      "chains": [
+        "Ethereum"
+      ],
+      "protocol_category": "Yield",
+      "tvl_usd": 26007,
+      "tvl_change_7d_pct": 3.034745057644309,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/pods-yield",
+      "project_url": "https://yield.pods.finance"
     },
     {
       "id": "tidal-finance",
@@ -3036,8 +3074,8 @@
         "Polygon"
       ],
       "protocol_category": "Insurance",
-      "tvl_usd": 24742,
-      "tvl_change_7d_pct": 0.008084074373484237,
+      "tvl_usd": 24743,
+      "tvl_change_7d_pct": 0.020211819872261297,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3055,8 +3093,8 @@
         "Blast"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 23974,
-      "tvl_change_7d_pct": -0.39883672621520566,
+      "tvl_usd": 23927,
+      "tvl_change_7d_pct": 2.4842592195999487,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3074,8 +3112,8 @@
         "Bitlayer"
       ],
       "protocol_category": "Farm",
-      "tvl_usd": 23656,
-      "tvl_change_7d_pct": -3.120648701777377,
+      "tvl_usd": 23734,
+      "tvl_change_7d_pct": 0.5422350249936457,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3093,8 +3131,8 @@
         "Cronos"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 23416,
-      "tvl_change_7d_pct": -3.1876627940629265,
+      "tvl_usd": 23653,
+      "tvl_change_7d_pct": -0.525696021532509,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3113,8 +3151,8 @@
         "Binance"
       ],
       "protocol_category": "Indexes",
-      "tvl_usd": 21332,
-      "tvl_change_7d_pct": -3.6712576202303007,
+      "tvl_usd": 21299,
+      "tvl_change_7d_pct": -0.08443964910634705,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3132,8 +3170,8 @@
         "Solana"
       ],
       "protocol_category": "Yield",
-      "tvl_usd": 20089,
-      "tvl_change_7d_pct": -6.4801452446347945,
+      "tvl_usd": 20104,
+      "tvl_change_7d_pct": -3.346153846153846,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3151,8 +3189,8 @@
         "Klaytn"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 19111,
-      "tvl_change_7d_pct": 0.8602491028076842,
+      "tvl_usd": 18999,
+      "tvl_change_7d_pct": 3.1041406631573234,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3167,18 +3205,18 @@
       "slug": "swapsicle-v1",
       "logo": "https://icons.llama.fi/swapsicle-v1.jpg",
       "chains": [
-        "Ethereum",
         "Optimism",
-        "Telos",
-        "Avalanche",
-        "Fantom",
+        "Ethereum",
         "Arbitrum",
+        "Telos",
+        "Fantom",
+        "Avalanche",
         "Binance",
         "Polygon"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 18608,
-      "tvl_change_7d_pct": -3.027776330189171,
+      "tvl_usd": 18750,
+      "tvl_change_7d_pct": 0.08006405124099279,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3196,8 +3234,8 @@
         "Aura Network"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 18090,
-      "tvl_change_7d_pct": -2.2426371251013237,
+      "tvl_usd": 17629,
+      "tvl_change_7d_pct": -1.4974576744705816,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3216,8 +3254,8 @@
         "zkSync Era"
       ],
       "protocol_category": "Lending",
-      "tvl_usd": 16477,
-      "tvl_change_7d_pct": -0.1393939393939394,
+      "tvl_usd": 16484,
+      "tvl_change_7d_pct": 1.702862783810464,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3235,8 +3273,8 @@
         "Ethereum"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 16222,
-      "tvl_change_7d_pct": -0.4846328446107601,
+      "tvl_usd": 16237,
+      "tvl_change_7d_pct": 0.832143078929392,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3254,8 +3292,8 @@
         "zkSync Era"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 15271,
-      "tvl_change_7d_pct": -0.3588672843533864,
+      "tvl_usd": 15338,
+      "tvl_change_7d_pct": 1.6098045710500164,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3275,8 +3313,8 @@
         "Avalanche"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 14565,
-      "tvl_change_7d_pct": -12.768760855243459,
+      "tvl_usd": 14704,
+      "tvl_change_7d_pct": -7.585946829237635,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3294,8 +3332,8 @@
         "Evmos"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 13404,
-      "tvl_change_7d_pct": -0.02237637055269635,
+      "tvl_usd": 13411,
+      "tvl_change_7d_pct": 0.05968812952324106,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3313,8 +3351,8 @@
         "Base"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 12741,
-      "tvl_change_7d_pct": -2.970070824765821,
+      "tvl_usd": 12817,
+      "tvl_change_7d_pct": 0.46245493023984946,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3329,12 +3367,12 @@
       "slug": "thorusfi",
       "logo": "https://icons.llama.fi/thorusfi.jpg",
       "chains": [
-        "Avalanche",
-        "Moonbeam"
+        "Moonbeam",
+        "Avalanche"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 12587,
-      "tvl_change_7d_pct": -0.4193037974683544,
+      "tvl_usd": 12621,
+      "tvl_change_7d_pct": 0.333889816360601,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3352,8 +3390,8 @@
         "ZetaChain"
       ],
       "protocol_category": "Derivatives",
-      "tvl_usd": 10991,
-      "tvl_change_7d_pct": -1.672928967614958,
+      "tvl_usd": 10816,
+      "tvl_change_7d_pct": -1.4397667213413523,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3371,8 +3409,8 @@
         "Base"
       ],
       "protocol_category": "Derivatives",
-      "tvl_usd": 8935,
-      "tvl_change_7d_pct": -1.5969162995594712,
+      "tvl_usd": 8974,
+      "tvl_change_7d_pct": 0.7069913589945012,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3390,8 +3428,8 @@
         "Moonchain"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 8209,
-      "tvl_change_7d_pct": -1.535324457238815,
+      "tvl_usd": 8062,
+      "tvl_change_7d_pct": -0.5673408978786384,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3399,25 +3437,6 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/moonchain-swap",
       "project_url": "https://swap.moonchain.com/#/"
-    },
-    {
-      "id": "bethash",
-      "name": "BetHash",
-      "slug": "bethash",
-      "logo": "https://icons.llama.fi/bethash.jpg",
-      "chains": [
-        "EOS"
-      ],
-      "protocol_category": "Luck Games",
-      "tvl_usd": 7812,
-      "tvl_change_7d_pct": 0.8911274699728787,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/bethash",
-      "project_url": "https://bethash.io/"
     },
     {
       "id": "huckleberry-lending",
@@ -3428,8 +3447,8 @@
         "Moonriver"
       ],
       "protocol_category": "Lending",
-      "tvl_usd": 7804,
-      "tvl_change_7d_pct": -1.0398173979203653,
+      "tvl_usd": 7810,
+      "tvl_change_7d_pct": 0.5406797116374871,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3439,17 +3458,36 @@
       "project_url": "https://moonriver.huckleberry.finance/#/lend/dashboard"
     },
     {
+      "id": "bethash",
+      "name": "BetHash",
+      "slug": "bethash",
+      "logo": "https://icons.llama.fi/bethash.jpg",
+      "chains": [
+        "EOS"
+      ],
+      "protocol_category": "Luck Games",
+      "tvl_usd": 7753,
+      "tvl_change_7d_pct": 3.927613941018767,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/bethash",
+      "project_url": "https://bethash.io/"
+    },
+    {
       "id": "elocks",
       "name": "eLOCKS",
       "slug": "elocks",
       "logo": "https://icons.llama.fi/elocks.png",
       "chains": [
-        "Sonic",
-        "Fantom"
+        "Fantom",
+        "Sonic"
       ],
       "protocol_category": "Yield",
-      "tvl_usd": 7258,
-      "tvl_change_7d_pct": -1.4126596033686498,
+      "tvl_usd": 7082,
+      "tvl_change_7d_pct": -0.0282326369282891,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3457,25 +3495,6 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/elocks",
       "project_url": "https://eliteness.network/elocks/"
-    },
-    {
-      "id": "brinc-finance",
-      "name": "Brinc Finance",
-      "slug": "brinc-finance",
-      "logo": "https://icons.llama.fi/brinc.jpg",
-      "chains": [
-        "Arbitrum"
-      ],
-      "protocol_category": "Yield",
-      "tvl_usd": 6525,
-      "tvl_change_7d_pct": -0.21410001529285821,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/brinc-finance",
-      "project_url": ""
     },
     {
       "id": "3a-dao",
@@ -3487,8 +3506,8 @@
         "Linea"
       ],
       "protocol_category": "CDP",
-      "tvl_usd": 6500,
-      "tvl_change_7d_pct": -1.6343825665859564,
+      "tvl_usd": 6549,
+      "tvl_change_7d_pct": 2.36011253516724,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3496,6 +3515,25 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/3a-dao",
       "project_url": "https://3adao.org"
+    },
+    {
+      "id": "brinc-finance",
+      "name": "Brinc Finance",
+      "slug": "brinc-finance",
+      "logo": "https://icons.llama.fi/brinc.jpg",
+      "chains": [
+        "Arbitrum"
+      ],
+      "protocol_category": "Yield",
+      "tvl_usd": 6523,
+      "tvl_change_7d_pct": 0.030670142616163163,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/brinc-finance",
+      "project_url": ""
     },
     {
       "id": "anzen-v1",
@@ -3507,7 +3545,7 @@
       ],
       "protocol_category": "RWA",
       "tvl_usd": 6299,
-      "tvl_change_7d_pct": 0.015878056525881232,
+      "tvl_change_7d_pct": 0.03176115610608226,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3525,8 +3563,8 @@
         "ZetaChain"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 6033,
-      "tvl_change_7d_pct": 26130.434782608692,
+      "tvl_usd": 6043,
+      "tvl_change_7d_pct": -6.527455529775715,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3544,8 +3582,8 @@
         "Metis"
       ],
       "protocol_category": "Lending",
-      "tvl_usd": 5692,
-      "tvl_change_7d_pct": -3.0158459703527005,
+      "tvl_usd": 5713,
+      "tvl_change_7d_pct": -0.7298001737619462,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3553,44 +3591,6 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/agora",
       "project_url": "https://agoradefi.io"
-    },
-    {
-      "id": "qielend",
-      "name": "QIELend",
-      "slug": "qielend",
-      "logo": "https://icons.llama.fi/qielend.jpg",
-      "chains": [
-        "QIE"
-      ],
-      "protocol_category": "Lending",
-      "tvl_usd": 5659,
-      "tvl_change_7d_pct": -93.39233796107096,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/qielend",
-      "project_url": "https://www.qielend.qie.digital/"
-    },
-    {
-      "id": "lfgswap-core",
-      "name": "LFGSwap Core",
-      "slug": "lfgswap-core",
-      "logo": "https://icons.llama.fi/lfgswap.png",
-      "chains": [
-        "CORE"
-      ],
-      "protocol_category": "Dexs",
-      "tvl_usd": 4853,
-      "tvl_change_7d_pct": -57.50065680007006,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/lfgswap-core",
-      "project_url": "https://app.lfgswap.finance/?chainId=1116"
     },
     {
       "id": "gasswap",
@@ -3601,8 +3601,8 @@
         "Blast"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 4695,
-      "tvl_change_7d_pct": -0.6138865368331922,
+      "tvl_usd": 4728,
+      "tvl_change_7d_pct": 3.389459873168598,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3620,8 +3620,8 @@
         "Arbitrum"
       ],
       "protocol_category": "Lending",
-      "tvl_usd": 4694,
-      "tvl_change_7d_pct": -1.8197029910060656,
+      "tvl_usd": 4695,
+      "tvl_change_7d_pct": 0.7078507078507079,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3629,6 +3629,25 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/lodestar-v0",
       "project_url": ""
+    },
+    {
+      "id": "lfgswap-core",
+      "name": "LFGSwap Core",
+      "slug": "lfgswap-core",
+      "logo": "https://icons.llama.fi/lfgswap.png",
+      "chains": [
+        "CORE"
+      ],
+      "protocol_category": "Dexs",
+      "tvl_usd": 4521,
+      "tvl_change_7d_pct": -58.93359978199655,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/lfgswap-core",
+      "project_url": "https://app.lfgswap.finance/?chainId=1116"
     },
     {
       "id": "beratrax",
@@ -3639,8 +3658,8 @@
         "Berachain"
       ],
       "protocol_category": "Yield Aggregator",
-      "tvl_usd": 3900,
-      "tvl_change_7d_pct": -9.175593851886353,
+      "tvl_usd": 3890,
+      "tvl_change_7d_pct": -5.559601845108036,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3658,8 +3677,8 @@
         "Blast"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 3883,
-      "tvl_change_7d_pct": -0.6142820578448938,
+      "tvl_usd": 3796,
+      "tvl_change_7d_pct": 0.370174510840825,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3677,8 +3696,8 @@
         "Osmosis"
       ],
       "protocol_category": "Indexes",
-      "tvl_usd": 3693,
-      "tvl_change_7d_pct": -4.672173464119773,
+      "tvl_usd": 3723,
+      "tvl_change_7d_pct": -1.6120507399577166,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3696,8 +3715,8 @@
         "Binance"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 3503,
-      "tvl_change_7d_pct": -0.8491367110104727,
+      "tvl_usd": 3511,
+      "tvl_change_7d_pct": 0.6594036697247707,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3715,14 +3734,44 @@
         "Cronos"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 3095,
-      "tvl_change_7d_pct": -2.917189460476788,
+      "tvl_usd": 3120,
+      "tvl_change_7d_pct": 0.7751937984496124,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
       "reported_high_apy_detected": false,
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/smolswap",
+      "project_url": ""
+    },
+    {
+      "id": "magik-farm",
+      "name": "Magik Farm",
+      "slug": "magik-farm",
+      "logo": "https://icons.llama.fi/magik-farm.png",
+      "chains": [
+        "Heco",
+        "Harmony",
+        "Celo",
+        "Moonriver",
+        "Arbitrum",
+        "Cronos",
+        "Fantom",
+        "Aurora",
+        "Binance",
+        "Polygon",
+        "Avalanche",
+        "Dogechain"
+      ],
+      "protocol_category": "Yield Aggregator",
+      "tvl_usd": 2966,
+      "tvl_change_7d_pct": -0.7362784471218206,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/magik-farm",
       "project_url": ""
     },
     {
@@ -3734,44 +3783,14 @@
         "Cronos"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 2892,
-      "tvl_change_7d_pct": -0.2070393374741201,
+      "tvl_usd": 2897,
+      "tvl_change_7d_pct": 0.17289073305670816,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
       "reported_high_apy_detected": false,
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/mm-stableswap",
-      "project_url": ""
-    },
-    {
-      "id": "magik-farm",
-      "name": "Magik Farm",
-      "slug": "magik-farm",
-      "logo": "https://icons.llama.fi/magik-farm.png",
-      "chains": [
-        "Heco",
-        "Arbitrum",
-        "Harmony",
-        "Celo",
-        "Moonriver",
-        "Aurora",
-        "Fantom",
-        "Binance",
-        "Polygon",
-        "Avalanche",
-        "Cronos",
-        "Dogechain"
-      ],
-      "protocol_category": "Yield Aggregator",
-      "tvl_usd": 2887,
-      "tvl_change_7d_pct": -4.022606382978723,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/magik-farm",
       "project_url": ""
     },
     {
@@ -3783,8 +3802,8 @@
         "Kasplex"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 2748,
-      "tvl_change_7d_pct": -11.469072164948454,
+      "tvl_usd": 2770,
+      "tvl_change_7d_pct": -7.697434188603798,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3792,26 +3811,6 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/kaspa-finance-v3",
       "project_url": "https://app.kaspafinance.io/swap"
-    },
-    {
-      "id": "soulswap",
-      "name": "SoulSwap",
-      "slug": "soulswap",
-      "logo": "https://icons.llama.fi/soulswap.png",
-      "chains": [
-        "Avalanche",
-        "Fantom"
-      ],
-      "protocol_category": "Dexs",
-      "tvl_usd": 2587,
-      "tvl_change_7d_pct": -1.1841100076394193,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/soulswap",
-      "project_url": ""
     },
     {
       "id": "ouroboros-capital",
@@ -3822,8 +3821,8 @@
         "Ethereum"
       ],
       "protocol_category": "Risk Curators",
-      "tvl_usd": 2556,
-      "tvl_change_7d_pct": -0.03910833007430582,
+      "tvl_usd": 2557,
+      "tvl_change_7d_pct": 0.03912363067292645,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3831,6 +3830,26 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/ouroboros-capital",
       "project_url": "https://yuzu.money/"
+    },
+    {
+      "id": "soulswap",
+      "name": "SoulSwap",
+      "slug": "soulswap",
+      "logo": "https://icons.llama.fi/soulswap.png",
+      "chains": [
+        "Fantom",
+        "Avalanche"
+      ],
+      "protocol_category": "Dexs",
+      "tvl_usd": 2426,
+      "tvl_change_7d_pct": -9.67982129560685,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/soulswap",
+      "project_url": ""
     },
     {
       "id": "jibswap",
@@ -3842,7 +3861,7 @@
       ],
       "protocol_category": "Dexs",
       "tvl_usd": 2413,
-      "tvl_change_7d_pct": 0.41614648356221395,
+      "tvl_change_7d_pct": 0.20764119601328906,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3860,8 +3879,8 @@
         "Pulse"
       ],
       "protocol_category": "Farm",
-      "tvl_usd": 2098,
-      "tvl_change_7d_pct": -0.28517110266159695,
+      "tvl_usd": 2095,
+      "tvl_change_7d_pct": -1.3653483992467044,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3879,8 +3898,8 @@
         "Base"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 2041,
-      "tvl_change_7d_pct": -0.9223300970873786,
+      "tvl_usd": 2046,
+      "tvl_change_7d_pct": 0.7881773399014778,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3898,8 +3917,8 @@
         "Binance"
       ],
       "protocol_category": "Yield",
-      "tvl_usd": 1768,
-      "tvl_change_7d_pct": -3.7037037037037033,
+      "tvl_usd": 1777,
+      "tvl_change_7d_pct": -1.7689331122166942,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3914,12 +3933,12 @@
       "slug": "henjin-dex",
       "logo": "https://icons.llama.fi/henjin-dex.png",
       "chains": [
-        "Base",
-        "Taiko"
+        "Taiko",
+        "Base"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 1626,
-      "tvl_change_7d_pct": 1.6885553470919326,
+      "tvl_usd": 1612,
+      "tvl_change_7d_pct": 3.3996151379089157,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3938,8 +3957,8 @@
         "ShimmerEVM"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 1539,
-      "tvl_change_7d_pct": -0.2592352559948153,
+      "tvl_usd": 1540,
+      "tvl_change_7d_pct": 0.1951854261548471,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3957,8 +3976,8 @@
         "Aurora"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 1515,
-      "tvl_change_7d_pct": -4.295641187618446,
+      "tvl_usd": 1493,
+      "tvl_change_7d_pct": -4.048843187660668,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3976,8 +3995,8 @@
         "Binance"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 1326,
-      "tvl_change_7d_pct": -5.689900426742532,
+      "tvl_usd": 1332,
+      "tvl_change_7d_pct": -3.2679738562091507,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -3995,8 +4014,8 @@
         "Arbitrum"
       ],
       "protocol_category": "Farm",
-      "tvl_usd": 1310,
-      "tvl_change_7d_pct": -1.1320754716981132,
+      "tvl_usd": 1311,
+      "tvl_change_7d_pct": 0.45977011494252873,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -4014,8 +4033,8 @@
         "EthereumClassic"
       ],
       "protocol_category": "Synthetics",
-      "tvl_usd": 1149,
-      "tvl_change_7d_pct": -3.6073825503355708,
+      "tvl_usd": 1310,
+      "tvl_change_7d_pct": 11.48936170212766,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -4034,7 +4053,7 @@
       ],
       "protocol_category": "Dexs",
       "tvl_usd": 1020,
-      "tvl_change_7d_pct": -0.6815968841285297,
+      "tvl_change_7d_pct": -0.5847953216374269,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -4053,8 +4072,8 @@
         "Ethereum"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 984,
-      "tvl_change_7d_pct": -0.6060606060606061,
+      "tvl_usd": 987,
+      "tvl_change_7d_pct": 2.4922118380062304,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -4062,25 +4081,6 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/capitaldex",
       "project_url": "https://capitaldex.exchange/#/swap"
-    },
-    {
-      "id": "mirage-protocol",
-      "name": "Mirage Protocol",
-      "slug": "mirage-protocol",
-      "logo": "https://icons.llama.fi/mirage-protocol.jpg",
-      "chains": [
-        "Aptos"
-      ],
-      "protocol_category": "Derivatives",
-      "tvl_usd": 904,
-      "tvl_change_7d_pct": -55.96687773989284,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/mirage-protocol",
-      "project_url": "http://mirage.money/"
     },
     {
       "id": "y2r",
@@ -4091,8 +4091,8 @@
         "Canto"
       ],
       "protocol_category": "Yield Aggregator",
-      "tvl_usd": 898,
-      "tvl_change_7d_pct": 667.5213675213676,
+      "tvl_usd": 920,
+      "tvl_change_7d_pct": 700,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -4102,23 +4102,23 @@
       "project_url": ""
     },
     {
-      "id": "farmtom",
-      "name": "Farmtom",
-      "slug": "farmtom",
-      "logo": "https://icons.llama.fi/farmton.png",
+      "id": "mirage-protocol",
+      "name": "Mirage Protocol",
+      "slug": "mirage-protocol",
+      "logo": "https://icons.llama.fi/mirage-protocol.jpg",
       "chains": [
-        "Fantom"
+        "Aptos"
       ],
-      "protocol_category": "Yield",
-      "tvl_usd": 877,
-      "tvl_change_7d_pct": 9.07960199004975,
+      "protocol_category": "Derivatives",
+      "tvl_usd": 906,
+      "tvl_change_7d_pct": -54.403623553095116,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
       "reported_high_apy_detected": false,
       "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/farmtom",
-      "project_url": ""
+      "defillama_url": "https://defillama.com/protocol/mirage-protocol",
+      "project_url": "http://mirage.money/"
     },
     {
       "id": "beam-dex",
@@ -4129,8 +4129,8 @@
         "ZetaChain"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 852,
-      "tvl_change_7d_pct": -4.591265397536394,
+      "tvl_usd": 845,
+      "tvl_change_7d_pct": -2.199074074074074,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -4140,22 +4140,22 @@
       "project_url": "https://www.beamdex.xyz"
     },
     {
-      "id": "dark-matter",
-      "name": "Dark Matter",
-      "slug": "dark-matter",
-      "logo": "https://icons.llama.fi/dark-matter.jpg",
+      "id": "farmtom",
+      "name": "Farmtom",
+      "slug": "farmtom",
+      "logo": "https://icons.llama.fi/farmton.png",
       "chains": [
         "Fantom"
       ],
-      "protocol_category": "Farm",
-      "tvl_usd": 810,
-      "tvl_change_7d_pct": 5.7441253263707575,
+      "protocol_category": "Yield",
+      "tvl_usd": 827,
+      "tvl_change_7d_pct": 0.48602673147023084,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
       "reported_high_apy_detected": false,
       "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/dark-matter",
+      "defillama_url": "https://defillama.com/protocol/farmtom",
       "project_url": ""
     },
     {
@@ -4167,14 +4167,33 @@
         "Avalanche"
       ],
       "protocol_category": "Yield",
-      "tvl_usd": 767,
-      "tvl_change_7d_pct": 0,
+      "tvl_usd": 768,
+      "tvl_change_7d_pct": 0.39215686274509803,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
       "reported_high_apy_detected": false,
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/swift-finance",
+      "project_url": ""
+    },
+    {
+      "id": "dark-matter",
+      "name": "Dark Matter",
+      "slug": "dark-matter",
+      "logo": "https://icons.llama.fi/dark-matter.jpg",
+      "chains": [
+        "Fantom"
+      ],
+      "protocol_category": "Farm",
+      "tvl_usd": 754,
+      "tvl_change_7d_pct": -5.037783375314862,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/dark-matter",
       "project_url": ""
     },
     {
@@ -4186,8 +4205,8 @@
         "ZetaChain"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 608,
-      "tvl_change_7d_pct": -9.792284866468842,
+      "tvl_usd": 610,
+      "tvl_change_7d_pct": -5.572755417956656,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -4206,7 +4225,7 @@
       ],
       "protocol_category": "Dexs",
       "tvl_usd": 596,
-      "tvl_change_7d_pct": -4.025764895330113,
+      "tvl_change_7d_pct": -95.92088152761617,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -4224,8 +4243,8 @@
         "Arbitrum"
       ],
       "protocol_category": "Leveraged Farming",
-      "tvl_usd": 583,
-      "tvl_change_7d_pct": -1.6863406408094435,
+      "tvl_usd": 586,
+      "tvl_change_7d_pct": 2.0905923344947737,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -4243,8 +4262,8 @@
         "zkSync Era"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 551,
-      "tvl_change_7d_pct": -0.5415162454873645,
+      "tvl_usd": 554,
+      "tvl_change_7d_pct": 1.8382352941176472,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -4262,8 +4281,8 @@
         "Nibiru"
       ],
       "protocol_category": "Lending",
-      "tvl_usd": 524,
-      "tvl_change_7d_pct": -0.19047619047619047,
+      "tvl_usd": 522,
+      "tvl_change_7d_pct": -0.5714285714285714,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -4281,33 +4300,14 @@
         "Arbitrum"
       ],
       "protocol_category": "Lending",
-      "tvl_usd": 401,
-      "tvl_change_7d_pct": -0.24875621890547264,
+      "tvl_usd": 402,
+      "tvl_change_7d_pct": 1.0050251256281406,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
       "reported_high_apy_detected": false,
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/l2finance",
-      "project_url": ""
-    },
-    {
-      "id": "fatfire-defi",
-      "name": "FATFIRE DEFI",
-      "slug": "fatfire-defi",
-      "logo": "https://icons.llama.fi/fatfire.jpg",
-      "chains": [
-        "Fantom"
-      ],
-      "protocol_category": "Yield",
-      "tvl_usd": 388,
-      "tvl_change_7d_pct": 24.758842443729904,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/fatfire-defi",
       "project_url": ""
     },
     {
@@ -4327,6 +4327,25 @@
       "reported_high_apy_detected": false,
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/starksport",
+      "project_url": ""
+    },
+    {
+      "id": "fatfire-defi",
+      "name": "FATFIRE DEFI",
+      "slug": "fatfire-defi",
+      "logo": "https://icons.llama.fi/fatfire.jpg",
+      "chains": [
+        "Fantom"
+      ],
+      "protocol_category": "Yield",
+      "tvl_usd": 361,
+      "tvl_change_7d_pct": 13.166144200626958,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/fatfire-defi",
       "project_url": ""
     },
     {
@@ -4355,8 +4374,8 @@
       "logo": "https://icons.llama.fi/return-finance.png",
       "chains": [
         "Base",
-        "Ethereum",
         "Polygon",
+        "Ethereum",
         "Avalanche"
       ],
       "protocol_category": "Yield Aggregator",
@@ -4379,8 +4398,8 @@
         "Elrond"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 193,
-      "tvl_change_7d_pct": -8.095238095238095,
+      "tvl_usd": 196,
+      "tvl_change_7d_pct": 2.083333333333333,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -4398,8 +4417,8 @@
         "Aptos"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 176,
-      "tvl_change_7d_pct": -12.871287128712872,
+      "tvl_usd": 177,
+      "tvl_change_7d_pct": -7.329842931937172,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -4417,8 +4436,8 @@
         "Ethereum"
       ],
       "protocol_category": "Indexes",
-      "tvl_usd": 154,
-      "tvl_change_7d_pct": -4.938271604938271,
+      "tvl_usd": 155,
+      "tvl_change_7d_pct": 1.3071895424836601,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -4436,8 +4455,8 @@
         "Arbitrum"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 140,
-      "tvl_change_7d_pct": -0.7092198581560284,
+      "tvl_usd": 141,
+      "tvl_change_7d_pct": 2.1739130434782608,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -4453,14 +4472,14 @@
       "logo": "https://icons.llama.fi/incognito.png",
       "chains": [
         "Ethereum",
-        "Polygon",
         "Fantom",
         "Binance",
+        "Polygon",
         "Avalanche"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 132,
-      "tvl_change_7d_pct": 0.7633587786259541,
+      "tvl_usd": 126,
+      "tvl_change_7d_pct": -5.263157894736842,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -4478,8 +4497,8 @@
         "Telos"
       ],
       "protocol_category": "Derivatives",
-      "tvl_usd": 81,
-      "tvl_change_7d_pct": -6.896551724137931,
+      "tvl_usd": 80,
+      "tvl_change_7d_pct": -15.789473684210526,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -4497,8 +4516,8 @@
         "Avalanche"
       ],
       "protocol_category": "Yield",
-      "tvl_usd": 76,
-      "tvl_change_7d_pct": -3.79746835443038,
+      "tvl_usd": 77,
+      "tvl_change_7d_pct": 0,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -4516,12 +4535,12 @@
         "Base",
         "Ethereum",
         "Binance",
-        "Arbitrum",
-        "Polygon"
+        "Polygon",
+        "Arbitrum"
       ],
       "protocol_category": "NFT Marketplace",
       "tvl_usd": 68,
-      "tvl_change_7d_pct": -4.225352112676056,
+      "tvl_change_7d_pct": -1.4492753623188406,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -4539,8 +4558,8 @@
         "Scroll"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 62,
-      "tvl_change_7d_pct": -1.5873015873015872,
+      "tvl_usd": 63,
+      "tvl_change_7d_pct": 3.278688524590164,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -4558,8 +4577,8 @@
         "Algorand"
       ],
       "protocol_category": "Options Vault",
-      "tvl_usd": 52,
-      "tvl_change_7d_pct": 18.181818181818183,
+      "tvl_usd": 55,
+      "tvl_change_7d_pct": 25,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -4577,8 +4596,8 @@
         "Fantom"
       ],
       "protocol_category": "Dexs",
-      "tvl_usd": 41,
-      "tvl_change_7d_pct": -2.380952380952381,
+      "tvl_usd": 39,
+      "tvl_change_7d_pct": -9.30232558139535,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -4597,7 +4616,7 @@
       ],
       "protocol_category": "Derivatives",
       "tvl_usd": 35,
-      "tvl_change_7d_pct": -2.7777777777777777,
+      "tvl_change_7d_pct": 0,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -4635,7 +4654,7 @@
       ],
       "protocol_category": "Staking Pool",
       "tvl_usd": 28,
-      "tvl_change_7d_pct": -6.666666666666667,
+      "tvl_change_7d_pct": -3.4482758620689653,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -4653,8 +4672,8 @@
         "Fantom"
       ],
       "protocol_category": "Yield",
-      "tvl_usd": 20,
-      "tvl_change_7d_pct": 0,
+      "tvl_usd": 19,
+      "tvl_change_7d_pct": -5,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -4692,7 +4711,7 @@
       ],
       "protocol_category": "Lending",
       "tvl_usd": 12,
-      "tvl_change_7d_pct": 0,
+      "tvl_change_7d_pct": 9.090909090909092,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -4854,25 +4873,6 @@
       "project_url": "https://anyhedge.com/"
     },
     {
-      "id": "cellana-finance",
-      "name": "Cellana Finance",
-      "slug": "cellana-finance",
-      "logo": "https://icons.llama.fi/cellana-finance.jpg",
-      "chains": [
-        "Aptos"
-      ],
-      "protocol_category": "Dexs",
-      "tvl_usd": 0,
-      "tvl_change_7d_pct": null,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/cellana-finance",
-      "project_url": "https://cellana.finance"
-    },
-    {
       "id": "justbet",
       "name": "JustBet",
       "slug": "justbet",
@@ -4911,25 +4911,6 @@
       "project_url": "https://www.myswap.xyz"
     },
     {
-      "id": "sio2-finance",
-      "name": "SiO2 Finance",
-      "slug": "sio2-finance",
-      "logo": "https://icons.llama.fi/sio2-finance.png",
-      "chains": [
-        "Astar"
-      ],
-      "protocol_category": "Lending",
-      "tvl_usd": 0,
-      "tvl_change_7d_pct": null,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/sio2-finance",
-      "project_url": "http://www.sio2.finance"
-    },
-    {
       "id": "picnic",
       "name": "Picnic",
       "slug": "picnic",
@@ -4947,6 +4928,25 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/picnic",
       "project_url": "https://www.usepicnic.com"
+    },
+    {
+      "id": "sio2-finance",
+      "name": "SiO2 Finance",
+      "slug": "sio2-finance",
+      "logo": "https://icons.llama.fi/sio2-finance.png",
+      "chains": [
+        "Astar"
+      ],
+      "protocol_category": "Lending",
+      "tvl_usd": 0,
+      "tvl_change_7d_pct": null,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/sio2-finance",
+      "project_url": "http://www.sio2.finance"
     },
     {
       "id": "impermax-v3",
@@ -5086,15 +5086,12 @@
       "project_url": ""
     },
     {
-      "id": "atlendis-v2",
-      "name": "Atlendis V2",
-      "slug": "atlendis-v2",
-      "logo": "https://icons.llama.fi/atlendis-v2.jpg",
-      "chains": [
-        "Polygon",
-        "Mode"
-      ],
-      "protocol_category": "RWA Lending",
+      "id": "netherfi",
+      "name": "netherfi",
+      "slug": "netherfi",
+      "logo": null,
+      "chains": [],
+      "protocol_category": null,
       "tvl_usd": 0,
       "tvl_change_7d_pct": null,
       "confidence": "LOW",
@@ -5102,8 +5099,8 @@
       "flag_low_yield_coverage": false,
       "reported_high_apy_detected": false,
       "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/atlendis-v2",
-      "project_url": ""
+      "defillama_url": "https://defillama.com/protocol/netherfi",
+      "project_url": null
     },
     {
       "id": "velocore-v2",
@@ -5125,6 +5122,26 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/velocore-v2",
       "project_url": "https://velocore.xyz"
+    },
+    {
+      "id": "atlendis-v2",
+      "name": "Atlendis V2",
+      "slug": "atlendis-v2",
+      "logo": "https://icons.llama.fi/atlendis-v2.jpg",
+      "chains": [
+        "Polygon",
+        "Mode"
+      ],
+      "protocol_category": "RWA Lending",
+      "tvl_usd": 0,
+      "tvl_change_7d_pct": null,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/atlendis-v2",
+      "project_url": ""
     },
     {
       "id": "quantus-lend",
@@ -5183,23 +5200,6 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/beluga-protocol",
       "project_url": ""
-    },
-    {
-      "id": "netherfi",
-      "name": "netherfi",
-      "slug": "netherfi",
-      "logo": null,
-      "chains": [],
-      "protocol_category": null,
-      "tvl_usd": 0,
-      "tvl_change_7d_pct": null,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/netherfi",
-      "project_url": null
     },
     {
       "id": "baksdao",
@@ -5261,45 +5261,6 @@
       "project_url": ""
     },
     {
-      "id": "unilend-v2",
-      "name": "Unilend V2",
-      "slug": "unilend-v2",
-      "logo": "https://icons.llama.fi/unilend-v2.jpg",
-      "chains": [
-        "Ethereum"
-      ],
-      "protocol_category": "Lending",
-      "tvl_usd": 0,
-      "tvl_change_7d_pct": null,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/unilend-v2",
-      "project_url": "https://v2.unilend.finance/"
-    },
-    {
-      "id": "celeron",
-      "name": "Celeron",
-      "slug": "celeron",
-      "logo": "https://icons.llama.fi/celeron.jpg",
-      "chains": [
-        "Berachain",
-        "Mode"
-      ],
-      "protocol_category": "Yield Aggregator",
-      "tvl_usd": 0,
-      "tvl_change_7d_pct": null,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/celeron",
-      "project_url": ""
-    },
-    {
       "id": "donaswap-v2",
       "name": "DONASWAP V2",
       "slug": "donaswap-v2",
@@ -5347,14 +5308,14 @@
       "project_url": ""
     },
     {
-      "id": "evo",
-      "name": "EVO",
-      "slug": "evo",
-      "logo": "https://icons.llama.fi/evo.jpg",
+      "id": "unilend-v2",
+      "name": "Unilend V2",
+      "slug": "unilend-v2",
+      "logo": "https://icons.llama.fi/unilend-v2.jpg",
       "chains": [
-        "Supra"
+        "Ethereum"
       ],
-      "protocol_category": "Dexs",
+      "protocol_category": "Lending",
       "tvl_usd": 0,
       "tvl_change_7d_pct": null,
       "confidence": "LOW",
@@ -5362,8 +5323,8 @@
       "flag_low_yield_coverage": false,
       "reported_high_apy_detected": false,
       "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/evo",
-      "project_url": "https://app.evo.market"
+      "defillama_url": "https://defillama.com/protocol/unilend-v2",
+      "project_url": "https://v2.unilend.finance/"
     },
     {
       "id": "leadfi-leadbtc",
@@ -5385,14 +5346,15 @@
       "project_url": "https://leadfi.org/"
     },
     {
-      "id": "scranton-finance",
-      "name": "Scranton Finance",
-      "slug": "scranton-finance",
-      "logo": "https://icons.llama.fi/scranton-finance.png",
+      "id": "celeron",
+      "name": "Celeron",
+      "slug": "celeron",
+      "logo": "https://icons.llama.fi/celeron.jpg",
       "chains": [
-        "Fantom"
+        "Berachain",
+        "Mode"
       ],
-      "protocol_category": "Yield",
+      "protocol_category": "Yield Aggregator",
       "tvl_usd": 0,
       "tvl_change_7d_pct": null,
       "confidence": "LOW",
@@ -5400,7 +5362,38 @@
       "flag_low_yield_coverage": false,
       "reported_high_apy_detected": false,
       "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/scranton-finance",
+      "defillama_url": "https://defillama.com/protocol/celeron",
+      "project_url": ""
+    },
+    {
+      "id": "spherium",
+      "name": "Spherium",
+      "slug": "spherium",
+      "logo": "https://icons.llama.fi/spherium.jpg",
+      "chains": [
+        "Ethereum",
+        "Aurora",
+        "Cronos",
+        "Fantom",
+        "Moonriver",
+        "Optimism",
+        "Arbitrum",
+        "Polygon",
+        "Binance",
+        "Avalanche",
+        "Kucoin",
+        "OKExChain",
+        "Moonbeam"
+      ],
+      "protocol_category": "Cross Chain Bridge",
+      "tvl_usd": 0,
+      "tvl_change_7d_pct": null,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/spherium",
       "project_url": ""
     },
     {
@@ -5424,26 +5417,14 @@
       "project_url": "https://bridgem.io/"
     },
     {
-      "id": "spherium",
-      "name": "Spherium",
-      "slug": "spherium",
-      "logo": "https://icons.llama.fi/spherium.jpg",
+      "id": "evo",
+      "name": "EVO",
+      "slug": "evo",
+      "logo": "https://icons.llama.fi/evo.jpg",
       "chains": [
-        "Ethereum",
-        "Aurora",
-        "Moonriver",
-        "Arbitrum",
-        "Avalanche",
-        "Cronos",
-        "Fantom",
-        "Binance",
-        "Optimism",
-        "Moonbeam",
-        "Kucoin",
-        "OKExChain",
-        "Polygon"
+        "Supra"
       ],
-      "protocol_category": "Cross Chain Bridge",
+      "protocol_category": "Dexs",
       "tvl_usd": 0,
       "tvl_change_7d_pct": null,
       "confidence": "LOW",
@@ -5451,47 +5432,8 @@
       "flag_low_yield_coverage": false,
       "reported_high_apy_detected": false,
       "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/spherium",
-      "project_url": ""
-    },
-    {
-      "id": "zoth-zeusd",
-      "name": "Zoth ZeUSD",
-      "slug": "zoth-zeusd",
-      "logo": "https://icons.llama.fi/zoth.jpg",
-      "chains": [
-        "Ethereum"
-      ],
-      "protocol_category": "CDP",
-      "tvl_usd": 0,
-      "tvl_change_7d_pct": null,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/zoth-zeusd",
-      "project_url": "https://app.zoth.io/zeusd"
-    },
-    {
-      "id": "wault",
-      "name": "Wault",
-      "slug": "wault",
-      "logo": "https://icons.llama.fi/wault.jpg",
-      "chains": [
-        "Binance",
-        "Polygon"
-      ],
-      "protocol_category": "Yield",
-      "tvl_usd": 0,
-      "tvl_change_7d_pct": null,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/wault",
-      "project_url": ""
+      "defillama_url": "https://defillama.com/protocol/evo",
+      "project_url": "https://app.evo.market"
     },
     {
       "id": "dexfinance-bsc",
@@ -5540,14 +5482,15 @@
       "project_url": ""
     },
     {
-      "id": "karura-swap",
-      "name": "Karura Swap",
-      "slug": "karura-swap",
-      "logo": "https://icons.llama.fi/karura-swap.jpg",
+      "id": "wault",
+      "name": "Wault",
+      "slug": "wault",
+      "logo": "https://icons.llama.fi/wault.jpg",
       "chains": [
-        "Karura"
+        "Binance",
+        "Polygon"
       ],
-      "protocol_category": "Dexs",
+      "protocol_category": "Yield",
       "tvl_usd": 0,
       "tvl_change_7d_pct": null,
       "confidence": "LOW",
@@ -5555,18 +5498,18 @@
       "flag_low_yield_coverage": false,
       "reported_high_apy_detected": false,
       "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/karura-swap",
-      "project_url": "https://acala.network/karura"
+      "defillama_url": "https://defillama.com/protocol/wault",
+      "project_url": ""
     },
     {
-      "id": "capital-dao",
-      "name": "Capital DAO",
-      "slug": "capital-dao",
-      "logo": "https://icons.llama.fi/capital-dao.png",
+      "id": "zoth-zeusd",
+      "name": "Zoth ZeUSD",
+      "slug": "zoth-zeusd",
+      "logo": "https://icons.llama.fi/zoth.jpg",
       "chains": [
         "Ethereum"
       ],
-      "protocol_category": "Services",
+      "protocol_category": "CDP",
       "tvl_usd": 0,
       "tvl_change_7d_pct": null,
       "confidence": "LOW",
@@ -5574,8 +5517,8 @@
       "flag_low_yield_coverage": false,
       "reported_high_apy_detected": false,
       "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/capital-dao",
-      "project_url": "https://capital-dao.xyz/"
+      "defillama_url": "https://defillama.com/protocol/zoth-zeusd",
+      "project_url": "https://app.zoth.io/zeusd"
     },
     {
       "id": "banano",
@@ -5598,6 +5541,25 @@
       "project_url": "https://banano.cc"
     },
     {
+      "id": "scranton-finance",
+      "name": "Scranton Finance",
+      "slug": "scranton-finance",
+      "logo": "https://icons.llama.fi/scranton-finance.png",
+      "chains": [
+        "Fantom"
+      ],
+      "protocol_category": "Yield",
+      "tvl_usd": 0,
+      "tvl_change_7d_pct": null,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/scranton-finance",
+      "project_url": ""
+    },
+    {
       "id": "decubate",
       "name": "Decubate",
       "slug": "decubate",
@@ -5617,12 +5579,50 @@
       "project_url": "https://platform.decubate.com/"
     },
     {
-      "id": "unusdao",
-      "name": "UnusDao",
-      "slug": "unusdao",
-      "logo": "https://icons.llama.fi/unusdao.png",
+      "id": "capital-dao",
+      "name": "Capital DAO",
+      "slug": "capital-dao",
+      "logo": "https://icons.llama.fi/capital-dao.png",
       "chains": [
-        "Binance"
+        "Ethereum"
+      ],
+      "protocol_category": "Services",
+      "tvl_usd": 0,
+      "tvl_change_7d_pct": null,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/capital-dao",
+      "project_url": "https://capital-dao.xyz/"
+    },
+    {
+      "id": "karura-swap",
+      "name": "Karura Swap",
+      "slug": "karura-swap",
+      "logo": "https://icons.llama.fi/karura-swap.jpg",
+      "chains": [
+        "Karura"
+      ],
+      "protocol_category": "Dexs",
+      "tvl_usd": 0,
+      "tvl_change_7d_pct": null,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/karura-swap",
+      "project_url": "https://acala.network/karura"
+    },
+    {
+      "id": "vikingsfinance",
+      "name": "VikingsFinance",
+      "slug": "vikingsfinance",
+      "logo": "https://icons.llama.fi/vikingsfinance.jpg",
+      "chains": [
+        "Avalanche"
       ],
       "protocol_category": "Reserve Currency",
       "tvl_usd": 0,
@@ -5632,7 +5632,7 @@
       "flag_low_yield_coverage": false,
       "reported_high_apy_detected": false,
       "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/unusdao",
+      "defillama_url": "https://defillama.com/protocol/vikingsfinance",
       "project_url": ""
     },
     {
@@ -5655,25 +5655,6 @@
       "project_url": ""
     },
     {
-      "id": "vikingsfinance",
-      "name": "VikingsFinance",
-      "slug": "vikingsfinance",
-      "logo": "https://icons.llama.fi/vikingsfinance.jpg",
-      "chains": [
-        "Avalanche"
-      ],
-      "protocol_category": "Reserve Currency",
-      "tvl_usd": 0,
-      "tvl_change_7d_pct": null,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/vikingsfinance",
-      "project_url": ""
-    },
-    {
       "id": "securedao",
       "name": "SecureDAO",
       "slug": "securedao",
@@ -5693,25 +5674,6 @@
       "project_url": ""
     },
     {
-      "id": "whale-loans",
-      "name": "Whale Loans",
-      "slug": "whale-loans",
-      "logo": "https://icons.llama.fi/whale-loans.png",
-      "chains": [
-        "Binance"
-      ],
-      "protocol_category": "Reserve Currency",
-      "tvl_usd": 0,
-      "tvl_change_7d_pct": null,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/whale-loans",
-      "project_url": ""
-    },
-    {
       "id": "terrafloki",
       "name": "TerraFloki",
       "slug": "terrafloki",
@@ -5728,44 +5690,6 @@
       "reported_high_apy_detected": false,
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/terrafloki",
-      "project_url": ""
-    },
-    {
-      "id": "devil-finance",
-      "name": "Devil Finance",
-      "slug": "devil-finance",
-      "logo": "https://icons.llama.fi/devil-finance.jpg",
-      "chains": [
-        "Fantom"
-      ],
-      "protocol_category": "Yield",
-      "tvl_usd": 0,
-      "tvl_change_7d_pct": null,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/devil-finance",
-      "project_url": ""
-    },
-    {
-      "id": "thor-financial",
-      "name": "Thor Financial",
-      "slug": "thor-financial",
-      "logo": "https://icons.llama.fi/thor-financial.png",
-      "chains": [
-        "Avalanche"
-      ],
-      "protocol_category": "Yield",
-      "tvl_usd": 0,
-      "tvl_change_7d_pct": null,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/thor-financial",
       "project_url": ""
     },
     {
@@ -5790,14 +5714,14 @@
       "project_url": ""
     },
     {
-      "id": "electrik-finance",
-      "name": "Electrik Finance",
-      "slug": "electrik-finance",
-      "logo": "https://icons.llama.fi/electrikfinance.png",
+      "id": "unusdao",
+      "name": "UnusDao",
+      "slug": "unusdao",
+      "logo": "https://icons.llama.fi/unusdao.png",
       "chains": [
-        "Klaytn"
+        "Binance"
       ],
-      "protocol_category": "Yield Aggregator",
+      "protocol_category": "Reserve Currency",
       "tvl_usd": 0,
       "tvl_change_7d_pct": null,
       "confidence": "LOW",
@@ -5805,7 +5729,45 @@
       "flag_low_yield_coverage": false,
       "reported_high_apy_detected": false,
       "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/electrik-finance",
+      "defillama_url": "https://defillama.com/protocol/unusdao",
+      "project_url": ""
+    },
+    {
+      "id": "devil-finance",
+      "name": "Devil Finance",
+      "slug": "devil-finance",
+      "logo": "https://icons.llama.fi/devil-finance.jpg",
+      "chains": [
+        "Fantom"
+      ],
+      "protocol_category": "Yield",
+      "tvl_usd": 0,
+      "tvl_change_7d_pct": null,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/devil-finance",
+      "project_url": ""
+    },
+    {
+      "id": "whale-loans",
+      "name": "Whale Loans",
+      "slug": "whale-loans",
+      "logo": "https://icons.llama.fi/whale-loans.png",
+      "chains": [
+        "Binance"
+      ],
+      "protocol_category": "Reserve Currency",
+      "tvl_usd": 0,
+      "tvl_change_7d_pct": null,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/whale-loans",
       "project_url": ""
     },
     {
@@ -5847,14 +5809,14 @@
       "project_url": "https://ergopad.io/"
     },
     {
-      "id": "monster",
-      "name": "Monster",
-      "slug": "monster",
-      "logo": "https://icons.llama.fi/monster.png",
+      "id": "electrik-finance",
+      "name": "Electrik Finance",
+      "slug": "electrik-finance",
+      "logo": "https://icons.llama.fi/electrikfinance.png",
       "chains": [
-        "Fantom"
+        "Klaytn"
       ],
-      "protocol_category": "Gaming",
+      "protocol_category": "Yield Aggregator",
       "tvl_usd": 0,
       "tvl_change_7d_pct": null,
       "confidence": "LOW",
@@ -5862,16 +5824,16 @@
       "flag_low_yield_coverage": false,
       "reported_high_apy_detected": false,
       "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/monster",
+      "defillama_url": "https://defillama.com/protocol/electrik-finance",
       "project_url": ""
     },
     {
-      "id": "valerian",
-      "name": "Valerian",
-      "slug": "valerian",
-      "logo": "https://icons.llama.fi/valerian.jpg",
+      "id": "thor-financial",
+      "name": "Thor Financial",
+      "slug": "thor-financial",
+      "logo": "https://icons.llama.fi/thor-financial.png",
       "chains": [
-        "Astar"
+        "Avalanche"
       ],
       "protocol_category": "Yield",
       "tvl_usd": 0,
@@ -5881,7 +5843,7 @@
       "flag_low_yield_coverage": false,
       "reported_high_apy_detected": false,
       "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/valerian",
+      "defillama_url": "https://defillama.com/protocol/thor-financial",
       "project_url": ""
     },
     {
@@ -5924,25 +5886,6 @@
       "project_url": "https://minto.finance"
     },
     {
-      "id": "templedao-trade",
-      "name": "TempleDAO Trade",
-      "slug": "templedao-trade",
-      "logo": "https://icons.llama.fi/temple-dao.png",
-      "chains": [
-        "Ethereum"
-      ],
-      "protocol_category": "Dexs",
-      "tvl_usd": 0,
-      "tvl_change_7d_pct": null,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/templedao-trade",
-      "project_url": "https://templedao.link/dapp/trade"
-    },
-    {
       "id": "parallel-polkadot-liquid-staking",
       "name": "Parallel Polkadot Liquid Staking",
       "slug": "parallel-polkadot-liquid-staking",
@@ -5982,33 +5925,14 @@
       "project_url": ""
     },
     {
-      "id": "footballmanager",
-      "name": "FootballManager",
-      "slug": "footballmanager",
-      "logo": "https://icons.llama.fi/footballmanager.jpg",
-      "chains": [
-        "Arbitrum"
-      ],
-      "protocol_category": "Gaming",
-      "tvl_usd": 0,
-      "tvl_change_7d_pct": null,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/footballmanager",
-      "project_url": ""
-    },
-    {
-      "id": "pleasrdao",
-      "name": "PleasrDAO",
-      "slug": "pleasrdao",
-      "logo": "https://icons.llama.fi/pleasrdao.png",
+      "id": "templedao-trade",
+      "name": "TempleDAO Trade",
+      "slug": "templedao-trade",
+      "logo": "https://icons.llama.fi/temple-dao.png",
       "chains": [
         "Ethereum"
       ],
-      "protocol_category": "Services",
+      "protocol_category": "Dexs",
       "tvl_usd": 0,
       "tvl_change_7d_pct": null,
       "confidence": "LOW",
@@ -6016,8 +5940,8 @@
       "flag_low_yield_coverage": false,
       "reported_high_apy_detected": false,
       "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/pleasrdao",
-      "project_url": "https://pleasr.org/"
+      "defillama_url": "https://defillama.com/protocol/templedao-trade",
+      "project_url": "https://templedao.link/dapp/trade"
     },
     {
       "id": "fairfi",
@@ -6042,14 +5966,14 @@
       "project_url": ""
     },
     {
-      "id": "nftearth",
-      "name": "NFTEarth",
-      "slug": "nftearth",
-      "logo": "https://icons.llama.fi/nftearth.jpg",
+      "id": "valerian",
+      "name": "Valerian",
+      "slug": "valerian",
+      "logo": "https://icons.llama.fi/valerian.jpg",
       "chains": [
-        "Ethereum"
+        "Astar"
       ],
-      "protocol_category": "NFT Marketplace",
+      "protocol_category": "Yield",
       "tvl_usd": 0,
       "tvl_change_7d_pct": null,
       "confidence": "LOW",
@@ -6057,18 +5981,18 @@
       "flag_low_yield_coverage": false,
       "reported_high_apy_detected": false,
       "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/nftearth",
-      "project_url": "https://nftearth.exchange"
+      "defillama_url": "https://defillama.com/protocol/valerian",
+      "project_url": ""
     },
     {
-      "id": "plexus",
-      "name": "PLEXUS",
-      "slug": "plexus",
-      "logo": "https://icons.llama.fi/plexus.jpg",
+      "id": "monster",
+      "name": "Monster",
+      "slug": "monster",
+      "logo": "https://icons.llama.fi/monster.png",
       "chains": [
-        "Ethereum"
+        "Fantom"
       ],
-      "protocol_category": "DEX Aggregator",
+      "protocol_category": "Gaming",
       "tvl_usd": 0,
       "tvl_change_7d_pct": null,
       "confidence": "LOW",
@@ -6076,8 +6000,44 @@
       "flag_low_yield_coverage": false,
       "reported_high_apy_detected": false,
       "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/plexus",
-      "project_url": "https://www.plexus.app"
+      "defillama_url": "https://defillama.com/protocol/monster",
+      "project_url": ""
+    },
+    {
+      "id": "pleasrdao",
+      "name": "PleasrDAO",
+      "slug": "pleasrdao",
+      "logo": "https://icons.llama.fi/pleasrdao.png",
+      "chains": [
+        "Ethereum"
+      ],
+      "protocol_category": "Services",
+      "tvl_usd": 0,
+      "tvl_change_7d_pct": null,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/pleasrdao",
+      "project_url": "https://pleasr.org/"
+    },
+    {
+      "id": "cthulhufinance",
+      "name": "cthulhufinance",
+      "slug": "cthulhufinance",
+      "logo": null,
+      "chains": [],
+      "protocol_category": null,
+      "tvl_usd": 0,
+      "tvl_change_7d_pct": null,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/cthulhufinance",
+      "project_url": null
     },
     {
       "id": "ponytaswap",
@@ -6137,14 +6097,14 @@
       "project_url": "https://www.ampleforth.org"
     },
     {
-      "id": "firebot",
-      "name": "FireBot",
-      "slug": "firebot",
-      "logo": "https://icons.llama.fi/firebot.jpg",
+      "id": "nftearth",
+      "name": "NFTEarth",
+      "slug": "nftearth",
+      "logo": "https://icons.llama.fi/nftearth.jpg",
       "chains": [
-        "Polygon"
+        "Ethereum"
       ],
-      "protocol_category": "Yield",
+      "protocol_category": "NFT Marketplace",
       "tvl_usd": 0,
       "tvl_change_7d_pct": null,
       "confidence": "LOW",
@@ -6152,8 +6112,8 @@
       "flag_low_yield_coverage": false,
       "reported_high_apy_detected": false,
       "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/firebot",
-      "project_url": "https://firebot.gg"
+      "defillama_url": "https://defillama.com/protocol/nftearth",
+      "project_url": "https://nftearth.exchange"
     },
     {
       "id": "my-neighbor-alice",
@@ -6192,6 +6152,25 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/aerie-lab",
       "project_url": ""
+    },
+    {
+      "id": "firebot",
+      "name": "FireBot",
+      "slug": "firebot",
+      "logo": "https://icons.llama.fi/firebot.jpg",
+      "chains": [
+        "Polygon"
+      ],
+      "protocol_category": "Yield",
+      "tvl_usd": 0,
+      "tvl_change_7d_pct": null,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/firebot",
+      "project_url": "https://firebot.gg"
     },
     {
       "id": "tangent-protocol",
@@ -6252,10 +6231,29 @@
       "project_url": "https://www.tokenfi.com/"
     },
     {
-      "id": "bebop",
-      "name": "Bebop",
-      "slug": "bebop",
-      "logo": "https://icons.llama.fi/bebop.png",
+      "id": "footballmanager",
+      "name": "FootballManager",
+      "slug": "footballmanager",
+      "logo": "https://icons.llama.fi/footballmanager.jpg",
+      "chains": [
+        "Arbitrum"
+      ],
+      "protocol_category": "Gaming",
+      "tvl_usd": 0,
+      "tvl_change_7d_pct": null,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/footballmanager",
+      "project_url": ""
+    },
+    {
+      "id": "plexus",
+      "name": "PLEXUS",
+      "slug": "plexus",
+      "logo": "https://icons.llama.fi/plexus.jpg",
       "chains": [
         "Ethereum"
       ],
@@ -6267,44 +6265,8 @@
       "flag_low_yield_coverage": false,
       "reported_high_apy_detected": false,
       "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/bebop",
-      "project_url": "https://bebop.xyz/"
-    },
-    {
-      "id": "cthulhufinance",
-      "name": "cthulhufinance",
-      "slug": "cthulhufinance",
-      "logo": null,
-      "chains": [],
-      "protocol_category": null,
-      "tvl_usd": 0,
-      "tvl_change_7d_pct": null,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/cthulhufinance",
-      "project_url": null
-    },
-    {
-      "id": "realt-rmm-marketplace-v2",
-      "name": "RealT RMM Marketplace V2",
-      "slug": "realt-rmm-marketplace-v2",
-      "logo": "https://icons.llama.fi/realt-rmm-marketplace-v2.jpg",
-      "chains": [
-        "xDai"
-      ],
-      "protocol_category": "Lending",
-      "tvl_usd": 0,
-      "tvl_change_7d_pct": null,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/realt-rmm-marketplace-v2",
-      "project_url": "http://realt.co/"
+      "defillama_url": "https://defillama.com/protocol/plexus",
+      "project_url": "https://www.plexus.app"
     },
     {
       "id": "pyth-network",
@@ -6326,6 +6288,44 @@
       "project_url": "https://pyth.network/"
     },
     {
+      "id": "bebop",
+      "name": "Bebop",
+      "slug": "bebop",
+      "logo": "https://icons.llama.fi/bebop.png",
+      "chains": [
+        "Ethereum"
+      ],
+      "protocol_category": "DEX Aggregator",
+      "tvl_usd": 0,
+      "tvl_change_7d_pct": null,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/bebop",
+      "project_url": "https://bebop.xyz/"
+    },
+    {
+      "id": "realt-rmm-marketplace-v2",
+      "name": "RealT RMM Marketplace V2",
+      "slug": "realt-rmm-marketplace-v2",
+      "logo": "https://icons.llama.fi/realt-rmm-marketplace-v2.jpg",
+      "chains": [
+        "xDai"
+      ],
+      "protocol_category": "Lending",
+      "tvl_usd": 0,
+      "tvl_change_7d_pct": null,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/realt-rmm-marketplace-v2",
+      "project_url": "http://realt.co/"
+    },
+    {
       "id": "frogswap-amm",
       "name": "Frogswap AMM",
       "slug": "frogswap-amm",
@@ -6345,25 +6345,6 @@
       "project_url": "https://frogswap.xyz"
     },
     {
-      "id": "etaswap",
-      "name": "EtaSwap",
-      "slug": "etaswap",
-      "logo": "https://icons.llama.fi/etaswap.jpg",
-      "chains": [
-        "Hedera"
-      ],
-      "protocol_category": "DEX Aggregator",
-      "tvl_usd": 0,
-      "tvl_change_7d_pct": null,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/etaswap",
-      "project_url": "https://etaswap.com"
-    },
-    {
       "id": "blastex",
       "name": "Blastex",
       "slug": "blastex",
@@ -6381,6 +6362,25 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/blastex",
       "project_url": ""
+    },
+    {
+      "id": "etaswap",
+      "name": "EtaSwap",
+      "slug": "etaswap",
+      "logo": "https://icons.llama.fi/etaswap.jpg",
+      "chains": [
+        "Hedera"
+      ],
+      "protocol_category": "DEX Aggregator",
+      "tvl_usd": 0,
+      "tvl_change_7d_pct": null,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/etaswap",
+      "project_url": "https://etaswap.com"
     },
     {
       "id": "sei",
@@ -6421,25 +6421,6 @@
       "project_url": ""
     },
     {
-      "id": "clusters",
-      "name": "Clusters",
-      "slug": "clusters",
-      "logo": "https://icons.llama.fi/clusters.jpg",
-      "chains": [
-        "Ethereum"
-      ],
-      "protocol_category": "Domains",
-      "tvl_usd": 0,
-      "tvl_change_7d_pct": null,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/clusters",
-      "project_url": "https://clusters.xyz"
-    },
-    {
       "id": "kosmos",
       "name": "Kosmos",
       "slug": "kosmos",
@@ -6478,6 +6459,25 @@
       "project_url": "https://firoza.finance"
     },
     {
+      "id": "clusters",
+      "name": "Clusters",
+      "slug": "clusters",
+      "logo": "https://icons.llama.fi/clusters.jpg",
+      "chains": [
+        "Ethereum"
+      ],
+      "protocol_category": "Domains",
+      "tvl_usd": 0,
+      "tvl_change_7d_pct": null,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/clusters",
+      "project_url": "https://clusters.xyz"
+    },
+    {
       "id": "kujata",
       "name": "Kujata",
       "slug": "kujata",
@@ -6487,7 +6487,7 @@
       ],
       "protocol_category": "Dexs",
       "tvl_usd": 0,
-      "tvl_change_7d_pct": null,
+      "tvl_change_7d_pct": -100,
       "confidence": "LOW",
       "yield_coverage_pct": null,
       "flag_low_yield_coverage": false,
@@ -6535,6 +6535,23 @@
       "project_url": "https://www.lisalab.io"
     },
     {
+      "id": "handlefi-hsp",
+      "name": "handlefi-hsp",
+      "slug": "handlefi-hsp",
+      "logo": null,
+      "chains": [],
+      "protocol_category": null,
+      "tvl_usd": 0,
+      "tvl_change_7d_pct": null,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/handlefi-hsp",
+      "project_url": null
+    },
+    {
       "id": "based-ai",
       "name": "based AI",
       "slug": "based-ai",
@@ -6573,23 +6590,6 @@
       "project_url": "https://www.vaulta.com/"
     },
     {
-      "id": "loot-dao",
-      "name": "loot-dao",
-      "slug": "loot-dao",
-      "logo": null,
-      "chains": [],
-      "protocol_category": null,
-      "tvl_usd": 0,
-      "tvl_change_7d_pct": null,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/loot-dao",
-      "project_url": null
-    },
-    {
       "id": "virtuals-protocol",
       "name": "Virtuals Protocol",
       "slug": "virtuals-protocol",
@@ -6607,23 +6607,6 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/virtuals-protocol",
       "project_url": "https://app.virtuals.io/referral?code=JsPKKT"
-    },
-    {
-      "id": "handlefi-hsp",
-      "name": "handlefi-hsp",
-      "slug": "handlefi-hsp",
-      "logo": null,
-      "chains": [],
-      "protocol_category": null,
-      "tvl_usd": 0,
-      "tvl_change_7d_pct": null,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/handlefi-hsp",
-      "project_url": null
     },
     {
       "id": "yoko",
@@ -6664,44 +6647,6 @@
       "project_url": "https://apps.aavechan.com/"
     },
     {
-      "id": "launchlab",
-      "name": "LaunchLab",
-      "slug": "launchlab",
-      "logo": "https://icons.llama.fi/launchlab.jpg",
-      "chains": [
-        "Solana"
-      ],
-      "protocol_category": "Launchpad",
-      "tvl_usd": 0,
-      "tvl_change_7d_pct": null,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/launchlab",
-      "project_url": "https://raydium.io/launchpad/"
-    },
-    {
-      "id": "moca-network",
-      "name": "Moca Network",
-      "slug": "moca-network",
-      "logo": "https://icons.llama.fi/moca-network.jpg",
-      "chains": [
-        "Ethereum"
-      ],
-      "protocol_category": "Chain",
-      "tvl_usd": 0,
-      "tvl_change_7d_pct": null,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/moca-network",
-      "project_url": "https://www.moca.network"
-    },
-    {
       "id": "unleash-protocol",
       "name": "Unleash Protocol",
       "slug": "unleash-protocol",
@@ -6721,14 +6666,12 @@
       "project_url": "https://unleashprotocol.xyz/"
     },
     {
-      "id": "padre",
-      "name": "Padre",
-      "slug": "padre",
-      "logo": "https://icons.llama.fi/padre.jpg",
-      "chains": [
-        "Solana"
-      ],
-      "protocol_category": "Telegram Bot",
+      "id": "loot-dao",
+      "name": "loot-dao",
+      "slug": "loot-dao",
+      "logo": null,
+      "chains": [],
+      "protocol_category": null,
       "tvl_usd": 0,
       "tvl_change_7d_pct": null,
       "confidence": "LOW",
@@ -6736,8 +6679,27 @@
       "flag_low_yield_coverage": false,
       "reported_high_apy_detected": false,
       "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/padre",
-      "project_url": "https://trade.padre.gg/rk/defillama"
+      "defillama_url": "https://defillama.com/protocol/loot-dao",
+      "project_url": null
+    },
+    {
+      "id": "launchlab",
+      "name": "LaunchLab",
+      "slug": "launchlab",
+      "logo": "https://icons.llama.fi/launchlab.jpg",
+      "chains": [
+        "Solana"
+      ],
+      "protocol_category": "Launchpad",
+      "tvl_usd": 0,
+      "tvl_change_7d_pct": null,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/launchlab",
+      "project_url": "https://raydium.io/launchpad/"
     },
     {
       "id": "moss-genomics",
@@ -6778,25 +6740,6 @@
       "project_url": "https://xficonsole.com/"
     },
     {
-      "id": "immutable-orderbook",
-      "name": "Immutable Orderbook",
-      "slug": "immutable-orderbook",
-      "logo": "https://icons.llama.fi/immutable-orderbook.jpg",
-      "chains": [
-        "Immutable zkEVM"
-      ],
-      "protocol_category": "NFT Marketplace",
-      "tvl_usd": 0,
-      "tvl_change_7d_pct": null,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/immutable-orderbook",
-      "project_url": "https://docs.immutable.com/docs/products/orderbook/overview"
-    },
-    {
       "id": "privex",
       "name": "PriveX",
       "slug": "privex",
@@ -6814,6 +6757,25 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/privex",
       "project_url": "https://prvx.io"
+    },
+    {
+      "id": "immutable-orderbook",
+      "name": "Immutable Orderbook",
+      "slug": "immutable-orderbook",
+      "logo": "https://icons.llama.fi/immutable-orderbook.jpg",
+      "chains": [
+        "Immutable zkEVM"
+      ],
+      "protocol_category": "NFT Marketplace",
+      "tvl_usd": 0,
+      "tvl_change_7d_pct": null,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/immutable-orderbook",
+      "project_url": "https://docs.immutable.com/docs/products/orderbook/overview"
     },
     {
       "id": "wallet-v",
@@ -6835,25 +6797,6 @@
       "project_url": "https://dl.walletv.io/"
     },
     {
-      "id": "zapzy",
-      "name": "Zapzy",
-      "slug": "zapzy",
-      "logo": "https://icons.llama.fi/zapzy.jpg",
-      "chains": [
-        "Solana"
-      ],
-      "protocol_category": "Launchpad",
-      "tvl_usd": 0,
-      "tvl_change_7d_pct": null,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/zapzy",
-      "project_url": "https://zapzy.io/"
-    },
-    {
       "id": "vexy",
       "name": "Vexy",
       "slug": "vexy",
@@ -6873,12 +6816,12 @@
       "project_url": "https://vexy.fi/"
     },
     {
-      "id": "dyorswap-launchpad",
-      "name": "DyorSwap Launchpad",
-      "slug": "dyorswap-launchpad",
-      "logo": "https://icons.llama.fi/dyorswap-launchpad.jpg",
+      "id": "zapzy",
+      "name": "Zapzy",
+      "slug": "zapzy",
+      "logo": "https://icons.llama.fi/zapzy.jpg",
       "chains": [
-        "Mode"
+        "Solana"
       ],
       "protocol_category": "Launchpad",
       "tvl_usd": 0,
@@ -6888,8 +6831,46 @@
       "flag_low_yield_coverage": false,
       "reported_high_apy_detected": false,
       "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/dyorswap-launchpad",
-      "project_url": "https://dyorswap.finance/?chainId=34443"
+      "defillama_url": "https://defillama.com/protocol/zapzy",
+      "project_url": "https://zapzy.io/"
+    },
+    {
+      "id": "padre",
+      "name": "Padre",
+      "slug": "padre",
+      "logo": "https://icons.llama.fi/padre.jpg",
+      "chains": [
+        "Solana"
+      ],
+      "protocol_category": "Telegram Bot",
+      "tvl_usd": 0,
+      "tvl_change_7d_pct": null,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/padre",
+      "project_url": "https://trade.padre.gg/rk/defillama"
+    },
+    {
+      "id": "moca-network",
+      "name": "Moca Network",
+      "slug": "moca-network",
+      "logo": "https://icons.llama.fi/moca-network.jpg",
+      "chains": [
+        "Ethereum"
+      ],
+      "protocol_category": "Chain",
+      "tvl_usd": 0,
+      "tvl_change_7d_pct": null,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/moca-network",
+      "project_url": "https://www.moca.network"
     },
     {
       "id": "pyth-entropy",
@@ -6911,14 +6892,14 @@
       "project_url": "https://www.pyth.network/"
     },
     {
-      "id": "honeypot-finance",
-      "name": "Honeypot Finance",
-      "slug": "honeypot-finance",
-      "logo": "https://icons.llama.fi/honeypot-finance.jpg",
+      "id": "dyorswap-launchpad",
+      "name": "DyorSwap Launchpad",
+      "slug": "dyorswap-launchpad",
+      "logo": "https://icons.llama.fi/dyorswap-launchpad.jpg",
       "chains": [
-        "Orderly Network"
+        "Mode"
       ],
-      "protocol_category": "Interface",
+      "protocol_category": "Launchpad",
       "tvl_usd": 0,
       "tvl_change_7d_pct": null,
       "confidence": "LOW",
@@ -6926,8 +6907,8 @@
       "flag_low_yield_coverage": false,
       "reported_high_apy_detected": false,
       "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/honeypot-finance",
-      "project_url": "https://honeypotfinance.xyz/"
+      "defillama_url": "https://defillama.com/protocol/dyorswap-launchpad",
+      "project_url": "https://dyorswap.finance/?chainId=34443"
     },
     {
       "id": "memecastai",
@@ -6945,6 +6926,25 @@
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/memecastai",
       "project_url": null
+    },
+    {
+      "id": "honeypot-finance",
+      "name": "Honeypot Finance",
+      "slug": "honeypot-finance",
+      "logo": "https://icons.llama.fi/honeypot-finance.jpg",
+      "chains": [
+        "Orderly Network"
+      ],
+      "protocol_category": "Interface",
+      "tvl_usd": 0,
+      "tvl_change_7d_pct": null,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/honeypot-finance",
+      "project_url": "https://honeypotfinance.xyz/"
     },
     {
       "id": "chainlist",
@@ -7120,23 +7120,6 @@
       "project_url": "https://www.neony.exchange/"
     },
     {
-      "id": "littrade",
-      "name": "littrade",
-      "slug": "littrade",
-      "logo": null,
-      "chains": [],
-      "protocol_category": null,
-      "tvl_usd": 0,
-      "tvl_change_7d_pct": null,
-      "confidence": "LOW",
-      "yield_coverage_pct": null,
-      "flag_low_yield_coverage": false,
-      "reported_high_apy_detected": false,
-      "reported_strong_apy_detected": false,
-      "defillama_url": "https://defillama.com/protocol/littrade",
-      "project_url": null
-    },
-    {
       "id": "p2pme",
       "name": "p2pme",
       "slug": "p2pme",
@@ -7151,6 +7134,23 @@
       "reported_high_apy_detected": false,
       "reported_strong_apy_detected": false,
       "defillama_url": "https://defillama.com/protocol/p2pme",
+      "project_url": null
+    },
+    {
+      "id": "littrade",
+      "name": "littrade",
+      "slug": "littrade",
+      "logo": null,
+      "chains": [],
+      "protocol_category": null,
+      "tvl_usd": 0,
+      "tvl_change_7d_pct": null,
+      "confidence": "LOW",
+      "yield_coverage_pct": null,
+      "flag_low_yield_coverage": false,
+      "reported_high_apy_detected": false,
+      "reported_strong_apy_detected": false,
+      "defillama_url": "https://defillama.com/protocol/littrade",
       "project_url": null
     },
     {
