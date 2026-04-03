@@ -17,6 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
@@ -42,6 +44,8 @@ jobs:
         part: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
@@ -58,14 +62,13 @@ jobs:
           path: data/parts/all_part_${{ matrix.part }}.json
           if-no-files-found: error
 
-    merge_commit:
+  merge_commit:
     runs-on: ubuntu-latest
     needs: [rwa, all_parts]
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
@@ -100,9 +103,7 @@ jobs:
 
       - name: Commit & push if changed
         run: |
-          # Clean temporary folders so working tree isn't dirty
           rm -rf data/parts _staging_parts || true
-
           git add data/sparklines_rwa_7d.json data/sparklines_all_7d.json
 
           if git diff --cached --quiet; then
