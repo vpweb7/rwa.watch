@@ -7,31 +7,30 @@ function readJson(p){
   return JSON.parse(fs.readFileSync(p, "utf-8"));
 }
 
-function lastNDatesUTC(n){
-  const now = new Date();
-  const base = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
-  const out = [];
-  for (let i=n-1;i>=0;i--){
-    const t = new Date(base - i*24*3600*1000);
-    const y=t.getUTCFullYear();
-    const m=String(t.getUTCMonth()+1).padStart(2,"0");
-    const d=String(t.getUTCDate()).padStart(2,"0");
-    out.push(`${y}-${m}-${d}`);
-  }
-  return out;
-}
-
 function main(){
   const snapsDir = path.join(ROOT, "data", "snapshots7d");
-  const dates = lastNDatesUTC(7);
 
-  // Load daily snapshots
-  const daily = dates.map(dt => {
-    const p = path.join(snapsDir, `${dt}.json`);
-    if (!fs.existsSync(p)) throw new Error(`Missing snapshot file: ${p}`);
+  if (!fs.existsSync(snapsDir)) {
+    throw new Error(`snapshots folder not found: ${snapsDir}`);
+  }
+
+  // Use the actual files we downloaded, not calendar math
+  const files = fs.readdirSync(snapsDir)
+    .filter(n => /^\d{4}-\d{2}-\d{2}\.json$/.test(n))
+    .sort()
+    .slice(-7);
+
+  if (files.length < 2) {
+    throw new Error(`Not enough snapshot files in ${snapsDir}. Found: ${files.length}`);
+  }
+
+  const dates = files.map(f => f.replace(".json",""));
+
+  // Load snapshots in chronological order
+  const daily = files.map(fname => {
+    const p = path.join(snapsDir, fname);
     const j = readJson(p);
     const assets = Array.isArray(j.assets) ? j.assets : [];
-    // map slug -> tvl
     const m = new Map();
     for (const a of assets){
       const slug = a.slug || a.asset_id || a.asset_key;
@@ -39,14 +38,14 @@ function main(){
       const tvl = Number(a.tvl_usd);
       m.set(slug, Number.isFinite(tvl) ? tvl : 0);
     }
-    return { dt, map: m, raw: j };
+    return { fname, map: m, raw: j };
   });
 
-  // Union of slugs across the 7 days
+  // Union of slugs across the loaded days
   const allSlugs = new Set();
   for (const d of daily) for (const k of d.map.keys()) allSlugs.add(k);
 
-  // Build series
+  // Build series (carry-forward missing)
   const seriesAll = {};
   for (const slug of allSlugs){
     const arr = [];
@@ -59,13 +58,13 @@ function main(){
     seriesAll[slug] = arr;
   }
 
-  // RWA subset: use latest day snapshot flag/category if present
-  const latestAssets = Array.isArray(daily[daily.length-1].raw.assets) ? daily[daily.length-1].raw.assets : [];
+  // RWA subset based on latest snapshot flags if present
+  const latestRaw = daily[daily.length - 1].raw;
+  const latestAssets = Array.isArray(latestRaw.assets) ? latestRaw.assets : [];
   const rwaSet = new Set();
   for (const a of latestAssets){
     const slug = a.slug || a.asset_id || a.asset_key;
     if (!slug) continue;
-    // keep simple: protocol_category === "RWA" OR category === "RWA"
     if (a.protocol_category === "RWA" || a.category === "RWA") rwaSet.add(slug);
   }
 
@@ -76,13 +75,13 @@ function main(){
 
   const outAll = {
     generated_at: new Date().toISOString(),
-    window_days: 7,
+    window_days: dates.length,
     dates,
     series: seriesAll
   };
   const outRwa = {
     generated_at: new Date().toISOString(),
-    window_days: 7,
+    window_days: dates.length,
     dates,
     series: seriesRwa
   };
@@ -91,6 +90,7 @@ function main(){
   fs.writeFileSync(path.join(ROOT, "data", "sparklines_all_7d.json"), JSON.stringify(outAll, null, 2));
   fs.writeFileSync(path.join(ROOT, "data", "sparklines_rwa_7d.json"), JSON.stringify(outRwa, null, 2));
 
+  console.log("Dates:", dates.join(", "));
   console.log("Wrote sparklines_all_7d.json series:", Object.keys(seriesAll).length);
   console.log("Wrote sparklines_rwa_7d.json series:", Object.keys(seriesRwa).length);
 }
