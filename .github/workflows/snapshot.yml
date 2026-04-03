@@ -99,7 +99,7 @@ jobs:
           path: data
 
       - name: Merge ALL parts
-        run: node tools/merge_parts.mjs
+        run: node tools/merge_sparklines_parts.mjs
 
       - name: Commit & push if changed
         run: |
