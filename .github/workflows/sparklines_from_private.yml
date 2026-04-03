@@ -1,0 +1,56 @@
+name: Update sparklines (from private snapshots)
+
+on:
+  schedule:
+    - cron: "20 0 * * *" # daily 00:20 UTC (after private build)
+  workflow_dispatch:
+
+concurrency:
+  group: sparklines-private
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Download last 7 daily snapshots from private repo
+        env:
+          RWA_DATA_TOKEN: ${{ secrets.RWA_DATA_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p data/snapshots7d
+          for i in 6 5 4 3 2 1 0; do
+            d=$(date -u -d "$i days ago" +%F)
+            url="https://api.github.com/repos/vpweb7/rwa.watch-data/contents/_private/snapshots/${d}.json?ref=main"
+            echo "Fetching $d ..."
+            curl --http1.1 -fL \
+              -H "Authorization: Bearer $RWA_DATA_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              "$url" -o "/tmp/${d}.meta.json"
+            node -e "const fs=require('fs');const j=JSON.parse(fs.readFileSync('/tmp/${d}.meta.json','utf8')); if(!j.content) {console.error(j); process.exit(1);} fs.writeFileSync('data/snapshots7d/${d}.json', Buffer.from(j.content,'base64'));"
+          done
+          ls -lah data/snapshots7d | sed -n '1,200p'
+
+      - name: Build sparklines from snapshots
+        run: node tools/build_sparklines_from_snapshots.mjs
+
+      - name: Commit & push if changed
+        run: |
+          git config user.name "rwa.watch bot"
+          git config user.email "actions@users.noreply.github.com"
+          if git status --porcelain | grep -q .; then
+            git add data/sparklines_all_7d.json data/sparklines_rwa_7d.json
+            git commit -m "Auto-update sparklines (from private snapshots)"
+            git pull --rebase origin main
+            git push
+          else
+            echo "No changes."
+          fi
