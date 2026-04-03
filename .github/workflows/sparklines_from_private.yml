@@ -21,22 +21,48 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Download last 7 daily snapshots from private repo
+      - name: Download last 7 daily snapshots from private repo (list + fetch)
         env:
           RWA_DATA_TOKEN: ${{ secrets.RWA_DATA_TOKEN }}
         run: |
           set -euo pipefail
           mkdir -p data/snapshots7d
-          for i in 6 5 4 3 2 1 0; do
-            d=$(date -u -d "$i days ago" +%F)
-            url="https://api.github.com/repos/vpweb7/rwa.watch-data/contents/_private/snapshots/${d}.json?ref=main"
-            echo "Fetching $d ..."
+
+          echo "Listing snapshots folder..."
+          curl --http1.1 -fL \
+            -H "Authorization: Bearer $RWA_DATA_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/vpweb7/rwa.watch-data/contents/_private/snapshots?ref=main" \
+            -o /tmp/snapshots_list.json
+
+          echo "Selecting latest 7 date-named JSON files..."
+          node - <<'NODE'
+          const fs = require("fs");
+          const list = JSON.parse(fs.readFileSync("/tmp/snapshots_list.json","utf8"));
+          const files = (Array.isArray(list) ? list : [])
+            .map(x => x && x.name)
+            .filter(n => /^\d{4}-\d{2}-\d{2}\.json$/.test(n))
+            .sort()
+            .slice(-7);
+          if (files.length < 2) {
+            console.error("Not enough daily snapshots found:", files);
+            process.exit(1);
+          }
+          fs.writeFileSync("/tmp/last7.txt", files.join("\n"));
+          console.log("Selected files:\n" + files.join("\n"));
+          NODE
+
+          while read -r fname; do
+            echo "Downloading $fname ..."
+            url="https://api.github.com/repos/vpweb7/rwa.watch-data/contents/_private/snapshots/${fname}?ref=main"
             curl --http1.1 -fL \
               -H "Authorization: Bearer $RWA_DATA_TOKEN" \
               -H "Accept: application/vnd.github+json" \
-              "$url" -o "/tmp/${d}.meta.json"
-            node -e "const fs=require('fs');const j=JSON.parse(fs.readFileSync('/tmp/${d}.meta.json','utf8')); if(!j.content) {console.error(j); process.exit(1);} fs.writeFileSync('data/snapshots7d/${d}.json', Buffer.from(j.content,'base64'));"
-          done
+              "$url" -o "/tmp/${fname}.meta.json"
+            node -e "const fs=require('fs'); const j=JSON.parse(fs.readFileSync('/tmp/${fname}.meta.json','utf8')); if(!j.content){console.error(j); process.exit(1);} fs.writeFileSync('data/snapshots7d/${fname}', Buffer.from(j.content,'base64'));"
+          done < /tmp/last7.txt
+
+          echo "Downloaded:"
           ls -lah data/snapshots7d | sed -n '1,200p'
 
       - name: Build sparklines from snapshots
