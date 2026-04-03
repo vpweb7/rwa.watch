@@ -58,14 +58,23 @@ jobs:
           path: data/parts/all_part_${{ matrix.part }}.json
           if-no-files-found: error
 
-  merge_commit:
+    merge_commit:
     runs-on: ubuntu-latest
     needs: [rwa, all_parts]
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
+
+      - name: Sync main before merge
+        run: |
+          git config user.name "rwa.watch bot"
+          git config user.email "actions@users.noreply.github.com"
+          git pull --rebase origin main
 
       - name: Download ALL parts (staging)
         uses: actions/download-artifact@v4
@@ -78,7 +87,6 @@ jobs:
         run: |
           mkdir -p data/parts
           cp -v _staging_parts/*.json data/parts/
-          echo "data/parts:"
           ls -lah data/parts | sed -n '1,200p'
 
       - name: Download RWA file
@@ -92,12 +100,6 @@ jobs:
 
       - name: Commit & push if changed
         run: |
-          git config user.name "rwa.watch bot"
-          git config user.email "actions@users.noreply.github.com"
-
-          # Rebase first (avoid conflicts), then stage only final outputs
-          git pull --rebase origin main
-
           # Clean temporary folders so working tree isn't dirty
           rm -rf data/parts _staging_parts || true
 
