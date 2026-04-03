@@ -103,7 +103,15 @@ jobs:
 
       - name: Commit & push if changed
         run: |
+          git config user.name "rwa.watch bot"
+          git config user.email "actions@users.noreply.github.com"
+
+          # ensure we're up to date before committing
+          git pull --rebase origin main
+
+          # remove temp folders so working tree is clean
           rm -rf data/parts _staging_parts || true
+
           git add data/sparklines_rwa_7d.json data/sparklines_all_7d.json
 
           if git diff --cached --quiet; then
@@ -112,4 +120,7 @@ jobs:
           fi
 
           git commit -m "Auto-update sparklines"
+
+          # rebase again in case main moved during the job, then push
+          git pull --rebase origin main
           git push
