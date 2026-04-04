@@ -13,12 +13,14 @@ function main(){
   const snapsDir = path.join(ROOT, "data", "snapshots7d");
   if (!fs.existsSync(snapsDir)) throw new Error(`snapshots folder not found: ${snapsDir}`);
 
+  // Use ALL downloaded date-named snapshots in this folder (should already be <= 7)
   const files = fs.readdirSync(snapsDir)
     .filter(n => /^\d{4}-\d{2}-\d{2}\.json$/.test(n))
-    .sort()
-    .slice(-7);
+    .sort();
 
   if (files.length < 2) throw new Error(`Not enough snapshot files in ${snapsDir}. Found: ${files.length}`);
+
+  console.log("Using snapshot files:", files.join(", "));
 
   const dates = files.map(f => f.replace(".json",""));
 
