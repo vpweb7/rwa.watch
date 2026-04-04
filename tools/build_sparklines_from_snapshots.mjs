@@ -5,7 +5,10 @@ const ROOT = process.cwd();
 
 function readJson(p){
   const t = fs.readFileSync(p, "utf-8");
-  const clean = t.replace(/\bNaN\b/g, "null").replace(/\b-Infinity\b/g,"null").replace(/\bInfinity\b/g,"null");
+  const clean = t
+    .replace(/\bNaN\b/g, "null")
+    .replace(/\b-Infinity\b/g, "null")
+    .replace(/\bInfinity\b/g, "null");
   return JSON.parse(clean);
 }
 
@@ -13,10 +16,24 @@ function main(){
   const snapsDir = path.join(ROOT, "data", "snapshots7d");
   if (!fs.existsSync(snapsDir)) throw new Error(`snapshots folder not found: ${snapsDir}`);
 
-  // Use ALL downloaded date-named snapshots in this folder (should already be <= 7)
-  const files = fs.readdirSync(snapsDir)
+  const selectedPath = path.join(snapsDir, "_selected.txt");
+
+  let files;
+  if (fs.existsSync(selectedPath)) {
+    files = fs.readFileSync(selectedPath, "utf-8")
+      .split(/\r?\n/)
+      .map(s => s.trim())
+      .filter(Boolean);
+  } else {
+    files = fs.readdirSync(snapsDir)
+      .filter(n => /^\d{4}-\d{2}-\d{2}\.json$/.test(n))
+      .sort();
+  }
+
+  // Keep only valid date-named json files and ensure they exist locally
+  files = files
     .filter(n => /^\d{4}-\d{2}-\d{2}\.json$/.test(n))
-    .sort();
+    .filter(n => fs.existsSync(path.join(snapsDir, n)));
 
   if (files.length < 2) throw new Error(`Not enough snapshot files in ${snapsDir}. Found: ${files.length}`);
 
