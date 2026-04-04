@@ -1,4 +1,4 @@
-name: Update sparklines (from private snapshots)
+name: Update sparklines (from private snapshots) - RWA only
 
 on:
   schedule:
@@ -67,20 +67,32 @@ jobs:
             test -f "data/snapshots7d/$fname" || { echo "MISSING: $fname"; exit 1; }
           done < /tmp/last7.txt
 
-      - name: Build sparklines from snapshots
+      - name: Build sparklines from snapshots (RWA subset)
         run: node tools/build_sparklines_from_snapshots.mjs
 
-      - name: Commit & push if changed
+      - name: Keep ONLY RWA sparklines output (do not touch ALL)
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Important: NEVER overwrite the ALL-file that comes from DefiLlama 7000-part build
+          rm -f data/sparklines_all_7d.json || true
+          echo "Will only commit data/sparklines_rwa_7d.json"
+
+      - name: Commit & push if changed (RWA only)
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "rwa.watch bot"
           git config user.email "actions@users.noreply.github.com"
-          if git status --porcelain | grep -q .; then
-            git add data/sparklines_all_7d.json data/sparklines_rwa_7d.json
-            git commit -m "Auto-update sparklines (from private snapshots)"
-            git pull --rebase origin main
-            git push
-          else
+
+          # stage ONLY the RWA file
+          git add data/sparklines_rwa_7d.json
+
+          if git diff --cached --quiet; then
             echo "No changes."
+            exit 0
           fi
+
+          git commit -m "Auto-update RWA sparklines (from private snapshots)"
+          git pull --rebase origin main
+          git push
