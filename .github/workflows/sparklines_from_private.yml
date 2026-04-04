@@ -17,9 +17,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
+
+      # IMPORTANT: Rebase first on a clean tree (prevents exit 128)
+      - name: Sync main (rebase-safe)
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "rwa.watch bot"
+          git config user.email "actions@users.noreply.github.com"
+          git pull --rebase origin main
 
       - name: Download last up to 7 daily snapshots from private repo (verified)
         env:
@@ -68,24 +80,23 @@ jobs:
           done < /tmp/last7.txt
 
       - name: Build sparklines from snapshots (RWA subset)
-        run: node tools/build_sparklines_from_snapshots.mjs
-
-      - name: Keep ONLY RWA sparklines output (do not touch ALL)
         shell: bash
         run: |
           set -euo pipefail
-          # Important: NEVER overwrite the ALL-file that comes from DefiLlama 7000-part build
+          node tools/build_sparklines_from_snapshots.mjs
+
+          # NEVER keep/commit ALL from this workflow
           rm -f data/sparklines_all_7d.json || true
-          echo "Will only commit data/sparklines_rwa_7d.json"
 
-      - name: Commit & push if changed (RWA only)
+          # Also don't keep downloaded snapshots in git state
+          rm -rf data/snapshots7d || true
+
+      - name: Commit & push if changed (RWA only, no dirty tree)
         shell: bash
         run: |
           set -euo pipefail
-          git config user.name "rwa.watch bot"
-          git config user.email "actions@users.noreply.github.com"
 
-          # stage ONLY the RWA file
+          # Stage only the intended output
           git add data/sparklines_rwa_7d.json
 
           if git diff --cached --quiet; then
@@ -94,5 +105,4 @@ jobs:
           fi
 
           git commit -m "Auto-update RWA sparklines (from private snapshots)"
-          git pull --rebase origin main
           git push
