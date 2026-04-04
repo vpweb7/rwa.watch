@@ -3,7 +3,7 @@ name: Publish latest (from private)
 on:
   workflow_dispatch:
   schedule:
-    - cron: "05 0 * * *" # daily 00:05 UTC
+    - cron: "25 0 * * *" # daily 00:05 UTC
 
 permissions:
   contents: write
