@@ -2,7 +2,7 @@ name: Update sparklines (from private snapshots)
 
 on:
   schedule:
-    - cron: "30 0 * * *" # daily 00:30 UTC (after private build + sync latest)
+    - cron: "30 0 * * *" # daily 00:30 UTC
   workflow_dispatch:
 
 concurrency:
@@ -21,15 +21,15 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Download last up to 7 daily snapshots from private repo
+      - name: Download last up to 7 daily snapshots from private repo (verified)
         env:
           RWA_DATA_TOKEN: ${{ secrets.RWA_DATA_TOKEN }}
         run: |
           set -euo pipefail
           rm -rf data/snapshots7d
-          rm -rf data/snapshots7d
           mkdir -p data/snapshots7d
 
+          echo "Fetching snapshots directory listing..."
           curl --http1.1 -fL \
             -H "Authorization: Bearer $RWA_DATA_TOKEN" \
             -H "Accept: application/vnd.github+json" \
@@ -49,16 +49,40 @@ jobs:
           console.log("Selected:\n" + files.join("\n"));
           NODE
 
+          cp -f /tmp/last7.txt data/snapshots7d/_selected.txt
+
+          echo "Downloading selected snapshots (with HTTP status)..."
           while read -r fname; do
             url="https://api.github.com/repos/vpweb7/rwa.watch-data/contents/_private/snapshots/${fname}?ref=main"
-            curl --http1.1 -fL \
+            echo "GET $fname"
+            # capture HTTP code
+            code="$(curl --http1.1 -L -sS -o "/tmp/${fname}.meta.json" -w "%{http_code}" \
               -H "Authorization: Bearer $RWA_DATA_TOKEN" \
               -H "Accept: application/vnd.github+json" \
-              "$url" -o "/tmp/${fname}.meta.json"
-            node -e "const fs=require('fs'); const j=JSON.parse(fs.readFileSync('/tmp/${fname}.meta.json','utf8')); if(!j.content){console.error(j); process.exit(1);} fs.writeFileSync('data/snapshots7d/${fname}', Buffer.from(j.content,'base64'));"
+              "$url")"
+            echo "HTTP $code for $fname"
+            if [ "$code" != "200" ]; then
+              echo "ERROR: failed to fetch metadata for $fname"
+              head -n 40 "/tmp/${fname}.meta.json" || true
+              exit 1
+            fi
+
+            node - <<NODE
+          const fs = require("fs");
+          const j = JSON.parse(fs.readFileSync("/tmp/${fname}.meta.json","utf8"));
+          if (!j.content) { console.error("No content field for ${fname}"); console.error(j); process.exit(1); }
+          fs.writeFileSync("data/snapshots7d/${fname}", Buffer.from(j.content,"base64"));
+NODE
+
           done < /tmp/last7.txt
 
+          echo "Downloaded files:"
           ls -lah data/snapshots7d | sed -n '1,200p'
+
+          echo "Verifying all selected files exist..."
+          while read -r fname; do
+            test -f "data/snapshots7d/$fname" || { echo "MISSING: $fname"; exit 1; }
+          done < /tmp/last7.txt
 
       - name: Build sparklines from snapshots
         run: node tools/build_sparklines_from_snapshots.mjs
