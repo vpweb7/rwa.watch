@@ -2,11 +2,10 @@ import fs from "fs";
 import path from "path";
 
 const ROOT = process.cwd();
-const INDEX_HTML = path.join(ROOT, "index.html");
 
 const WINDOW_DAYS = 7;
-const CONCURRENCY = 2;   // keep low to reduce rate-limits
-const SLEEP_MS = 200;
+const CONCURRENCY = 2;   // kíméletes (ne tiltson)
+const SLEEP_MS = 250;
 
 function sleep(ms){ return new Promise(r => setTimeout(r, ms)); }
 
@@ -32,31 +31,28 @@ function isoDateFromUnixDay(unixSec){
   return `${y}-${m}-${day}`;
 }
 
-function extractSlugsFromIndex(html){
-  const re = /"slug"\s*:\s*"([^"]+)"/g;
-  const slugs = new Set();
-  let m;
-  while ((m = re.exec(html)) !== null){
-    const s = m[1].trim();
-    if (s) slugs.add(s);
+function pickPart(arr, partIndex, partCount){
+  const out = [];
+  for (let i=0;i<arr.length;i++){
+    if ((i % partCount) === partIndex) out.push(arr[i]);
   }
-  return Array.from(slugs);
+  return out;
 }
 
 async function fetchJson(url, tries=5){
   let lastErr;
   for (let i=0;i<tries;i++){
     try{
-      const res = await fetch(url, { headers: { "User-Agent": "rwa.watch-snapshot-bot" } });
+      const res = await fetch(url, { headers: { "User-Agent": "rwa.watch-sparklines-bot" } });
       if (res.status === 429){
-        await sleep(1500 + i*1200);
+        await sleep(2000 + i*1500);
         continue;
       }
       if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`);
       return await res.json();
     } catch(e){
       lastErr = e;
-      await sleep(900 + i*900);
+      await sleep(1200 + i*1200);
     }
   }
   throw lastErr;
@@ -71,10 +67,9 @@ function buildSeriesFromProtocol(protocolJson, dates){
     if (!p || typeof p.date !== "number") continue;
     const d = isoDateFromUnixDay(p.date);
     const v = Number(p.totalLiquidityUSD ?? p.totalLiquidityUsd ?? p.totalLiquidity ?? 0);
-    map.set(d, isFinite(v) ? v : 0);
+    map.set(d, Number.isFinite(v) ? v : 0);
   }
 
-  // fill missing days by carrying forward last known value
   const out = [];
   let last = 0;
   for (const d of dates){
@@ -84,14 +79,6 @@ function buildSeriesFromProtocol(protocolJson, dates){
     } else {
       out.push(last);
     }
-  }
-  return out;
-}
-
-function pickPart(slugs, partIndex, partCount){
-  const out = [];
-  for (let i=0;i<slugs.length;i++){
-    if ((i % partCount) === partIndex) out.push(slugs[i]);
   }
   return out;
 }
@@ -116,6 +103,17 @@ function parseArgs(){
       : path.join(ROOT, "data", "sparklines_all_7d.json");
   }
   return out;
+}
+
+// >>> KEY CHANGE: slugs come from data/dataset.json (full universe)
+function loadSlugs(){
+  const p = path.join(ROOT, "data", "dataset.json");
+  if (!fs.existsSync(p)) throw new Error("Missing data/dataset.json. Run Update dataset first.");
+  const j = JSON.parse(fs.readFileSync(p, "utf-8"));
+  const assets = Array.isArray(j.assets) ? j.assets : [];
+  const slugs = assets.map(a => a && (a.slug || a.id)).filter(Boolean);
+  if (!slugs.length) throw new Error("No slugs found in data/dataset.json");
+  return slugs;
 }
 
 async function buildSparklineFile(slugs, outPath, dates){
@@ -150,33 +148,23 @@ async function buildSparklineFile(slugs, outPath, dates){
   };
 
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
-  fs.writeFileSync(outPath, JSON.stringify(payload, null, 2)); // pretty
+  fs.writeFileSync(outPath, JSON.stringify(payload, null, 2));
   console.log("Wrote", outPath, "series:", Object.keys(series).length);
 }
 
 async function main(){
   const { mode, partIndex, partCount, outPath } = parseArgs();
 
-  const html = fs.readFileSync(INDEX_HTML, "utf-8");
-  const allSlugs = extractSlugsFromIndex(html);
+  // ALL = full dataset universe
+  const allSlugs = loadSlugs();
   const dates = lastNDatesUTC(WINDOW_DAYS);
 
-  // RWA set: reuse existing keys if available, so it's stable
-  let rwaSlugs = null;
-  const rwaFile = path.join(ROOT, "data", "sparklines_rwa_7d.json");
-  try{
-    const prev = JSON.parse(fs.readFileSync(rwaFile, "utf-8"));
-    const keys = prev?.series ? Object.keys(prev.series) : [];
-    if (keys.length) rwaSlugs = keys;
-  } catch(_){}
-
-  const base = (mode === "rwa") ? (rwaSlugs ?? allSlugs) : allSlugs;
+  const base = allSlugs;
   const slugs = (partCount > 1) ? pickPart(base, partIndex, partCount) : base;
+
+  console.log(`Sparklines build: mode=${mode} part=${partIndex}/${partCount} slugs=${slugs.length} total=${base.length}`);
 
   await buildSparklineFile(slugs, outPath, dates);
 }
 
-main().catch(e => {
-  console.error(e);
-  process.exit(1);
-});
+main().catch(e => { console.error(e); process.exit(1); });
