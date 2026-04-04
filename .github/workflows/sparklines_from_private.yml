@@ -19,18 +19,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-
-      - name: Sync main first (rebase-safe)
-        shell: bash
-        run: |
-          set -euo pipefail
-          git config user.name "rwa.watch bot"
-          git config user.email "actions@users.noreply.github.com"
-          git pull --rebase origin main
 
       - name: Download last up to 7 daily snapshots from private repo (verified)
         env:
@@ -48,17 +39,24 @@ jobs:
             "https://api.github.com/repos/vpweb7/rwa.watch-data/contents/_private/snapshots?ref=main" \
             -o /tmp/snapshots_list.json
 
-          node -e 'const fs=require("fs"); const list=JSON.parse(fs.readFileSync("/tmp/snapshots_list.json","utf8")); const files=(Array.isArray(list)?list:[]).map(x=>x&&x.name).filter(n=>/^\d{4}-\d{2}-\d{2}\.json$/.test(n)).sort().slice(-7); if(files.length<2){console.error("Not enough daily snapshots:",files); process.exit(1);} fs.writeFileSync("/tmp/last7.txt", files.join("\n") + "\n"); console.log("Selected:\n"+files.join("\n"));'
+          node -e 'const fs=require("fs"); const list=JSON.parse(fs.readFileSync("/tmp/snapshots_list.json","utf8")); const files=(Array.isArray(list)?list:[]).map(x=>x&&x.name).filter(n=>/^\d{4}-\d{2}-\d{2}\.json$/.test(n)).sort().slice(-7); if(files.length<2){console.error("Not enough daily snapshots:",files); process.exit(1);} fs.writeFileSync("/tmp/last7.txt", files.join("\n") + "\n"); console.log("Selected:\\n"+files.join("\\n"));'
+
+          cp -f /tmp/last7.txt data/snapshots7d/_selected.txt
 
           echo "Downloading selected snapshots..."
           while read -r fname; do
             url="https://api.github.com/repos/vpweb7/rwa.watch-data/contents/_private/snapshots/${fname}?ref=main"
             echo "GET $fname"
-            curl --http1.1 -fL \
+            code="$(curl --http1.1 -L -sS -o "/tmp/${fname}.meta.json" -w "%{http_code}" \
               -H "Authorization: Bearer $RWA_DATA_TOKEN" \
               -H "Accept: application/vnd.github+json" \
-              "$url" \
-              -o "/tmp/${fname}.meta.json"
+              "$url")"
+            echo "HTTP $code for $fname"
+            if [ "$code" != "200" ]; then
+              echo "ERROR: failed to fetch metadata for $fname"
+              head -n 80 "/tmp/${fname}.meta.json" || true
+              exit 1
+            fi
 
             node -e "const fs=require('fs'); const j=JSON.parse(fs.readFileSync('/tmp/${fname}.meta.json','utf8')); if(!j.content){console.error('No content for ${fname}'); console.error(j); process.exit(1);} fs.writeFileSync('data/snapshots7d/${fname}', Buffer.from(j.content,'base64'));"
           done < /tmp/last7.txt
@@ -66,25 +64,35 @@ jobs:
           echo "Downloaded files:"
           ls -lah data/snapshots7d | sed -n '1,200p'
 
-      - name: Build sparklines from snapshots (RWA subset only)
+          echo "Verifying all selected files exist..."
+          while read -r fname; do
+            test -f "data/snapshots7d/$fname" || { echo "MISSING: $fname"; exit 1; }
+          done < /tmp/last7.txt
+
+      - name: Build sparklines from snapshots (writes BOTH files)
+        run: node tools/build_sparklines_from_snapshots.mjs
+
+      - name: Keep ONLY RWA output (do not touch ALL)
         shell: bash
         run: |
           set -euo pipefail
-          node tools/build_sparklines_from_snapshots.mjs
+          # If build script wrote an ALL file based on snapshots (141), discard it:
+          git checkout -- data/sparklines_all_7d.json || true
 
-          # IMPORTANT: never overwrite ALL from snapshot-based build
-          rm -f data/sparklines_all_7d.json || true
-
-          # keep workspace clean
-          rm -rf data/snapshots7d || true
-
-      - name: Commit & push (RWA only)
+      - name: Commit & push if changed (RWA only)
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "rwa.watch bot"
           git config user.email "actions@users.noreply.github.com"
 
+          # Pull BEFORE staging (prevents rebase error)
+          git pull --rebase origin main
+
+          # Ensure ALL stays intact
+          git checkout -- data/sparklines_all_7d.json || true
+
+          # Only commit RWA
           git add data/sparklines_rwa_7d.json
 
           if git diff --cached --quiet; then
