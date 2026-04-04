@@ -1,0 +1,75 @@
+name: Update sparklines (from private snapshots)
+
+on:
+  schedule:
+    - cron: "30 0 * * *" # daily 00:30 UTC (after private build + sync latest)
+  workflow_dispatch:
+
+concurrency:
+  group: sparklines-private
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Download last up to 7 daily snapshots from private repo
+        env:
+          RWA_DATA_TOKEN: ${{ secrets.RWA_DATA_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p data/snapshots7d
+
+          curl --http1.1 -fL \
+            -H "Authorization: Bearer $RWA_DATA_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/vpweb7/rwa.watch-data/contents/_private/snapshots?ref=main" \
+            -o /tmp/snapshots_list.json
+
+          node - <<'NODE'
+          const fs = require("fs");
+          const list = JSON.parse(fs.readFileSync("/tmp/snapshots_list.json","utf8"));
+          const files = (Array.isArray(list) ? list : [])
+            .map(x => x && x.name)
+            .filter(n => /^\d{4}-\d{2}-\d{2}\.json$/.test(n))
+            .sort()
+            .slice(-7);
+          if (files.length < 2) { console.error("Not enough daily snapshots:", files); process.exit(1); }
+          fs.writeFileSync("/tmp/last7.txt", files.join("\n"));
+          console.log("Selected:\n" + files.join("\n"));
+          NODE
+
+          while read -r fname; do
+            url="https://api.github.com/repos/vpweb7/rwa.watch-data/contents/_private/snapshots/${fname}?ref=main"
+            curl --http1.1 -fL \
+              -H "Authorization: Bearer $RWA_DATA_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              "$url" -o "/tmp/${fname}.meta.json"
+            node -e "const fs=require('fs'); const j=JSON.parse(fs.readFileSync('/tmp/${fname}.meta.json','utf8')); if(!j.content){console.error(j); process.exit(1);} fs.writeFileSync('data/snapshots7d/${fname}', Buffer.from(j.content,'base64'));"
+          done < /tmp/last7.txt
+
+          ls -lah data/snapshots7d | sed -n '1,200p'
+
+      - name: Build sparklines from snapshots
+        run: node tools/build_sparklines_from_snapshots.mjs
+
+      - name: Commit & push if changed
+        run: |
+          git config user.name "rwa.watch bot"
+          git config user.email "actions@users.noreply.github.com"
+          if git status --porcelain | grep -q .; then
+            git add data/sparklines_all_7d.json data/sparklines_rwa_7d.json
+            git commit -m "Auto-update sparklines (from private snapshots)"
+            git pull --rebase origin main
+            git push
+          else
+            echo "No changes."
+          fi
