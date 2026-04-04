@@ -2,7 +2,7 @@ name: Update sparklines (ALL from DefiLlama)
 
 on:
   schedule:
-    - cron: "10 0 * * *" # daily 00:10 UTC
+    - cron: "10 1 * * *" # daily 01:10 UTC (tedd későbbre, mint a private snapshotos)
   workflow_dispatch:
 
 concurrency:
@@ -22,6 +22,8 @@ jobs:
         part: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
@@ -49,6 +51,14 @@ jobs:
         with:
           node-version: "20"
 
+      - name: Sync main first (rebase-safe)
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "rwa.watch bot"
+          git config user.email "actions@users.noreply.github.com"
+          git pull --rebase origin main
+
       - name: Download ALL parts (staging)
         uses: actions/download-artifact@v4
         with:
@@ -57,7 +67,9 @@ jobs:
           merge-multiple: true
 
       - name: Move parts into data/parts
+        shell: bash
         run: |
+          set -euo pipefail
           mkdir -p data/parts
           cp -v _staging_parts/*.json data/parts/
           echo "data/parts:"
@@ -66,16 +78,12 @@ jobs:
       - name: Merge ALL parts
         run: node tools/merge_parts.mjs
 
-      - name: Commit & push if changed
+      - name: Commit & push (ALL only)
+        shell: bash
         run: |
           set -euo pipefail
-          git config user.name "rwa.watch bot"
-          git config user.email "actions@users.noreply.github.com"
 
-          # Autostash rebase to avoid "unstaged changes" error
-          git config rebase.autoStash true
-          git pull --rebase origin main
-
+          # cleanup temp dirs so working tree is clean
           rm -rf data/parts _staging_parts || true
 
           git add data/sparklines_all_7d.json
@@ -85,5 +93,5 @@ jobs:
             exit 0
           fi
 
-          git commit -m "Auto-update sparklines (ALL)"
+          git commit -m "Auto-update ALL sparklines (DefiLlama)"
           git push
