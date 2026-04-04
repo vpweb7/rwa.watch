@@ -791,8 +791,8 @@ function updateSnapshotKPIs() {
 
 async function loadSparkFiles() {
   try {
-    const rwaRes = await fetch('data/sparklines_rwa_7d.json');
-    const allRes = await fetch('data/sparklines_all_7d.json');
+    const rwaRes = await fetch('data/sparklines_rwa_7d.json?ts=' + Date.now(), { cache: 'no-store' });
+    const allRes = await fetch('data/sparklines_all_7d.json?ts=' + Date.now(), { cache: 'no-store' });
     SPARK_RWA = await rwaRes.json();
     SPARK_ALL = await allRes.json();
   } catch (e) {
