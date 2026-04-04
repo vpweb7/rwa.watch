@@ -27,6 +27,7 @@ jobs:
         run: |
           set -euo pipefail
           rm -rf data/snapshots7d
+          rm -rf data/snapshots7d
           mkdir -p data/snapshots7d
 
           curl --http1.1 -fL \
