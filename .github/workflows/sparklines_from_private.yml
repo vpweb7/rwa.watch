@@ -24,6 +24,7 @@ jobs:
       - name: Download last up to 7 daily snapshots from private repo (verified)
         env:
           RWA_DATA_TOKEN: ${{ secrets.RWA_DATA_TOKEN }}
+        shell: bash
         run: |
           set -euo pipefail
           rm -rf data/snapshots7d
@@ -36,26 +37,14 @@ jobs:
             "https://api.github.com/repos/vpweb7/rwa.watch-data/contents/_private/snapshots?ref=main" \
             -o /tmp/snapshots_list.json
 
-          node - <<'NODE'
-          const fs = require("fs");
-          const list = JSON.parse(fs.readFileSync("/tmp/snapshots_list.json","utf8"));
-          const files = (Array.isArray(list) ? list : [])
-            .map(x => x && x.name)
-            .filter(n => /^\d{4}-\d{2}-\d{2}\.json$/.test(n))
-            .sort()
-            .slice(-7);
-          if (files.length < 2) { console.error("Not enough daily snapshots:", files); process.exit(1); }
-          fs.writeFileSync("/tmp/last7.txt", files.join("\n"));
-          console.log("Selected:\n" + files.join("\n"));
-          NODE
+          node -e 'const fs=require("fs"); const list=JSON.parse(fs.readFileSync("/tmp/snapshots_list.json","utf8")); const files=(Array.isArray(list)?list:[]).map(x=>x&&x.name).filter(n=>/^\d{4}-\d{2}-\d{2}\.json$/.test(n)).sort().slice(-7); if(files.length<2){console.error("Not enough daily snapshots:",files); process.exit(1);} fs.writeFileSync("/tmp/last7.txt", files.join("\n")); console.log("Selected:\n"+files.join("\n"));'
 
           cp -f /tmp/last7.txt data/snapshots7d/_selected.txt
 
-          echo "Downloading selected snapshots (with HTTP status)..."
+          echo "Downloading selected snapshots..."
           while read -r fname; do
             url="https://api.github.com/repos/vpweb7/rwa.watch-data/contents/_private/snapshots/${fname}?ref=main"
             echo "GET $fname"
-            # capture HTTP code
             code="$(curl --http1.1 -L -sS -o "/tmp/${fname}.meta.json" -w "%{http_code}" \
               -H "Authorization: Bearer $RWA_DATA_TOKEN" \
               -H "Accept: application/vnd.github+json" \
@@ -63,17 +52,11 @@ jobs:
             echo "HTTP $code for $fname"
             if [ "$code" != "200" ]; then
               echo "ERROR: failed to fetch metadata for $fname"
-              head -n 40 "/tmp/${fname}.meta.json" || true
+              head -n 60 "/tmp/${fname}.meta.json" || true
               exit 1
             fi
 
-            node - <<NODE
-          const fs = require("fs");
-          const j = JSON.parse(fs.readFileSync("/tmp/${fname}.meta.json","utf8"));
-          if (!j.content) { console.error("No content field for ${fname}"); console.error(j); process.exit(1); }
-          fs.writeFileSync("data/snapshots7d/${fname}", Buffer.from(j.content,"base64"));
-NODE
-
+            node -e "const fs=require('fs'); const j=JSON.parse(fs.readFileSync('/tmp/${fname}.meta.json','utf8')); if(!j.content){console.error('No content for ${fname}'); console.error(j); process.exit(1);} fs.writeFileSync('data/snapshots7d/${fname}', Buffer.from(j.content,'base64'));"
           done < /tmp/last7.txt
 
           echo "Downloaded files:"
@@ -88,7 +71,9 @@ NODE
         run: node tools/build_sparklines_from_snapshots.mjs
 
       - name: Commit & push if changed
+        shell: bash
         run: |
+          set -euo pipefail
           git config user.name "rwa.watch bot"
           git config user.email "actions@users.noreply.github.com"
           if git status --porcelain | grep -q .; then
