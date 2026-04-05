@@ -1,6 +1,6 @@
 {
   "date": "2026-04-05",
-  "generated_at": "2026-04-05T16:35:19Z",
+  "generated_at": "2026-04-05T16:43:40Z",
   "status": "ok",
   "checks": {
     "schema_validation": "ok",
@@ -18,7 +18,7 @@
     },
     "reconciliation": {
       "status": "ok",
-      "total_tvl": 25541217563.227455,
+      "total_tvl": 25543073453.06062,
       "asset_tvl_count": 140
     },
     "anomaly_detection": {
@@ -27,9 +27,9 @@
         {
           "prev_date": "2026-04-04",
           "prev_total_tvl": 25605257627.13856,
-          "today_total_tvl": 25541217563.227455,
-          "abs_change": -64040063.91110611,
-          "pct_change": 0.0025010513404571714
+          "today_total_tvl": 25543073453.06062,
+          "abs_change": -62184174.077941895,
+          "pct_change": 0.002428570529672546
         }
       ]
     },
