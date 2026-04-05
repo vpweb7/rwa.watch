@@ -11,15 +11,18 @@ function main() {
   const partsDir = path.join(ROOT, "data", "parts");
   const outFile = path.join(ROOT, "data", "sparklines_all_7d.json");
 
-  const files = fs.readdirSync(partsDir)
-    .filter(f => f.startsWith("all_part_") && f.endsWith(".json"))
+  const files = fs
+    .readdirSync(partsDir)
+    .filter((f) => f.startsWith("all_part_") && f.endsWith(".json"))
     .sort((a, b) => {
       const ai = parseInt(a.match(/\d+/)?.[0] ?? "0", 10);
       const bi = parseInt(b.match(/\d+/)?.[0] ?? "0", 10);
       return ai - bi;
     });
 
-  if (!files.length) throw new Error("No ALL sparklines parts found in data/parts (expected all_part_*.json)");
+  if (!files.length) {
+    throw new Error("No ALL sparklines parts found in data/parts (expected all_part_*.json)");
+  }
 
   const series = {};
   let windowDays = 7;
@@ -33,17 +36,18 @@ function main() {
     if (typeof j.definition === "string") definition = j.definition;
     if (typeof j.version === "string") version = j.version;
 
-    // Accept either { series: {...} } or raw object map
     const partSeries =
-      (j && typeof j === "object" && j.series && typeof j.series === "object") ? j.series :
-      (j && typeof j === "object") ? j : null;
+      j && typeof j === "object" && j.series && typeof j.series === "object"
+        ? j.series
+        : j && typeof j === "object"
+          ? j
+          : null;
 
     if (!partSeries || typeof partSeries !== "object") {
       throw new Error(`Part ${f} has no usable series object`);
     }
 
     for (const [k, v] of Object.entries(partSeries)) {
-      // last write wins, but keys should be unique across parts
       series[k] = v;
     }
   }
@@ -53,7 +57,7 @@ function main() {
     version,
     definition,
     window_days: windowDays,
-    series
+    series,
   };
 
   fs.writeFileSync(outFile, JSON.stringify(merged, null, 2));
