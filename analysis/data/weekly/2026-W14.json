@@ -12,42 +12,42 @@
   ],
   "summary": "This weekly recap aggregates the UTC snapshots available for 2026-W14. It tracks market value, investor-facing category shifts, concentration, asset-level changes, and rank pressure using the analytics namespace.",
   "headline_metrics": {
-    "total_rwa_tvl": 25529255755.798904,
-    "top500_rwa_tvl": 25529255755.798904,
+    "total_rwa_tvl": 25522761373.68733,
+    "top500_rwa_tvl": 25522761373.68733,
     "top500_change_1d_usd": null,
     "top500_change_1d_pct": null,
-    "top500_change_7d_usd": 1252370943.182438,
-    "top500_change_7d_pct": 5.158697060388873,
+    "top500_change_7d_usd": 1245876561.0708618,
+    "top500_change_7d_pct": 5.1319457611109565,
     "change_1d_usd": null,
     "change_1d_pct": null,
-    "change_7d_usd": 1252370943.182438,
-    "change_7d_pct": 5.158697060388873,
-    "market_breadth": 0.6463414634146342,
+    "change_7d_usd": 1245876561.0708618,
+    "change_7d_pct": 5.1319457611109565,
+    "market_breadth": 0.6341463414634146,
     "protocols_tracked": 140,
     "top3_details": [
       {
         "slug": "tether-gold",
         "name": "Tether Gold",
-        "tvl_usd": 3288533603.2715793,
-        "share_pct": 12.881431541632768,
+        "tvl_usd": 3287089694.9011536,
+        "share_pct": 12.879051944159837,
         "rank_by_tvl": 1
       },
       {
         "slug": "blackrock-buidl",
         "name": "BlackRock BUIDL",
         "tvl_usd": 2833488942.250449,
-        "share_pct": 11.098987645211041,
+        "share_pct": 11.101811832835738,
         "rank_by_tvl": 2
       },
       {
         "slug": "ondo-yield-assets",
         "name": "Ondo Yield Assets",
-        "tvl_usd": 2787239050.3751335,
-        "share_pct": 10.917823367185388,
+        "tvl_usd": 2787261586.7963295,
+        "share_pct": 10.920689756045968,
         "rank_by_tvl": 3
       }
     ],
-    "top4_10_share_pct": 42.608555104022,
+    "top4_10_share_pct": 42.60739862704244,
     "near_top10_focus": {
       "name": "Superstate USTB",
       "slug": "superstate-ustb",
@@ -60,8 +60,8 @@
     },
     "biggest_asset_gainer": null,
     "category_leader_24h": null,
-    "top3_concentration": 34.898242554029196,
-    "top10_concentration": 77.5067976580512,
+    "top3_concentration": 34.90155353304154,
+    "top10_concentration": 77.508952160084,
     "top3_assets": [
       "Tether Gold",
       "BlackRock BUIDL",
@@ -82,78 +82,78 @@
   "category_shifts": [
     {
       "category": "Commodities",
-      "tvl_usd": 5783294413.21738,
-      "share": 0.2265359581390742,
+      "tvl_usd": 5779384240.730065,
+      "share": 0.22644039789081433,
       "change_1d_usd": null,
       "change_1d_pct": null,
-      "change_7d_usd": 65202467.701164246,
-      "change_7d_pct": 1.1402836527015348,
+      "change_7d_usd": 61292295.21385002,
+      "change_7d_pct": 1.0719011830845337,
       "trend_arrow": "→"
     },
     {
       "category": "Treasury",
-      "tvl_usd": 5762659176.18933,
-      "share": 0.22572766050496232,
+      "tvl_usd": 5762642465.017091,
+      "share": 0.225784443173852,
       "change_1d_usd": null,
       "change_1d_pct": null,
-      "change_7d_usd": 416638144.9920225,
-      "change_7d_pct": 7.7934251017847345,
+      "change_7d_usd": 416621433.8197832,
+      "change_7d_pct": 7.793112510941169,
       "trend_arrow": "→"
     },
     {
       "category": "Funds",
-      "tvl_usd": 5172900973.432493,
-      "share": 0.20262639157655357,
+      "tvl_usd": 5172916256.774831,
+      "share": 0.20267854959094844,
       "change_1d_usd": null,
       "change_1d_pct": null,
-      "change_7d_usd": 589535541.9385023,
-      "change_7d_pct": 12.86250356315879,
+      "change_7d_usd": 589550825.2808399,
+      "change_7d_pct": 12.862837015565454,
       "trend_arrow": "→"
     },
     {
       "category": "Stablecoins",
-      "tvl_usd": 3649868923.8952255,
-      "share": 0.14296808958350332,
+      "tvl_usd": 3649631957.339137,
+      "share": 0.14299518394203703,
       "change_1d_usd": null,
       "change_1d_pct": null,
-      "change_7d_usd": 54712601.43217325,
-      "change_7d_pct": 1.521842070964241,
+      "change_7d_usd": 54475634.876084805,
+      "change_7d_pct": 1.5152507982952867,
       "trend_arrow": "→"
     },
     {
       "category": "Other RWA",
-      "tvl_usd": 3114606942.7661576,
-      "share": 0.12200147832584907,
+      "tvl_usd": 3112288995.5271606,
+      "share": 0.12194170332743746,
       "change_1d_usd": null,
       "change_1d_pct": null,
-      "change_7d_usd": -19877986.685979366,
-      "change_7d_pct": -0.634170753197838,
+      "change_7d_usd": -22195933.92497635,
+      "change_7d_pct": -0.708120613897989,
       "trend_arrow": "→"
     },
     {
       "category": "Private Credit",
-      "tvl_usd": 1871910903.0802395,
-      "share": 0.07332414704862832,
+      "tvl_usd": 1871867932.4302409,
+      "share": 0.07334112108888192,
       "change_1d_usd": null,
       "change_1d_pct": null,
-      "change_7d_usd": 146142527.07811856,
-      "change_7d_pct": 8.468258493452607,
+      "change_7d_usd": 146099556.4281199,
+      "change_7d_pct": 8.465768550387454,
       "trend_arrow": "→"
     },
     {
       "category": "Real Estate",
-      "tvl_usd": 174014423.2180748,
-      "share": 0.006816274821429053,
+      "tvl_usd": 174029525.8688037,
+      "share": 0.0068186009860288594,
       "change_1d_usd": null,
       "change_1d_pct": null,
-      "change_7d_usd": 17646.726429134607,
-      "change_7d_pct": 0.010141984687850325,
+      "change_7d_usd": 32749.37715804577,
+      "change_7d_pct": 0.018821829816850766,
       "trend_arrow": "→"
     }
   ],
   "concentration_change": {
-    "top3_concentration_pct": 34.898242554029196,
-    "top10_concentration_pct": 77.5067976580512
+    "top3_concentration_pct": 34.90155353304154,
+    "top10_concentration_pct": 77.508952160084
   },
   "largest_asset_change": {
     "largest_increase": [
@@ -161,7 +161,7 @@
         "name": "Tether Gold",
         "slug": "tether-gold",
         "analytics_category": "Commodities",
-        "tvl_usd": 3288533603.2715793,
+        "tvl_usd": 3287089694.9011536,
         "change_1d_usd": null,
         "change_1d_pct": null
       },
@@ -177,7 +177,7 @@
         "name": "Ondo Yield Assets",
         "slug": "ondo-yield-assets",
         "analytics_category": "Funds",
-        "tvl_usd": 2787239050.3751335,
+        "tvl_usd": 2787261586.7963295,
         "change_1d_usd": null,
         "change_1d_pct": null
       },
@@ -193,7 +193,7 @@
         "name": "Paxos Gold",
         "slug": "paxos-gold",
         "analytics_category": "Commodities",
-        "tvl_usd": 2377264233.2696333,
+        "tvl_usd": 2374798781.286222,
         "change_1d_usd": null,
         "change_1d_pct": null
       }
@@ -203,7 +203,7 @@
         "name": "Tether Gold",
         "slug": "tether-gold",
         "analytics_category": "Commodities",
-        "tvl_usd": 3288533603.2715793,
+        "tvl_usd": 3287089694.9011536,
         "change_1d_usd": null,
         "change_1d_pct": null
       },
@@ -219,7 +219,7 @@
         "name": "Ondo Yield Assets",
         "slug": "ondo-yield-assets",
         "analytics_category": "Funds",
-        "tvl_usd": 2787239050.3751335,
+        "tvl_usd": 2787261586.7963295,
         "change_1d_usd": null,
         "change_1d_pct": null
       },
@@ -235,7 +235,7 @@
         "name": "Paxos Gold",
         "slug": "paxos-gold",
         "analytics_category": "Commodities",
-        "tvl_usd": 2377264233.2696333,
+        "tvl_usd": 2374798781.286222,
         "change_1d_usd": null,
         "change_1d_pct": null
       }
@@ -245,7 +245,7 @@
   "new_entrants": [],
   "what_to_watch_next_week": [
     "Capital remained concentrated in Tether Gold, BlackRock BUIDL, Ondo Yield Assets. The next snapshot will show whether participation broadens beyond the current leaders.",
-    "Breadth closed at 64.6% today. The next update will show whether positive participation stays above the recent pattern.",
+    "Breadth closed at 63.4% today. The next update will show whether positive participation stays above the recent pattern.",
     "Commodities led category-level value expansion today. Tomorrow's snapshot will confirm whether that move is sustained on a 2-day basis."
   ]
 }
