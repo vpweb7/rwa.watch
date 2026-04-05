@@ -1,11 +1,15 @@
 {
-  "title": "Weekly RWA Market Recap — Week 14, 2026",
-  "week_label": "2026-W14",
-  "display_week": "Week 14, 2026",
-  "dates_included": [
-    "2026-04-05"
-  ],
-  "summary": "This weekly recap aggregates the UTC snapshots available for 2026-W14. It tracks market value, investor-facing category shifts, concentration, asset-level changes, and rank pressure using the analytics namespace.",
+  "title": "RWA Market Brief",
+  "date": "2026-04-05",
+  "display_date": "April 05, 2026",
+  "summary": "Tracked RWA market value closed at +$25.58B on April 05, 2026 (UTC). A 24-hour comparison was not available in local history. A 7-day comparison becomes available once the local analytics history reaches seven UTC snapshots. The largest share remained concentrated in Tether Gold, BlackRock BUIDL, Ondo Yield Assets.",
+  "permalink": "/analysis/recap-2026-04-05.html",
+  "x_share_text": "RWA Market Brief | Total RWA TVL: +$25.58B | 24H Change: N/A | 7D Change: N/A | Market Breadth: N/A | Largest capital increase: Commodities | /analysis/recap-2026-04-05.html",
+  "market_regime": "Mixed conditions with moderate concentration.",
+  "main_chart": {
+    "title": "Total RWA TVL — Last 7 Days",
+    "image": "charts/total-rwa-tvl-7d-2026-04-05.png"
+  },
   "headline_metrics": {
     "total_rwa_tvl": 25579657958.820686,
     "top500_rwa_tvl": 25579657958.820686,
@@ -74,7 +78,11 @@
     "new_top10_entrants": 0,
     "market_regime": "Mixed conditions with moderate concentration."
   },
-  "category_shifts": [
+  "what_to_watch_tomorrow": [
+    "Capital remained concentrated in Tether Gold, BlackRock BUIDL, Ondo Yield Assets. The next snapshot will show whether participation broadens beyond the current leaders.",
+    "Commodities led category-level value expansion today. Tomorrow's snapshot will confirm whether that move is sustained on a 2-day basis."
+  ],
+  "capital_allocation": [
     {
       "category": "Commodities",
       "tvl_usd": 5815650707.081628,
@@ -146,11 +154,88 @@
       "trend_arrow": "→"
     }
   ],
-  "concentration_change": {
+  "market_structure": {
     "top3_concentration_pct": 34.92155252187777,
-    "top10_concentration_pct": 77.49725635759592
+    "top10_concentration_pct": 77.49725635759592,
+    "top3_assets": [
+      "Tether Gold",
+      "BlackRock BUIDL",
+      "Ondo Yield Assets"
+    ],
+    "largest_assets": [
+      {
+        "name": "Tether Gold",
+        "slug": "tether-gold",
+        "analytics_category": "Commodities",
+        "tvl_usd": 3306935564.52785,
+        "share": 0.12927989771604873
+      },
+      {
+        "name": "BlackRock BUIDL",
+        "slug": "blackrock-buidl",
+        "analytics_category": "Treasury",
+        "tvl_usd": 2833488942.250449,
+        "share": 0.11077118180438263
+      },
+      {
+        "name": "Ondo Yield Assets",
+        "slug": "ondo-yield-assets",
+        "analytics_category": "Funds",
+        "tvl_usd": 2792389182.227955,
+        "share": 0.1091644456983464
+      },
+      {
+        "name": "Circle USYC",
+        "slug": "circle-usyc",
+        "analytics_category": "Stablecoins",
+        "tvl_usd": 2684646102.3212137,
+        "share": 0.10495238468954828
+      },
+      {
+        "name": "Paxos Gold",
+        "slug": "paxos-gold",
+        "analytics_category": "Commodities",
+        "tvl_usd": 2390833274.649159,
+        "share": 0.09346619405537136
+      },
+      {
+        "name": "Centrifuge Protocol",
+        "slug": "centrifuge-protocol",
+        "analytics_category": "Private Credit",
+        "tvl_usd": 1705753511.2334993,
+        "share": 0.0666839843589582
+      },
+      {
+        "name": "Anemoy Capital",
+        "slug": "anemoy-capital",
+        "analytics_category": "Funds",
+        "tvl_usd": 1241479006.5323453,
+        "share": 0.04853383921438416
+      },
+      {
+        "name": "Spiko",
+        "slug": "spiko",
+        "analytics_category": "Treasury",
+        "tvl_usd": 1147569227.99441,
+        "share": 0.044862571260406214
+      },
+      {
+        "name": "Ethena USDtb",
+        "slug": "ethena-usdtb",
+        "analytics_category": "Stablecoins",
+        "tvl_usd": 863220816.502366,
+        "share": 0.03374637838754602
+      },
+      {
+        "name": "WisdomTree",
+        "slug": "wisdomtree",
+        "analytics_category": "Funds",
+        "tvl_usd": 857217475.5042063,
+        "share": 0.033511686390967174
+      }
+    ]
   },
-  "largest_asset_change": {
+  "asset_leadership": {
     "largest_increase": [
       {
         "name": "Tether Gold",
@@ -237,9 +322,42 @@
     ],
     "rank_watch": []
   },
-  "new_entrants": [],
-  "what_to_watch_next_week": [
-    "Capital remained concentrated in Tether Gold, BlackRock BUIDL, Ondo Yield Assets. The next snapshot will show whether participation broadens beyond the current leaders.",
-    "Commodities led category-level value expansion today. Tomorrow's snapshot will confirm whether that move is sustained on a 2-day basis."
-  ]
+  "category_trends": [
+    {
+      "category": "Commodities",
+      "arrow": "→",
+      "change_1d_pct": null,
+      "change_1d_usd": null
+    },
+    {
+      "category": "Treasury",
+      "arrow": "→",
+      "change_1d_pct": null,
+      "change_1d_usd": null
+    },
+    {
+      "category": "Funds",
+      "arrow": "→",
+      "change_1d_pct": null,
+      "change_1d_usd": null
+    },
+    {
+      "category": "Stablecoins",
+      "arrow": "→",
+      "change_1d_pct": null,
+      "change_1d_usd": null
+    },
+    {
+      "category": "Other RWA",
+      "arrow": "→",
+      "change_1d_pct": null,
+      "change_1d_usd": null
+    }
+  ],
+  "monitoring_signals": [
+    "Top 3 concentration stood at 34.9% of tracked market value.",
+    "Commodities led category-level 24H value change by absolute dollars.",
+    "Top 10 concentration ended the day at 77.5% of tracked market value."
+  ],
+  "new_entrants": []
 }
