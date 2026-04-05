@@ -3,6 +3,11 @@
   "week_label": "2026-W14",
   "display_week": "Week 14, 2026",
   "dates_included": [
+    "2026-03-30",
+    "2026-03-31",
+    "2026-04-02",
+    "2026-04-03",
+    "2026-04-04",
     "2026-04-05"
   ],
   "summary": "This weekly recap aggregates the UTC snapshots available for 2026-W14. It tracks market value, investor-facing category shifts, concentration, asset-level changes, and rank pressure using the analytics namespace.",
@@ -11,13 +16,13 @@
     "top500_rwa_tvl": 25559251374.138084,
     "top500_change_1d_usd": null,
     "top500_change_1d_pct": null,
-    "top500_change_7d_usd": null,
-    "top500_change_7d_pct": null,
+    "top500_change_7d_usd": 1282366561.521618,
+    "top500_change_7d_pct": 5.282253350953758,
     "change_1d_usd": null,
     "change_1d_pct": null,
-    "change_7d_usd": null,
-    "change_7d_pct": null,
-    "market_breadth": null,
+    "change_7d_usd": 1282366561.521618,
+    "change_7d_pct": 5.282253350953758,
+    "market_breadth": 0.6219512195121951,
     "protocols_tracked": 140,
     "top3_details": [
       {
@@ -72,7 +77,7 @@
     "largest_asset_tvl_decline_usd": null,
     "new_entrants": 0,
     "new_top10_entrants": 0,
-    "market_regime": "Mixed conditions with moderate concentration."
+    "market_regime": "Expansion with moderate concentration."
   },
   "category_shifts": [
     {
@@ -81,8 +86,8 @@
       "share": 0.22740537594796276,
       "change_1d_usd": null,
       "change_1d_pct": null,
-      "change_7d_usd": null,
-      "change_7d_pct": null,
+      "change_7d_usd": 94219222.16813946,
+      "change_7d_pct": 1.647738844808555,
       "trend_arrow": "→"
     },
     {
@@ -91,8 +96,8 @@
       "share": 0.2254634517660561,
       "change_1d_usd": null,
       "change_1d_pct": null,
-      "change_7d_usd": null,
-      "change_7d_pct": null,
+      "change_7d_usd": 416656008.1721773,
+      "change_7d_pct": 7.793759241513154,
       "trend_arrow": "→"
     },
     {
@@ -101,8 +106,8 @@
       "share": 0.20240103129229287,
       "change_1d_usd": null,
       "change_1d_pct": null,
-      "change_7d_usd": null,
-      "change_7d_pct": null,
+      "change_7d_usd": 589853405.6905107,
+      "change_7d_pct": 12.869438723724947,
       "trend_arrow": "→"
     },
     {
@@ -111,8 +116,8 @@
       "share": 0.14282456714291156,
       "change_1d_usd": null,
       "change_1d_pct": null,
-      "change_7d_usd": null,
-      "change_7d_pct": null,
+      "change_7d_usd": 55332691.54508734,
+      "change_7d_pct": 1.539090002828547,
       "trend_arrow": "→"
     },
     {
@@ -121,8 +126,8 @@
       "share": 0.12187159237978162,
       "change_1d_usd": null,
       "change_1d_pct": null,
-      "change_7d_usd": null,
-      "change_7d_pct": null,
+      "change_7d_usd": -19538264.450807095,
+      "change_7d_pct": -0.6233325375796905,
       "trend_arrow": "→"
     },
     {
@@ -131,8 +136,8 @@
       "share": 0.07322587544357136,
       "change_1d_usd": null,
       "change_1d_pct": null,
-      "change_7d_usd": null,
-      "change_7d_pct": null,
+      "change_7d_usd": 145830181.55144453,
+      "change_7d_pct": 8.45015956830033,
       "trend_arrow": "→"
     },
     {
@@ -141,8 +146,8 @@
       "share": 0.006808106027423664,
       "change_1d_usd": null,
       "change_1d_pct": null,
-      "change_7d_usd": null,
-      "change_7d_pct": null,
+      "change_7d_usd": 13316.845060378313,
+      "change_7d_pct": 0.007653501018167752,
       "trend_arrow": "→"
     }
   ],
@@ -240,6 +245,7 @@
   "new_entrants": [],
   "what_to_watch_next_week": [
     "Capital remained concentrated in Tether Gold, BlackRock BUIDL, Ondo Yield Assets. The next snapshot will show whether participation broadens beyond the current leaders.",
+    "Breadth closed at 62.2% today. The next update will show whether positive participation stays above the recent pattern.",
     "Commodities led category-level value expansion today. Tomorrow's snapshot will confirm whether that move is sustained on a 2-day basis."
   ]
 }
