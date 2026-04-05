@@ -12,16 +12,16 @@
   ],
   "summary": "This weekly recap aggregates the UTC snapshots available for 2026-W14. It tracks market value, investor-facing category shifts, concentration, asset-level changes, and rank pressure using the analytics namespace.",
   "headline_metrics": {
-    "total_rwa_tvl": 25544755493.989887,
-    "top500_rwa_tvl": 25544755493.989887,
-    "top500_change_1d_usd": -60502133.14868927,
-    "top500_change_1d_pct": -0.23628792972800738,
-    "top500_change_7d_usd": 1267870681.3734207,
-    "top500_change_7d_pct": 5.2225427239104505,
-    "change_1d_usd": -60502133.14868927,
-    "change_1d_pct": -0.23628792972800738,
-    "change_7d_usd": 1267870681.3734207,
-    "change_7d_pct": 5.2225427239104505,
+    "total_rwa_tvl": 25544616810.875675,
+    "top500_rwa_tvl": 25544616810.875675,
+    "top500_change_1d_usd": -60640816.262901306,
+    "top500_change_1d_pct": -0.23682954940718037,
+    "top500_change_7d_usd": 1267731998.2592087,
+    "top500_change_7d_pct": 5.221971468103592,
+    "change_1d_usd": -60640816.262901306,
+    "change_1d_pct": -0.23682954940718037,
+    "change_7d_usd": 1267731998.2592087,
+    "change_7d_pct": 5.221971468103592,
     "market_breadth": 0.6219512195121951,
     "protocols_tracked": 140,
     "top3_details": [
@@ -29,25 +29,25 @@
         "slug": "tether-gold",
         "name": "Tether Gold",
         "tvl_usd": 3299624668.904218,
-        "share_pct": 12.917033673234988,
+        "share_pct": 12.917103800513443,
         "rank_by_tvl": 1
       },
       {
         "slug": "blackrock-buidl",
         "name": "BlackRock BUIDL",
         "tvl_usd": 2833488942.250449,
-        "share_pct": 11.09225313554912,
+        "share_pct": 11.092313355994774,
         "rank_by_tvl": 2
       },
       {
         "slug": "ondo-yield-assets",
         "name": "Ondo Yield Assets",
         "tvl_usd": 2785921997.602765,
-        "share_pct": 10.906042918509165,
+        "share_pct": 10.906102128009424,
         "rank_by_tvl": 3
       }
     ],
-    "top4_10_share_pct": 42.61465769579602,
+    "top4_10_share_pct": 42.61488905309074,
     "near_top10_focus": {
       "name": "Superstate USTB",
       "slug": "superstate-ustb",
@@ -74,8 +74,8 @@
       "change_1d_usd": 513438.25450515747,
       "change_1d_pct": 0.008910535905370942
     },
-    "top3_concentration": 34.91532972729326,
-    "top10_concentration": 77.52998742308928,
+    "top3_concentration": 34.915519284517636,
+    "top10_concentration": 77.53040833760838,
     "top3_assets": [
       "Tether Gold",
       "BlackRock BUIDL",
@@ -97,7 +97,7 @@
     {
       "category": "Commodities",
       "tvl_usd": 5803382481.226315,
-      "share": 0.22718489055773977,
+      "share": 0.22718612395686874,
       "change_1d_usd": -15834514.265787125,
       "change_1d_pct": -0.2721073003129737,
       "change_7d_usd": 85290535.71009922,
@@ -107,7 +107,7 @@
     {
       "category": "Treasury",
       "tvl_usd": 5762661304.081425,
-      "share": 0.22559077950216633,
+      "share": 0.22559200424677966,
       "change_1d_usd": 513438.25450515747,
       "change_1d_pct": 0.008910535905370942,
       "change_7d_usd": 416640272.8841171,
@@ -116,18 +116,18 @@
     },
     {
       "category": "Funds",
-      "tvl_usd": 5170170138.920148,
-      "share": 0.20239654046156652,
-      "change_1d_usd": -4571436.844632149,
-      "change_1d_pct": -0.08834135536432974,
-      "change_7d_usd": 586804707.426157,
-      "change_7d_pct": 12.802922136515793,
+      "tvl_usd": 5170117651.240293,
+      "share": 0.20239558453815223,
+      "change_1d_usd": -4623924.524487495,
+      "change_1d_pct": -0.08935566069894207,
+      "change_7d_usd": 586752219.7463017,
+      "change_7d_pct": 12.801776958793454,
       "trend_arrow": "↓"
     },
     {
       "category": "Stablecoins",
       "tvl_usd": 3650242700.3641896,
-      "share": 0.14289597335245627,
+      "share": 0.14289674914246867,
       "change_1d_usd": 310107.87993240356,
       "change_1d_pct": 0.0084962632069141,
       "change_7d_usd": 55086377.90113735,
@@ -136,18 +136,18 @@
     },
     {
       "category": "Other RWA",
-      "tvl_usd": 3112868938.8571568,
-      "share": 0.12185941414039159,
-      "change_1d_usd": -39768616.48496485,
-      "change_1d_pct": -1.2614395339412665,
-      "change_7d_usd": -21615990.59498024,
-      "change_7d_pct": -0.6896185842807157,
+      "tvl_usd": 3112782743.4228,
+      "share": 0.12185670141262507,
+      "change_1d_usd": -39854811.91932154,
+      "change_1d_pct": -1.2641736076444254,
+      "change_7d_usd": -21702186.02933693,
+      "change_7d_pct": -0.6923684917231387,
       "trend_arrow": "↓"
     },
     {
       "category": "Private Credit",
       "tvl_usd": 1871403760.2746832,
-      "share": 0.0732598031997207,
+      "share": 0.07326020093117737,
       "change_1d_usd": -1166982.3278479576,
       "change_1d_pct": -0.062319799263022,
       "change_7d_usd": 145635384.27256227,
@@ -157,7 +157,7 @@
     {
       "category": "Real Estate",
       "tvl_usd": 174026170.26596937,
-      "share": 0.006812598785958779,
+      "share": 0.0068126357719281725,
       "change_1d_usd": 15870.640101850033,
       "change_1d_pct": 0.009120517656691085,
       "change_7d_usd": 29393.77432370186,
@@ -166,8 +166,8 @@
     }
   ],
   "concentration_change": {
-    "top3_concentration_pct": 34.91532972729326,
-    "top10_concentration_pct": 77.52998742308928
+    "top3_concentration_pct": 34.915519284517636,
+    "top10_concentration_pct": 77.53040833760838
   },
   "largest_asset_change": {
     "largest_increase": [
@@ -249,9 +249,9 @@
         "name": "Hastra",
         "slug": "hastra",
         "analytics_category": "Other RWA",
-        "tvl_usd": 360167318.81739247,
-        "change_1d_usd": -3743601.275809288,
-        "change_1d_pct": -1.0287136409235842
+        "tvl_usd": 359999235.4449157,
+        "change_1d_usd": -3911684.6482860446,
+        "change_1d_pct": -1.0749016949764045
       }
     ],
     "rank_watch": [
