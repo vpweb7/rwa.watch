@@ -148,6 +148,13 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
 .metricGridSecondary{margin-top:14px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;}
 @media (max-width: 1100px){ .metricGridPrimary{grid-template-columns:repeat(2,minmax(0,1fr));} .metricGridSecondary{grid-template-columns:repeat(2,minmax(0,1fr));}}
 @media (max-width: 640px){ .metricGridPrimary,.metricGridSecondary{grid-template-columns:1fr;} }
+/* --- Desktop layout overrides (keep mobile intact) --- */
+@media (min-width: 1100px){
+  .container{max-width:1400px;width:min(1400px,96vw);margin-left:auto;margin-right:auto;}
+  .sectionGrid,.sectionGrid.equal{grid-template-columns:1fr 1fr;gap:16px;}
+  .sectionCard{overflow:hidden;}
+  table{width:100%;}
+}
 
 .metricCard{padding:18px;}
 .metricCard.primary{padding:20px;min-height:148px;background:linear-gradient(180deg, rgba(18,72,136,0.22), rgba(255,255,255,0.02));}
@@ -236,7 +243,7 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
           </div>
         </div>
       </div>
-      <div class="updated">Updated: 2026-04-05T16:08:53Z</div>
+      <div class="updated">Updated: 2026-04-05T16:25:15Z</div>
     </div>
     <div class="headline">
       <h2>Real-World Asset Intelligence &amp; Monitoring</h2>
@@ -265,7 +272,7 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
     <section class="sectionCard">
       <h3>Category Shifts</h3>
       <p class="sub">Investor-facing category changes based on the latest available weekly comparison window.</p>
-      <div class="inlineList"><div class="rowCard"><div class="rowTitle"><b>Commodities</b><span>22.7%</span></div><div class="rowMeta"><span class="chg pos">+$80.50M</span> · <span class="chg pos">+1.4%</span></div></div><div class="rowCard"><div class="rowTitle"><b>Treasury</b><span>22.6%</span></div><div class="rowMeta"><span class="chg pos">+$416.64M</span> · <span class="chg pos">+7.8%</span></div></div><div class="rowCard"><div class="rowTitle"><b>Funds</b><span>20.3%</span></div><div class="rowMeta"><span class="chg pos">+$589.10M</span> · <span class="chg pos">+12.9%</span></div></div><div class="rowCard"><div class="rowTitle"><b>Stablecoins</b><span>14.3%</span></div><div class="rowMeta"><span class="chg pos">+$54.96M</span> · <span class="chg pos">+1.5%</span></div></div><div class="rowCard"><div class="rowTitle"><b>Other RWA</b><span>12.2%</span></div><div class="rowMeta"><span class="chg neg">-$22.80M</span> · <span class="chg neg">-0.7%</span></div></div><div class="rowCard"><div class="rowTitle"><b>Private Credit</b><span>7.3%</span></div><div class="rowMeta"><span class="chg pos">+$146.26M</span> · <span class="chg pos">+8.5%</span></div></div></div>
+      <div class="inlineList"><div class="rowCard"><div class="rowTitle"><b>Commodities</b><span>22.7%</span></div><div class="rowMeta"><span class="chg pos">+$79.80M</span> · <span class="chg pos">+1.4%</span></div></div><div class="rowCard"><div class="rowTitle"><b>Treasury</b><span>22.6%</span></div><div class="rowMeta"><span class="chg pos">+$416.64M</span> · <span class="chg pos">+7.8%</span></div></div><div class="rowCard"><div class="rowTitle"><b>Funds</b><span>20.3%</span></div><div class="rowMeta"><span class="chg pos">+$589.10M</span> · <span class="chg pos">+12.9%</span></div></div><div class="rowCard"><div class="rowTitle"><b>Stablecoins</b><span>14.3%</span></div><div class="rowMeta"><span class="chg pos">+$54.92M</span> · <span class="chg pos">+1.5%</span></div></div><div class="rowCard"><div class="rowTitle"><b>Other RWA</b><span>12.2%</span></div><div class="rowMeta"><span class="chg neg">-$22.25M</span> · <span class="chg neg">-0.7%</span></div></div><div class="rowCard"><div class="rowTitle"><b>Private Credit</b><span>7.3%</span></div><div class="rowMeta"><span class="chg pos">+$146.11M</span> · <span class="chg pos">+8.5%</span></div></div></div>
     </section>
 
     <section class="sectionCard">
@@ -285,8 +292,8 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
         <tr>
           <td>Re</td>
           <td>Other RWA</td>
-          <td>$185.41M</td>
-          <td><span class="chg pos">+$580.89K</span></td>
+          <td>$185.40M</td>
+          <td><span class="chg pos">+$565.40K</span></td>
         </tr>
         
         <tr>
@@ -304,17 +311,17 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
         </tr>
         
         <tr>
-          <td>Centrifuge Protocol</td>
-          <td>Private Credit</td>
-          <td>$1.71B</td>
-          <td><span class="chg pos">+$334.49K</span></td>
-        </tr>
-        
-        <tr>
           <td>Etherfuse</td>
           <td>Other RWA</td>
           <td>$4.87M</td>
-          <td><span class="chg pos">+$302.56K</span></td>
+          <td><span class="chg pos">+$304.29K</span></td>
+        </tr>
+        
+        <tr>
+          <td>Midas RWA</td>
+          <td>Other RWA</td>
+          <td>$214.28M</td>
+          <td><span class="chg pos">+$302.41K</span></td>
         </tr>
         </tbody>
       </table>

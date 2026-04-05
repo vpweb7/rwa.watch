@@ -4,10 +4,10 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>RWA Market Brief — RWA.watch</title>
-<meta name="description" content="Tracked RWA market value closed at +$25.54B on April 05, 2026 (UTC). On a 24-hour basis, aggregate value decreased by +$63.69M. Against the local 7-day history, market value was higher by +$1.26B. Treasury led category-l" />
+<meta name="description" content="Tracked RWA market value closed at +$25.54B on April 05, 2026 (UTC). On a 24-hour basis, aggregate value decreased by +$64.04M. Against the local 7-day history, market value was higher by +$1.26B. Treasury led category-l" />
 <link rel="canonical" href="/analysis/recap-2026-04-05.html" />
 <meta property="og:title" content="RWA Market Brief — RWA.watch" />
-<meta property="og:description" content="Tracked RWA market value closed at +$25.54B on April 05, 2026 (UTC). On a 24-hour basis, aggregate value decreased by +$63.69M. Against the local 7-day history, market value was higher by +$1.26B. Treasury led category-l" />
+<meta property="og:description" content="Tracked RWA market value closed at +$25.54B on April 05, 2026 (UTC). On a 24-hour basis, aggregate value decreased by +$64.04M. Against the local 7-day history, market value was higher by +$1.26B. Treasury led category-l" />
 <meta property="og:image" content="charts/total-rwa-tvl-7d-2026-04-05.png" />
 <meta property="og:url" content="/analysis/recap-2026-04-05.html" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -153,6 +153,13 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
 .metricGridSecondary{margin-top:14px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;}
 @media (max-width: 1100px){ .metricGridPrimary{grid-template-columns:repeat(2,minmax(0,1fr));} .metricGridSecondary{grid-template-columns:repeat(2,minmax(0,1fr));}}
 @media (max-width: 640px){ .metricGridPrimary,.metricGridSecondary{grid-template-columns:1fr;} }
+/* --- Desktop layout overrides (keep mobile intact) --- */
+@media (min-width: 1100px){
+  .container{max-width:1400px;width:min(1400px,96vw);margin-left:auto;margin-right:auto;}
+  .sectionGrid,.sectionGrid.equal{grid-template-columns:1fr 1fr;gap:16px;}
+  .sectionCard{overflow:hidden;}
+  table{width:100%;}
+}
 
 .metricCard{padding:18px;}
 .metricCard.primary{padding:20px;min-height:148px;background:linear-gradient(180deg, rgba(18,72,136,0.22), rgba(255,255,255,0.02));}
@@ -241,7 +248,7 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
           </div>
         </div>
       </div>
-      <div class="updated">Updated: 2026-04-05T16:08:53Z</div>
+      <div class="updated">Updated: 2026-04-05T16:25:15Z</div>
     </div>
     <div class="headline">
       <h2>Real-World Asset Intelligence &amp; Monitoring</h2>
@@ -257,7 +264,7 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
         <div>
           <h1 class="heroTitle">RWA Market Brief</h1>
           <div class="heroDate">April 05, 2026 (UTC)</div>
-          <p class="heroSummary">Tracked RWA market value closed at +$25.54B on April 05, 2026 (UTC). On a 24-hour basis, aggregate value decreased by +$63.69M. Against the local 7-day history, market value was higher by +$1.26B. Treasury led category-level movement, while market breadth was 63.4% across eligible assets. The largest share remained concentrated in Tether Gold, BlackRock BUIDL, Ondo Yield Assets.</p>
+          <p class="heroSummary">Tracked RWA market value closed at +$25.54B on April 05, 2026 (UTC). On a 24-hour basis, aggregate value decreased by +$64.04M. Against the local 7-day history, market value was higher by +$1.26B. Treasury led category-level movement, while market breadth was 63.4% across eligible assets. The largest share remained concentrated in Tether Gold, BlackRock BUIDL, Ondo Yield Assets.</p>
           <div class="kpiStrip">
             <span class="badgePill">Top 3 Assets: Tether Gold, BlackRock BUIDL, Ondo Yield Assets</span>
             <span class="badgePill">Top 10 Concentration: 77.5%</span>
@@ -278,9 +285,9 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
     <div class="marketRegime"><b>Market Regime:</b> Expansion with moderate concentration.</div>
   </section>
 
-  <section class="metricGridPrimary"><div class="metricCard primary"><div class="metricCardLabel">Total RWA TVL</div><div class="metricCardValue">$25.54B</div><div class="metricCardSub">Aggregate tracked market value.</div></div><div class="metricCard primary"><div class="metricCardLabel">24H Change</div><div class="metricCardValue"><span class="chg neg">-$63.69M</span></div><div class="metricCardSub"><span class="chg neg">-0.2%</span></div></div><div class="metricCard primary"><div class="metricCardLabel">7D Change</div><div class="metricCardValue"><span class="chg pos">+$1.26B</span></div><div class="metricCardSub"><span class="chg pos">+5.2%</span></div></div><div class="metricCard primary"><div class="metricCardLabel">Top 3 Concentration</div><div class="metricCardValue">34.9%</div><div class="metricCardSub">Share held by the three largest tracked assets.</div><div class="metricCardMini"><div class="miniRow"><span>Tether Gold</span><b>12.9%</b></div><div class="miniRow"><span>BlackRock BUIDL</span><b>11.1%</b></div><div class="miniRow"><span>Ondo Yield Assets</span><b>10.9%</b></div></div></div></section>
+  <section class="metricGridPrimary"><div class="metricCard primary"><div class="metricCardLabel">Total RWA TVL</div><div class="metricCardValue">$25.54B</div><div class="metricCardSub">Aggregate tracked market value.</div></div><div class="metricCard primary"><div class="metricCardLabel">24H Change</div><div class="metricCardValue"><span class="chg neg">-$64.04M</span></div><div class="metricCardSub"><span class="chg neg">-0.3%</span></div></div><div class="metricCard primary"><div class="metricCardLabel">7D Change</div><div class="metricCardValue"><span class="chg pos">+$1.26B</span></div><div class="metricCardSub"><span class="chg pos">+5.2%</span></div></div><div class="metricCard primary"><div class="metricCardLabel">Top 3 Concentration</div><div class="metricCardValue">34.9%</div><div class="metricCardSub">Share held by the three largest tracked assets.</div><div class="metricCardMini"><div class="miniRow"><span>Tether Gold</span><b>12.9%</b></div><div class="miniRow"><span>BlackRock BUIDL</span><b>11.1%</b></div><div class="miniRow"><span>Ondo Yield Assets</span><b>10.9%</b></div></div></div></section>
 
-  <section class="metricGridSecondary"><div class="metricCard secondary"><div class="metricCardLabel">Top 10 Concentration</div><div class="metricCardValue">77.5%</div><div class="metricCardSub">Share held by the ten largest tracked assets.</div><div class="metricCardMini"><div class="miniRow"><span>Ranks 4–10</span><b>42.6%</b></div><div class="miniRow"><span>Rest of market</span><b>22.5%</b></div></div></div><div class="metricCard secondary"><div class="metricCardLabel">Category Leader (24h)</div><div class="metricCardValue">Treasury</div><div class="metricCardSub"><span class="chg pos">+$512.15K</span> <span class="chg pos">+0.0%</span></div></div><div class="metricCard secondary"><div class="metricCardLabel">Biggest Asset Gainer (24h)</div><div class="metricCardValue">Re</div><div class="metricCardSub"><span class="chg pos">+$580.89K</span> <span class="chg pos">+0.3%</span> · Δrank +0</div></div><div class="metricCard secondary"><div class="metricCardLabel">Near Top 10</div><div class="metricCardValue">Superstate USTB</div><div class="metricCardSub">Gap to #10: $16.33M (1.9%)</div></div><div class="metricCard secondary"><div class="metricCardLabel">New Entrants</div><div class="metricCardValue">0</div><div class="metricCardSub">Assets crossing the $1M threshold today.</div></div><div class="metricCard secondary"><div class="metricCardLabel">Assets Tracked</div><div class="metricCardValue">140</div><div class="metricCardSub">Tracked assets in today’s universe.</div></div></section>
+  <section class="metricGridSecondary"><div class="metricCard secondary"><div class="metricCardLabel">Top 10 Concentration</div><div class="metricCardValue">77.5%</div><div class="metricCardSub">Share held by the ten largest tracked assets.</div><div class="metricCardMini"><div class="miniRow"><span>Ranks 4–10</span><b>42.6%</b></div><div class="miniRow"><span>Rest of market</span><b>22.5%</b></div></div></div><div class="metricCard secondary"><div class="metricCardLabel">Category Leader (24h)</div><div class="metricCardValue">Treasury</div><div class="metricCardSub"><span class="chg pos">+$512.15K</span> <span class="chg pos">+0.0%</span></div></div><div class="metricCard secondary"><div class="metricCardLabel">Biggest Asset Gainer (24h)</div><div class="metricCardValue">Re</div><div class="metricCardSub"><span class="chg pos">+$565.40K</span> <span class="chg pos">+0.3%</span> · Δrank +0</div></div><div class="metricCard secondary"><div class="metricCardLabel">Near Top 10</div><div class="metricCardValue">Superstate USTB</div><div class="metricCardSub">Gap to #10: $16.33M (1.9%)</div></div><div class="metricCard secondary"><div class="metricCardLabel">New Entrants</div><div class="metricCardValue">0</div><div class="metricCardSub">Assets crossing the $1M threshold today.</div></div><div class="metricCard secondary"><div class="metricCardLabel">Assets Tracked</div><div class="metricCardValue">140</div><div class="metricCardSub">Tracked assets in today’s universe.</div></div></section>
 
   <div class="sectionGrid">
     <section class="sectionCard">
@@ -290,7 +297,7 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
     <div class="categoryBar">
       <div><b>Commodities</b><div class="dim"></div></div>
       <div class="barTrack"><div class="barFill" style="width:22.7%"></div></div>
-      <div style="text-align:right;"><b><span class="chg neg">-$20.62M</span></b><div class="dim">Share 22.7% · <span class="chg neg">-0.4%</span></div></div>
+      <div style="text-align:right;"><b><span class="chg neg">-$21.33M</span></b><div class="dim">Share 22.7% · <span class="chg neg">-0.4%</span></div></div>
     </div>
     
     <div class="categoryBar">
@@ -308,19 +315,19 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
     <div class="categoryBar">
       <div><b>Stablecoins</b><div class="dim"></div></div>
       <div class="barTrack"><div class="barFill" style="width:14.3%"></div></div>
-      <div style="text-align:right;"><b><span class="chg pos">+$186.14K</span></b><div class="dim">Share 14.3% · <span class="chg pos">+0.0%</span></div></div>
+      <div style="text-align:right;"><b><span class="chg pos">+$140.43K</span></b><div class="dim">Share 14.3% · <span class="chg pos">+0.0%</span></div></div>
     </div>
     
     <div class="categoryBar">
       <div><b>Other RWA</b><div class="dim"></div></div>
       <div class="barTrack"><div class="barFill" style="width:12.2%"></div></div>
-      <div style="text-align:right;"><b><span class="chg neg">-$40.95M</span></b><div class="dim">Share 12.2% · <span class="chg neg">-1.3%</span></div></div>
+      <div style="text-align:right;"><b><span class="chg neg">-$40.40M</span></b><div class="dim">Share 12.2% · <span class="chg neg">-1.3%</span></div></div>
     </div>
     
     <div class="categoryBar">
       <div><b>Private Credit</b><div class="dim"></div></div>
       <div class="barTrack"><div class="barFill" style="width:7.3%"></div></div>
-      <div style="text-align:right;"><b><span class="chg neg">-$542.85K</span></b><div class="dim">Share 7.3% · <span class="chg neg">-0.0%</span></div></div>
+      <div style="text-align:right;"><b><span class="chg neg">-$688.77K</span></b><div class="dim">Share 7.3% · <span class="chg neg">-0.0%</span></div></div>
     </div>
     
     </section>
@@ -403,11 +410,11 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
       <div class="dualPanels">
         <div class="miniPanel">
           <h4>Largest TVL Increase</h4>
-          <div class="inlineList"><div class="rowCard"><div class="rowTitle"><b>Re</b><span><span class="chg pos">+$580.89K</span></span></div><div class="rowMeta">$185.41M · Other RWA</div></div><div class="rowCard"><div class="rowTitle"><b>Remora Markets</b><span><span class="chg pos">+$516.91K</span></span></div><div class="rowMeta">$1.74M · Funds</div></div><div class="rowCard"><div class="rowTitle"><b>Superstate USTB</b><span><span class="chg pos">+$500.24K</span></span></div><div class="rowMeta">$840.88M · Treasury</div></div><div class="rowCard"><div class="rowTitle"><b>Centrifuge Protocol</b><span><span class="chg pos">+$334.49K</span></span></div><div class="rowMeta">$1.71B · Private Credit</div></div></div>
+          <div class="inlineList"><div class="rowCard"><div class="rowTitle"><b>Re</b><span><span class="chg pos">+$565.40K</span></span></div><div class="rowMeta">$185.40M · Other RWA</div></div><div class="rowCard"><div class="rowTitle"><b>Remora Markets</b><span><span class="chg pos">+$516.91K</span></span></div><div class="rowMeta">$1.74M · Funds</div></div><div class="rowCard"><div class="rowTitle"><b>Superstate USTB</b><span><span class="chg pos">+$500.24K</span></span></div><div class="rowMeta">$840.88M · Treasury</div></div><div class="rowCard"><div class="rowTitle"><b>Etherfuse</b><span><span class="chg pos">+$304.29K</span></span></div><div class="rowMeta">$4.87M · Other RWA</div></div></div>
         </div>
         <div class="miniPanel">
           <h4>Largest TVL Decline</h4>
-          <div class="inlineList"><div class="rowCard"><div class="rowTitle"><b>xStocks</b><span><span class="chg neg">-$30.19M</span></span></div><div class="rowMeta">$327.56M · Other RWA</div></div><div class="rowCard"><div class="rowTitle"><b>Tether Gold</b><span><span class="chg neg">-$10.84M</span></span></div><div class="rowMeta">$3.30B · Commodities</div></div><div class="rowCard"><div class="rowTitle"><b>Paxos Gold</b><span><span class="chg neg">-$9.78M</span></span></div><div class="rowMeta">$2.38B · Commodities</div></div><div class="rowCard"><div class="rowTitle"><b>Anzen V2</b><span><span class="chg neg">-$6.86M</span></span></div><div class="rowMeta">$10.57M · Other RWA</div></div></div>
+          <div class="inlineList"><div class="rowCard"><div class="rowTitle"><b>xStocks</b><span><span class="chg neg">-$29.60M</span></span></div><div class="rowMeta">$328.16M · Other RWA</div></div><div class="rowCard"><div class="rowTitle"><b>Tether Gold</b><span><span class="chg neg">-$10.84M</span></span></div><div class="rowMeta">$3.30B · Commodities</div></div><div class="rowCard"><div class="rowTitle"><b>Paxos Gold</b><span><span class="chg neg">-$10.49M</span></span></div><div class="rowMeta">$2.38B · Commodities</div></div><div class="rowCard"><div class="rowTitle"><b>Anzen V2</b><span><span class="chg neg">-$6.86M</span></span></div><div class="rowMeta">$10.57M · Other RWA</div></div></div>
         </div>
       </div>
       <div class="miniPanel" style="margin-top:12px;">
@@ -437,10 +444,10 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
       <p class="sub">Each daily note is designed to be linkable and shareable on X and elsewhere.</p>
       <div class="shareActions">
         <a class="shareBtn" href="/analysis/recap-2026-04-05.html">Copy link</a>
-        <a class="shareBtn" href="https://x.com/intent/post?text=RWA%20Market%20Brief%20%7C%20Total%20RWA%20TVL%3A%20%2B%2425.54B%20%7C%2024H%20Change%3A%20-0.2%25%20%7C%207D%20Change%3A%20%2B5.2%25%20%7C%20Market%20Breadth%3A%2063.4%25%20%7C%20Largest%20capital%20increase%3A%20Treasury%20%7C%20/analysis/recap-2026-04-05.html" target="_blank" rel="noopener">Copy X text</a>
+        <a class="shareBtn" href="https://x.com/intent/post?text=RWA%20Market%20Brief%20%7C%20Total%20RWA%20TVL%3A%20%2B%2425.54B%20%7C%2024H%20Change%3A%20-0.3%25%20%7C%207D%20Change%3A%20%2B5.2%25%20%7C%20Market%20Breadth%3A%2063.4%25%20%7C%20Largest%20capital%20increase%3A%20Treasury%20%7C%20/analysis/recap-2026-04-05.html" target="_blank" rel="noopener">Copy X text</a>
         <a class="shareBtn" href="charts/total-rwa-tvl-7d-2026-04-05.png" target="_blank" rel="noopener">Share chart</a>
       </div>
-      <div class="copyBox">RWA Market Brief | Total RWA TVL: +$25.54B | 24H Change: -0.2% | 7D Change: +5.2% | Market Breadth: 63.4% | Largest capital increase: Treasury | /analysis/recap-2026-04-05.html</div>
+      <div class="copyBox">RWA Market Brief | Total RWA TVL: +$25.54B | 24H Change: -0.3% | 7D Change: +5.2% | Market Breadth: 63.4% | Largest capital increase: Treasury | /analysis/recap-2026-04-05.html</div>
     </section>
 
     <section class="sectionCard">
