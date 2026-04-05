@@ -87,7 +87,7 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
 
           # Pull BEFORE staging (prevents rebase error)
-          git pull --rebase origin main
+          git pull --rebase --autostash origin main
 
           # Ensure ALL stays intact
           git checkout -- data/sparklines_all_7d.json || true
