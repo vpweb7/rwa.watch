@@ -1090,7 +1090,7 @@ function applyHash() {
   const h = (window.location.hash || '').replace('#','').toLowerCase();
   if (h === 'dashboard') {
     currentTab = 'dashboard';
-    activeData = (LATEST_ASSETS || DATASET_ALL || DATA_ALL);
+    activeData = (DATASET_ALL || DATA_ALL);
     SPARK_CACHE_ALL = {};
   } else {
     currentTab = 'protocols';
@@ -1114,7 +1114,7 @@ function applyHash() {
   await loadDatasetFiles();
   await loadSparkFiles();
   applyHash();
-  window.addEventListener('hashchange', applyHash);
+  window.addEventListener('hashchange', () => { applyHash(); render(); });
 })();
 </script>
 <script id="delta-toggle-script">
