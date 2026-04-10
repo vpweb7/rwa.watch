@@ -1051,7 +1051,7 @@ function render() {
       : '';
 
     const logo = r.logo ? '<img class="logo" src="' + r.logo + '" onerror="this.style.visibility=\'hidden\'">' : '<span class="logo"></span>';
-    const tvlTxt = (r.tvl_usd || 0) ? fmtUsdCompact(r.tvl_usd) : 'N/A';
+    const tvlNum = Number(r.tvl_usd); const tvlTxt = Number.isFinite(tvlNum) ? fmtUsdCompact(tvlNum) : 'N/A';
     const ch7 = fmtPctSignedSafe(r.tvl_change_7d_pct, r.tvl_usd);
     const spark = '<div class="spark" data-slug="' + r.slug + '"></div>';
 
@@ -1090,7 +1090,7 @@ function applyHash() {
   const h = (window.location.hash || '').replace('#','').toLowerCase();
   if (h === 'dashboard') {
     currentTab = 'dashboard';
-    activeData = (DATASET_ALL || DATA_ALL);
+    activeData = (LATEST_ASSETS || DATASET_ALL || DATA_ALL);
     SPARK_CACHE_ALL = {};
   } else {
     currentTab = 'protocols';
