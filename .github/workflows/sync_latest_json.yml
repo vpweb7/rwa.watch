@@ -1,0 +1,66 @@
+name: Sync latest.json (from private snapshots)
+
+on:
+  schedule:
+    - cron: "35 0 * * *" # napi 00:35 UTC (legyen a data repo build után)
+  workflow_dispatch:
+
+concurrency:
+  group: sync-latest-json
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download latest snapshot from private repo (GitHub API)
+        env:
+          RWA_DATA_TOKEN: ${{ secrets.RWA_DATA_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p data
+
+          API_URL="https://api.github.com/repos/vpweb7/rwa.watch-data/contents/_private/snapshots/latest.json?ref=main"
+
+          curl --http1.1 -fL --retry 5 --retry-all-errors --retry-delay 2 \
+            -H "Authorization: Bearer $RWA_DATA_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "$API_URL" \
+            -o /tmp/latest_meta.json
+
+          python - <<'PY'
+          import json, base64
+          j = json.load(open("/tmp/latest_meta.json","r",encoding="utf-8"))
+          if "content" not in j:
+              raise SystemExit("No 'content' in API response: " + str(j.get("message","unknown")))
+          data = base64.b64decode(j["content"])
+          open("data/latest.json","wb").write(data)
+          print("Wrote data/latest.json bytes:", len(data))
+          PY
+
+      - name: Commit & push if changed
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "rwa.watch bot"
+          git config user.email "actions@users.noreply.github.com"
+
+          git add data/latest.json
+
+          if git diff --cached --quiet; then
+            echo "No changes."
+            exit 0
+          fi
+
+          git pull --rebase --autostash origin main
+          git commit -m "Sync data/latest.json from private snapshots"
+          git push
