@@ -1,8 +1,8 @@
-name: Sync latest.json (from private snapshots)
+name: Sync latest.json (from private snapshots) + compute 7D change
 
 on:
   schedule:
-    - cron: "35 0 * * *" # napi 00:35 UTC (legyen a data repo build után)
+    - cron: "35 0 * * *" # daily 00:35 UTC
   workflow_dispatch:
 
 concurrency:
@@ -20,31 +20,126 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Download latest snapshot from private repo (GitHub API)
+      - name: Download latest + last up to 7 daily snapshots (GitHub API)
         env:
           RWA_DATA_TOKEN: ${{ secrets.RWA_DATA_TOKEN }}
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p data
+          rm -rf _tmp_snap
+          mkdir -p _tmp_snap data
 
-          API_URL="https://api.github.com/repos/vpweb7/rwa.watch-data/contents/_private/snapshots/latest.json?ref=main"
-
+          # 1) latest.json
           curl --http1.1 -fL --retry 5 --retry-all-errors --retry-delay 2 \
             -H "Authorization: Bearer $RWA_DATA_TOKEN" \
             -H "Accept: application/vnd.github+json" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
-            "$API_URL" \
-            -o /tmp/latest_meta.json
+            "https://api.github.com/repos/vpweb7/rwa.watch-data/contents/_private/snapshots/latest.json?ref=main" \
+            -o _tmp_snap/latest_meta.json
 
           python - <<'PY'
           import json, base64
-          j = json.load(open("/tmp/latest_meta.json","r",encoding="utf-8"))
-          if "content" not in j:
-              raise SystemExit("No 'content' in API response: " + str(j.get("message","unknown")))
+          j = json.load(open("_tmp_snap/latest_meta.json","r",encoding="utf-8"))
           data = base64.b64decode(j["content"])
-          open("data/latest.json","wb").write(data)
-          print("Wrote data/latest.json bytes:", len(data))
+          open("_tmp_snap/latest.json","wb").write(data)
+          print("latest.json bytes:", len(data))
+          PY
+
+          # 2) list snapshots and pick last 7 daily (YYYY-MM-DD.json)
+          curl --http1.1 -fL --retry 5 --retry-all-errors --retry-delay 2 \
+            -H "Authorization: Bearer $RWA_DATA_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/vpweb7/rwa.watch-data/contents/_private/snapshots?ref=main" \
+            -o _tmp_snap/list.json
+
+          python - <<'PY'
+          import json, re
+          lst = json.load(open("_tmp_snap/list.json","r",encoding="utf-8"))
+          names = [x.get("name") for x in lst if isinstance(x,dict)]
+          daily = sorted([n for n in names if n and re.match(r"^\d{4}-\d{2}-\d{2}\.json$", n)])
+          last7 = daily[-7:]
+          open("_tmp_snap/last7.txt","w",encoding="utf-8").write("\n".join(last7)+"\n")
+          print("Selected daily snapshots:", last7)
+          PY
+
+          # Download selected dailies
+          while read -r fname; do
+            [ -z "$fname" ] && continue
+            url="https://api.github.com/repos/vpweb7/rwa.watch-data/contents/_private/snapshots/${fname}?ref=main"
+            curl --http1.1 -fL --retry 5 --retry-all-errors --retry-delay 2 \
+              -H "Authorization: Bearer $RWA_DATA_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              -H "X-GitHub-Api-Version: 2022-11-28" \
+              "$url" \
+              -o "_tmp_snap/${fname}.meta.json"
+
+            python - <<PY
+          import json, base64
+          j = json.load(open("_tmp_snap/${fname}.meta.json","r",encoding="utf-8"))
+          data = base64.b64decode(j["content"])
+          open("_tmp_snap/${fname}","wb").write(data)
+          print("${fname} bytes:", len(data))
+          PY
+          done < _tmp_snap/last7.txt
+
+      - name: Build data/latest.json with computed tvl_change_7d_pct
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, glob, math
+          from datetime import datetime
+
+          def load(path):
+            with open(path,"r",encoding="utf-8") as f:
+              return json.load(f)
+
+          latest = load("_tmp_snap/latest.json")
+          assets_today = latest.get("assets", [])
+
+          # baseline = earliest file among last7 (need at least 2 days to compute change)
+          daily_files = sorted(glob.glob("_tmp_snap/20??-??-??.json"))
+          baseline = load(daily_files[0]) if len(daily_files) >= 2 else None
+          assets_base = baseline.get("assets", []) if baseline else []
+
+          def safe_float(x):
+            try:
+              if x is None or isinstance(x,bool): return None
+              if isinstance(x,(int,float)): return float(x)
+              return float(str(x))
+            except:
+              return None
+
+          base_by_slug = {a.get("slug"): a for a in assets_base if isinstance(a,dict) and a.get("slug")}
+          out_assets = []
+
+          for a in assets_today:
+            if not isinstance(a,dict):
+              continue
+            slug = a.get("slug")
+            tvl_t = safe_float(a.get("tvl_usd"))
+            tvl_b = safe_float(base_by_slug.get(slug,{}).get("tvl_usd")) if (baseline and slug) else None
+
+            chg = None
+            if tvl_t is not None and tvl_b is not None and tvl_b > 0:
+              chg = (tvl_t - tvl_b) / tvl_b * 100.0
+              # optional: avoid absurd numbers breaking UI
+              if not math.isfinite(chg):
+                chg = None
+
+            a2 = dict(a)
+            a2["tvl_change_7d_pct"] = chg
+            out_assets.append(a2)
+
+          latest2 = dict(latest)
+          latest2["generated_at"] = latest.get("generated_at") or datetime.utcnow().isoformat(timespec="seconds")+"Z"
+          latest2["assets"] = out_assets
+
+          with open("data/latest.json","w",encoding="utf-8") as f:
+            json.dump(latest2, f, ensure_ascii=False)
+
+          print("Wrote data/latest.json assets:", len(out_assets), "baseline_used:", bool(baseline))
           PY
 
       - name: Commit & push if changed
@@ -62,5 +157,5 @@ jobs:
           fi
 
           git pull --rebase --autostash origin main
-          git commit -m "Sync data/latest.json from private snapshots"
+          git commit -m "Sync latest + compute 7D TVL change"
           git push
