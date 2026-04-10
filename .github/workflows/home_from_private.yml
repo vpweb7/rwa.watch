@@ -1,0 +1,237 @@
+name: Build home payload (from private snapshots)
+
+on:
+  schedule:
+    - cron: "40 0 * * *" # daily 00:40 UTC (legyen a data repo build után)
+  workflow_dispatch:
+
+concurrency:
+  group: home-payload
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  build_home:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download latest + last up to 7 daily snapshots from private repo
+        env:
+          RWA_DATA_TOKEN: ${{ secrets.RWA_DATA_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf _tmp_snap
+          mkdir -p _tmp_snap
+
+          # 1) Download latest.json
+          curl -fL \
+            -H "Authorization: Bearer $RWA_DATA_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/vpweb7/rwa.watch-data/contents/_private/snapshots/latest.json?ref=main" \
+            -o _tmp_snap/latest_meta.json
+
+          python - <<'PY'
+          import json, base64
+          j=json.load(open("_tmp_snap/latest_meta.json","r",encoding="utf-8"))
+          data=base64.b64decode(j["content"])
+          open("_tmp_snap/latest.json","wb").write(data)
+          print("latest.json bytes:", len(data))
+          PY
+
+          # 2) List daily snapshots, pick last 7 (YYYY-MM-DD.json)
+          curl -fL \
+            -H "Authorization: Bearer $RWA_DATA_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/vpweb7/rwa.watch-data/contents/_private/snapshots?ref=main" \
+            -o _tmp_snap/list.json
+
+          python - <<'PY'
+          import json, re
+          lst=json.load(open("_tmp_snap/list.json","r",encoding="utf-8"))
+          names=[x["name"] for x in lst if isinstance(x,dict) and "name" in x]
+          daily=sorted([n for n in names if re.match(r"^\d{4}-\d{2}-\d{2}\.json$", n)])
+          last7=daily[-7:]
+          open("_tmp_snap/last7.txt","w",encoding="utf-8").write("\n".join(last7)+"\n")
+          print("Selected:", last7)
+          PY
+
+          # Download selected daily snapshots (if any)
+          while read -r fname; do
+            [ -z "$fname" ] && continue
+            url="https://api.github.com/repos/vpweb7/rwa.watch-data/contents/_private/snapshots/${fname}?ref=main"
+            curl -fL \
+              -H "Authorization: Bearer $RWA_DATA_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              "$url" \
+              -o "_tmp_snap/${fname}.meta.json"
+
+            python - <<PY
+          import json, base64
+          j=json.load(open("_tmp_snap/${fname}.meta.json","r",encoding="utf-8"))
+          data=base64.b64decode(j["content"])
+          open("_tmp_snap/${fname}","wb").write(data)
+          print("Downloaded ${fname} bytes:", len(data))
+          PY
+          done < _tmp_snap/last7.txt
+
+      - name: Build data/home_latest.json
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p data
+
+          python - <<'PY'
+          import json, glob, math
+          from datetime import datetime
+
+          def load(path):
+            with open(path,"r",encoding="utf-8") as f:
+              return json.load(f)
+
+          latest = load("_tmp_snap/latest.json")
+          assets_today = latest.get("assets", [])
+
+          # helper maps
+          def safe_float(x):
+            try:
+              if x is None: return None
+              if isinstance(x,bool): return None
+              if isinstance(x,(int,float)): return float(x)
+              return float(str(x))
+            except:
+              return None
+
+          def sum_tvl(assets):
+            s=0.0
+            ok=False
+            for a in assets:
+              v=safe_float(a.get("tvl_usd"))
+              if v is None: 
+                continue
+              s+=v
+              ok=True
+            return (s if ok else None)
+
+          # Load baseline (oldest of last7) if exists
+          daily_files = sorted([p for p in glob.glob("_tmp_snap/20??-??-??.json")])
+          base = load(daily_files[0]) if len(daily_files) >= 2 else None  # need at least 2 to make "change"
+          assets_base = base.get("assets", []) if base else []
+
+          # index by slug for 7d calc
+          base_by_slug = {a.get("slug"): a for a in assets_base if isinstance(a,dict)}
+          today_by_slug = {a.get("slug"): a for a in assets_today if isinstance(a,dict)}
+
+          total_today = sum_tvl(assets_today)
+          total_base  = sum_tvl(assets_base) if base else None
+
+          # 7D net flow (proxy)
+          net_flow_7d = (total_today - total_base) if (total_today is not None and total_base is not None) else None
+
+          # Momentum sector (proxy): highest absolute net increase by analytics_category
+          top_sector = None
+          if base:
+            delta_by_cat = {}
+            for slug,a_today in today_by_slug.items():
+              a_base = base_by_slug.get(slug)
+              tvl_t = safe_float(a_today.get("tvl_usd"))
+              tvl_b = safe_float(a_base.get("tvl_usd")) if a_base else None
+              if tvl_t is None or tvl_b is None: 
+                continue
+              cat = a_today.get("analytics_category") or a_today.get("protocol_category") or "Unknown"
+              delta_by_cat[cat] = delta_by_cat.get(cat,0.0) + (tvl_t - tvl_b)
+            if delta_by_cat:
+              top_sector = max(delta_by_cat.items(), key=lambda kv: kv[1])[0]
+
+          # Concentration change (Top3) in percentage points (pp)
+          conc_change_pp = None
+          if base and total_today and total_base and total_today > 0 and total_base > 0:
+            # top3 by tvl each day
+            def top3_share(assets, total):
+              arr=[]
+              for a in assets:
+                v=safe_float(a.get("tvl_usd"))
+                if v is None: 
+                  continue
+                arr.append(v)
+              arr.sort(reverse=True)
+              top3=sum(arr[:3]) if arr else 0.0
+              return top3/total if total>0 else None
+
+            share_today = top3_share(assets_today, total_today)
+            share_base  = top3_share(assets_base, total_base)
+            if share_today is not None and share_base is not None:
+              conc_change_pp = (share_today - share_base) * 100.0
+
+          # Build table assets: top 200 by TVL today + 7d change if base exists
+          rows=[]
+          for a in assets_today:
+            slug=a.get("slug")
+            if not slug: 
+              continue
+            tvl_t = safe_float(a.get("tvl_usd"))
+            # keep rows even if tvl missing? for now skip
+            if tvl_t is None: 
+              continue
+
+            tvl_b = safe_float(base_by_slug.get(slug,{}).get("tvl_usd")) if base else None
+            chg_pct = None
+            if tvl_b is not None and tvl_b > 0:
+              chg_pct = (tvl_t - tvl_b) / tvl_b * 100.0
+
+            chains = a.get("chains") or []
+            if isinstance(chains,str): chains=[chains]
+
+            rows.append({
+              "slug": slug,
+              "name": a.get("name") or slug,
+              "tvl_usd": tvl_t,
+              "tvl_change_7d_pct": chg_pct,
+              "analytics_category": a.get("analytics_category") or a.get("protocol_category") or a.get("category"),
+              "issuer": a.get("issuer"),
+              "asset_type": a.get("asset_type"),
+              "primary_chain": a.get("primary_chain"),
+              "chains": chains[:30]
+            })
+
+          rows.sort(key=lambda r: r["tvl_usd"], reverse=True)
+          rows = rows[:200]
+
+          out = {
+            "updated_at": latest.get("generated_at") or datetime.utcnow().isoformat(timespec="seconds")+"Z",
+            "cards": {
+              "total_rwa_tvl_usd": total_today,
+              "net_flow_7d_usd": net_flow_7d,
+              "top_momentum_sector": top_sector,
+              "concentration_change_top3_pp": conc_change_pp
+            },
+            "assets": rows
+          }
+
+          with open("data/home_latest.json","w",encoding="utf-8") as f:
+            json.dump(out,f,ensure_ascii=False,indent=2)
+
+          print("Wrote data/home_latest.json rows:", len(rows))
+          PY
+
+      - name: Commit & push if changed
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "rwa.watch bot"
+          git config user.email "actions@users.noreply.github.com"
+
+          git add data/home_latest.json
+
+          if git diff --cached --quiet; then
+            echo "No changes."
+            exit 0
+          fi
+
+          git pull --rebase --autostash origin main
+          git push
