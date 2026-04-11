@@ -1056,7 +1056,7 @@ function render() {
   const raw7 = (r.tvl_change_7d_pct !== undefined && r.tvl_change_7d_pct !== null) ? Number(r.tvl_change_7d_pct) : null;
   let chg7 = Number.isFinite(raw7) ? raw7 : null;
   if (chg7 === null) {
-    const sp = sd && (sd[r.slug] || sd[r.id]);
+    const sp = sd && sd.series && (sd.series[r.slug] || sd.series[r.id]);
     if (Array.isArray(sp) && sp.length >= 2) {
       const first = Number(sp[0]);
       const last  = Number(sp[sp.length - 1]);
