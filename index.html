@@ -1052,7 +1052,21 @@ function render() {
 
     const logo = r.logo ? '<img class="logo" src="' + r.logo + '" onerror="this.style.visibility=\'hidden\'">' : '<span class="logo"></span>';
     const tvlNum = Number(r.tvl_usd); const tvlTxt = Number.isFinite(tvlNum) ? fmtUsdCompact(tvlNum) : 'N/A';
-    const ch7 = fmtPctSignedSafe(r.tvl_change_7d_pct, r.tvl_usd);
+    const sd = getSparkData();
+  const raw7 = (r.tvl_change_7d_pct !== undefined && r.tvl_change_7d_pct !== null) ? Number(r.tvl_change_7d_pct) : null;
+  let chg7 = Number.isFinite(raw7) ? raw7 : null;
+  if (chg7 === null) {
+    const sp = sd && (sd[r.slug] || sd[r.id]);
+    if (Array.isArray(sp) && sp.length >= 2) {
+      const first = Number(sp[0]);
+      const last  = Number(sp[sp.length - 1]);
+      if (Number.isFinite(first) && Number.isFinite(last) && first > 0) {
+        const pct = (last - first) / first * 100;
+        if (Number.isFinite(pct)) chg7 = pct;
+      }
+    }
+  }
+  const ch7 = fmtPctSignedSafe(chg7, r.tvl_usd);
     const spark = '<div class="spark" data-slug="' + r.slug + '"></div>';
 
     const tr = document.createElement('tr');
