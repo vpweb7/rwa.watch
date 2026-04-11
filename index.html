@@ -1058,9 +1058,9 @@ function render() {
   if (chg7 === null) {
     const seriesMap = (sd && sd.series) ? sd.series : sd; const sp = seriesMap && (seriesMap[r.slug] || seriesMap[r.id]);
     if (Array.isArray(sp) && sp.length >= 2) {
-      const first = Number(sp[0]);
-      const last  = Number(sp[sp.length - 1]);
-      if (Number.isFinite(first) && Number.isFinite(last) && first > 0) {
+      let first = null; for (let i=0;i<sp.length;i++){ const x=Number(sp[i]); if(Number.isFinite(x) && x>0){ first=x; break; } }
+      let last = null; for (let i=sp.length-1;i>=0;i--){ const x=Number(sp[i]); if(Number.isFinite(x)){ last=x; break; } }
+      if (first !== null && last !== null) {
         const pct = (last - first) / first * 100;
         if (Number.isFinite(pct)) chg7 = pct;
       }
