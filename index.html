@@ -581,99 +581,18 @@ function safePctFromTvl(pct, tvlNow){
   return p;
 }
 
-function fmtPctSignedSafe(pct, tvlNow){
-  const p = safePctFromTvl(pct, tvlNow);
-  if (p === null) return "N/A";
-  return (p > 0 ? "+" : "") + p.toFixed(2) + "%";
+function fmtPctSignedSafe(pct, tvlUsd) {
+  const p = Number(pct);
+  if (!Number.isFinite(p)) return 'N/A';
+
+  // nagyon nagy értékeket ne N/A-ra dobjuk, hanem "cap"-peljük
+  const cap = 9999;
+  if (p > cap) return `>${cap}%`;
+  if (p < -cap) return `<-${cap}%`;
+
+  const sign = p > 0 ? '+' : '';
+  return `${sign}${p.toFixed(2)}%`;
 }
-
-
-
-
-// Load analytics snapshot (data/latest.json). This file may contain NaN (non-JSON),
-// so we fetch as text and sanitize to JSON-safe before parsing.
-async function loadLatestSnapshot() {
-  try {
-    const url = 'data/latest.json?ts=' + Date.now();
-    const res = await fetch(url, { cache: 'no-store' });
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-
-    const raw = await res.text();
-
-    // Replace bare NaN / Infinity tokens with null (keeps file JSON-parseable)
-    // This is safe for our use because those fields mean "missing".
-    const cleaned = raw
-      .replace(/([:\s\[,])NaN(?=[,\s\]\}])/g, '$1null')
-      .replace(/([:\s\[,])Infinity(?=[,\s\]\}])/g, '$1null')
-      .replace(/([:\s\[,])-Infinity(?=[,\s\]\}])/g, '$1null');
-
-    const j = JSON.parse(cleaned);
-
-    if (j && Array.isArray(j.assets)) {
-      LATEST_META = j;
-
-      // Normalize into the shape used by KPI computations.
-      // We do NOT replace the monitoring table list (DATA_RWA) to avoid breaking asset pages.
-      LATEST_ASSETS = j.assets.map(function(a){
-        const slug = a && (a.slug || a.asset_id || a.asset_key) ? String(a.slug || a.asset_id || a.asset_key) : '';
-        return {
-          slug: slug,
-          id: slug,
-          name: (a && a.name) ? String(a.name) : slug,
-          tvl_usd: Number(a && a.tvl_usd) || 0,
-
-          // analytics snapshot doesn't always carry 7d change; keep null (UI shows N/A)
-          tvl_change_7d_pct: (a && a.tvl_change_7d_pct !== undefined) ? a.tvl_change_7d_pct : null,
-
-          protocol_category: (a && (a.protocol_category || a.category)) ? String(a.protocol_category || a.category) : null,
-          chains: Array.isArray(a && a.chains) ? a.chains : [],
-
-          flag_low_yield_coverage: !!(a && a.flag_low_yield_coverage),
-          reported_high_apy_detected: !!(a && a.reported_high_apy_detected)
-        };
-      });
-
-      // Update "Updated" label from analytics if present
-      const up = document.getElementById('updated');
-      const stamp = (j.generated_at || j.generatedAt || j.date || null);
-      if (up && stamp) {
-        up.textContent = 'Updated: ' + String(stamp);
-        UPDATED_FROM_LATEST = true;
-      }
-    }
-
-    return true;
-  } catch (e) {
-    LATEST_META = null;
-    LATEST_ASSETS = null;
-    return false;
-  }
-}
-
-async function loadDatasetFiles() {
-  try {
-    // cache-bust + no-store to avoid stale GH Pages/browser caches
-    const res = await fetch('data/dataset.json?ts=' + Date.now(), { cache: 'no-store' });
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const j = await res.json();
-
-    if (j && Array.isArray(j.assets) && j.assets.length) {
-      DATASET_META = j;
-      DATASET_ALL = j.assets;
-
-      // RWA-ish view: include categories containing "rwa" (case-insensitive)
-      DATASET_RWA = j.assets.filter(a => String((a && a.protocol_category) ? a.protocol_category : '').toLowerCase().includes('rwa'));
-      if (!DATASET_RWA.length) DATASET_RWA = DATASET_ALL;
-    }
-  } catch (e) {
-    DATASET_META = null;
-    DATASET_ALL = null;
-    DATASET_RWA = null;
-  }
-}
-
-
-
 function updateSnapshotKPIs() {
   try {
     // Snapshot should reflect the full RWA universe (not filtered / paginated)
