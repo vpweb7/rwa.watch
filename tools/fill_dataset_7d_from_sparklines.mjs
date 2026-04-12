@@ -41,16 +41,18 @@ const sp = JSON.parse(fs.readFileSync(sparkPath, "utf8"));
 const series = sp.series || {};
 
 const assets = ds.assets || [];
-let filled = 0;
+let filledPct = 0;
+let filledLabel = 0;
 let skippedNoSeries = 0;
-let skippedNoData = 0;
 let skippedAlreadyHas = 0;
 
 for (const a of assets) {
-  // Treat 0 / -0 / empty as "missing" (so we can fill from sparklines)
+  // 1) Ha már van értelmes 7D% (nem 0), hagyjuk
   const cur = num(a?.tvl_change_7d_pct);
   const hasMeaningful7d = cur !== null && Math.abs(cur) > EPS;
   if (hasMeaningful7d) {
+    // ha korábbról maradt label, nem baj, de takaríthatjuk is
+    // delete a.tvl_change_7d_label;
     skippedAlreadyHas++;
     continue;
   }
@@ -64,19 +66,33 @@ for (const a of assets) {
 
   const first = firstPositive(arr);
   const last = lastFinite(arr);
-  if (first === null || last === null || first <= 0) {
-    skippedNoData++;
-    continue;
+
+  // 2) Ha van baseline és last, számolunk %-ot
+  if (first !== null && last !== null && first > 0) {
+    const pct = ((last - first) / first) * 100;
+    if (Number.isFinite(pct)) {
+      a.tvl_change_7d_pct = pct;
+      // siker esetén labelt eldobhatjuk
+      if (a.tvl_change_7d_label) delete a.tvl_change_7d_label;
+      filledPct++;
+      continue;
+    }
   }
 
-  const pct = ((last - first) / first) * 100;
-  if (!Number.isFinite(pct)) {
-    skippedNoData++;
-    continue;
+  // 3) Ha nem számolható, adjunk labelt N/A helyett
+  // - ha last>0, de nincs baseline -> NEW (tipikusan frissen induló)
+  // - ha last==0 -> FLAT
+  // - különben NO_BASE
+  if (last !== null && last > 0 && (first === null || first <= 0)) {
+    a.tvl_change_7d_label = "NEW";
+    filledLabel++;
+  } else if (last !== null && Math.abs(last) <= EPS) {
+    a.tvl_change_7d_label = "FLAT";
+    filledLabel++;
+  } else {
+    a.tvl_change_7d_label = "NO_BASE";
+    filledLabel++;
   }
-
-  a.tvl_change_7d_pct = pct;
-  filled++;
 }
 
 ds.assets = assets;
@@ -84,5 +100,5 @@ ds.spark_generated_at = sp.generated_at || null;
 
 fs.writeFileSync(datasetPath, JSON.stringify(ds));
 console.log(
-  `Filled tvl_change_7d_pct: ${filled} | already-had(nonzero): ${skippedAlreadyHas} | no series: ${skippedNoSeries} | no usable data: ${skippedNoData}`
+  `Filled pct: ${filledPct} | labeled: ${filledLabel} | already-had(nonzero): ${skippedAlreadyHas} | no series: ${skippedNoSeries}`
 );
