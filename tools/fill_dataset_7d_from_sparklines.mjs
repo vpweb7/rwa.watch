@@ -22,6 +22,8 @@ function lastFinite(arr) {
   return null;
 }
 
+const EPS = 1e-12;
+
 const datasetPath = "data/dataset.json";
 const sparkPath = "data/sparklines_all_7d.json";
 
@@ -42,10 +44,16 @@ const assets = ds.assets || [];
 let filled = 0;
 let skippedNoSeries = 0;
 let skippedNoData = 0;
+let skippedAlreadyHas = 0;
 
 for (const a of assets) {
-  const has7d = Number.isFinite(Number(a?.tvl_change_7d_pct));
-  if (has7d) continue;
+  // Treat 0 / -0 / empty as "missing" (so we can fill from sparklines)
+  const cur = num(a?.tvl_change_7d_pct);
+  const hasMeaningful7d = cur !== null && Math.abs(cur) > EPS;
+  if (hasMeaningful7d) {
+    skippedAlreadyHas++;
+    continue;
+  }
 
   const key = a?.slug || a?.id;
   const arr = key ? series[key] : null;
@@ -72,10 +80,9 @@ for (const a of assets) {
 }
 
 ds.assets = assets;
-// opcionális: tükrözheted a timestampet is
 ds.spark_generated_at = sp.generated_at || null;
 
 fs.writeFileSync(datasetPath, JSON.stringify(ds));
 console.log(
-  `Filled tvl_change_7d_pct: ${filled} | no series: ${skippedNoSeries} | no usable data: ${skippedNoData}`
+  `Filled tvl_change_7d_pct: ${filled} | already-had(nonzero): ${skippedAlreadyHas} | no series: ${skippedNoSeries} | no usable data: ${skippedNoData}`
 );
