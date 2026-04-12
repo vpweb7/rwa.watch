@@ -2,7 +2,7 @@ name: Update dataset
 
 on:
   schedule:
-    - cron: "15 0 * * *" # daily 00:15 UTC
+    - cron: "15 0 * * *"
   workflow_dispatch:
 
 concurrency:
@@ -25,6 +25,10 @@ jobs:
         run: |
           mkdir -p data
           node tools/update_dataset.mjs
+
+      - name: Fill missing 7D change from sparklines (local series)
+        run: |
+          node tools/fill_dataset_7d_from_sparklines.mjs
 
       - name: Commit & push if changed
         run: |
