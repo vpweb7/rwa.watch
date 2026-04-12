@@ -1066,19 +1066,7 @@ function render() {
       }
     }
   }
-  let ch7 = fmtPctSignedSafe(chg7, r.tvl_usd);
-    if (ch7 === 'N/A') {
-      const sp2 = seriesMap && (seriesMap[r.slug] || seriesMap[r.id]);
-      if (Array.isArray(sp2) && sp2.length >= 2) {
-        let first2 = null, last2 = null;
-        for (let i=0;i<sp2.length;i++){ const x=Number(sp2[i]); if(Number.isFinite(x) && x>0){ first2=x; break; } }
-        for (let i=sp2.length-1;i>=0;i--){ const x=Number(sp2[i]); if(Number.isFinite(x)){ last2=x; break; } }
-        if (first2 !== null && last2 !== null) {
-          const pct2 = (last2 - first2) / first2 * 100;
-          if (Number.isFinite(pct2)) ch7 = fmtPctSignedSafe(pct2, r.tvl_usd);
-        }
-      }
-    }
+  const ch7 = fmtPctSignedSafe(chg7, r.tvl_usd);
     const spark = '<div class="spark" data-slug="' + r.slug + '"></div>';
 
     const tr = document.createElement('tr');
