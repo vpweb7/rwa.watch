@@ -1067,6 +1067,7 @@ function render() {
     }
   }
   const ch7 = fmtPctSignedSafe(chg7, r.tvl_usd);
+  const ch7Display = (ch7 === 'N/A' && r.tvl_change_7d_label) ? r.tvl_change_7d_label : ch7;
     const spark = '<div class="spark" data-slug="' + r.slug + '"></div>';
 
     const tr = document.createElement('tr');
@@ -1085,7 +1086,7 @@ function render() {
         '</div>' +
       '</td>' +
       '<td class="hideMobile" style="font-weight:900;color:#fff !important;">' + tvlTxt + '</td>' +
-      '<td><span class="chg ' + (ch7==='N/A'?'na':(Number(r.tvl_change_7d_pct)>=0?'pos':'neg')) + '">' + ch7 + '</span></td>' /* delta-blue-patched */ +
+      '<td><span class="chg ' + (ch7==='N/A'?'na':(Number(r.tvl_change_7d_pct)>=0?'pos':'neg')) + '">' + ch7Display + '</span></td>' /* delta-blue-patched */ +
       '<td class="hideMobile">' + chainsSummary(r.chains || r.chain || '') + '</td>' +
       '<td>' + spark + '</td>';
 
