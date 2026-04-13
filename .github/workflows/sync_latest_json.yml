@@ -20,7 +20,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Download latest + last up to 7 daily snapshots (GitHub API)
+      - name: Download latest + last up to 8 daily snapshots (GitHub API)
         env:
           RWA_DATA_TOKEN: ${{ secrets.RWA_DATA_TOKEN }}
         shell: bash
@@ -45,7 +45,7 @@ jobs:
           print("latest.json bytes:", len(data))
           PY
 
-          # 2) list snapshots and pick last 7 daily (YYYY-MM-DD.json)
+          # 2) list snapshots and pick last 8 daily (YYYY-MM-DD.json)
           curl --http1.1 -fL --retry 5 --retry-all-errors --retry-delay 2 \
             -H "Authorization: Bearer $RWA_DATA_TOKEN" \
             -H "Accept: application/vnd.github+json" \
@@ -58,9 +58,9 @@ jobs:
           lst = json.load(open("_tmp_snap/list.json","r",encoding="utf-8"))
           names = [x.get("name") for x in lst if isinstance(x,dict)]
           daily = sorted([n for n in names if n and re.match(r"^\d{4}-\d{2}-\d{2}\.json$", n)])
-          last7 = daily[-7:]
-          open("_tmp_snap/last7.txt","w",encoding="utf-8").write("\n".join(last7)+"\n")
-          print("Selected daily snapshots:", last7)
+          last8 = daily[-8:]   # need 8 points for true 7D change
+          open("_tmp_snap/last8.txt","w",encoding="utf-8").write("\n".join(last8)+"\n")
+          print("Selected daily snapshots:", last8)
           PY
 
           # Download selected dailies
@@ -81,7 +81,7 @@ jobs:
           open("_tmp_snap/${fname}","wb").write(data)
           print("${fname} bytes:", len(data))
           PY
-          done < _tmp_snap/last7.txt
+          done < _tmp_snap/last8.txt
 
       - name: Build data/latest.json with computed tvl_change_7d_pct
         shell: bash
@@ -89,30 +89,74 @@ jobs:
           set -euo pipefail
           python - <<'PY'
           import json, glob, math
-          from datetime import datetime
+          from datetime import datetime, date
 
           def load(path):
             with open(path,"r",encoding="utf-8") as f:
               return json.load(f)
 
-          latest = load("_tmp_snap/latest.json")
-          assets_today = latest.get("assets", [])
-
-          # baseline = earliest file among last7 (need at least 2 days to compute change)
-          daily_files = sorted(glob.glob("_tmp_snap/20??-??-??.json"))
-          baseline = load(daily_files[0]) if len(daily_files) >= 2 else None
-          assets_base = baseline.get("assets", []) if baseline else []
-
           def safe_float(x):
             try:
               if x is None or isinstance(x,bool): return None
               if isinstance(x,(int,float)): return float(x)
-              return float(str(x))
+              s = str(x).strip()
+              if s == "": return None
+              return float(s)
             except:
               return None
 
+          def parse_day_from_filename(path):
+            # path like _tmp_snap/YYYY-MM-DD.json
+            try:
+              fn = path.split("/")[-1].split("\\")[-1]
+              d = fn.replace(".json","")
+              return date.fromisoformat(d)
+            except:
+              return None
+
+          latest = load("_tmp_snap/latest.json")
+          assets_today = latest.get("assets", [])
+
+          # Pick baseline snapshot for true 7D:
+          # We want the file that is ~7 days older than the most recent daily available in _tmp_snap.
+          daily_files = sorted(glob.glob("_tmp_snap/20??-??-??.json"))
+          baseline = None
+          baseline_days = None
+
+          if len(daily_files) >= 2:
+            # Use most recent daily file as reference day
+            ref_file = daily_files[-1]
+            ref_day = parse_day_from_filename(ref_file)
+            # target baseline day = ref_day - 7 days
+            if ref_day:
+              target = ref_day.toordinal() - 7
+              # choose the daily file with day closest to target but <= ref_day
+              best = None
+              best_dist = None
+              for f in daily_files:
+                d = parse_day_from_filename(f)
+                if not d:
+                  continue
+                dist = abs(d.toordinal() - target)
+                # prefer exact/closest; allow any (some days might be missing)
+                if best is None or dist < best_dist:
+                  best = f
+                  best_dist = dist
+              baseline = load(best) if best else None
+              if baseline and ref_day:
+                bday = parse_day_from_filename(best)
+                baseline_days = (ref_day - bday).days if bday else None
+            else:
+              # fallback: earliest available among downloaded
+              baseline = load(daily_files[0])
+              baseline_days = None
+
+          assets_base = baseline.get("assets", []) if baseline else []
           base_by_slug = {a.get("slug"): a for a in assets_base if isinstance(a,dict) and a.get("slug")}
+
           out_assets = []
+          missing_cnt = 0
+          computed_cnt = 0
 
           for a in assets_today:
             if not isinstance(a,dict):
@@ -124,12 +168,18 @@ jobs:
             chg = None
             if tvl_t is not None and tvl_b is not None and tvl_b > 0:
               chg = (tvl_t - tvl_b) / tvl_b * 100.0
-              # optional: avoid absurd numbers breaking UI
               if not math.isfinite(chg):
                 chg = None
 
+            if chg is None:
+              missing_cnt += 1
+            else:
+              computed_cnt += 1
+
             a2 = dict(a)
             a2["tvl_change_7d_pct"] = chg
+            # optional debug field; remove if you don't want it in JSON
+            a2["tvl_change_7d_days"] = baseline_days
             out_assets.append(a2)
 
           latest2 = dict(latest)
@@ -139,7 +189,8 @@ jobs:
           with open("data/latest.json","w",encoding="utf-8") as f:
             json.dump(latest2, f, ensure_ascii=False)
 
-          print("Wrote data/latest.json assets:", len(out_assets), "baseline_used:", bool(baseline))
+          print("Wrote data/latest.json assets:", len(out_assets))
+          print("Baseline used:", bool(baseline), "baseline_days:", baseline_days, "computed:", computed_cnt, "missing:", missing_cnt)
           PY
 
       - name: Commit & push if changed
