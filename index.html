@@ -1065,9 +1065,9 @@ function render() {
     // Treat literal 0 as "no data" only when the 7D series has no positive values.
     let tvlTxt = 'N/A';
     if (Number.isFinite(tvlNum)) {
-      if (tvlNum !== 0) {
+      if (tvlNum > 0) {
         tvlTxt = fmtUsdCompact(tvlNum);
-      } else if (Array.isArray(sp)) {
+      } else if (tvlNum === 0 && Array.isArray(sp)) {
         let anyPos = false;
         for (let k=0;k<sp.length;k++){
           const x = Number(sp[k]);
