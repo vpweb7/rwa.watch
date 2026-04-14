@@ -1079,9 +1079,11 @@ function render() {
       }
     }
 
-  const raw7 = (r.tvl_change_7d_pct !== undefined && r.tvl_change_7d_pct !== null) ? Number(r.tvl_change_7d_pct) : null;
+  const noDataRow = (tvlTxt === 'N/A');
+
+  const raw7 = (!noDataRow && r.tvl_change_7d_pct !== undefined && r.tvl_change_7d_pct !== null) ? Number(r.tvl_change_7d_pct) : null;
   let chg7 = Number.isFinite(raw7) ? raw7 : null;
-  if (chg7 === null) {
+  if (!noDataRow && chg7 === null) {
     /* sp already resolved above */
     if (Array.isArray(sp) && sp.length >= 2) {
       let first = null; for (let i=0;i<sp.length;i++){ const x=Number(sp[i]); if(Number.isFinite(x) && x>0){ first=x; break; } }
@@ -1093,8 +1095,8 @@ function render() {
     }
   }
   const ch7 = fmtPctSignedRaw(chg7);
-  const ch7Display = (ch7 === 'N/A' && r.tvl_change_7d_label) ? r.tvl_change_7d_label : ch7;
-  const chgClass = (ch7 === 'N/A') ? 'na' : (Number.isFinite(chg7) ? (chg7 === 0 ? 'zero' : (chg7 > 0 ? 'pos' : 'neg')) : 'na');
+  const ch7Display = noDataRow ? 'N/A' : ((ch7 === 'N/A' && r.tvl_change_7d_label) ? r.tvl_change_7d_label : ch7);
+  const chgClass = (noDataRow || ch7 === 'N/A') ? 'na' : (Number.isFinite(chg7) ? (chg7 === 0 ? 'zero' : (chg7 > 0 ? 'pos' : 'neg')) : 'na');
     const spark = '<div class="spark" data-slug="' + r.slug + '"></div>';
 
     const tr = document.createElement('tr');
