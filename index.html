@@ -990,6 +990,67 @@ function changePageSize() {
   render();
 }
 
+
+// --- Helpers: data-aware TVL + 7D change + sorting (v9) ---
+function getSeriesMap(){
+  const sd = getSparkData();
+  return (sd && sd.series) ? sd.series : sd;
+}
+function getSeriesForRow(r){
+  try{
+    const m = getSeriesMap();
+    if (!m || !r) return null;
+    return m[r.slug] || m[r.id] || null;
+  } catch(e){ return null; }
+}
+function hasAnyPositive(series){
+  if (!Array.isArray(series)) return false;
+  for (let i=0;i<series.length;i++){
+    const x = Number(series[i]);
+    if (Number.isFinite(x) && x > 0) return true;
+  }
+  return false;
+}
+// TVL that we consider "has data" for display/sort
+function tvlDisplayNum(r){
+  const tvl = Number(r && r.tvl_usd);
+  if (Number.isFinite(tvl) && tvl > 0) return tvl;
+  if (tvl === 0) {
+    const sp = getSeriesForRow(r);
+    if (hasAnyPositive(sp)) return 0; // dropped to zero / valid data
+  }
+  return null; // treat as missing
+}
+function chg7FromSeries(sp){
+  if (!Array.isArray(sp) || sp.length < 2) return null;
+  let first = null;
+  for (let i=0;i<sp.length;i++){
+    const x = Number(sp[i]);
+    if (Number.isFinite(x) && x > 0){ first = x; break; }
+  }
+  let last = null;
+  for (let i=sp.length-1;i>=0;i--){
+    const x = Number(sp[i]);
+    if (Number.isFinite(x)){ last = x; break; }
+  }
+  if (first === null || last === null) return null;
+  const pct = (last - first) / first * 100;
+  return Number.isFinite(pct) ? pct : null;
+}
+function getChg7(r){
+  const raw7 = (r && r.tvl_change_7d_pct !== undefined && r.tvl_change_7d_pct !== null) ? Number(r.tvl_change_7d_pct) : null;
+  if (Number.isFinite(raw7)) return raw7;
+  const sp = getSeriesForRow(r);
+  return chg7FromSeries(sp);
+}
+function sortMissingKey(r, sort){
+  if (sort === 'tvl') return tvlDisplayNum(r) === null;
+  if (sort === 'stability') return getChg7(r) === null;
+  if (sort === 'trend_abs') return getTrendAbs(r && r.slug) === -Infinity;
+  if (sort === 'trend_pct') return getTrendPct(r && r.slug) === -Infinity;
+  return false;
+}
+
 function applyFilters() {
   const q = document.getElementById('searchInput').value.trim().toLowerCase();
   const chain = document.getElementById('chainFilter').value;
@@ -1020,14 +1081,25 @@ function applyFilters() {
   });
 
   filtered.sort(function(a,b){
-    if (sort === 'tvl') return (b.tvl_usd || 0) - (a.tvl_usd || 0);
-    if (sort === 'stability') return ((b.tvl_change_7d_pct ?? -Infinity) - (a.tvl_change_7d_pct ?? -Infinity));
-    if (sort === 'trend_abs') return getTrendAbs(b.slug) - getTrendAbs(a.slug);
-    if (sort === 'trend_pct') return getTrendPct(b.slug) - getTrendPct(a.slug);
-    return (b.tvl_usd || 0) - (a.tvl_usd || 0);
+    // Always push missing-data rows to the bottom for the active sort
+    const amiss = sortMissingKey(a, sort);
+    const bmiss = sortMissingKey(b, sort);
+    if (amiss && !bmiss) return 1;
+    if (!amiss && bmiss) return -1;
+
+    if (sort === 'tvl') return (tvlDisplayNum(b) ?? -Infinity) - (tvlDisplayNum(a) ?? -Infinity);
+
+    if (sort === 'stability') {
+      const av = getChg7(a); const bv = getChg7(b);
+      return (bv ?? -Infinity) - (av ?? -Infinity);
+    }
+
+    if (sort === 'trend_abs') return getTrendAbs(b && b.slug) - getTrendAbs(a && a.slug);
+    if (sort === 'trend_pct') return getTrendPct(b && b.slug) - getTrendPct(a && a.slug);
+    return (tvlDisplayNum(b) ?? -Infinity) - (tvlDisplayNum(a) ?? -Infinity);
   });
 
-  page = 1;
+page = 1;
   computeTotalPages();
   render();
 }
@@ -1061,6 +1133,7 @@ function render() {
     const sd = getSparkData();
     const seriesMap = (sd && sd.series) ? sd.series : sd;
     const sp = seriesMap && (seriesMap[r.slug] || seriesMap[r.id]);
+    let droppedToZero = false;
 
     // Treat literal 0 as "no data" only when the 7D series has no positive values.
     let tvlTxt = 'N/A';
@@ -1073,13 +1146,14 @@ function render() {
           const x = Number(sp[k]);
           if (Number.isFinite(x) && x > 0) { anyPos = true; break; }
         }
-        tvlTxt = anyPos ? fmtUsdCompact(0) : 'N/A';
+        if (anyPos) { droppedToZero = true; tvlTxt = '$0*'; } else { tvlTxt = 'N/A'; }
       } else {
         tvlTxt = 'N/A';
       }
     }
 
   const noDataRow = (tvlTxt === 'N/A');
+  const tvlTitleAttr = droppedToZero ? ' title="Dropped to zero (7D)"' : '';
 
   const raw7 = (!noDataRow && r.tvl_change_7d_pct !== undefined && r.tvl_change_7d_pct !== null) ? Number(r.tvl_change_7d_pct) : null;
   let chg7 = Number.isFinite(raw7) ? raw7 : null;
@@ -1096,7 +1170,8 @@ function render() {
   }
   const ch7 = fmtPctSignedRaw(chg7);
   const ch7Display = noDataRow ? 'N/A' : ((ch7 === 'N/A' && r.tvl_change_7d_label) ? r.tvl_change_7d_label : ch7);
-  const chgClass = (noDataRow || ch7 === 'N/A') ? 'na' : (Number.isFinite(chg7) ? (chg7 === 0 ? 'zero' : (chg7 > 0 ? 'pos' : 'neg')) : 'na');
+  const chg7r = (Number.isFinite(chg7) ? Number(Number(chg7).toFixed(2)) : null);
+    const chgClass = (noDataRow || ch7 === 'N/A') ? 'na' : (chg7r === 0 ? 'zero' : (chg7r > 0 ? 'pos' : 'neg'));
     const spark = '<div class="spark" data-slug="' + r.slug + '"></div>';
 
     const tr = document.createElement('tr');
@@ -1114,7 +1189,7 @@ function render() {
           '</div>' +
         '</div>' +
       '</td>' +
-      '<td class="hideMobile" style="font-weight:900;color:#fff !important;">' + tvlTxt + '</td>' +
+      '<td class="hideMobile" style="font-weight:900;color:#fff !important;"' + tvlTitleAttr + '>' + tvlTxt + '</td>' +
       '<td><span class="chg ' + chgClass + '">' + ch7Display + '</span></td>' /* delta-blue-patched */ +
       '<td class="hideMobile">' + chainsSummary(r.chains || r.chain || '') + '</td>' +
       '<td>' + spark + '</td>';
