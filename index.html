@@ -812,6 +812,16 @@ function getSparkData() {
   return (currentTab === 'protocols') ? SPARK_RWA : SPARK_ALL;
 }
 
+
+function getSeriesFor(slug, id) {
+  const allMap = (SPARK_ALL && SPARK_ALL.series) ? SPARK_ALL.series : (SPARK_ALL || {});
+  const rwaMap = (SPARK_RWA && SPARK_RWA.series) ? SPARK_RWA.series : (SPARK_RWA || {});
+  if (currentTab === 'protocols') {
+    return (rwaMap && (rwaMap[slug] || rwaMap[id])) || (allMap && (allMap[slug] || allMap[id])) || null;
+  }
+  return (allMap && (allMap[slug] || allMap[id])) || null;
+}
+
 function sparkCache() {
   return (currentTab === 'protocols') ? SPARK_CACHE_RWA : SPARK_CACHE_ALL;
 }
@@ -820,12 +830,11 @@ function buildSparkline(slug) {
   const cache = sparkCache();
   if (cache[slug] !== undefined) return cache[slug];
 
-  const sd = getSparkData();
-  if (!sd || !sd.series || !sd.series[slug]) {
+  const values = getSeriesFor(slug, slug);
+  if (!values) {
     cache[slug] = '';
     return '';
   }
-  const values = sd.series[slug];
 
   const clean = values.filter(function(v){ return v !== null && v !== undefined; });
   if (clean.length < 2) {
@@ -895,8 +904,7 @@ function buildSparkline(slug) {
 }
 
 function getTrendAbs(slug) {
-  const sd = getSparkData();
-  const arr = (sd && sd.series) ? sd.series[slug] : null;
+  const arr = getSeriesFor(slug, slug);
   if (!arr) return -Infinity;
   let first = undefined;
   for (let i=0;i<arr.length;i++){
@@ -911,8 +919,7 @@ function getTrendAbs(slug) {
 }
 
 function getTrendPct(slug) {
-  const sd = getSparkData();
-  const arr = (sd && sd.series) ? sd.series[slug] : null;
+  const arr = getSeriesFor(slug, slug);
   if (!arr) return -Infinity;
   let first = undefined;
   for (let i=0;i<arr.length;i++){
@@ -1062,7 +1069,7 @@ function render() {
   const raw7 = (r.tvl_change_7d_pct !== undefined && r.tvl_change_7d_pct !== null) ? Number(r.tvl_change_7d_pct) : null;
   let chg7 = Number.isFinite(raw7) ? raw7 : null;
   if (chg7 === null) {
-    const seriesMap = (sd && sd.series) ? sd.series : sd; const sp = seriesMap && (seriesMap[r.slug] || seriesMap[r.id]);
+    const sp = getSeriesFor(r.slug, r.id);
     if (Array.isArray(sp) && sp.length >= 2) {
       let first = null; for (let i=0;i<sp.length;i++){ const x=Number(sp[i]); if(Number.isFinite(x) && x>0){ first=x; break; } }
       let last = null; for (let i=sp.length-1;i>=0;i--){ const x=Number(sp[i]); if(Number.isFinite(x)){ last=x; break; } }
