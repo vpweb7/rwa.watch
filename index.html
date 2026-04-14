@@ -594,49 +594,6 @@ function fmtPctSignedRaw(pct){
 }
 
 
-function getSeriesForRow(r){
-  // Protocols tab: prefer RWA spark, fall back to ALL when missing.
-  const primary = getSparkData();
-  const primaryMap = (primary && primary.series) ? primary.series : primary;
-  let sp = primaryMap && (primaryMap[r.slug] || primaryMap[r.id]);
-
-  if (!sp && currentTab === 'protocols' && SPARK_ALL) {
-    const allMap = (SPARK_ALL && SPARK_ALL.series) ? SPARK_ALL.series : SPARK_ALL;
-    sp = allMap && (allMap[r.slug] || allMap[r.id]);
-  }
-  return sp;
-}
-
-function getComputed7dPct(r){
-  // First use explicit field if finite
-  const raw = (r && r.tvl_change_7d_pct !== undefined && r.tvl_change_7d_pct !== null) ? Number(r.tvl_change_7d_pct) : null;
-  if (Number.isFinite(raw)) return raw;
-
-  const sp = getSeriesForRow(r);
-  if (!Array.isArray(sp) || sp.length < 2) return null;
-
-  // Prefer true 7D baseline when available (index -8), else first positive
-  let last = null;
-  for (let i=sp.length-1;i>=0;i--){ const x = Number(sp[i]); if (Number.isFinite(x)){ last = x; break; } }
-  if (last === null) return null;
-
-  let base = null;
-  if (sp.length >= 8) {
-    const x = Number(sp[sp.length-8]);
-    if (Number.isFinite(x) && x > 0) base = x;
-  }
-  if (base === null) {
-    for (let i=0;i<sp.length;i++){
-      const x = Number(sp[i]);
-      if (Number.isFinite(x) && x > 0){ base = x; break; }
-    }
-  }
-  if (base === null || base <= 0) return null;
-
-  const pct = (last - base) / base * 100;
-  return Number.isFinite(pct) ? pct : null;
-}
-
 
 
 // Load analytics snapshot (data/latest.json). This file may contain NaN (non-JSON),
@@ -1025,33 +982,73 @@ function gotoPageFromInput() {
   render();
 }
 
-
-function rowHasDataForSort(r){
-  // Consistent with render(): treat TVL as "no data" when tvl is non-finite/negative,
-  // or tvl==0 with no positive values in the 7D series.
-  const tvlNum = Number(r && r.tvl_usd);
-  if (!Number.isFinite(tvlNum) || tvlNum < 0) return false;
-  if (tvlNum > 0) return true;
-
-  // tvlNum === 0: only "has data" if the 7D series ever had a positive value
-  const sd = getSparkData();
-  const seriesMap = (sd && sd.series) ? sd.series : sd;
-  const sp = getSeriesForRow(r);
-  if (!Array.isArray(sp)) return false;
-  for (let i=0;i<sp.length;i++){
-    const x = Number(sp[i]);
-    if (Number.isFinite(x) && x > 0) return true;
-  }
-  return false;
-}
-
-
 function changePageSize() {
   pageSize = Number(document.getElementById('pageSize').value || '100');
   if (!Number.isFinite(pageSize) || pageSize <= 0) pageSize = 100;
   page = 1;
   computeTotalPages();
   render();
+}
+
+
+// --- Helpers: data-aware TVL + 7D change + sorting (v9) ---
+function getSeriesMap(){
+  const sd = getSparkData();
+  return (sd && sd.series) ? sd.series : sd;
+}
+function getSeriesForRow(r){
+  try{
+    const m = getSeriesMap();
+    if (!m || !r) return null;
+    return m[r.slug] || m[r.id] || null;
+  } catch(e){ return null; }
+}
+function hasAnyPositive(series){
+  if (!Array.isArray(series)) return false;
+  for (let i=0;i<series.length;i++){
+    const x = Number(series[i]);
+    if (Number.isFinite(x) && x > 0) return true;
+  }
+  return false;
+}
+// TVL that we consider "has data" for display/sort
+function tvlDisplayNum(r){
+  const tvl = Number(r && r.tvl_usd);
+  if (Number.isFinite(tvl) && tvl > 0) return tvl;
+  if (tvl === 0) {
+    const sp = getSeriesForRow(r);
+    if (hasAnyPositive(sp)) return 0; // dropped to zero / valid data
+  }
+  return null; // treat as missing
+}
+function chg7FromSeries(sp){
+  if (!Array.isArray(sp) || sp.length < 2) return null;
+  let first = null;
+  for (let i=0;i<sp.length;i++){
+    const x = Number(sp[i]);
+    if (Number.isFinite(x) && x > 0){ first = x; break; }
+  }
+  let last = null;
+  for (let i=sp.length-1;i>=0;i--){
+    const x = Number(sp[i]);
+    if (Number.isFinite(x)){ last = x; break; }
+  }
+  if (first === null || last === null) return null;
+  const pct = (last - first) / first * 100;
+  return Number.isFinite(pct) ? pct : null;
+}
+function getChg7(r){
+  const raw7 = (r && r.tvl_change_7d_pct !== undefined && r.tvl_change_7d_pct !== null) ? Number(r.tvl_change_7d_pct) : null;
+  if (Number.isFinite(raw7)) return raw7;
+  const sp = getSeriesForRow(r);
+  return chg7FromSeries(sp);
+}
+function sortMissingKey(r, sort){
+  if (sort === 'tvl') return tvlDisplayNum(r) === null;
+  if (sort === 'stability') return getChg7(r) === null;
+  if (sort === 'trend_abs') return getTrendAbs(r && r.slug) === -Infinity;
+  if (sort === 'trend_pct') return getTrendPct(r && r.slug) === -Infinity;
+  return false;
 }
 
 function applyFilters() {
@@ -1084,25 +1081,25 @@ function applyFilters() {
   });
 
   filtered.sort(function(a,b){
-    const aHas = rowHasDataForSort(a);
-    const bHas = rowHasDataForSort(b);
-    if (aHas !== bHas) return aHas ? -1 : 1; // push N/A/no-data rows to the end
+    // Always push missing-data rows to the bottom for the active sort
+    const amiss = sortMissingKey(a, sort);
+    const bmiss = sortMissingKey(b, sort);
+    if (amiss && !bmiss) return 1;
+    if (!amiss && bmiss) return -1;
 
-    if (sort === 'tvl') return (Number(b.tvl_usd)||0) - (Number(a.tvl_usd)||0);
+    if (sort === 'tvl') return (tvlDisplayNum(b) ?? -Infinity) - (tvlDisplayNum(a) ?? -Infinity);
 
-    // For stability, prefer computed 7D from sparklines when the field is missing.
     if (sort === 'stability') {
-      const av = getComputed7dPct(a);
-      const bv = getComputed7dPct(b);
-      return ( (Number.isFinite(bv)?bv:-Infinity) - (Number.isFinite(av)?av:-Infinity) );
+      const av = getChg7(a); const bv = getChg7(b);
+      return (bv ?? -Infinity) - (av ?? -Infinity);
     }
 
-    if (sort === 'trend_abs') return getTrendAbs(b.slug) - getTrendAbs(a.slug);
-    if (sort === 'trend_pct') return getTrendPct(b.slug) - getTrendPct(a.slug);
-    return (Number(b.tvl_usd)||0) - (Number(a.tvl_usd)||0);
+    if (sort === 'trend_abs') return getTrendAbs(b && b.slug) - getTrendAbs(a && a.slug);
+    if (sort === 'trend_pct') return getTrendPct(b && b.slug) - getTrendPct(a && a.slug);
+    return (tvlDisplayNum(b) ?? -Infinity) - (tvlDisplayNum(a) ?? -Infinity);
   });
 
-  page = 1;
+page = 1;
   computeTotalPages();
   render();
 }
@@ -1135,11 +1132,11 @@ function render() {
     const tvlNum = Number(r.tvl_usd);
     const sd = getSparkData();
     const seriesMap = (sd && sd.series) ? sd.series : sd;
-    const sp = getSeriesForRow(r);
+    const sp = seriesMap && (seriesMap[r.slug] || seriesMap[r.id]);
+    let droppedToZero = false;
 
     // Treat literal 0 as "no data" only when the 7D series has no positive values.
     let tvlTxt = 'N/A';
-    let tvlStar = false;
     if (Number.isFinite(tvlNum)) {
       if (tvlNum > 0) {
         tvlTxt = fmtUsdCompact(tvlNum);
@@ -1149,19 +1146,32 @@ function render() {
           const x = Number(sp[k]);
           if (Number.isFinite(x) && x > 0) { anyPos = true; break; }
         }
-        tvlTxt = anyPos ? '$0*' : 'N/A';
-        var tvlStar = anyPos;
+        if (anyPos) { droppedToZero = true; tvlTxt = '$0*'; } else { tvlTxt = 'N/A'; }
       } else {
         tvlTxt = 'N/A';
       }
     }
 
   const noDataRow = (tvlTxt === 'N/A');
+  const tvlTitleAttr = droppedToZero ? ' title="Dropped to zero (7D)"' : '';
 
-  const chg7 = (!noDataRow) ? getComputed7dPct(r) : null;
+  const raw7 = (!noDataRow && r.tvl_change_7d_pct !== undefined && r.tvl_change_7d_pct !== null) ? Number(r.tvl_change_7d_pct) : null;
+  let chg7 = Number.isFinite(raw7) ? raw7 : null;
+  if (!noDataRow && chg7 === null) {
+    /* sp already resolved above */
+    if (Array.isArray(sp) && sp.length >= 2) {
+      let first = null; for (let i=0;i<sp.length;i++){ const x=Number(sp[i]); if(Number.isFinite(x) && x>0){ first=x; break; } }
+      let last = null; for (let i=sp.length-1;i>=0;i--){ const x=Number(sp[i]); if(Number.isFinite(x)){ last=x; break; } }
+      if (first !== null && last !== null) {
+        const pct = (last - first) / first * 100;
+        if (Number.isFinite(pct)) chg7 = pct;
+      }
+    }
+  }
   const ch7 = fmtPctSignedRaw(chg7);
   const ch7Display = noDataRow ? 'N/A' : ((ch7 === 'N/A' && r.tvl_change_7d_label) ? r.tvl_change_7d_label : ch7);
-  const chgClass = (noDataRow || ch7 === 'N/A') ? 'na' : (Number.isFinite(chg7) ? (chg7 === 0 ? 'zero' : (chg7 > 0 ? 'pos' : 'neg')) : 'na');
+  const chg7r = (Number.isFinite(chg7) ? Number(Number(chg7).toFixed(2)) : null);
+    const chgClass = (noDataRow || ch7 === 'N/A') ? 'na' : (chg7r === 0 ? 'zero' : (chg7r > 0 ? 'pos' : 'neg'));
     const spark = '<div class="spark" data-slug="' + r.slug + '"></div>';
 
     const tr = document.createElement('tr');
@@ -1179,7 +1189,7 @@ function render() {
           '</div>' +
         '</div>' +
       '</td>' +
-      '<td class="hideMobile" style="font-weight:900;color:#fff !important;">' + (tvlStar ? ('<span title="Dropped to zero in last 7 days">'+tvlTxt+'</span>') : tvlTxt) + '</td>' +
+      '<td class="hideMobile" style="font-weight:900;color:#fff !important;"' + tvlTitleAttr + '>' + tvlTxt + '</td>' +
       '<td><span class="chg ' + chgClass + '">' + ch7Display + '</span></td>' /* delta-blue-patched */ +
       '<td class="hideMobile">' + chainsSummary(r.chains || r.chain || '') + '</td>' +
       '<td>' + spark + '</td>';
