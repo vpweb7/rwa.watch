@@ -220,6 +220,64 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
 
 .recentRow{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px;}
 @media (max-width:980px){ .recentRow{grid-template-columns:1fr;} }
+.rowTitle{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:12px;}
+.rowTitle b{color:#fff;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.rowTitle > span{justify-self:end;white-space:nowrap;text-align:right;line-height:1.25;}
+.rowMeta{margin-top:8px;color:var(--muted);font-size:12px;line-height:1.55;}
+.dualPanels .rowCard{min-height:86px;display:flex;flex-direction:column;justify-content:center;}
+.dualPanels .rowTitle{grid-template-columns:minmax(0,1fr) 92px;}
+.dualPanels .rowTitle > span{justify-self:end;}
+@media (max-width:640px){.dualPanels .rowCard{min-height:auto;}.dualPanels .rowTitle{grid-template-columns:minmax(0,1fr) auto;}}
+.footer .dataSourceLink{color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.45);}
+.footer .dataSourceLink:hover{border-bottom-color:rgba(255,255,255,0.85);}
+.rankWatchSection{margin-top:18px;}
+.rankWatchGrid{margin-top:14px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;}
+.rankWatchGrid .rowCard{min-height:102px;display:flex;flex-direction:column;justify-content:center;}
+.rankWatchGrid .rowTitle{grid-template-columns:minmax(0,1fr) 70px;}
+.rankWatchGrid .rowTitle > span{justify-self:end;text-align:right;}
+.rankWatchGrid .rowMeta{min-height:18px;}
+@media (max-width:1100px){.rankWatchGrid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media (max-width:640px){.rankWatchGrid{grid-template-columns:1fr;}.rankWatchGrid .rowCard{min-height:auto;}.rankWatchGrid .rowTitle{grid-template-columns:minmax(0,1fr) auto;}}
+.chainViz{margin-top:14px;display:flex;flex-direction:column;align-items:center;gap:18px;}
+.chainDonutCard{padding:16px;border-radius:18px;border:1px solid rgba(94,214,255,0.16);background:linear-gradient(180deg,rgba(10,24,46,0.96),rgba(6,14,28,0.88));width:100%;display:flex;align-items:center;justify-content:center;}
+.chainDonutWrap{position:relative;display:grid;place-items:center;width:200px;height:200px;flex-shrink:0;}
+.chainDonut{--segments:conic-gradient(rgba(94,214,255,0.9) 0 360deg);width:200px;height:200px;border-radius:50%;background:var(--segments);position:relative;box-shadow:0 0 32px rgba(77,163,255,0.18);}
+.chainDonut::after{content:"";position:absolute;inset:24px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(20,31,54,0.96),rgba(5,10,18,0.98));border:1px solid rgba(255,255,255,0.06);}
+.chainCenter{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:0 40px;z-index:2;}
+.chainCenterLabel{color:var(--muted);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;}
+.chainCenterValue{margin-top:6px;color:#fff;font-size:30px;font-weight:900;line-height:1;}
+.chainCenterMeta{margin-top:6px;color:#cfe5ff;font-size:11px;line-height:1.4;}
+.chainLegend{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;}
+.chainLegend::before{content:"Chain breakdown";display:block;grid-column:1/-1;color:var(--muted);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:2px;}
+.chainRow{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:12px;border:1px solid rgba(94,214,255,0.08);background:linear-gradient(180deg,rgba(8,17,32,0.82),rgba(6,12,24,0.72));}
+.chainInfo{display:flex;align-items:center;gap:8px;min-width:0;flex:1;}
+.chainSwatch{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.chainText{min-width:0;flex:1;}
+.chainName{color:#fff;font-weight:800;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;}
+.chainSub{margin-top:2px;color:var(--muted);font-size:11px;}
+.chainCount,.chainPct{text-align:right;color:#fff;font-weight:900;font-size:12px;white-space:nowrap;flex-shrink:0;}
+.chainCount small,.chainPct small{display:block;color:var(--muted);font-weight:700;font-size:10px;text-transform:uppercase;}
+.chainStats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px;}
+.chainStat{padding:12px;border-radius:14px;border:1px solid var(--border);background:rgba(0,0,0,0.18);}
+.chainStatLabel{color:var(--muted);font-size:11px;text-transform:uppercase;}
+.chainStatValue{margin-top:6px;color:#fff;font-size:20px;font-weight:900;}
+.chainNote{margin-top:12px;color:var(--muted);font-size:12px;line-height:1.6;}
+@media (max-width:640px){.chainStats{grid-template-columns:1fr;}.chainLegend{grid-template-columns:1fr;}}
+.dataWarningBox{display:none;margin-top:18px;padding:16px 18px;border-radius:18px;border:1px solid rgba(94,214,255,0.20);background:linear-gradient(180deg,rgba(10,24,46,0.92),rgba(5,12,24,0.78));}
+.dataWarningBox.active{display:block;}
+.dataWarningHead{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.dataWarningTitle{display:flex;align-items:center;gap:10px;color:#fff;font-size:15px;font-weight:900;}
+.dataWarningIcon{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:999px;color:#03101d;background:linear-gradient(180deg,#7FE3FF,#4DA3FF);font-weight:900;}
+.dataWarningMeta{color:var(--muted);font-size:12px;line-height:1.5;}
+.dataWarningList{margin-top:12px;display:flex;flex-direction:column;gap:10px;}
+.dataWarningItem{padding:12px 14px;border-radius:14px;border:1px solid rgba(94,214,255,0.10);background:rgba(0,0,0,0.20);color:var(--text);font-size:13px;line-height:1.6;}
+.dataWarningItem b{color:#fff;}
+.dataFlagText{color:#7FE3FF;font-weight:900;}
+.recapWindowNotice{margin-top:18px;padding:18px;border-radius:18px;border:1px solid rgba(94,214,255,0.18);background:linear-gradient(180deg,rgba(18,72,136,0.18),rgba(255,255,255,0.025));color:var(--text);}
+.recapWindowNotice h2{margin:0 0 8px 0;color:#fff;font-size:22px;}
+.recapWindowNotice p{margin:0;color:var(--muted);line-height:1.7;}
+.recapWindowActions{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;}
+.recapWindowActions a{display:inline-flex;align-items:center;justify-content:center;padding:10px 12px;border-radius:12px;border:1px solid var(--border);background:rgba(8,13,24,0.70);color:#fff;font-weight:800;text-decoration:none;}
 </style>
 </head>
 <body>
@@ -236,7 +294,7 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
           </div>
         </div>
       </div>
-      <div class="updated">Updated: 2026-05-13T07:09:26Z</div>
+      <div class="updated">Updated: 2026-05-13T07:51:35Z</div>
     </div>
     <div class="headline">
       <h2>Real-World Asset Intelligence &amp; Monitoring</h2>
@@ -258,20 +316,20 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
   </section>
 
   <section class="metricGridPrimary">
-    <div class="metricCard primary"><div class="metricCardLabel">Total RWA TVL</div><div class="metricCardValue">$26.83B</div><div class="metricCardSub">Aggregate tracked market value.</div></div><div class="metricCard primary"><div class="metricCardLabel">7D Change</div><div class="metricCardValue"><span class="chg pos">+$475.49M</span></div><div class="metricCardSub"><span class="chg pos">+1.8%</span></div></div><div class="metricCard primary"><div class="metricCardLabel">Top 3 Concentration</div><div class="metricCardValue">34.6%</div><div class="metricCardSub">Share held by the three largest assets.</div></div><div class="metricCard primary"><div class="metricCardLabel">Top 10 Concentration</div><div class="metricCardValue">75.0%</div><div class="metricCardSub">Share held by the ten largest assets.</div></div>
+    <div class="metricCard primary"><div class="metricCardLabel">Total RWA TVL</div><div class="metricCardValue">$26.82B</div><div class="metricCardSub">Aggregate tracked market value.</div></div><div class="metricCard primary"><div class="metricCardLabel">7D Change</div><div class="metricCardValue"><span class="chg pos">+$465.58M</span></div><div class="metricCardSub"><span class="chg pos">+1.8%</span></div></div><div class="metricCard primary"><div class="metricCardLabel">Top 3 Concentration</div><div class="metricCardValue">34.6%</div><div class="metricCardSub">Share held by the three largest assets.</div></div><div class="metricCard primary"><div class="metricCardLabel">Top 10 Concentration</div><div class="metricCardValue">75.0%</div><div class="metricCardSub">Share held by the ten largest assets.</div></div>
   </section>
 
   <div class="sectionGrid equal">
     <section class="sectionCard">
       <h3>Category Shifts</h3>
       <p class="sub">Investor-facing category changes based on the latest available weekly comparison window.</p>
-      <div class="inlineList"><div class="rowCard"><div class="rowTitle"><b>Treasury</b><span>23.1%</span></div><div class="rowMeta"><span class="chg pos">+$174.89M</span> · <span class="chg pos">+2.9%</span></div></div><div class="rowCard"><div class="rowTitle"><b>Funds</b><span>22.8%</span></div><div class="rowMeta"><span class="chg neg">-$33.68M</span> · <span class="chg neg">-0.5%</span></div></div><div class="rowCard"><div class="rowTitle"><b>Commodities</b><span>21.5%</span></div><div class="rowMeta"><span class="chg pos">+$138.04M</span> · <span class="chg pos">+2.4%</span></div></div><div class="rowCard"><div class="rowTitle"><b>Stablecoins</b><span>13.8%</span></div><div class="rowMeta"><span class="chg pos">+$62.15M</span> · <span class="chg pos">+1.7%</span></div></div><div class="rowCard"><div class="rowTitle"><b>Other RWA</b><span>11.6%</span></div><div class="rowMeta"><span class="chg pos">+$141.56M</span> · <span class="chg pos">+4.8%</span></div></div><div class="rowCard"><div class="rowTitle"><b>Private Credit</b><span>6.6%</span></div><div class="rowMeta"><span class="chg neg">-$7.48M</span> · <span class="chg neg">-0.4%</span></div></div></div>
+      <div class="inlineList"><div class="rowCard"><div class="rowTitle"><b>Treasury</b><span>23.1%</span></div><div class="rowMeta"><span class="chg pos">+$172.91M</span> · <span class="chg pos">+2.9%</span></div></div><div class="rowCard"><div class="rowTitle"><b>Funds</b><span>22.8%</span></div><div class="rowMeta"><span class="chg neg">-$39.82M</span> · <span class="chg neg">-0.6%</span></div></div><div class="rowCard"><div class="rowTitle"><b>Commodities</b><span>21.5%</span></div><div class="rowMeta"><span class="chg pos">+$139.07M</span> · <span class="chg pos">+2.5%</span></div></div><div class="rowCard"><div class="rowTitle"><b>Stablecoins</b><span>13.8%</span></div><div class="rowMeta"><span class="chg pos">+$62.26M</span> · <span class="chg pos">+1.7%</span></div></div><div class="rowCard"><div class="rowTitle"><b>Other RWA</b><span>11.6%</span></div><div class="rowMeta"><span class="chg pos">+$140.90M</span> · <span class="chg pos">+4.8%</span></div></div><div class="rowCard"><div class="rowTitle"><b>Private Credit</b><span>6.6%</span></div><div class="rowMeta"><span class="chg neg">-$9.73M</span> · <span class="chg neg">-0.6%</span></div></div></div>
     </section>
 
     <section class="sectionCard">
       <h3>What to Watch Next Week</h3>
       <p class="sub">Concise factual watchpoints for the next weekly rollup.</p>
-      <div class="watchList"><div class="watchItem">Capital remained concentrated in Tether Gold, Circle USYC, BlackRock BUIDL. The next snapshot will show whether participation broadens beyond the current leaders.</div><div class="watchItem">Tether Gold, Circle USYC, BlackRock BUIDL remain relevant to the Top 10 threshold, making rank reordering a key point to monitor in the next UTC update.</div><div class="watchItem">Breadth closed at 57.3% today. The next update will show whether positive participation stays above the recent pattern.</div></div>
+      <div class="watchList"><div class="watchItem">Capital remained concentrated in Tether Gold, Circle USYC, BlackRock BUIDL. The next snapshot will show whether participation broadens beyond the current leaders.</div><div class="watchItem">Tether Gold, Circle USYC, BlackRock BUIDL remain relevant to the Top 10 threshold, making rank reordering a key point to monitor in the next UTC update.</div><div class="watchItem">Breadth closed at 51.2% today. The next update will show whether positive participation stays above the recent pattern.</div></div>
     </section>
   </div>
 
@@ -285,8 +343,8 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
         <tr>
           <td>Ethena USDtb</td>
           <td>Stablecoins</td>
-          <td>$626.93M</td>
-          <td><span class="chg pos">+$95.65M</span></td>
+          <td>$627.04M</td>
+          <td><span class="chg pos">+$95.76M</span></td>
         </tr>
         
         <tr>
@@ -311,10 +369,10 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
         </tr>
         
         <tr>
-          <td>Ondo Yield Assets</td>
-          <td>Funds</td>
-          <td>$2.75B</td>
-          <td><span class="chg pos">+$7.96M</span></td>
+          <td>xStocks</td>
+          <td>Other RWA</td>
+          <td>$442.95M</td>
+          <td><span class="chg pos">+$4.89M</span></td>
         </tr>
         </tbody>
       </table>

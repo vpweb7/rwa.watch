@@ -4,10 +4,10 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>RWA Daily Snapshot &amp; Analysis — RWA.watch</title>
-<meta name="description" content="Tracked RWA market value closed at +$26.83B on May 13, 2026 (UTC). On a 24-hour basis, aggregate value increased by +$156.15M. Against the local 7-day history, market value was higher by +$475.49M. Stablecoins led catego" />
+<meta name="description" content="Tracked RWA market value closed at +$26.82B on May 13, 2026 (UTC). On a 24-hour basis, aggregate value increased by +$146.23M. Against the local 7-day history, market value was higher by +$465.58M. Stablecoins led catego" />
 <link rel="canonical" href="/analysis/recap-2026-05-13.html" />
 <meta property="og:title" content="RWA Daily Snapshot &amp; Analysis — RWA.watch" />
-<meta property="og:description" content="Tracked RWA market value closed at +$26.83B on May 13, 2026 (UTC). On a 24-hour basis, aggregate value increased by +$156.15M. Against the local 7-day history, market value was higher by +$475.49M. Stablecoins led catego" />
+<meta property="og:description" content="Tracked RWA market value closed at +$26.82B on May 13, 2026 (UTC). On a 24-hour basis, aggregate value increased by +$146.23M. Against the local 7-day history, market value was higher by +$465.58M. Stablecoins led catego" />
 <meta property="og:image" content="charts/total-rwa-tvl-7d-2026-05-13.png" />
 <meta property="og:url" content="/analysis/recap-2026-05-13.html" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -225,6 +225,64 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
 
 .recentRow{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px;}
 @media (max-width:980px){ .recentRow{grid-template-columns:1fr;} }
+.rowTitle{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:12px;}
+.rowTitle b{color:#fff;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.rowTitle > span{justify-self:end;white-space:nowrap;text-align:right;line-height:1.25;}
+.rowMeta{margin-top:8px;color:var(--muted);font-size:12px;line-height:1.55;}
+.dualPanels .rowCard{min-height:86px;display:flex;flex-direction:column;justify-content:center;}
+.dualPanels .rowTitle{grid-template-columns:minmax(0,1fr) 92px;}
+.dualPanels .rowTitle > span{justify-self:end;}
+@media (max-width:640px){.dualPanels .rowCard{min-height:auto;}.dualPanels .rowTitle{grid-template-columns:minmax(0,1fr) auto;}}
+.footer .dataSourceLink{color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.45);}
+.footer .dataSourceLink:hover{border-bottom-color:rgba(255,255,255,0.85);}
+.rankWatchSection{margin-top:18px;}
+.rankWatchGrid{margin-top:14px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;}
+.rankWatchGrid .rowCard{min-height:102px;display:flex;flex-direction:column;justify-content:center;}
+.rankWatchGrid .rowTitle{grid-template-columns:minmax(0,1fr) 70px;}
+.rankWatchGrid .rowTitle > span{justify-self:end;text-align:right;}
+.rankWatchGrid .rowMeta{min-height:18px;}
+@media (max-width:1100px){.rankWatchGrid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media (max-width:640px){.rankWatchGrid{grid-template-columns:1fr;}.rankWatchGrid .rowCard{min-height:auto;}.rankWatchGrid .rowTitle{grid-template-columns:minmax(0,1fr) auto;}}
+.chainViz{margin-top:14px;display:flex;flex-direction:column;align-items:center;gap:18px;}
+.chainDonutCard{padding:16px;border-radius:18px;border:1px solid rgba(94,214,255,0.16);background:linear-gradient(180deg,rgba(10,24,46,0.96),rgba(6,14,28,0.88));width:100%;display:flex;align-items:center;justify-content:center;}
+.chainDonutWrap{position:relative;display:grid;place-items:center;width:200px;height:200px;flex-shrink:0;}
+.chainDonut{--segments:conic-gradient(rgba(94,214,255,0.9) 0 360deg);width:200px;height:200px;border-radius:50%;background:var(--segments);position:relative;box-shadow:0 0 32px rgba(77,163,255,0.18);}
+.chainDonut::after{content:"";position:absolute;inset:24px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(20,31,54,0.96),rgba(5,10,18,0.98));border:1px solid rgba(255,255,255,0.06);}
+.chainCenter{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:0 40px;z-index:2;}
+.chainCenterLabel{color:var(--muted);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;}
+.chainCenterValue{margin-top:6px;color:#fff;font-size:30px;font-weight:900;line-height:1;}
+.chainCenterMeta{margin-top:6px;color:#cfe5ff;font-size:11px;line-height:1.4;}
+.chainLegend{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;}
+.chainLegend::before{content:"Chain breakdown";display:block;grid-column:1/-1;color:var(--muted);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:2px;}
+.chainRow{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:12px;border:1px solid rgba(94,214,255,0.08);background:linear-gradient(180deg,rgba(8,17,32,0.82),rgba(6,12,24,0.72));}
+.chainInfo{display:flex;align-items:center;gap:8px;min-width:0;flex:1;}
+.chainSwatch{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.chainText{min-width:0;flex:1;}
+.chainName{color:#fff;font-weight:800;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;}
+.chainSub{margin-top:2px;color:var(--muted);font-size:11px;}
+.chainCount,.chainPct{text-align:right;color:#fff;font-weight:900;font-size:12px;white-space:nowrap;flex-shrink:0;}
+.chainCount small,.chainPct small{display:block;color:var(--muted);font-weight:700;font-size:10px;text-transform:uppercase;}
+.chainStats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px;}
+.chainStat{padding:12px;border-radius:14px;border:1px solid var(--border);background:rgba(0,0,0,0.18);}
+.chainStatLabel{color:var(--muted);font-size:11px;text-transform:uppercase;}
+.chainStatValue{margin-top:6px;color:#fff;font-size:20px;font-weight:900;}
+.chainNote{margin-top:12px;color:var(--muted);font-size:12px;line-height:1.6;}
+@media (max-width:640px){.chainStats{grid-template-columns:1fr;}.chainLegend{grid-template-columns:1fr;}}
+.dataWarningBox{display:none;margin-top:18px;padding:16px 18px;border-radius:18px;border:1px solid rgba(94,214,255,0.20);background:linear-gradient(180deg,rgba(10,24,46,0.92),rgba(5,12,24,0.78));}
+.dataWarningBox.active{display:block;}
+.dataWarningHead{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.dataWarningTitle{display:flex;align-items:center;gap:10px;color:#fff;font-size:15px;font-weight:900;}
+.dataWarningIcon{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:999px;color:#03101d;background:linear-gradient(180deg,#7FE3FF,#4DA3FF);font-weight:900;}
+.dataWarningMeta{color:var(--muted);font-size:12px;line-height:1.5;}
+.dataWarningList{margin-top:12px;display:flex;flex-direction:column;gap:10px;}
+.dataWarningItem{padding:12px 14px;border-radius:14px;border:1px solid rgba(94,214,255,0.10);background:rgba(0,0,0,0.20);color:var(--text);font-size:13px;line-height:1.6;}
+.dataWarningItem b{color:#fff;}
+.dataFlagText{color:#7FE3FF;font-weight:900;}
+.recapWindowNotice{margin-top:18px;padding:18px;border-radius:18px;border:1px solid rgba(94,214,255,0.18);background:linear-gradient(180deg,rgba(18,72,136,0.18),rgba(255,255,255,0.025));color:var(--text);}
+.recapWindowNotice h2{margin:0 0 8px 0;color:#fff;font-size:22px;}
+.recapWindowNotice p{margin:0;color:var(--muted);line-height:1.7;}
+.recapWindowActions{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;}
+.recapWindowActions a{display:inline-flex;align-items:center;justify-content:center;padding:10px 12px;border-radius:12px;border:1px solid var(--border);background:rgba(8,13,24,0.70);color:#fff;font-weight:800;text-decoration:none;}
 </style>
 </head>
 <body>
@@ -241,7 +299,7 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
           </div>
         </div>
       </div>
-      <div class="updated">Updated: 2026-05-13T07:09:26Z</div>
+      <div class="updated">Updated: 2026-05-13T07:51:35Z</div>
     </div>
     <div class="headline">
       <h2>Real-World Asset Intelligence &amp; Monitoring</h2>
@@ -257,7 +315,7 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
         <div>
           <h1 class="heroTitle">RWA Daily Snapshot &amp; Analysis</h1>
           <div class="heroDate">May 13, 2026 (UTC)</div>
-          <p class="heroSummary">Tracked RWA market value closed at +$26.83B on May 13, 2026 (UTC). On a 24-hour basis, aggregate value increased by +$156.15M. Against the local 7-day history, market value was higher by +$475.49M. Stablecoins led category-level movement, while market breadth was 57.3% across eligible assets. The largest share remained concentrated in Tether Gold, Circle USYC, BlackRock BUIDL.</p>
+          <p class="heroSummary">Tracked RWA market value closed at +$26.82B on May 13, 2026 (UTC). On a 24-hour basis, aggregate value increased by +$146.23M. Against the local 7-day history, market value was higher by +$465.58M. Stablecoins led category-level movement, while market breadth was 51.2% across eligible assets. The largest share remained concentrated in Tether Gold, Circle USYC, BlackRock BUIDL.</p>
           <div class="kpiStrip">
             <span class="badgePill">Top 3 Assets: Tether Gold, Circle USYC, BlackRock BUIDL</span>
             <span class="badgePill">Top 10 Concentration: 75.0%</span>
@@ -272,15 +330,15 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
       <div class="heroChartWrap">
         <div class="heroChartCaption">Total RWA TVL — Last 7 Days</div>
         <img src="charts/total-rwa-tvl-7d-2026-05-13.png" alt="Total RWA TVL — Last 7 Days" />
-        <div class="heroChartLabel">$26.83B</div>
+        <div class="heroChartLabel">$26.82B</div>
       </div>
     </div>
     <div class="marketRegime"><b>Market Regime:</b> Expansion with moderate concentration.</div>
   </section>
 
-  <section class="metricGridPrimary"><div class="metricCard primary"><div class="metricCardLabel">Total RWA TVL</div><div class="metricCardValue">$26.83B</div><div class="metricCardSub">Aggregate tracked market value.</div></div><div class="metricCard primary"><div class="metricCardLabel">24H Change</div><div class="metricCardValue"><span class="chg pos">+$156.15M</span></div><div class="metricCardSub"><span class="chg pos">+0.6%</span></div></div><div class="metricCard primary"><div class="metricCardLabel">7D Change</div><div class="metricCardValue"><span class="chg pos">+$475.49M</span></div><div class="metricCardSub"><span class="chg pos">+1.8%</span></div></div><div class="metricCard primary"><div class="metricCardLabel">Top 3 Concentration</div><div class="metricCardValue">34.6%</div><div class="metricCardSub">Share held by the three largest tracked assets.</div><div class="metricCardMini"><div class="miniRow"><span>Tether Gold</span><b>12.5%</b></div><div class="miniRow"><span>Circle USYC</span><b>11.1%</b></div><div class="miniRow"><span>BlackRock BUIDL</span><b>11.0%</b></div></div></div></section>
+  <section class="metricGridPrimary"><div class="metricCard primary"><div class="metricCardLabel">Total RWA TVL</div><div class="metricCardValue">$26.82B</div><div class="metricCardSub">Aggregate tracked market value.</div></div><div class="metricCard primary"><div class="metricCardLabel">24H Change</div><div class="metricCardValue"><span class="chg pos">+$146.23M</span></div><div class="metricCardSub"><span class="chg pos">+0.5%</span></div></div><div class="metricCard primary"><div class="metricCardLabel">7D Change</div><div class="metricCardValue"><span class="chg pos">+$465.58M</span></div><div class="metricCardSub"><span class="chg pos">+1.8%</span></div></div><div class="metricCard primary"><div class="metricCardLabel">Top 3 Concentration</div><div class="metricCardValue">34.6%</div><div class="metricCardSub">Share held by the three largest tracked assets.</div><div class="metricCardMini"><div class="miniRow"><span>Tether Gold</span><b>12.5%</b></div><div class="miniRow"><span>Circle USYC</span><b>11.1%</b></div><div class="miniRow"><span>BlackRock BUIDL</span><b>11.0%</b></div></div></div></section>
 
-  <section class="metricGridSecondary"><div class="metricCard secondary"><div class="metricCardLabel">Top 10 Concentration</div><div class="metricCardValue">75.0%</div><div class="metricCardSub">Share held by the ten largest tracked assets.</div><div class="metricCardMini"><div class="miniRow"><span>Ranks 4–10</span><b>40.4%</b></div><div class="miniRow"><span>Rest of market</span><b>25.0%</b></div></div></div><div class="metricCard secondary"><div class="metricCardLabel">Category Leader (24h)</div><div class="metricCardValue">Stablecoins</div><div class="metricCardSub"><span class="chg pos">+$95.66M</span> <span class="chg pos">+2.6%</span></div></div><div class="metricCard secondary"><div class="metricCardLabel">Biggest Asset Gainer (24h)</div><div class="metricCardValue">Ethena USDtb</div><div class="metricCardSub"><span class="chg pos">+$95.65M</span> <span class="chg pos">+18.0%</span> · Δrank +0</div></div><div class="metricCard secondary"><div class="metricCardLabel">Near Top 10</div><div class="metricCardValue">Blockchain Capital</div><div class="metricCardSub">Gap to #10: $17.82M (1.8%)</div></div><div class="metricCard secondary"><div class="metricCardLabel">New Entrants</div><div class="metricCardValue">2</div><div class="metricCardSub">Assets crossing the $1M threshold today.</div></div><div class="metricCard secondary"><div class="metricCardLabel">Assets Tracked</div><div class="metricCardValue">143</div><div class="metricCardSub">Tracked assets in today’s universe.</div></div></section>
+  <section class="metricGridSecondary"><div class="metricCard secondary"><div class="metricCardLabel">Top 10 Concentration</div><div class="metricCardValue">75.0%</div><div class="metricCardSub">Share held by the ten largest tracked assets.</div><div class="metricCardMini"><div class="miniRow"><span>Ranks 4–10</span><b>40.4%</b></div><div class="miniRow"><span>Rest of market</span><b>25.0%</b></div></div></div><div class="metricCard secondary"><div class="metricCardLabel">Category Leader (24h)</div><div class="metricCardValue">Stablecoins</div><div class="metricCardSub"><span class="chg pos">+$95.77M</span> <span class="chg pos">+2.7%</span></div></div><div class="metricCard secondary"><div class="metricCardLabel">Biggest Asset Gainer (24h)</div><div class="metricCardValue">Ethena USDtb</div><div class="metricCardSub"><span class="chg pos">+$95.76M</span> <span class="chg pos">+18.0%</span> · Δrank +0</div></div><div class="metricCard secondary"><div class="metricCardLabel">Near Top 10</div><div class="metricCardValue">Blockchain Capital</div><div class="metricCardSub">Gap to #10: $17.82M (1.8%)</div></div><div class="metricCard secondary"><div class="metricCardLabel">New Entrants</div><div class="metricCardValue">2</div><div class="metricCardSub">Assets crossing the $1M threshold today.</div></div><div class="metricCard secondary"><div class="metricCardLabel">Assets Tracked</div><div class="metricCardValue">143</div><div class="metricCardSub">Tracked assets in today’s universe.</div></div></section>
 
   <div class="sectionGrid">
     <section class="sectionCard">
@@ -290,37 +348,37 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
     <div class="categoryBar">
       <div><b>Treasury</b><div class="dim"></div></div>
       <div class="barTrack"><div class="barFill" style="width:23.1%"></div></div>
-      <div style="text-align:right;"><b><span class="chg pos">+$94.54M</span></b><div class="dim">Share 23.1% · <span class="chg pos">+1.5%</span></div></div>
+      <div style="text-align:right;"><b><span class="chg pos">+$92.56M</span></b><div class="dim">Share 23.1% · <span class="chg pos">+1.5%</span></div></div>
     </div>
     
     <div class="categoryBar">
       <div><b>Funds</b><div class="dim"></div></div>
       <div class="barTrack"><div class="barFill" style="width:22.8%"></div></div>
-      <div style="text-align:right;"><b><span class="chg neg">-$18.04M</span></b><div class="dim">Share 22.8% · <span class="chg neg">-0.3%</span></div></div>
+      <div style="text-align:right;"><b><span class="chg neg">-$24.18M</span></b><div class="dim">Share 22.8% · <span class="chg neg">-0.4%</span></div></div>
     </div>
     
     <div class="categoryBar">
       <div><b>Commodities</b><div class="dim"></div></div>
       <div class="barTrack"><div class="barFill" style="width:21.5%"></div></div>
-      <div style="text-align:right;"><b><span class="chg pos">+$69.42M</span></b><div class="dim">Share 21.5% · <span class="chg pos">+1.2%</span></div></div>
+      <div style="text-align:right;"><b><span class="chg pos">+$70.45M</span></b><div class="dim">Share 21.5% · <span class="chg pos">+1.2%</span></div></div>
     </div>
     
     <div class="categoryBar">
       <div><b>Stablecoins</b><div class="dim"></div></div>
       <div class="barTrack"><div class="barFill" style="width:13.8%"></div></div>
-      <div style="text-align:right;"><b><span class="chg pos">+$95.66M</span></b><div class="dim">Share 13.8% · <span class="chg pos">+2.6%</span></div></div>
+      <div style="text-align:right;"><b><span class="chg pos">+$95.77M</span></b><div class="dim">Share 13.8% · <span class="chg pos">+2.7%</span></div></div>
     </div>
     
     <div class="categoryBar">
       <div><b>Other RWA</b><div class="dim"></div></div>
       <div class="barTrack"><div class="barFill" style="width:11.6%"></div></div>
-      <div style="text-align:right;"><b><span class="chg neg">-$44.93M</span></b><div class="dim">Share 11.6% · <span class="chg neg">-1.4%</span></div></div>
+      <div style="text-align:right;"><b><span class="chg neg">-$45.59M</span></b><div class="dim">Share 11.6% · <span class="chg neg">-1.4%</span></div></div>
     </div>
     
     <div class="categoryBar">
       <div><b>Private Credit</b><div class="dim"></div></div>
       <div class="barTrack"><div class="barFill" style="width:6.6%"></div></div>
-      <div style="text-align:right;"><b><span class="chg neg">-$40.50M</span></b><div class="dim">Share 6.6% · <span class="chg neg">-2.2%</span></div></div>
+      <div style="text-align:right;"><b><span class="chg neg">-$42.76M</span></b><div class="dim">Share 6.6% · <span class="chg neg">-2.4%</span></div></div>
     </div>
     
     </section>
@@ -396,6 +454,14 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
     </section>
   </div>
 
+  <section class="dataWarningBox" id="dataQualityWarnings" aria-live="polite">
+    <div class="dataWarningHead">
+      <div class="dataWarningTitle"><span class="dataWarningIcon">!</span><span>Possible data anomaly detected</span></div>
+      <div class="dataWarningMeta" id="dataWarningMeta">Checking snapshots…</div>
+    </div>
+    <div class="dataWarningList" id="dataWarningList"></div>
+  </section>
+
   <div class="sectionGrid equal">
     <section class="sectionCard">
       <h3>Asset Leadership</h3>
@@ -403,31 +469,59 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
       <div class="dualPanels">
         <div class="miniPanel">
           <h4>Largest TVL Increase</h4>
-          <div class="inlineList"><div class="rowCard"><div class="rowTitle"><b>Ethena USDtb</b><span><span class="chg pos">+$95.65M</span></span></div><div class="rowMeta">$626.93M · Stablecoins</div></div><div class="rowCard"><div class="rowTitle"><b>Pleasing Gold</b><span><span class="chg pos">+$87.87M</span></span></div><div class="rowMeta">$87.87M · Commodities</div></div><div class="rowCard"><div class="rowTitle"><b>BlackRock BUIDL</b><span><span class="chg pos">+$78.47M</span></span></div><div class="rowMeta">$2.95B · Treasury</div></div><div class="rowCard"><div class="rowTitle"><b>Superstate USTB</b><span><span class="chg pos">+$13.20M</span></span></div><div class="rowMeta">$888.97M · Treasury</div></div></div>
+          <div class="inlineList"><div class="rowCard"><div class="rowTitle"><b>Ethena USDtb</b><span><span class="chg pos">+$95.76M</span></span></div><div class="rowMeta">$627.04M · Stablecoins</div></div><div class="rowCard"><div class="rowTitle"><b>Pleasing Gold</b><span><span class="chg pos">+$87.87M</span></span></div><div class="rowMeta">$87.87M · Commodities</div></div><div class="rowCard"><div class="rowTitle"><b>BlackRock BUIDL</b><span><span class="chg pos">+$78.47M</span></span></div><div class="rowMeta">$2.95B · Treasury</div></div><div class="rowCard"><div class="rowTitle"><b>Superstate USTB</b><span><span class="chg pos">+$13.20M</span></span></div><div class="rowMeta">$888.97M · Treasury</div></div></div>
         </div>
         <div class="miniPanel">
           <h4>Largest TVL Decline</h4>
-          <div class="inlineList"><div class="rowCard"><div class="rowTitle"><b>DigiFT</b><span><span class="chg neg">-$50.44M</span></span></div><div class="rowMeta">$160.02M · Other RWA</div></div><div class="rowCard"><div class="rowTitle"><b>Centrifuge Protocol</b><span><span class="chg neg">-$42.30M</span></span></div><div class="rowMeta">$1.60B · Private Credit</div></div><div class="rowCard"><div class="rowTitle"><b>Anemoy Capital</b><span><span class="chg neg">-$24.74M</span></span></div><div class="rowMeta">$1.11B · Funds</div></div><div class="rowCard"><div class="rowTitle"><b>Tether Gold</b><span><span class="chg neg">-$9.11M</span></span></div><div class="rowMeta">$3.36B · Commodities</div></div></div>
+          <div class="inlineList"><div class="rowCard"><div class="rowTitle"><b>DigiFT</b><span><span class="chg neg">-$50.44M</span></span></div><div class="rowMeta">$160.02M · Other RWA</div></div><div class="rowCard"><div class="rowTitle"><b>Centrifuge Protocol</b><span><span class="chg neg">-$44.28M</span></span></div><div class="rowMeta">$1.60B · Private Credit</div></div><div class="rowCard"><div class="rowTitle"><b>Anemoy Capital</b><span><span class="chg neg">-$26.06M</span></span></div><div class="rowMeta">$1.11B · Funds</div></div><div class="rowCard"><div class="rowTitle"><b>Tether Gold</b><span><span class="chg neg">-$9.11M</span></span></div><div class="rowMeta">$3.36B · Commodities</div></div></div>
         </div>
-      </div>
-      <div class="miniPanel" style="margin-top:12px;">
-        <h4>Top 10 Rank Watch</h4>
-        <div class="inlineList"><div class="rowCard"><div class="rowTitle"><b>Tether Gold</b><span>Rank #1</span></div><div class="rowMeta">Held rank #1</div></div><div class="rowCard"><div class="rowTitle"><b>Circle USYC</b><span>Rank #2</span></div><div class="rowMeta">Held rank #2</div></div><div class="rowCard"><div class="rowTitle"><b>BlackRock BUIDL</b><span>Rank #3</span></div><div class="rowMeta">Held rank #3</div></div><div class="rowCard"><div class="rowTitle"><b>Ondo Yield Assets</b><span>Rank #4</span></div><div class="rowMeta">Held rank #4</div></div><div class="rowCard"><div class="rowTitle"><b>Paxos Gold</b><span>Rank #5</span></div><div class="rowMeta">Held rank #5</div></div><div class="rowCard"><div class="rowTitle"><b>Centrifuge Protocol</b><span>Rank #6</span></div><div class="rowMeta">Held rank #6</div></div><div class="rowCard"><div class="rowTitle"><b>Spiko</b><span>Rank #7</span></div><div class="rowMeta">Held rank #7</div></div><div class="rowCard"><div class="rowTitle"><b>Anemoy Capital</b><span>Rank #8</span></div><div class="rowMeta">Held rank #8</div></div><div class="rowCard"><div class="rowTitle"><b>Ondo Global Markets</b><span>Rank #9</span></div><div class="rowMeta">Held rank #9</div></div><div class="rowCard"><div class="rowTitle"><b>WisdomTree</b><span>Rank #10</span></div><div class="rowMeta">Held rank #10</div></div></div>
       </div>
     </section>
 
+    <section class="sectionCard" id="chain-distribution">
+      <h3>Chain Distribution</h3>
+      <p class="sub">Top 5 + Others view of how tracked RWA assets are distributed across chains.</p>
+      <div class="chainViz">
+        <div class="chainDonutCard">
+          <div class="chainDonutWrap">
+            <div class="chainDonut" id="chainDonut"></div>
+            <div class="chainCenter">
+              <div class="chainCenterLabel">Top 5 + Others</div>
+              <div class="chainCenterValue" id="chainAssetCount">—</div>
+              <div class="chainCenterMeta" id="chainLeaderText">Calculating…</div>
+            </div>
+          </div>
+        </div>
+        <div class="chainLegend" id="chainDistributionList">
+          <div class="previewBox" style="grid-column:1/-1">Calculating chain distribution…</div>
+        </div>
+      </div>
+      <div class="chainStats">
+        <div class="chainStat"><div class="chainStatLabel">Chain usages</div><div class="chainStatValue" id="chainUsageCount">—</div></div>
+        <div class="chainStat"><div class="chainStatLabel">Unique chains</div><div class="chainStatValue" id="chainUniqueCount">—</div></div>
+        <div class="chainStat"><div class="chainStatLabel">Largest chain</div><div class="chainStatValue" id="chainTopChain">—</div></div>
+      </div>
+      <div class="chainNote">Method: one asset can contribute to multiple chains. Top 5 + Others. Percentages based on total asset-chain usages.</div>
+    </section>
+  </div>
+
+  <section class="sectionCard rankWatchSection">
+    <h3>Top 10 Rank Watch</h3>
+    <p class="sub">Current rank pressure across the ten largest tracked RWA assets.</p>
+    <div class="rankWatchGrid"><div class="rowCard"><div class="rowTitle"><b>Tether Gold</b><span>Rank #1</span></div><div class="rowMeta">Held rank #1</div></div><div class="rowCard"><div class="rowTitle"><b>Circle USYC</b><span>Rank #2</span></div><div class="rowMeta">Held rank #2</div></div><div class="rowCard"><div class="rowTitle"><b>BlackRock BUIDL</b><span>Rank #3</span></div><div class="rowMeta">Held rank #3</div></div><div class="rowCard"><div class="rowTitle"><b>Ondo Yield Assets</b><span>Rank #4</span></div><div class="rowMeta">Held rank #4</div></div><div class="rowCard"><div class="rowTitle"><b>Paxos Gold</b><span>Rank #5</span></div><div class="rowMeta">Held rank #5</div></div><div class="rowCard"><div class="rowTitle"><b>Centrifuge Protocol</b><span>Rank #6</span></div><div class="rowMeta">Held rank #6</div></div><div class="rowCard"><div class="rowTitle"><b>Spiko</b><span>Rank #7</span></div><div class="rowMeta">Held rank #7</div></div><div class="rowCard"><div class="rowTitle"><b>Anemoy Capital</b><span>Rank #8</span></div><div class="rowMeta">Held rank #8</div></div><div class="rowCard"><div class="rowTitle"><b>Ondo Global Markets</b><span>Rank #9</span></div><div class="rowMeta">Held rank #9</div></div><div class="rowCard"><div class="rowTitle"><b>WisdomTree</b><span>Rank #10</span></div><div class="rowMeta">Held rank #10</div></div></div>
+  </section>
 
   <div class="sectionGrid equal">
     <section class="sectionCard">
       <h3>Monitoring Signals</h3>
       <p class="sub">Validated factual observations from the current snapshot and local history.</p>
-      <div class="signalList"><div class="signalItem">Top 3 concentration stood at 34.6% of tracked market value.</div><div class="signalItem">Market breadth was 57.3% across assets above the $1M threshold.</div><div class="signalItem">2 assets crossed the $1M threshold in this UTC snapshot.</div></div>
+      <div class="signalList"><div class="signalItem">Top 3 concentration stood at 34.6% of tracked market value.</div><div class="signalItem">Market breadth was 51.2% across assets above the $1M threshold.</div><div class="signalItem">2 assets crossed the $1M threshold in this UTC snapshot.</div></div>
     </section>
 
     <section class="sectionCard">
       <h3>What to Watch Tomorrow</h3>
       <p class="sub">Short factual watchpoints for the next UTC snapshot.</p>
-      <div class="watchList"><div class="watchItem">Capital remained concentrated in Tether Gold, Circle USYC, BlackRock BUIDL. The next snapshot will show whether participation broadens beyond the current leaders.</div><div class="watchItem">Tether Gold, Circle USYC, BlackRock BUIDL remain relevant to the Top 10 threshold, making rank reordering a key point to monitor in the next UTC update.</div><div class="watchItem">Breadth closed at 57.3% today. The next update will show whether positive participation stays above the recent pattern.</div></div>
+      <div class="watchList"><div class="watchItem">Capital remained concentrated in Tether Gold, Circle USYC, BlackRock BUIDL. The next snapshot will show whether participation broadens beyond the current leaders.</div><div class="watchItem">Tether Gold, Circle USYC, BlackRock BUIDL remain relevant to the Top 10 threshold, making rank reordering a key point to monitor in the next UTC update.</div><div class="watchItem">Breadth closed at 51.2% today. The next update will show whether positive participation stays above the recent pattern.</div></div>
     </section>
   </div>
 
@@ -437,10 +531,10 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
       <p class="sub">Each daily note is designed to be linkable and shareable on X and elsewhere.</p>
       <div class="shareActions">
         <a class="shareBtn" href="/analysis/recap-2026-05-13.html">Copy link</a>
-        <a class="shareBtn" href="https://x.com/intent/post?text=RWA%20Daily%20Snapshot%20%26%20Analysis%20%7C%20Total%20RWA%20TVL%3A%20%2B%2426.83B%20%7C%2024H%20Change%3A%20%2B0.6%25%20%7C%207D%20Change%3A%20%2B1.8%25%20%7C%20Market%20Breadth%3A%2057.3%25%20%7C%20Largest%20capital%20increase%3A%20Stablecoins%20%7C%20/analysis/recap-2026-05-13.html" target="_blank" rel="noopener">Copy X text</a>
+        <a class="shareBtn" href="https://x.com/intent/post?text=RWA%20Daily%20Snapshot%20%26%20Analysis%20%7C%20Total%20RWA%20TVL%3A%20%2B%2426.82B%20%7C%2024H%20Change%3A%20%2B0.5%25%20%7C%207D%20Change%3A%20%2B1.8%25%20%7C%20Market%20Breadth%3A%2051.2%25%20%7C%20Largest%20capital%20increase%3A%20Stablecoins%20%7C%20/analysis/recap-2026-05-13.html" target="_blank" rel="noopener">Copy X text</a>
         <a class="shareBtn" href="charts/total-rwa-tvl-7d-2026-05-13.png" target="_blank" rel="noopener">Share chart</a>
       </div>
-      <div class="copyBox">RWA Daily Snapshot &amp; Analysis | Total RWA TVL: +$26.83B | 24H Change: +0.6% | 7D Change: +1.8% | Market Breadth: 57.3% | Largest capital increase: Stablecoins | /analysis/recap-2026-05-13.html</div>
+      <div class="copyBox">RWA Daily Snapshot &amp; Analysis | Total RWA TVL: +$26.82B | 24H Change: +0.5% | 7D Change: +1.8% | Market Breadth: 51.2% | Largest capital increase: Stablecoins | /analysis/recap-2026-05-13.html</div>
     </section>
 
     <section class="sectionCard">
@@ -470,6 +564,67 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
     </div>
     
 </div>
+<script id="data-anomaly-guard-script">
+(function(){
+  var box=document.getElementById('dataQualityWarnings'),listEl=document.getElementById('dataWarningList'),metaEl=document.getElementById('dataWarningMeta');
+  if(!box||!listEl)return;
+  var MIN_PREV=1e6,RESTORED=1e8;
+  function detectDate(){var srcs=[window.RWA_WATCH_SNAPSHOT_DATE,window.RWA_WATCH_CURRENT_DATE,location.pathname];var cl=document.querySelector('link[rel="canonical"]');if(cl)srcs.push(cl.getAttribute('href'));for(var i=0;i<srcs.length;i++){var m=String(srcs[i]||'').match(/(20\d{2})-(\d{2})-(\d{2})/);if(m)return m[0];}return null;}
+  function dPaths(d){if(!d)return[];return[d+'.json','../'+d+'.json','data/'+d+'.json','../data/'+d+'.json','data/daily/'+d+'.json','../data/daily/'+d+'.json','snapshots/'+d+'.json','../snapshots/'+d+'.json'];}
+  function prevDate(s){if(!s)return null;var d=new Date(s+'T00:00:00Z');if(isNaN(d))return null;d.setUTCDate(d.getUTCDate()-1);return d.toISOString().slice(0,10);}
+  var PD=detectDate();
+  var CP=[].concat([window.RWA_WATCH_CURRENT_SNAPSHOT_URL,window.RWA_WATCH_ASSET_SNAPSHOT_URL],dPaths(PD),['data/latest.json','../data/latest.json','latest.json','../latest.json']).filter(Boolean);
+  var PP=[].concat([window.RWA_WATCH_PREVIOUS_SNAPSHOT_URL],dPaths(prevDate(PD)),['data/previous.json','../data/previous.json','previous.json','../previous.json']).filter(Boolean);
+  function fmtUsd(n){var a=Math.abs(Number(n||0)),s=Number(n||0)>0?'+':Number(n||0)<0?'-':'';return a>=1e9?s+'$'+(a/1e9).toFixed(2)+'B':a>=1e6?s+'$'+(a/1e6).toFixed(2)+'M':s+'$'+a.toFixed(0);}
+  function safe(v){return String(v==null?'':v).replace(/[&<>"]/g,function(c){return({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c];});}
+  function extract(p){if(Array.isArray(p))return p;if(!p)return[];var cands=[p.assets,p.rwa_assets,p.protocols,p.data,p.rows];for(var i=0;i<cands.length;i++){if(Array.isArray(cands[i]))return cands[i];}return[];}
+  function parseJ(t){return JSON.parse(String(t).replace(/:\s*NaN/g,': null').replace(/:\s*[+-]?Infinity/g,': null'));}
+  function fetchJ(paths,idx){idx=idx||0;if(idx>=paths.length)return Promise.resolve(null);return fetch(paths[idx],{cache:'no-store'}).then(function(r){return r.ok?r.text().then(parseJ):fetchJ(paths,idx+1);}).catch(function(){return fetchJ(paths,idx+1);});}
+  fetchJ(CP).then(function(curP){if(!curP)return;fetchJ(PP).then(function(prevP){
+    if(!prevP){if(metaEl)metaEl.textContent='Previous snapshot not found.';return;}
+    var ca=extract(curP),pa=extract(prevP);if(!ca.length||!pa.length)return;
+    var pm=new Map();pa.forEach(function(a){pm.set(String(a.asset_key||a.slug||a.name||'').toLowerCase(),a);});
+    var warns=[];
+    ca.forEach(function(a){var k=String(a.asset_key||a.slug||a.name||'').toLowerCase(),p=pm.get(k);if(!p)return;var ct=Number(a.tvl_usd||a.value_usd||0),pt=Number(p.tvl_usd||p.value_usd||0),d=ct-pt;if((pt<=MIN_PREV&&ct>=RESTORED)||(ct<=MIN_PREV&&pt>=RESTORED)||(Math.abs(d)>=RESTORED&&pt>0&&Math.abs(d)/pt>=5))warns.push('<div class="dataWarningItem"><b>'+safe(a.name||k)+'</b>: '+fmtUsd(pt)+' \u2192 '+fmtUsd(ct)+' ('+fmtUsd(d)+'). Possible missing/restored data.</div>');});
+    if(!warns.length){box.classList.remove('active');return;}
+    listEl.innerHTML=warns.slice(0,5).join('');
+    if(metaEl)metaEl.textContent='Compared '+(curP.date||'current')+' vs '+(prevP.date||'previous')+'.';
+    box.classList.add('active');
+  });});
+})();
+</script>
+<script id="chain-distribution-script">
+(function(){
+  var listEl=document.getElementById('chainDistributionList'),acEl=document.getElementById('chainAssetCount'),ucEl=document.getElementById('chainUsageCount'),unEl=document.getElementById('chainUniqueCount'),tcEl=document.getElementById('chainTopChain'),ltEl=document.getElementById('chainLeaderText'),donutEl=document.getElementById('chainDonut');
+  if(!listEl)return;
+  var COLORS=['#7FE3FF','#5ED6FF','#4DA3FF','#2F8BFF','#7AB7FF'];
+  function normChain(c){return String(c||'').trim().replace(/[-_]+/g,' ').replace(/\s+/g,' ').replace(/\b\w/g,function(x){return x.toUpperCase();});}
+  function extract(p){if(Array.isArray(p))return p;if(!p)return[];var cands=[p.assets,p.rwa_assets,p.protocols,p.data,p.rows];for(var i=0;i<cands.length;i++){if(Array.isArray(cands[i]))return cands[i];}return[];}
+  function getChains(a){var r=a&&(a.chains||a.chain||a.networks||a.network||a.blockchains||a.blockchain);if(Array.isArray(r))return r.map(normChain).filter(Boolean);if(typeof r==='string')return r.split(/[,;/|]+/).map(normChain).filter(Boolean);return[];}
+  function detectDate(){var srcs=[window.RWA_WATCH_SNAPSHOT_DATE,window.RWA_WATCH_CURRENT_DATE,location.pathname];var cl=document.querySelector('link[rel="canonical"]');if(cl)srcs.push(cl.getAttribute('href'));for(var i=0;i<srcs.length;i++){var m=String(srcs[i]||'').match(/(20\d{2})-(\d{2})-(\d{2})/);if(m)return m[0];}return null;}
+  function dPaths(d){if(!d)return[];return[d+'.json','../'+d+'.json','data/'+d+'.json','../data/'+d+'.json','data/daily/'+d+'.json','../data/daily/'+d+'.json','snapshots/'+d+'.json','../snapshots/'+d+'.json'];}
+  var PD=detectDate();
+  var PATHS=[].concat([window.RWA_WATCH_ASSET_SNAPSHOT_URL,window.RWA_WATCH_CURRENT_SNAPSHOT_URL],dPaths(PD),['data/latest.json','../data/latest.json','assets.json','../assets.json','latest.json','../latest.json']).filter(Boolean);
+  function setEmpty(msg){listEl.innerHTML='<div class="previewBox" style="grid-column:1/-1">'+msg+'</div>';[acEl,ucEl,unEl,tcEl].forEach(function(e){if(e)e.textContent='\u2014';});if(ltEl)ltEl.textContent='No data';}
+  function buildDonut(rows,total){var a=0;return'conic-gradient('+rows.map(function(r){var deg=r.count/total*360,s=a,e=a+deg;a=e;return r.color+' '+s.toFixed(2)+'deg '+e.toFixed(2)+'deg';}).join(',')+')';}
+  function render(assets){
+    var counts=new Map(),wc=0,usage=0;
+    assets.forEach(function(a){var ch=getChains(a);if(ch.length)wc++;ch.forEach(function(c){counts.set(c,(counts.get(c)||0)+1);usage++;});});
+    if(!usage){setEmpty('No chain field found in snapshot data.');return;}
+    var sorted=Array.from(counts.entries()).sort(function(a,b){return b[1]-a[1];});
+    var top=sorted.slice(0,5).map(function(e,i){return{name:e[0],count:e[1],color:COLORS[i%COLORS.length]};});
+    var other=sorted.slice(5).reduce(function(s,e){return s+e[1];},0);
+    var drows=top.slice();if(other>0)drows.push({name:'Others',count:other,color:'rgba(255,255,255,0.30)'});
+    if(donutEl)donutEl.style.setProperty('--segments',buildDonut(drows,usage));
+    listEl.innerHTML=drows.map(function(r){var pct=r.count/usage*100,sh=wc?(r.count/wc*100):0;return'<div class="chainRow"><div class="chainInfo"><span class="chainSwatch" style="background:'+r.color+'"></span><div class="chainText"><span class="chainName">'+r.name+'</span><div class="chainSub">'+sh.toFixed(1)+'% of assets</div></div></div><div class="chainCount"><small>Assets</small>'+r.count+'</div><div class="chainPct"><small>Share</small>'+pct.toFixed(1)+'%</div></div>';}).join('');
+    var ldr=sorted[0];
+    if(acEl)acEl.textContent=String(wc);if(ucEl)ucEl.textContent=String(usage);if(unEl)unEl.textContent=String(sorted.length);if(tcEl)tcEl.textContent=ldr?ldr[0]:'\u2014';if(ltEl)ltEl.textContent=ldr?(ldr[0]+' leads with '+ldr[1]+' assets'):'No leader';
+  }
+  function parseJ(t){return JSON.parse(String(t).replace(/:\s*NaN/g,': null').replace(/:\s*[+-]?Infinity/g,': null'));}
+  function load(idx){idx=idx||0;if(Array.isArray(window.RWA_WATCH_ASSETS)){render(window.RWA_WATCH_ASSETS);return;}if(idx>=PATHS.length){setEmpty('No reachable snapshot JSON. Check data/daily/YYYY-MM-DD.json or ../data/latest.json.');return;}fetch(PATHS[idx],{cache:'no-store'}).then(function(r){if(!r.ok)return load(idx+1);return r.text().then(function(t){var a=extract(parseJ(t));if(a.length)render(a);else load(idx+1);});}).catch(function(){load(idx+1);});}
+  load();
+})();
+</script>
 
 <script id="delta-toggle-script">
 (function(){
