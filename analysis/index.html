@@ -299,7 +299,7 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
           </div>
         </div>
       </div>
-      <div class="updated">Updated: 2026-05-13T07:51:35Z</div>
+      <div class="updated">Updated: 2026-05-13T08:11:36Z</div>
     </div>
     <div class="headline">
       <h2>Real-World Asset Intelligence &amp; Monitoring</h2>
@@ -549,7 +549,7 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
   
     <div class="footer">
       <div class="legalLine">
-        Data: DeFiLlama (public APIs) • Educational only • Not investment advice • <a href="../terms.html">Terms</a> • <a href="../privacy.html">Privacy</a> •
+        Data: <a class="dataSourceLink" href="https://defillama.com/" target="_blank" rel="noopener noreferrer">DeFiLlama</a> (public APIs) • Educational only • Not investment advice • <a href="../terms.html">Terms</a> • <a href="../privacy.html">Privacy</a> •
         <details class="legalDetails">
           <summary>Legal &amp; disclaimer</summary>
           <div class="legalBody">
@@ -623,6 +623,50 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
   function parseJ(t){return JSON.parse(String(t).replace(/:\s*NaN/g,': null').replace(/:\s*[+-]?Infinity/g,': null'));}
   function load(idx){idx=idx||0;if(Array.isArray(window.RWA_WATCH_ASSETS)){render(window.RWA_WATCH_ASSETS);return;}if(idx>=PATHS.length){setEmpty('No reachable snapshot JSON. Check data/daily/YYYY-MM-DD.json or ../data/latest.json.');return;}fetch(PATHS[idx],{cache:'no-store'}).then(function(r){if(!r.ok)return load(idx+1);return r.text().then(function(t){var a=extract(parseJ(t));if(a.length)render(a);else load(idx+1);});}).catch(function(){load(idx+1);});}
   load();
+})();
+</script>
+<script id="public-recap-window-script">
+(function(){
+  var PUBLIC_DAYS=7;
+  function parseDate(v){var m=String(v||'').match(/(20\d{2})-(\d{2})-(\d{2})/);return m?new Date(Date.UTC(+m[1],+m[2]-1,+m[3])):null;}
+  function addDays(d,n){var r=new Date(d);r.setUTCDate(r.getUTCDate()+n);return r;}
+  function isoKey(d){return d?d.toISOString().slice(0,10):'';}
+  function maxDate(arr){var v=arr.filter(Boolean);return v.length?v.reduce(function(m,x){return x>m?x:m;},v[0]):null;}
+  function datesFromHtml(html){var found=[],re=/recap-(20\d{2}-\d{2}-\d{2})\.html/g,m;while((m=re.exec(html)))found.push(parseDate(m[1]));return found;}
+  function getCurrentDate(){var cl=document.querySelector('link[rel="canonical"]'),og=document.querySelector('meta[property="og:url"]');return parseDate(location.pathname)||parseDate(cl?cl.getAttribute('href'):'')||parseDate(og?og.getAttribute('content'):'');}
+  function getLatestFromPage(){var links=Array.from(document.querySelectorAll('a[href*="recap-"]'));return maxDate(links.map(function(l){return parseDate(l.getAttribute('href'));}));}
+  function filterLinks(cutoff,latest){
+    var sec=document.getElementById('recent-analysis');if(!sec)return;
+    Array.from(sec.querySelectorAll('.recapList .recapItem')).forEach(function(item){
+      var a=item.querySelector('a[href*="recap-"]');if(!a)return;
+      var d=parseDate(a.getAttribute('href'));
+      if(!d||d<cutoff||d>latest)item.remove();
+    });
+  }
+  function blockOldRecap(cur,cutoff,latest){
+    if(!cur||cur>=cutoff)return;
+    var nm=document.querySelector('meta[name="robots"]');
+    if(!nm){nm=document.createElement('meta');nm.setAttribute('name','robots');document.head.appendChild(nm);}
+    nm.setAttribute('content','noindex,nofollow');
+    document.title='Archived recap hidden — RWA.watch';
+    var c=document.querySelector('.container');if(!c)return;
+    c.innerHTML='<div class="topbar"><div class="brand"><h1>RWA.watch</h1><span class="beta">Beta Version</span></div></div><div class="recapWindowNotice"><h2>This daily recap is outside the public 7-day window.</h2><p>Only the latest seven daily recaps are surfaced publicly. Older snapshots remain in the private repository.</p><p style="margin-top:10px;">Public window: '+isoKey(cutoff)+' \u2192 '+isoKey(latest)+'.</p><div class="recapWindowActions"><a href="index.html">Open latest analysis</a><a href="weekly/">Open weekly recaps</a></div></div>';
+  }
+  function run(){
+    fetch('index.html',{cache:'no-store'}).then(function(r){return r.ok?r.text():Promise.reject();}).then(function(html){
+      var latest=maxDate(datesFromHtml(html))||getLatestFromPage();
+      if(!latest)return;
+      var cutoff=addDays(latest,-(PUBLIC_DAYS-1));
+      filterLinks(cutoff,latest);
+      blockOldRecap(getCurrentDate(),cutoff,latest);
+    }).catch(function(){
+      var latest=getLatestFromPage();if(!latest)return;
+      var cutoff=addDays(latest,-(PUBLIC_DAYS-1));
+      filterLinks(cutoff,latest);
+      blockOldRecap(getCurrentDate(),cutoff,latest);
+    });
+  }
+  run();
 })();
 </script>
 
