@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Capital Allocation Update — RWA.watch</title>
-<meta name="description" content="Tracked RWA market value closed at +$26.68B on May 12, 2026 (UTC). On a 24-hour basis, aggregate value increased by +$2.90B. Against the local 7-day history, market value was higher by +$534.90M. Stablecoins led category" />
-<link rel="canonical" href="/analysis/recap-2026-05-12.html" />
-<meta property="og:title" content="Capital Allocation Update — RWA.watch" />
-<meta property="og:description" content="Tracked RWA market value closed at +$26.68B on May 12, 2026 (UTC). On a 24-hour basis, aggregate value increased by +$2.90B. Against the local 7-day history, market value was higher by +$534.90M. Stablecoins led category" />
-<meta property="og:image" content="charts/total-rwa-tvl-7d-2026-05-12.png" />
-<meta property="og:url" content="/analysis/recap-2026-05-12.html" />
+<title>RWA Daily Snapshot &amp; Analysis — RWA.watch</title>
+<meta name="description" content="Tracked RWA market value closed at +$26.83B on May 13, 2026 (UTC). On a 24-hour basis, aggregate value increased by +$156.15M. Against the local 7-day history, market value was higher by +$475.49M. Stablecoins led catego" />
+<link rel="canonical" href="/analysis/recap-2026-05-13.html" />
+<meta property="og:title" content="RWA Daily Snapshot &amp; Analysis — RWA.watch" />
+<meta property="og:description" content="Tracked RWA market value closed at +$26.83B on May 13, 2026 (UTC). On a 24-hour basis, aggregate value increased by +$156.15M. Against the local 7-day history, market value was higher by +$475.49M. Stablecoins led catego" />
+<meta property="og:image" content="charts/total-rwa-tvl-7d-2026-05-13.png" />
+<meta property="og:url" content="/analysis/recap-2026-05-13.html" />
 <meta name="twitter:card" content="summary_large_image" />
 <style>
 :root{
@@ -90,17 +90,6 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
   .tabs{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px;}
   .tabs::-webkit-scrollbar{display:none;}
   .tab{flex:0 0 auto;}
-}
-
-.footer .dataSourceLink{
-  color:inherit;
-  text-decoration:none;
-  border-bottom:1px solid rgba(255,255,255,0.45);
-}
-.footer .dataSourceLink:hover{
-  color:inherit;
-  text-decoration:none;
-  border-bottom-color:rgba(255,255,255,0.85);
 }
 </style>
 <style>
@@ -186,26 +175,9 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
 
 .inlineList{margin-top:14px;display:flex;flex-direction:column;gap:10px;}
 .rowCard{padding:12px 14px;border-radius:16px;background:rgba(0,0,0,0.18);}
-.rowTitle{
-  display:grid;
-  grid-template-columns:minmax(0,1fr) auto;
-  align-items:start;
-  gap:12px;
-}
-.rowTitle b{
-  color:#fff;
-  min-width:0;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-.rowTitle > span{
-  justify-self:end;
-  white-space:nowrap;
-  text-align:right;
-  line-height:1.25;
-}
-.rowMeta{margin-top:8px;color:var(--muted);font-size:12px;line-height:1.55;}
+.rowTitle{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;}
+.rowTitle b{color:#fff;}
+.rowMeta{margin-top:6px;color:var(--muted);font-size:12px;line-height:1.55;}
 
 .badgePill{
   display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border-radius:999px;border:1px solid var(--border);
@@ -247,160 +219,12 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
 
 .dualPanels{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;}
 @media (max-width: 740px){ .dualPanels{grid-template-columns:1fr;} }
-.dualPanels .rowCard{min-height:86px;display:flex;flex-direction:column;justify-content:center;}
-.dualPanels .rowTitle{grid-template-columns:minmax(0,1fr) 92px;}
-.dualPanels .rowTitle > span{justify-self:end;}
-@media (max-width:640px){
-  .dualPanels .rowCard{min-height:auto;}
-  .dualPanels .rowTitle{grid-template-columns:minmax(0,1fr) auto;}
-}
 .miniPanel{padding:14px;border-radius:16px;background:rgba(0,0,0,0.18);}
 .miniPanel h4{margin:0 0 10px 0;font-size:14px;color:#fff;}
 .smallMuted{color:var(--muted);font-size:12px;line-height:1.55;}
 
 .recentRow{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px;}
 @media (max-width:980px){ .recentRow{grid-template-columns:1fr;} }
-
-/* Chain Distribution — vertical layout, donut top + 2-col grid below */
-.chainViz{margin-top:14px;display:flex;flex-direction:column;align-items:center;gap:18px;}
-.chainDonutCard{
-  padding:16px;
-  border-radius:18px;
-  border:1px solid rgba(94,214,255,0.16);
-  background:linear-gradient(180deg, rgba(10,24,46,0.96), rgba(6,14,28,0.88));
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,0.02), 0 12px 28px rgba(0,0,0,0.22);
-  width:100%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.chainDonutWrap{position:relative;display:grid;place-items:center;width:200px;height:200px;flex-shrink:0;}
-.chainDonut{
-  --segments: conic-gradient(rgba(94,214,255,0.9) 0 360deg);
-  width:200px;height:200px;border-radius:50%;
-  background:var(--segments);
-  position:relative;
-  box-shadow:0 0 32px rgba(77,163,255,0.18), inset 0 0 20px rgba(255,255,255,0.04);
-}
-.chainDonut::after{
-  content:"";
-  position:absolute;inset:24px;border-radius:50%;
-  background:radial-gradient(circle at 30% 30%, rgba(20,31,54,0.96), rgba(5,10,18,0.98));
-  border:1px solid rgba(255,255,255,0.06);
-  box-shadow:inset 0 0 16px rgba(255,255,255,0.03);
-}
-.chainCenter{
-  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;
-  text-align:center;padding:0 40px;z-index:2;
-}
-.chainCenterLabel{color:var(--muted);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;}
-.chainCenterValue{margin-top:6px;color:#fff;font-size:30px;font-weight:900;line-height:1;}
-.chainCenterMeta{margin-top:6px;color:#cfe5ff;font-size:11px;line-height:1.4;}
-.chainLegend{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;}
-.chainLegend::before{content:"Chain breakdown";display:block;grid-column:1/-1;color:var(--muted);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:2px;}
-.chainRow{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:12px 14px;
-  border-radius:12px;
-  border:1px solid rgba(94,214,255,0.08);
-  background:linear-gradient(180deg, rgba(8,17,32,0.82), rgba(6,12,24,0.72));
-}
-.chainInfo{display:flex;align-items:center;gap:8px;min-width:0;flex:1;}
-.chainSwatch{width:10px;height:10px;border-radius:50%;box-shadow:0 0 10px currentColor;flex-shrink:0;}
-.chainText{min-width:0;flex:1;}
-.chainName{color:#fff;font-weight:800;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;}
-.chainSub{margin-top:2px;color:var(--muted);font-size:11px;line-height:1.3;}
-.chainCount,.chainPct{text-align:right;color:#fff;font-weight:900;font-size:12px;white-space:nowrap;flex-shrink:0;}
-.chainCount small,.chainPct small{display:block;color:var(--muted);font-weight:700;font-size:10px;letter-spacing:0.06em;text-transform:uppercase;}
-.chainStats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px;}
-.chainStat{padding:12px;border-radius:14px;border:1px solid var(--border);background:rgba(0,0,0,0.18);}
-.chainStatLabel{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:0.06em;}
-.chainStatValue{margin-top:6px;color:#fff;font-size:20px;font-weight:900;}
-.chainNote{margin-top:12px;color:var(--muted);font-size:12px;line-height:1.6;}
-@media (max-width:640px){
-  .chainStats{grid-template-columns:1fr;}
-  .chainLegend{grid-template-columns:1fr;}
-  .chainDonut{width:180px;height:180px;}
-  .chainDonut::after{inset:20px;}
-  .chainCenterValue{font-size:26px;}
-}
-
-/* --- Data anomaly guard --- */
-.dataWarningBox{
-  display:none;
-  margin-top:18px;
-  padding:16px 18px;
-  border-radius:18px;
-  border:1px solid rgba(94,214,255,0.20);
-  background:linear-gradient(180deg, rgba(10,24,46,0.92), rgba(5,12,24,0.78));
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,0.02), 0 12px 30px rgba(0,0,0,0.20);
-}
-.dataWarningBox.active{display:block;}
-.dataWarningHead{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;}
-.dataWarningTitle{display:flex;align-items:center;gap:10px;color:#fff;font-size:15px;font-weight:900;}
-.dataWarningIcon{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:24px;height:24px;border-radius:999px;
-  color:#03101d;background:linear-gradient(180deg, #7FE3FF, #4DA3FF);
-  font-weight:1000;box-shadow:0 0 18px rgba(94,214,255,0.38);
-}
-.dataWarningMeta{color:var(--muted);font-size:12px;line-height:1.5;}
-.dataWarningList{margin-top:12px;display:flex;flex-direction:column;gap:10px;}
-.dataWarningItem{
-  padding:12px 14px;border-radius:14px;
-  border:1px solid rgba(94,214,255,0.10);
-  background:rgba(0,0,0,0.20);
-  color:var(--text);font-size:13px;line-height:1.6;
-}
-.dataWarningItem b{color:#fff;}
-.dataFlagBadge{
-  display:inline-flex;align-items:center;justify-content:center;
-  min-width:22px;height:22px;padding:0 7px;margin-left:8px;border-radius:999px;
-  border:1px solid rgba(94,214,255,0.40);
-  color:#7FE3FF;background:rgba(94,214,255,0.08);
-  font-size:12px;font-weight:1000;line-height:1;
-  box-shadow:0 0 14px rgba(94,214,255,0.18);
-}
-.dataFlagText{color:#7FE3FF;font-weight:900;}
-
-.rankWatchSection{margin-top:18px;}
-.rankWatchGrid{margin-top:14px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;}
-.rankWatchGrid .rowCard{
-  min-height:102px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-}
-.rankWatchGrid .rowTitle{grid-template-columns:minmax(0,1fr) 70px;}
-.rankWatchGrid .rowTitle > span{justify-self:end;text-align:right;}
-.rankWatchGrid .rowMeta{min-height:18px;}
-@media (max-width:1100px){ .rankWatchGrid{grid-template-columns:repeat(2,minmax(0,1fr));} }
-@media (max-width:640px){
-  .rankWatchGrid{grid-template-columns:1fr;}
-  .rankWatchGrid .rowCard{min-height:auto;}
-  .rankWatchGrid .rowTitle{grid-template-columns:minmax(0,1fr) auto;}
-}
-
-/* --- Public 7-day recap window guard --- */
-.recapWindowNotice{
-  margin-top:18px;
-  padding:18px;
-  border-radius:18px;
-  border:1px solid rgba(94,214,255,0.18);
-  background:linear-gradient(180deg, rgba(18,72,136,0.18), rgba(255,255,255,0.025));
-  color:var(--text);
-}
-.recapWindowNotice h2{margin:0 0 8px 0;color:#fff;font-size:22px;}
-.recapWindowNotice p{margin:0;color:var(--muted);line-height:1.7;}
-.recapWindowActions{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;}
-.recapWindowActions a{
-  display:inline-flex;align-items:center;justify-content:center;
-  padding:10px 12px;border-radius:12px;border:1px solid var(--border);
-  background:rgba(8,13,24,0.70);color:#fff;font-weight:800;text-decoration:none;
-}
-.recapWindowActions a:hover{text-decoration:none;border-color:rgba(122,183,255,0.7);}
 </style>
 </head>
 <body>
@@ -417,7 +241,7 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
           </div>
         </div>
       </div>
-      <div class="updated">Updated: 2026-05-12T04:03:29Z</div>
+      <div class="updated">Updated: 2026-05-13T07:09:26Z</div>
     </div>
     <div class="headline">
       <h2>Real-World Asset Intelligence &amp; Monitoring</h2>
@@ -431,12 +255,12 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
     <div class="heroTop">
       <div class="heroLeft">
         <div>
-          <h1 class="heroTitle">Capital Allocation Update</h1>
-          <div class="heroDate">May 12, 2026 (UTC)</div>
-          <p class="heroSummary">Tracked RWA market value closed at +$26.68B on May 12, 2026 (UTC). On a 24-hour basis, aggregate value increased by +$2.90B. Against the local 7-day history, market value was higher by +$534.90M. Stablecoins led category-level movement, while market breadth was 59.3% across eligible assets. The largest share remained concentrated in Tether Gold, Circle USYC, BlackRock BUIDL.</p>
+          <h1 class="heroTitle">RWA Daily Snapshot &amp; Analysis</h1>
+          <div class="heroDate">May 13, 2026 (UTC)</div>
+          <p class="heroSummary">Tracked RWA market value closed at +$26.83B on May 13, 2026 (UTC). On a 24-hour basis, aggregate value increased by +$156.15M. Against the local 7-day history, market value was higher by +$475.49M. Stablecoins led category-level movement, while market breadth was 57.3% across eligible assets. The largest share remained concentrated in Tether Gold, Circle USYC, BlackRock BUIDL.</p>
           <div class="kpiStrip">
             <span class="badgePill">Top 3 Assets: Tether Gold, Circle USYC, BlackRock BUIDL</span>
-            <span class="badgePill">Top 10 Concentration: 75.4%</span>
+            <span class="badgePill">Top 10 Concentration: 75.0%</span>
           </div>
           <div class="quickNav">
             <a href="index.html">Latest</a>
@@ -447,16 +271,16 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
       </div>
       <div class="heroChartWrap">
         <div class="heroChartCaption">Total RWA TVL — Last 7 Days</div>
-        <img src="charts/total-rwa-tvl-7d-2026-05-12.png" alt="Total RWA TVL — Last 7 Days" />
-        <div class="heroChartLabel">$26.68B</div>
+        <img src="charts/total-rwa-tvl-7d-2026-05-13.png" alt="Total RWA TVL — Last 7 Days" />
+        <div class="heroChartLabel">$26.83B</div>
       </div>
     </div>
     <div class="marketRegime"><b>Market Regime:</b> Expansion with moderate concentration.</div>
   </section>
 
-  <section class="metricGridPrimary"><div class="metricCard primary"><div class="metricCardLabel">Total RWA TVL</div><div class="metricCardValue">$26.68B</div><div class="metricCardSub">Aggregate tracked market value.</div></div><div class="metricCard primary"><div class="metricCardLabel">24H Change</div><div class="metricCardValue"><span class="chg pos">+$2.90B</span></div><div class="metricCardSub"><span class="chg pos">+12.2%</span></div></div><div class="metricCard primary"><div class="metricCardLabel">7D Change</div><div class="metricCardValue"><span class="chg pos">+$534.90M</span></div><div class="metricCardSub"><span class="chg pos">+2.0%</span></div></div><div class="metricCard primary"><div class="metricCardLabel">Top 3 Concentration</div><div class="metricCardValue">34.5%</div><div class="metricCardSub">Share held by the three largest tracked assets.</div><div class="metricCardMini"><div class="miniRow"><span>Tether Gold</span><b>12.6%</b></div><div class="miniRow"><span>Circle USYC</span><b>11.2%</b></div><div class="miniRow"><span>BlackRock BUIDL</span><b>10.7%</b></div></div></div></section>
+  <section class="metricGridPrimary"><div class="metricCard primary"><div class="metricCardLabel">Total RWA TVL</div><div class="metricCardValue">$26.83B</div><div class="metricCardSub">Aggregate tracked market value.</div></div><div class="metricCard primary"><div class="metricCardLabel">24H Change</div><div class="metricCardValue"><span class="chg pos">+$156.15M</span></div><div class="metricCardSub"><span class="chg pos">+0.6%</span></div></div><div class="metricCard primary"><div class="metricCardLabel">7D Change</div><div class="metricCardValue"><span class="chg pos">+$475.49M</span></div><div class="metricCardSub"><span class="chg pos">+1.8%</span></div></div><div class="metricCard primary"><div class="metricCardLabel">Top 3 Concentration</div><div class="metricCardValue">34.6%</div><div class="metricCardSub">Share held by the three largest tracked assets.</div><div class="metricCardMini"><div class="miniRow"><span>Tether Gold</span><b>12.5%</b></div><div class="miniRow"><span>Circle USYC</span><b>11.1%</b></div><div class="miniRow"><span>BlackRock BUIDL</span><b>11.0%</b></div></div></div></section>
 
-  <section class="metricGridSecondary"><div class="metricCard secondary"><div class="metricCardLabel">Top 10 Concentration</div><div class="metricCardValue">75.4%</div><div class="metricCardSub">Share held by the ten largest tracked assets.</div><div class="metricCardMini"><div class="miniRow"><span>Ranks 4–10</span><b>40.9%</b></div><div class="miniRow"><span>Rest of market</span><b>24.6%</b></div></div></div><div class="metricCard secondary"><div class="metricCardLabel">Category Leader (24h)</div><div class="metricCardValue">Stablecoins</div><div class="metricCardSub"><span class="chg pos">+$2.91B</span> <span class="chg pos">+413.3%</span></div></div><div class="metricCard secondary"><div class="metricCardLabel">Biggest Asset Gainer (24h)</div><div class="metricCardValue">Circle USYC</div><div class="metricCardSub"><span class="chg pos">+$2.98B</span> <span class="chg na">N/A</span> · Δrank +125</div></div><div class="metricCard secondary"><div class="metricCardLabel">Near Top 10</div><div class="metricCardValue">Blockchain Capital</div><div class="metricCardSub">Gap to #10: $17.85M (1.8%)</div></div><div class="metricCard secondary"><div class="metricCardLabel">New Entrants</div><div class="metricCardValue">1</div><div class="metricCardSub">Assets crossing the $1M threshold today.</div></div><div class="metricCard secondary"><div class="metricCardLabel">Assets Tracked</div><div class="metricCardValue">142</div><div class="metricCardSub">Tracked assets in today’s universe.</div></div></section>
+  <section class="metricGridSecondary"><div class="metricCard secondary"><div class="metricCardLabel">Top 10 Concentration</div><div class="metricCardValue">75.0%</div><div class="metricCardSub">Share held by the ten largest tracked assets.</div><div class="metricCardMini"><div class="miniRow"><span>Ranks 4–10</span><b>40.4%</b></div><div class="miniRow"><span>Rest of market</span><b>25.0%</b></div></div></div><div class="metricCard secondary"><div class="metricCardLabel">Category Leader (24h)</div><div class="metricCardValue">Stablecoins</div><div class="metricCardSub"><span class="chg pos">+$95.66M</span> <span class="chg pos">+2.6%</span></div></div><div class="metricCard secondary"><div class="metricCardLabel">Biggest Asset Gainer (24h)</div><div class="metricCardValue">Ethena USDtb</div><div class="metricCardSub"><span class="chg pos">+$95.65M</span> <span class="chg pos">+18.0%</span> · Δrank +0</div></div><div class="metricCard secondary"><div class="metricCardLabel">Near Top 10</div><div class="metricCardValue">Blockchain Capital</div><div class="metricCardSub">Gap to #10: $17.82M (1.8%)</div></div><div class="metricCard secondary"><div class="metricCardLabel">New Entrants</div><div class="metricCardValue">2</div><div class="metricCardSub">Assets crossing the $1M threshold today.</div></div><div class="metricCard secondary"><div class="metricCardLabel">Assets Tracked</div><div class="metricCardValue">143</div><div class="metricCardSub">Tracked assets in today’s universe.</div></div></section>
 
   <div class="sectionGrid">
     <section class="sectionCard">
@@ -464,39 +288,39 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
       <p class="sub">24h category flows (Δ$) with current share context.</p>
       
     <div class="categoryBar">
-      <div><b>Funds</b><div class="dim"></div></div>
-      <div class="barTrack"><div class="barFill" style="width:23.0%"></div></div>
-      <div style="text-align:right;"><b><span class="chg neg">-$7.79M</span></b><div class="dim">Share 23.0% · <span class="chg neg">-0.1%</span></div></div>
+      <div><b>Treasury</b><div class="dim"></div></div>
+      <div class="barTrack"><div class="barFill" style="width:23.1%"></div></div>
+      <div style="text-align:right;"><b><span class="chg pos">+$94.54M</span></b><div class="dim">Share 23.1% · <span class="chg pos">+1.5%</span></div></div>
     </div>
     
     <div class="categoryBar">
-      <div><b>Treasury</b><div class="dim"></div></div>
-      <div class="barTrack"><div class="barFill" style="width:22.9%"></div></div>
-      <div style="text-align:right;"><b><span class="chg neg">-$66.53M</span></b><div class="dim">Share 22.9% · <span class="chg neg">-1.1%</span></div></div>
+      <div><b>Funds</b><div class="dim"></div></div>
+      <div class="barTrack"><div class="barFill" style="width:22.8%"></div></div>
+      <div style="text-align:right;"><b><span class="chg neg">-$18.04M</span></b><div class="dim">Share 22.8% · <span class="chg neg">-0.3%</span></div></div>
     </div>
     
     <div class="categoryBar">
       <div><b>Commodities</b><div class="dim"></div></div>
-      <div class="barTrack"><div class="barFill" style="width:21.4%"></div></div>
-      <div style="text-align:right;"><b><span class="chg pos">+$52.58M</span></b><div class="dim">Share 21.4% · <span class="chg pos">+0.9%</span></div></div>
+      <div class="barTrack"><div class="barFill" style="width:21.5%"></div></div>
+      <div style="text-align:right;"><b><span class="chg pos">+$69.42M</span></b><div class="dim">Share 21.5% · <span class="chg pos">+1.2%</span></div></div>
     </div>
     
     <div class="categoryBar">
       <div><b>Stablecoins</b><div class="dim"></div></div>
-      <div class="barTrack"><div class="barFill" style="width:13.5%"></div></div>
-      <div style="text-align:right;"><b><span class="chg pos">+$2.91B</span></b><div class="dim">Share 13.5% · <span class="chg pos">+413.3%</span></div></div>
+      <div class="barTrack"><div class="barFill" style="width:13.8%"></div></div>
+      <div style="text-align:right;"><b><span class="chg pos">+$95.66M</span></b><div class="dim">Share 13.8% · <span class="chg pos">+2.6%</span></div></div>
     </div>
     
     <div class="categoryBar">
       <div><b>Other RWA</b><div class="dim"></div></div>
-      <div class="barTrack"><div class="barFill" style="width:11.8%"></div></div>
-      <div style="text-align:right;"><b><span class="chg neg">-$4.01M</span></b><div class="dim">Share 11.8% · <span class="chg neg">-0.1%</span></div></div>
+      <div class="barTrack"><div class="barFill" style="width:11.6%"></div></div>
+      <div style="text-align:right;"><b><span class="chg neg">-$44.93M</span></b><div class="dim">Share 11.6% · <span class="chg neg">-1.4%</span></div></div>
     </div>
     
     <div class="categoryBar">
       <div><b>Private Credit</b><div class="dim"></div></div>
-      <div class="barTrack"><div class="barFill" style="width:6.8%"></div></div>
-      <div style="text-align:right;"><b><span class="chg pos">+$15.58M</span></b><div class="dim">Share 6.8% · <span class="chg pos">+0.9%</span></div></div>
+      <div class="barTrack"><div class="barFill" style="width:6.6%"></div></div>
+      <div style="text-align:right;"><b><span class="chg neg">-$40.50M</span></b><div class="dim">Share 6.6% · <span class="chg neg">-2.2%</span></div></div>
     </div>
     
     </section>
@@ -505,8 +329,8 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
       <h3>Market Structure</h3>
       <p class="sub">Current concentration and the assets shaping the market-wide picture.</p>
       <div class="badgeWrap">
-        <span class="badgePill">Top 3 Concentration: 34.5%</span>
-        <span class="badgePill">Top 10 Concentration: 75.4%</span>
+        <span class="badgePill">Top 3 Concentration: 34.6%</span>
+        <span class="badgePill">Top 10 Concentration: 75.0%</span>
       </div>
       <div class="previewBox">Top 3 assets: Tether Gold, Circle USYC, BlackRock BUIDL</div>
       <table class="miniTable">
@@ -516,42 +340,42 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
           <td>Tether Gold</td>
           <td>Commodities</td>
           <td>$3.36B</td>
-          <td>12.6%</td>
+          <td>12.5%</td>
         </tr>
         
         <tr>
           <td>Circle USYC</td>
           <td>Stablecoins</td>
           <td>$2.98B</td>
-          <td>11.2%</td>
+          <td>11.1%</td>
         </tr>
         
         <tr>
           <td>BlackRock BUIDL</td>
           <td>Treasury</td>
-          <td>$2.87B</td>
-          <td>10.7%</td>
+          <td>$2.95B</td>
+          <td>11.0%</td>
         </tr>
         
         <tr>
           <td>Ondo Yield Assets</td>
           <td>Funds</td>
-          <td>$2.74B</td>
-          <td>10.3%</td>
+          <td>$2.75B</td>
+          <td>10.2%</td>
         </tr>
         
         <tr>
           <td>Paxos Gold</td>
           <td>Commodities</td>
-          <td>$2.23B</td>
+          <td>$2.22B</td>
           <td>8.3%</td>
         </tr>
         
         <tr>
           <td>Centrifuge Protocol</td>
           <td>Private Credit</td>
-          <td>$1.64B</td>
-          <td>6.2%</td>
+          <td>$1.60B</td>
+          <td>6.0%</td>
         </tr>
         
         <tr>
@@ -564,21 +388,13 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
         <tr>
           <td>Anemoy Capital</td>
           <td>Funds</td>
-          <td>$1.14B</td>
-          <td>4.3%</td>
+          <td>$1.11B</td>
+          <td>4.1%</td>
         </tr>
         </tbody>
       </table>
     </section>
   </div>
-
-  <section class="dataWarningBox" id="dataQualityWarnings" aria-live="polite">
-    <div class="dataWarningHead">
-      <div class="dataWarningTitle"><span class="dataWarningIcon">!</span><span>Possible data anomaly detected</span></div>
-      <div class="dataWarningMeta" id="dataWarningMeta">Checking current and previous snapshots…</div>
-    </div>
-    <div class="dataWarningList" id="dataWarningList"></div>
-  </section>
 
   <div class="sectionGrid equal">
     <section class="sectionCard">
@@ -587,68 +403,31 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
       <div class="dualPanels">
         <div class="miniPanel">
           <h4>Largest TVL Increase</h4>
-          <div class="inlineList"><div class="rowCard"><div class="rowTitle"><b>Circle USYC</b><span><span class="chg pos">+$2.98B</span></span></div><div class="rowMeta">$2.98B · Stablecoins</div></div><div class="rowCard"><div class="rowTitle"><b>Ondo Global Markets</b><span><span class="chg pos">+$36.93M</span></span></div><div class="rowMeta">$985.72M · Treasury</div></div><div class="rowCard"><div class="rowTitle"><b>Usual USD0</b><span><span class="chg pos">+$32.31M</span></span></div><div class="rowMeta">$99.62M · Stablecoins</div></div><div class="rowCard"><div class="rowTitle"><b>Tether Gold</b><span><span class="chg pos">+$29.66M</span></span></div><div class="rowMeta">$3.36B · Commodities</div></div></div>
+          <div class="inlineList"><div class="rowCard"><div class="rowTitle"><b>Ethena USDtb</b><span><span class="chg pos">+$95.65M</span></span></div><div class="rowMeta">$626.93M · Stablecoins</div></div><div class="rowCard"><div class="rowTitle"><b>Pleasing Gold</b><span><span class="chg pos">+$87.87M</span></span></div><div class="rowMeta">$87.87M · Commodities</div></div><div class="rowCard"><div class="rowTitle"><b>BlackRock BUIDL</b><span><span class="chg pos">+$78.47M</span></span></div><div class="rowMeta">$2.95B · Treasury</div></div><div class="rowCard"><div class="rowTitle"><b>Superstate USTB</b><span><span class="chg pos">+$13.20M</span></span></div><div class="rowMeta">$888.97M · Treasury</div></div></div>
         </div>
         <div class="miniPanel">
           <h4>Largest TVL Decline</h4>
-          <div class="inlineList"><div class="rowCard"><div class="rowTitle"><b>BlackRock BUIDL</b><span><span class="chg neg">-$119.31M</span></span></div><div class="rowMeta">$2.87B · Treasury</div></div><div class="rowCard"><div class="rowTitle"><b>Ethena USDtb</b><span><span class="chg neg">-$105.05M</span></span></div><div class="rowMeta">$531.28M · Stablecoins</div></div><div class="rowCard"><div class="rowTitle"><b>Ondo Yield Assets</b><span><span class="chg neg">-$10.74M</span></span></div><div class="rowMeta">$2.74B · Funds</div></div><div class="rowCard"><div class="rowTitle"><b>Asseto CASH+</b><span><span class="chg neg">-$5.12M</span></span></div><div class="rowMeta">$1.40M · Other RWA</div></div></div>
+          <div class="inlineList"><div class="rowCard"><div class="rowTitle"><b>DigiFT</b><span><span class="chg neg">-$50.44M</span></span></div><div class="rowMeta">$160.02M · Other RWA</div></div><div class="rowCard"><div class="rowTitle"><b>Centrifuge Protocol</b><span><span class="chg neg">-$42.30M</span></span></div><div class="rowMeta">$1.60B · Private Credit</div></div><div class="rowCard"><div class="rowTitle"><b>Anemoy Capital</b><span><span class="chg neg">-$24.74M</span></span></div><div class="rowMeta">$1.11B · Funds</div></div><div class="rowCard"><div class="rowTitle"><b>Tether Gold</b><span><span class="chg neg">-$9.11M</span></span></div><div class="rowMeta">$3.36B · Commodities</div></div></div>
         </div>
+      </div>
+      <div class="miniPanel" style="margin-top:12px;">
+        <h4>Top 10 Rank Watch</h4>
+        <div class="inlineList"><div class="rowCard"><div class="rowTitle"><b>Tether Gold</b><span>Rank #1</span></div><div class="rowMeta">Held rank #1</div></div><div class="rowCard"><div class="rowTitle"><b>Circle USYC</b><span>Rank #2</span></div><div class="rowMeta">Held rank #2</div></div><div class="rowCard"><div class="rowTitle"><b>BlackRock BUIDL</b><span>Rank #3</span></div><div class="rowMeta">Held rank #3</div></div><div class="rowCard"><div class="rowTitle"><b>Ondo Yield Assets</b><span>Rank #4</span></div><div class="rowMeta">Held rank #4</div></div><div class="rowCard"><div class="rowTitle"><b>Paxos Gold</b><span>Rank #5</span></div><div class="rowMeta">Held rank #5</div></div><div class="rowCard"><div class="rowTitle"><b>Centrifuge Protocol</b><span>Rank #6</span></div><div class="rowMeta">Held rank #6</div></div><div class="rowCard"><div class="rowTitle"><b>Spiko</b><span>Rank #7</span></div><div class="rowMeta">Held rank #7</div></div><div class="rowCard"><div class="rowTitle"><b>Anemoy Capital</b><span>Rank #8</span></div><div class="rowMeta">Held rank #8</div></div><div class="rowCard"><div class="rowTitle"><b>Ondo Global Markets</b><span>Rank #9</span></div><div class="rowMeta">Held rank #9</div></div><div class="rowCard"><div class="rowTitle"><b>WisdomTree</b><span>Rank #10</span></div><div class="rowMeta">Held rank #10</div></div></div>
       </div>
     </section>
 
-    <section class="sectionCard" id="chain-distribution">
-      <h3>Chain Distribution</h3>
-      <p class="sub">Top 5 + Others view of how tracked RWA assets are distributed across chains.</p>
-      <div class="chainViz">
-        <div class="chainDonutCard">
-          <div class="chainDonutWrap">
-            <div class="chainDonut" id="chainDonut"></div>
-            <div class="chainCenter">
-              <div class="chainCenterLabel">Top 5 + Others</div>
-              <div class="chainCenterValue" id="chainAssetCount">—</div>
-              <div class="chainCenterMeta" id="chainLeaderText">Calculating…</div>
-            </div>
-          </div>
-        </div>
-        <div class="chainLegend" id="chainDistributionList">
-          <div class="previewBox" style="grid-column:1/-1">Calculating chain distribution from snapshot data…</div>
-        </div>
-      </div>
-      <div class="chainStats">
-        <div class="chainStat">
-          <div class="chainStatLabel">Chain usages</div>
-          <div class="chainStatValue" id="chainUsageCount">—</div>
-        </div>
-        <div class="chainStat">
-          <div class="chainStatLabel">Unique chains</div>
-          <div class="chainStatValue" id="chainUniqueCount">—</div>
-        </div>
-        <div class="chainStat">
-          <div class="chainStatLabel">Largest chain by assets</div>
-          <div class="chainStatValue" id="chainTopChain">—</div>
-        </div>
-      </div>
-      <div class="chainNote">Method: one asset can contribute to more than one chain. The chart groups the distribution into Top 5 chains plus Others. Percentages are based on total asset-chain usages, while each row also shows how many assets are on that chain.</div>
-    </section>
-  </div>
-
-  <section class="sectionCard rankWatchSection">
-    <h3>Top 10 Rank Watch</h3>
-    <p class="sub">Current rank pressure across the ten largest tracked RWA assets.</p>
-    <div class="rankWatchGrid"><div class="rowCard"><div class="rowTitle"><b>Tether Gold</b><span>Rank #1</span></div><div class="rowMeta">Held rank #1</div></div><div class="rowCard"><div class="rowTitle"><b>Circle USYC</b><span>Rank #2</span></div><div class="rowMeta">Moved up from #127</div></div><div class="rowCard"><div class="rowTitle"><b>BlackRock BUIDL</b><span>Rank #3</span></div><div class="rowMeta">Moved down from #2</div></div><div class="rowCard"><div class="rowTitle"><b>Ondo Yield Assets</b><span>Rank #4</span></div><div class="rowMeta">Moved down from #3</div></div><div class="rowCard"><div class="rowTitle"><b>Paxos Gold</b><span>Rank #5</span></div><div class="rowMeta">Moved down from #4</div></div><div class="rowCard"><div class="rowTitle"><b>Centrifuge Protocol</b><span>Rank #6</span></div><div class="rowMeta">Moved down from #5</div></div><div class="rowCard"><div class="rowTitle"><b>Spiko</b><span>Rank #7</span></div><div class="rowMeta">Moved down from #6</div></div><div class="rowCard"><div class="rowTitle"><b>Anemoy Capital</b><span>Rank #8</span></div><div class="rowMeta">Moved down from #7</div></div><div class="rowCard"><div class="rowTitle"><b>Ondo Global Markets</b><span>Rank #9</span></div><div class="rowMeta">Moved up from #10</div></div><div class="rowCard"><div class="rowTitle"><b>WisdomTree</b><span>Rank #10</span></div><div class="rowMeta">Moved down from #8</div></div></div>
-  </section>
 
   <div class="sectionGrid equal">
     <section class="sectionCard">
       <h3>Monitoring Signals</h3>
       <p class="sub">Validated factual observations from the current snapshot and local history.</p>
-      <div class="signalList"><div class="signalItem">Top 3 concentration stood at 34.5% of tracked market value.</div><div class="signalItem">Market breadth was 59.3% across assets above the $1M threshold.</div><div class="signalItem">1 asset crossed the $1M threshold in this UTC snapshot.</div></div>
+      <div class="signalList"><div class="signalItem">Top 3 concentration stood at 34.6% of tracked market value.</div><div class="signalItem">Market breadth was 57.3% across assets above the $1M threshold.</div><div class="signalItem">2 assets crossed the $1M threshold in this UTC snapshot.</div></div>
     </section>
 
     <section class="sectionCard">
       <h3>What to Watch Tomorrow</h3>
       <p class="sub">Short factual watchpoints for the next UTC snapshot.</p>
-      <div class="watchList"><div class="watchItem">Capital remained concentrated in Tether Gold, Circle USYC, BlackRock BUIDL. The next snapshot will show whether participation broadens beyond the current leaders.</div><div class="watchItem">Tether Gold, Circle USYC, BlackRock BUIDL remain relevant to the Top 10 threshold, making rank reordering a key point to monitor in the next UTC update.</div><div class="watchItem">Breadth closed at 59.3% today. The next update will show whether positive participation stays above the recent pattern.</div></div>
+      <div class="watchList"><div class="watchItem">Capital remained concentrated in Tether Gold, Circle USYC, BlackRock BUIDL. The next snapshot will show whether participation broadens beyond the current leaders.</div><div class="watchItem">Tether Gold, Circle USYC, BlackRock BUIDL remain relevant to the Top 10 threshold, making rank reordering a key point to monitor in the next UTC update.</div><div class="watchItem">Breadth closed at 57.3% today. The next update will show whether positive participation stays above the recent pattern.</div></div>
     </section>
   </div>
 
@@ -657,17 +436,17 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
       <h3>Share Recap</h3>
       <p class="sub">Each daily note is designed to be linkable and shareable on X and elsewhere.</p>
       <div class="shareActions">
-        <a class="shareBtn" href="/analysis/recap-2026-05-12.html">Copy link</a>
-        <a class="shareBtn" href="https://x.com/intent/post?text=Capital%20Allocation%20Update%20%7C%20Total%20RWA%20TVL%3A%20%2B%2426.68B%20%7C%2024H%20Change%3A%20%2B12.2%25%20%7C%207D%20Change%3A%20%2B2.0%25%20%7C%20Market%20Breadth%3A%2059.3%25%20%7C%20Largest%20capital%20increase%3A%20Stablecoins%20%7C%20/analysis/recap-2026-05-12.html" target="_blank" rel="noopener">Copy X text</a>
-        <a class="shareBtn" href="charts/total-rwa-tvl-7d-2026-05-12.png" target="_blank" rel="noopener">Share chart</a>
+        <a class="shareBtn" href="/analysis/recap-2026-05-13.html">Copy link</a>
+        <a class="shareBtn" href="https://x.com/intent/post?text=RWA%20Daily%20Snapshot%20%26%20Analysis%20%7C%20Total%20RWA%20TVL%3A%20%2B%2426.83B%20%7C%2024H%20Change%3A%20%2B0.6%25%20%7C%207D%20Change%3A%20%2B1.8%25%20%7C%20Market%20Breadth%3A%2057.3%25%20%7C%20Largest%20capital%20increase%3A%20Stablecoins%20%7C%20/analysis/recap-2026-05-13.html" target="_blank" rel="noopener">Copy X text</a>
+        <a class="shareBtn" href="charts/total-rwa-tvl-7d-2026-05-13.png" target="_blank" rel="noopener">Share chart</a>
       </div>
-      <div class="copyBox">Capital Allocation Update | Total RWA TVL: +$26.68B | 24H Change: +12.2% | 7D Change: +2.0% | Market Breadth: 59.3% | Largest capital increase: Stablecoins | /analysis/recap-2026-05-12.html</div>
+      <div class="copyBox">RWA Daily Snapshot &amp; Analysis | Total RWA TVL: +$26.83B | 24H Change: +0.6% | 7D Change: +1.8% | Market Breadth: 57.3% | Largest capital increase: Stablecoins | /analysis/recap-2026-05-13.html</div>
     </section>
 
     <section class="sectionCard">
       <h3>Recent Analysis</h3>
       <p class="sub">Only the latest seven daily recaps are surfaced in the on-site navigation.</p>
-      <div class="recapList"><div class="recapItem"><a href="recap-2026-05-12.html">May 12, 2026 — Daily recap</a></div><div class="recapItem"><a href="recap-2026-05-11.html">May 11, 2026 — Daily recap</a></div><div class="recapItem"><a href="recap-2026-05-10.html">May 10, 2026 — Daily recap</a></div><div class="recapItem"><a href="recap-2026-05-09.html">May 09, 2026 — Daily recap</a></div><div class="recapItem"><a href="recap-2026-05-08.html">May 08, 2026 — Daily recap</a></div><div class="recapItem"><a href="recap-2026-05-07.html">May 07, 2026 — Daily recap</a></div><div class="recapItem"><a href="recap-2026-05-06.html">May 06, 2026 — Daily recap</a></div><div class="recapItem"><a href="recap-2026-05-05.html">May 05, 2026 — Daily recap</a></div></div>
+      <div class="recapList"><div class="recapItem"><a href="recap-2026-05-13.html">May 13, 2026 — Daily recap</a></div><div class="recapItem"><a href="recap-2026-05-12.html">May 12, 2026 — Daily recap</a></div><div class="recapItem"><a href="recap-2026-05-11.html">May 11, 2026 — Daily recap</a></div><div class="recapItem"><a href="recap-2026-05-10.html">May 10, 2026 — Daily recap</a></div><div class="recapItem"><a href="recap-2026-05-09.html">May 09, 2026 — Daily recap</a></div><div class="recapItem"><a href="recap-2026-05-08.html">May 08, 2026 — Daily recap</a></div><div class="recapItem"><a href="recap-2026-05-07.html">May 07, 2026 — Daily recap</a></div><div class="recapItem"><a href="recap-2026-05-06.html">May 06, 2026 — Daily recap</a></div></div>
       <div class="archiveNote">Older recap URLs remain retained and indexable, but they are not exposed as a full on-site archive list.</div>
       <div class="recapList" style="margin-top:12px;"><div class="recapItem"><a href="weekly/weekly-2026-W20.html">Open weekly recap</a></div></div>
     </section>
@@ -676,7 +455,7 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
   
     <div class="footer">
       <div class="legalLine">
-        Data: <a class="dataSourceLink" href="https://defillama.com/" target="_blank" rel="noopener noreferrer">DeFiLlama</a> (public APIs) • Educational only • Not investment advice • <a href="../terms.html">Terms</a> • <a href="../privacy.html">Privacy</a> •
+        Data: DeFiLlama (public APIs) • Educational only • Not investment advice • <a href="../terms.html">Terms</a> • <a href="../privacy.html">Privacy</a> •
         <details class="legalDetails">
           <summary>Legal &amp; disclaimer</summary>
           <div class="legalBody">
@@ -691,458 +470,6 @@ html[data-delta-mode="classic"]{ --pos:var(--posClassic); --neg:var(--negClassic
     </div>
     
 </div>
-
-<script id="data-anomaly-guard-script">
-(function(){
-  const box = document.getElementById("dataQualityWarnings");
-  const listEl = document.getElementById("dataWarningList");
-  const metaEl = document.getElementById("dataWarningMeta");
-  if(!box || !listEl) return;
-
-  const MIN_PREVIOUS_FOR_NORMAL_DELTA = 1_000_000;
-  const RESTORED_VALUE_THRESHOLD = 100_000_000;
-  const CATEGORY_ALERT_THRESHOLD = 500_000_000;
-  const SINGLE_ASSET_DRIVER_SHARE = 0.70;
-  const EXTREME_PCT_CHANGE = 5.0;
-
-  function unique(items){ return Array.from(new Set(items.filter(Boolean))); }
-  function isoDate(date){ if(!date) return null; return date.toISOString().slice(0, 10); }
-  function previousDate(dateStr){
-    if(!dateStr) return null;
-    const d = new Date(dateStr + "T00:00:00Z");
-    if(Number.isNaN(d.getTime())) return null;
-    d.setUTCDate(d.getUTCDate() - 1);
-    return isoDate(d);
-  }
-  function detectPageDate(){
-    const sources = [
-      window.RWA_WATCH_SNAPSHOT_DATE, window.RWA_WATCH_CURRENT_DATE,
-      location.pathname,
-      document.querySelector('link[rel="canonical"]') && document.querySelector('link[rel="canonical"]').getAttribute('href'),
-      document.querySelector('meta[property="og:url"]') && document.querySelector('meta[property="og:url"]').getAttribute('content'),
-      document.body && document.body.innerText
-    ];
-    for(const source of sources){
-      const match = String(source || "").match(/(20\d{2})-(\d{2})-(\d{2})/);
-      if(match) return match[0];
-    }
-    return null;
-  }
-  function datedSnapshotPaths(dateStr){
-    if(!dateStr) return [];
-    return [
-      dateStr+".json", "../"+dateStr+".json", "../../"+dateStr+".json",
-      "snapshots/"+dateStr+".json", "../snapshots/"+dateStr+".json", "../../snapshots/"+dateStr+".json",
-      "data/"+dateStr+".json", "../data/"+dateStr+".json", "../../data/"+dateStr+".json",
-      "data/snapshots/"+dateStr+".json", "../data/snapshots/"+dateStr+".json", "../../data/snapshots/"+dateStr+".json"
-    ];
-  }
-  const PAGE_DATE = detectPageDate();
-  const PREVIOUS_PAGE_DATE = previousDate(PAGE_DATE);
-  const CURRENT_SNAPSHOT_PATHS = unique([
-    window.RWA_WATCH_CURRENT_SNAPSHOT_URL, window.RWA_WATCH_ASSET_SNAPSHOT_URL,
-    ...datedSnapshotPaths(PAGE_DATE),
-    "snapshots/latest.json","../snapshots/latest.json","../../snapshots/latest.json",
-    "data/latest.json","../data/latest.json","../../data/latest.json",
-    "latest.json","../latest.json","snapshot.json","../snapshot.json"
-  ]);
-  const PREVIOUS_SNAPSHOT_PATHS = unique([
-    window.RWA_WATCH_PREVIOUS_SNAPSHOT_URL,
-    ...datedSnapshotPaths(PREVIOUS_PAGE_DATE),
-    "snapshots/previous.json","../snapshots/previous.json","../../snapshots/previous.json",
-    "data/previous.json","../data/previous.json","../../data/previous.json",
-    "previous.json","../previous.json"
-  ]);
-  function fmtUsd(value){
-    const n=Number(value||0),abs=Math.abs(n),sign=n>0?"+":n<0?"-":"";
-    if(abs>=1e12) return sign+"$"+(abs/1e12).toFixed(2)+"T";
-    if(abs>=1e9) return sign+"$"+(abs/1e9).toFixed(2)+"B";
-    if(abs>=1e6) return sign+"$"+(abs/1e6).toFixed(2)+"M";
-    return sign+"$"+abs.toFixed(0);
-  }
-  function safeText(value){
-    return String(value==null?"":value).replace(/[&<>"]/g,function(c){return({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"})[c];});
-  }
-  function assetKey(asset){ return String(asset.asset_key||asset.asset_id||asset.slug||asset.name||"").toLowerCase(); }
-  function categoryOf(asset){ return asset.analytics_category||asset.asset_type||asset.protocol_category||asset.category||"Uncategorized"; }
-  function extractAssets(payload){
-    if(Array.isArray(payload)) return payload;
-    if(!payload||typeof payload!=="object") return [];
-    const candidates=[payload.assets,payload.rwa_assets,payload.protocols,payload.data,payload.rows,payload.snapshot&&payload.snapshot.assets,payload.snapshot&&payload.snapshot.rwa_assets,payload.result&&payload.result.assets];
-    for(const item of candidates){ if(Array.isArray(item)) return item; }
-    return [];
-  }
-  function parseSnapshotJson(text){
-    return JSON.parse(String(text).replace(/:\s*NaN/g,': null').replace(/:\s*Infinity/g,': null').replace(/:\s*-Infinity/g,': null').replace(/\[\s*NaN\s*\]/g,'[null]'));
-  }
-  async function fetchJson(paths){
-    for(const path of paths){
-      try{
-        const res=await fetch(path,{cache:"no-store"});
-        if(!res.ok) continue;
-        return parseSnapshotJson(await res.text());
-      }catch(e){ console.warn("Snapshot load failed:",path,e); }
-    }
-    return null;
-  }
-  function groupByCategory(assets){
-    const totals=new Map();
-    assets.forEach(function(asset){
-      const category=categoryOf(asset);
-      const tvl=Number(asset.tvl_usd||asset.value_usd||asset.market_cap_usd||0);
-      totals.set(category,(totals.get(category)||0)+tvl);
-    });
-    return totals;
-  }
-  function appendFlagToTextMatch(text,label){
-    const needle=String(text||"").trim().toLowerCase();
-    if(!needle) return;
-    Array.from(document.querySelectorAll(".categoryBar b, .metricCardValue, .rowTitle b")).forEach(function(el){
-      if(el.dataset.dataFlagged==="1") return;
-      if(el.textContent.trim().toLowerCase()===needle){
-        const badge=document.createElement("span");
-        badge.className="dataFlagBadge";badge.title=label||"Possible data anomaly";badge.textContent="!";
-        el.appendChild(badge);el.dataset.dataFlagged="1";
-      }
-    });
-  }
-  function detectAnomalies(currentAssets,previousAssets){
-    const prevByKey=new Map();
-    previousAssets.forEach(function(asset){ prevByKey.set(assetKey(asset),asset); });
-    const assetWarnings=[],categoryAssetDeltas=new Map();
-    currentAssets.forEach(function(asset){
-      const key=assetKey(asset),prev=prevByKey.get(key);
-      if(!prev) return;
-      const currTvl=Number(asset.tvl_usd||asset.value_usd||asset.market_cap_usd||0);
-      const prevTvl=Number(prev.tvl_usd||prev.value_usd||prev.market_cap_usd||0);
-      const delta=currTvl-prevTvl,category=categoryOf(asset),pct=prevTvl>0?Math.abs(delta)/prevTvl:Infinity;
-      if(!categoryAssetDeltas.has(category)) categoryAssetDeltas.set(category,[]);
-      categoryAssetDeltas.get(category).push({asset,prevTvl,currTvl,delta,pct});
-      const restoredFromMissing=prevTvl<=MIN_PREVIOUS_FOR_NORMAL_DELTA&&currTvl>=RESTORED_VALUE_THRESHOLD;
-      const collapsedToMissing=currTvl<=MIN_PREVIOUS_FOR_NORMAL_DELTA&&prevTvl>=RESTORED_VALUE_THRESHOLD;
-      const extremeMove=Math.abs(delta)>=RESTORED_VALUE_THRESHOLD&&pct>=EXTREME_PCT_CHANGE;
-      if(restoredFromMissing||collapsedToMissing||extremeMove){
-        assetWarnings.push({type:restoredFromMissing?"restored":collapsedToMissing?"missing":"extreme",name:asset.name||asset.slug||key,category,prevTvl,currTvl,delta});
-      }
-    });
-    const currentCategories=groupByCategory(currentAssets),previousCategories=groupByCategory(previousAssets),categoryWarnings=[];
-    currentCategories.forEach(function(currTotal,category){
-      const prevTotal=previousCategories.get(category)||0,delta=currTotal-prevTotal;
-      if(Math.abs(delta)<CATEGORY_ALERT_THRESHOLD) return;
-      const moves=(categoryAssetDeltas.get(category)||[]).sort(function(a,b){ return Math.abs(b.delta)-Math.abs(a.delta); });
-      const topMove=moves[0],drivenShare=topMove&&Math.abs(delta)>0?Math.abs(topMove.delta)/Math.abs(delta):0;
-      const hasAssetWarning=assetWarnings.some(function(w){ return w.category===category; });
-      if(hasAssetWarning||drivenShare>=SINGLE_ASSET_DRIVER_SHARE){
-        categoryWarnings.push({category,prevTotal,currTotal,delta,driver:topMove&&topMove.asset,driverDelta:topMove&&topMove.delta,drivenShare});
-      }
-    });
-    return {assetWarnings,categoryWarnings};
-  }
-  function renderWarnings(result,currentPayload,previousPayload){
-    const warnings=[];
-    result.categoryWarnings.forEach(function(w){
-      warnings.push('<div class="dataWarningItem"><b>'+safeText(w.category)+'</b> moved <span class="dataFlagText">'+fmtUsd(w.delta)+'</span> versus the previous snapshot. '+(w.driver?'Main driver: <b>'+safeText(w.driver.name||w.driver.slug)+'</b> ('+fmtUsd(w.driverDelta)+''). ':'')+'This may be a restored/missing upstream value, so it should not be treated as a normal daily flow without review.</div>');
-      appendFlagToTextMatch(w.category,"Possible category data anomaly");
-    });
-    result.assetWarnings.slice(0,6).forEach(function(w){
-      warnings.push('<div class="dataWarningItem"><b>'+safeText(w.name)+'</b> changed from '+fmtUsd(w.prevTvl)+' to '+fmtUsd(w.currTvl)+' ('+fmtUsd(w.delta)+'). Flagged as possible missing/restored snapshot data.</div>');
-      appendFlagToTextMatch(w.name,"Possible asset data anomaly");
-    });
-    if(!warnings.length){ box.classList.remove("active"); return; }
-    listEl.innerHTML=warnings.join("");
-    const curDate=currentPayload&&(currentPayload.date||currentPayload.generated_at||"current snapshot");
-    const prevDate=previousPayload&&(previousPayload.date||previousPayload.generated_at||"previous snapshot");
-    if(metaEl) metaEl.textContent="Compared "+curDate+" against "+prevDate+". Flagged values remain included in current TVL, but should be reviewed before being used as normal 24h gain/loss.";
-    box.classList.add("active");
-  }
-  async function run(){
-    const currentPayload=await fetchJson(CURRENT_SNAPSHOT_PATHS);
-    const previousPayload=await fetchJson(PREVIOUS_SNAPSHOT_PATHS);
-    if(!currentPayload||!previousPayload){
-      if(metaEl) metaEl.textContent="Snapshot comparison is ready, but no matching current/previous snapshot JSON was found. Check that the JSON file is publicly reachable from this page path, for example snapshots/YYYY-MM-DD.json or ../snapshots/YYYY-MM-DD.json.";
-      return;
-    }
-    const currentAssets=extractAssets(currentPayload),previousAssets=extractAssets(previousPayload);
-    if(!currentAssets.length||!previousAssets.length) return;
-    renderWarnings(detectAnomalies(currentAssets,previousAssets),currentPayload,previousPayload);
-  }
-  run();
-})();
-</script>
-
-<script id="chain-distribution-script">
-(function(){
-  const listEl = document.getElementById("chainDistributionList");
-  const assetCountEl = document.getElementById("chainAssetCount");
-  const usageCountEl = document.getElementById("chainUsageCount");
-  const uniqueCountEl = document.getElementById("chainUniqueCount");
-  const topChainEl = document.getElementById("chainTopChain");
-  const leaderTextEl = document.getElementById("chainLeaderText");
-  const donutEl = document.getElementById("chainDonut");
-  if(!listEl) return;
-
-  const COLORS = ["#7FE3FF","#5ED6FF","#4DA3FF","#2F8BFF","#7AB7FF"];
-
-  function unique(items){ return Array.from(new Set(items.filter(Boolean))); }
-
-  function normalizeChainName(chain){
-    return String(chain||"").trim().replace(/[-_]+/g," ").replace(/\s+/g," ").replace(/\b\w/g,function(c){ return c.toUpperCase(); });
-  }
-
-  function extractAssets(payload){
-    if(Array.isArray(payload)) return payload;
-    if(!payload||typeof payload!=="object") return [];
-    const candidates=[payload.assets,payload.rwa_assets,payload.protocols,payload.data,payload.rows,payload.snapshot&&payload.snapshot.assets,payload.snapshot&&payload.snapshot.rwa_assets,payload.result&&payload.result.assets];
-    for(const item of candidates){ if(Array.isArray(item)) return item; }
-    return [];
-  }
-
-  function getChains(asset){
-    const raw=asset&&(asset.chains||asset.chain||asset.networks||asset.network||asset.blockchains||asset.blockchain||asset.ecosystems||asset.ecosystem);
-    if(Array.isArray(raw)) return raw.map(normalizeChainName).filter(Boolean);
-    if(typeof raw==="string") return raw.split(/[,;/|]+/).map(normalizeChainName).filter(Boolean);
-    return [];
-  }
-
-  function setEmptyState(message){
-    if(listEl) listEl.innerHTML='<div class="previewBox">'+message+'</div>';
-    if(assetCountEl) assetCountEl.textContent="—";
-    if(usageCountEl) usageCountEl.textContent="—";
-    if(uniqueCountEl) uniqueCountEl.textContent="—";
-    if(topChainEl) topChainEl.textContent="—";
-    if(leaderTextEl) leaderTextEl.textContent="No data";
-  }
-
-  function buildDonutSegments(rows,total){
-    let angle=0;
-    return "conic-gradient("+rows.map(function(row){
-      const deg=(row.count/total)*360;
-      const start=angle,end=angle+deg;
-      angle=end;
-      return row.color+" "+start.toFixed(2)+"deg "+end.toFixed(2)+"deg";
-    }).join(",")+")";
-  }
-
-  function detectPageDate(){
-    const sources=[window.RWA_WATCH_SNAPSHOT_DATE,window.RWA_WATCH_CURRENT_DATE,location.pathname,
-      document.querySelector('link[rel="canonical"]')&&document.querySelector('link[rel="canonical"]').getAttribute('href'),
-      document.querySelector('meta[property="og:url"]')&&document.querySelector('meta[property="og:url"]').getAttribute('content'),
-      document.body&&document.body.innerText];
-    for(const source of sources){
-      const match=String(source||"").match(/(20\d{2})-(\d{2})-(\d{2})/);
-      if(match) return match[0];
-    }
-    return null;
-  }
-
-  function datedSnapshotPaths(dateStr){
-    if(!dateStr) return [];
-    return [
-      dateStr+".json","../"+dateStr+".json","../../"+dateStr+".json",
-      "snapshots/"+dateStr+".json","../snapshots/"+dateStr+".json","../../snapshots/"+dateStr+".json",
-      "data/"+dateStr+".json","../data/"+dateStr+".json","../../data/"+dateStr+".json",
-      "data/snapshots/"+dateStr+".json","../data/snapshots/"+dateStr+".json","../../data/snapshots/"+dateStr+".json"
-    ];
-  }
-
-  const PAGE_DATE = detectPageDate();
-  const SOURCE_PATHS = unique([
-    window.RWA_WATCH_ASSET_SNAPSHOT_URL, window.RWA_WATCH_CURRENT_SNAPSHOT_URL,
-    ...datedSnapshotPaths(PAGE_DATE),
-    "snapshots/latest.json","../snapshots/latest.json","../../snapshots/latest.json",
-    "data/latest.json","../data/latest.json","../../data/latest.json",
-    "assets.json","../assets.json","../../assets.json",
-    "latest.json","../latest.json","snapshot.json","../snapshot.json"
-  ]);
-
-  function renderFromAssets(assets){
-    const counts=new Map();
-    let assetsWithChainData=0,usageCount=0;
-    assets.forEach(function(asset){
-      const chains=getChains(asset);
-      if(chains.length) assetsWithChainData++;
-      chains.forEach(function(chain){
-        counts.set(chain,(counts.get(chain)||0)+1);
-        usageCount++;
-      });
-    });
-    if(!usageCount){ setEmptyState('No chain field was found in the available snapshot data.'); if(assetCountEl) assetCountEl.textContent="0"; if(usageCountEl) usageCountEl.textContent="0"; if(uniqueCountEl) uniqueCountEl.textContent="0"; return; }
-    const sorted=Array.from(counts.entries()).sort(function(a,b){ return b[1]-a[1]; });
-    const topRows=sorted.slice(0,5).map(function(entry,idx){ return {name:entry[0],count:entry[1],color:COLORS[idx%COLORS.length]}; });
-    const otherCount=sorted.slice(5).reduce(function(sum,entry){ return sum+entry[1]; },0);
-    const rowsForDonut=topRows.slice();
-    if(otherCount>0) rowsForDonut.push({name:'Others',count:otherCount,color:'rgba(255,255,255,0.30)'});
-    if(donutEl) donutEl.style.setProperty('--segments',buildDonutSegments(rowsForDonut,usageCount));
-    listEl.innerHTML=rowsForDonut.map(function(row){
-      const pct=(row.count/usageCount)*100;
-      const assetShare=assetsWithChainData?((row.count/assetsWithChainData)*100):0;
-      return '<div class="chainRow"><div class="chainInfo"><span class="chainSwatch" style="color:'+row.color+'; background:'+row.color+'"></span><div class="chainText"><span class="chainName">'+row.name+'</span><div class="chainSub">'+assetShare.toFixed(1)+'% of assets mention this chain</div></div></div><div class="chainCount"><small>Assets</small>'+row.count+'</div><div class="chainPct"><small>Share</small>'+pct.toFixed(1)+'%</div></div>';
-    }).join('');
-    const leader=sorted[0];
-    if(assetCountEl) assetCountEl.textContent=String(assetsWithChainData);
-    if(usageCountEl) usageCountEl.textContent=String(usageCount);
-    if(uniqueCountEl) uniqueCountEl.textContent=String(sorted.length);
-    if(topChainEl) topChainEl.textContent=leader?leader[0]:'—';
-    if(leaderTextEl) leaderTextEl.textContent=leader?(leader[0]+' leads with '+leader[1]+' assets'):'No leader';
-  }
-
-  async function loadFirstAvailableSnapshot(){
-    if(Array.isArray(window.RWA_WATCH_ASSETS)){ renderFromAssets(window.RWA_WATCH_ASSETS); return; }
-    for(const path of SOURCE_PATHS){
-      try{
-        const res=await fetch(path,{cache:"no-store"});
-        if(!res.ok) continue;
-        const text=await res.text();
-        const payload=JSON.parse(String(text).replace(/:\s*NaN/g,': null').replace(/:\s*Infinity/g,': null').replace(/:\s*-Infinity/g,': null').replace(/\[\s*NaN\s*\]/g,'[null]'));
-        const assets=extractAssets(payload);
-        if(assets.length){ renderFromAssets(assets); return; }
-      }catch(e){ console.warn("Snapshot load failed:",path,e); }
-    }
-    setEmptyState('Chain distribution box is ready, but no reachable snapshot JSON was found. Check that the JSON file is inside the published GitHub Pages folder and reachable from this page path, for example <code>snapshots/YYYY-MM-DD.json</code> or <code>../snapshots/YYYY-MM-DD.json</code>.');
-  }
-
-  loadFirstAvailableSnapshot();
-})();
-</script>
-
-<script id="public-recap-window-script">
-(function(){
-  const PUBLIC_DAYS = 7;
-
-  function parseDateString(value){
-    if(!value) return null;
-    const match = String(value).match(/(20\d{2})-(\d{2})-(\d{2})/);
-    if(!match) return null;
-    return new Date(Date.UTC(Number(match[1]), Number(match[2]) - 1, Number(match[3])));
-  }
-
-  function dateKey(date){
-    return date ? date.toISOString().slice(0, 10) : "";
-  }
-
-  function addDays(date, days){
-    const next = new Date(date.getTime());
-    next.setUTCDate(next.getUTCDate() + days);
-    return next;
-  }
-
-  function maxDate(dates){
-    const valid = dates.filter(Boolean);
-    if(!valid.length) return null;
-    return valid.reduce(function(max, item){ return item > max ? item : max; }, valid[0]);
-  }
-
-  function datesFromHtml(html){
-    const found = [];
-    const regex = /recap-(20\d{2}-\d{2}-\d{2})\.html/g;
-    let match;
-    while((match = regex.exec(html))){
-      found.push(parseDateString(match[1]));
-    }
-    return found;
-  }
-
-  function datesFromCurrentPage(){
-    const links = Array.from(document.querySelectorAll('a[href*="recap-"]'));
-    return links.map(function(link){ return parseDateString(link.getAttribute('href')); });
-  }
-
-  function getCurrentRecapDate(){
-    const canonical = document.querySelector('link[rel="canonical"]');
-    const ogUrl = document.querySelector('meta[property="og:url"]');
-    return parseDateString(
-      window.location.pathname || ""
-    ) || parseDateString(
-      canonical ? canonical.getAttribute('href') : ""
-    ) || parseDateString(
-      ogUrl ? ogUrl.getAttribute('content') : ""
-    );
-  }
-
-  async function getLatestPublicDate(){
-    if(window.RWA_WATCH_LATEST_RECAP_DATE){
-      const configured = parseDateString(window.RWA_WATCH_LATEST_RECAP_DATE);
-      if(configured) return configured;
-    }
-
-    try{
-      const res = await fetch('index.html', {cache:'no-store'});
-      if(res.ok){
-        const html = await res.text();
-        const fromIndex = maxDate(datesFromHtml(html));
-        if(fromIndex) return fromIndex;
-      }
-    }catch(e){}
-
-    return maxDate(datesFromCurrentPage());
-  }
-
-  function filterRecentLinks(cutoff, latest){
-    const recentSection = document.getElementById('recent-analysis');
-    if(!recentSection) return;
-
-    const recapItems = Array.from(recentSection.querySelectorAll('.recapList .recapItem'));
-    recapItems.forEach(function(item){
-      const link = item.querySelector('a[href*="recap-"]');
-      if(!link) return;
-      const linkDate = parseDateString(link.getAttribute('href'));
-      if(!linkDate || linkDate < cutoff || linkDate > latest){
-        item.remove();
-      }
-    });
-
-    const sub = recentSection.querySelector('h3 + .sub');
-    if(sub){
-      sub.textContent = 'Only the latest seven daily recaps are surfaced publicly. Older snapshots remain stored in the private repository.';
-    }
-
-    const note = recentSection.querySelector('.archiveNote');
-    if(note){
-      note.textContent = 'Older recap URLs are intentionally hidden from public navigation and kept only as background snapshot history in the repository.';
-    }
-  }
-
-  function blockOldRecap(currentDate, cutoff, latest){
-    if(!currentDate || currentDate >= cutoff) return;
-
-    let noindex = document.querySelector('meta[name="robots"]');
-    if(!noindex){
-      noindex = document.createElement('meta');
-      noindex.setAttribute('name', 'robots');
-      document.head.appendChild(noindex);
-    }
-    noindex.setAttribute('content', 'noindex, nofollow');
-    document.title = 'Archived recap hidden — RWA.watch';
-
-    const container = document.querySelector('.container');
-    if(!container) return;
-
-    container.innerHTML = '' +
-      '<div class="topbar">' +
-        '<div class="brand"><h1>RWA.watch</h1><span class="beta">Beta Version</span></div>' +
-      '</div>' +
-      '<div class="recapWindowNotice">' +
-        '<h2>This daily recap is outside the public 7-day window.</h2>' +
-        '<p>RWA.watch only surfaces the latest seven daily recaps publicly. Older snapshots remain retained in the private repository for background history and internal analytics.</p>' +
-        '<p style="margin-top:10px;">Public window: ' + dateKey(cutoff) + ' \u2192 ' + dateKey(latest) + '.</p>' +
-        '<div class="recapWindowActions">' +
-          '<a href="index.html">Open latest analysis</a>' +
-          '<a href="weekly/">Open weekly recaps</a>' +
-        '</div>' +
-      '</div>';
-  }
-
-  async function run(){
-    const latest = await getLatestPublicDate();
-    if(!latest) return;
-    const cutoff = addDays(latest, -(PUBLIC_DAYS - 1));
-    filterRecentLinks(cutoff, latest);
-    blockOldRecap(getCurrentRecapDate(), cutoff, latest);
-  }
-
-  run();
-})();
-</script>
 
 <script id="delta-toggle-script">
 (function(){
