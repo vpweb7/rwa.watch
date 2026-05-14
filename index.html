@@ -1,0 +1,1590 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="index, follow">
+<link rel="icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" href="asset/home-trend-tight.css">
+<link rel="stylesheet" href="asset/home-tight-table.css">
+<link rel="stylesheet" href="asset/home-mobile.css">
+
+<link rel="prefetch" href="analysis/index.html">
+<title>RWA.watch — Real-World Asset Intelligence & Monitoring</title>
+<meta name="description" content="RWA.watch tracks public real-world asset protocols and tokenized asset markets with daily monitoring, market value trends, and category views." />
+<style>
+
+:root{
+  --bg:#010409; --panel:#11161d; --panel2:#151b23; --border:(1.0, 1.0, 1.0, 0.1);
+  --text:(1.0, 1.0, 1.0, 0.86); --muted:(1.0, 1.0, 1.0, 0.62); --link:#7ab7ff;
+  --betaBg:#1d4ed8; --betaBorder:#1e40af; --blue:#4da3ff;
+}
+*{box-sizing:border-box;}
+html,body{height:100%;overflow-x:hidden;}
+body{
+  margin:0;
+  background: radial-gradient(1200px 600px at 35% 10%, rgba(77,163,255,0.12), transparent 55%),
+              radial-gradient(900px 500px at 85% 40%, rgba(77,163,255,0.08), transparent 60%),
+              var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial;
+}
+a{color:var(--link);text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+.container{max-width:1200px;margin:0 auto;padding:28px 20px 40px;}
+.topbar{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:12px;}
+.brand h1{margin:0;color:#fff;font-size:34px;letter-spacing:0.2px;}
+.beta{font-size:12px;padding:6px 10px;border-radius:999px;background:var(--betaBg);border:1px solid var(--betaBorder);
+color:#fff;font-weight:900;}
+.updated{color:var(--muted);font-size:12px;margin-top:8px;}
+
+.headline{margin-top:14px;}
+.headline h2{margin:0;color:#fff;font-size:22px;}
+.headline p{margin:10px 0 0 0;color:var(--muted);line-height:1.7;max-width:980px;}
+
+.tabs{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;}
+.tab{
+  border:1px solid rgba(122,183,255,0.28);
+  background: rgba(0,0,0,0.22);
+  padding:10px 14px;border-radius:12px;
+  font-weight:900;color:#fff !important;
+  backdrop-filter: blur(10px);
+}
+.tab:hover{border-color: rgba(122,183,255,0.55);}
+.tab.active{border-color: rgba(122,183,255,0.85); background: rgba(122,183,255,0.10); box-shadow: 0 0 0 1px rgba(122,183,255,0.18) inset;}
+
+.linkBlue{color:var(--accent);font-weight:800;text-decoration:none;}
+.linkBlue:hover{text-decoration:underline;}
+/* Tabs: match analytics (less blue) */
+.tab{  border:1px solid var(--border);  background: rgba(255,255,255,0.03);  padding:10px 14px;border-radius:12px;  font-weight:900;color:rgba(255,255,255,0.86);  backdrop-filter: blur(8px);}.tab.active{  border-color: rgba(122,183,255,0.92);  background: rgba(122,183,255,0.08);  box-shadow: 0 0 0 1px rgba(122,183,255,0.20), 0 12px 30px rgba(0,0,0,0.18);}
+
+.gridTop{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "snapshot"
+    "monitor";
+  gap:14px;
+  align-items:start;
+}
+
+.snapshotCard{ grid-area:snapshot; }
+.monitorCard{  grid-area:monitor; }
+.sideCard{     grid-area:side; }
+
+@media (max-width: 980px){
+  .gridTop{
+    grid-template-columns:1fr;
+    grid-template-areas:
+      "snapshot"
+      "side"
+      "monitor";
+  }
+}
+.card{
+  background: rgba(255,255,255,0.03);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:16px;
+  backdrop-filter: blur(10px);
+}
+.cardTitle{display:flex;align-items:center;justify-content:space-between;gap:10px;color:#fff;font-weight:900;}
+.subtle{color:var(--muted);font-size:12px;}
+.kpis{margin-top:14px;display:grid;grid-template-columns: repeat(4,1fr);gap:10px;}
+@media (max-width: 980px){ .kpis{grid-template-columns: repeat(2,1fr);} }
+.kpi{
+  background: rgba(0,0,0,0.18);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:12px;
+}
+.kpiLabel{color:var(--muted);font-size:12px;}
+.kpiValue{margin-top:6px;color:#fff;font-size:22px;font-weight:900;letter-spacing:0.2px;}
+.kpiDelta{margin-top:6px;color:rgba(135,255,199,0.9);font-weight:900;font-size:12px;}
+.kpiNote{margin-top:6px;font-size:12px;color:var(--muted);}
+
+.kpiDelta.neg{color:rgba(255,155,155,0.95);}
+
+.rightList{margin-top:12px;display:flex;flex-direction:column;gap:10px;}
+.bulletRow{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;}
+.bulletRow b{color:#fff;}
+.sparkMini{opacity:0.9;}
+
+.panel{
+  margin-top:14px;
+  background: rgba(255,255,255,0.03);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:16px;
+  backdrop-filter: blur(10px);
+}
+.controls{margin-top:12px;display:grid;grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr 1fr;gap:10px;}
+input,select{
+  width:100%;
+  background: rgba(0,0,0,0.22);
+  border:1px solid var(--border);
+  color:#fff;
+  padding:11px 12px;
+  border-radius:12px;
+  outline:none;
+}
+.btnPager{
+  border:1px solid var(--border);
+  background: rgba(255,255,255,0.03);
+  color:#fff;padding:10px 12px;border-radius:12px;
+  cursor:pointer;font-weight:900;
+}
+.btnPager:disabled{opacity:0.5;cursor:not-allowed;}
+
+.filterToggleRow{display:none;margin-top:12px;}
+.filterToggleBtn{
+  width:100%;
+  border:1px solid var(--border);
+  background: rgba(255,255,255,0.03);
+  color:#fff;
+  padding:12px 14px;
+  border-radius:14px;
+  cursor:pointer;
+  font-weight:900;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.filterPanel{margin-top:12px;}
+@media (max-width: 900px){
+  .controls{grid-template-columns:1fr;}
+  .filterToggleRow{display:block;}
+  .filterPanel{display:none;}
+  .filterPanel.open{display:block;}
+}
+
+.tableWrap{
+  margin-top:14px;
+  border:1px solid var(--border);
+  border-radius:18px;
+  overflow:hidden;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  background: rgba(255,255,255,0.02);
+  max-width:100%;
+}
+table{width:100%;border-collapse:collapse;min-width:980px;}
+thead th{
+  text-align:left;font-size:12px;color:var(--muted);
+  padding:12px 14px;border-bottom:1px solid var(--border);
+  background: rgba(0,0,0,0.20);
+}
+tbody td{
+  padding:12px 14px;
+  border-top:1px solid rgba(255,255,255,0.06);
+  vertical-align:middle;
+  font-size:13px;
+}
+tbody tr:hover{background: rgba(122,183,255,0.06); cursor:pointer;}
+.assetCell{display:flex;align-items:center;gap:10px;}
+.logo{width:34px;height:34px;border-radius:50%;border:1px solid var(--border);background: rgba(0,0,0,0.25);}
+.assetName{font-weight:900;color:#fff !important;}
+.assetLink{color:#fff;text-decoration:none;}
+.assetLink:hover{color:#fff;text-decoration:none;}
+
+.badges{margin-top:4px;display:flex;gap:6px;flex-wrap:wrap;}
+.badge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:3px 8px;border-radius:999px;
+  border:1px solid var(--border);
+  font-size:11px;color:var(--muted);
+  background: rgba(0,0,0,0.18);
+}
+.badge.dim{opacity:0.9;}
+.spark svg{display:block;}
+
+th.stickyCol, td.stickyCol{position:sticky;left:0;background: rgba(15,20,28,0.95);z-index:2;}
+thead th.stickyCol{z-index:3;}
+
+.hideMobile{display:table-cell;}
+.hideOnMobile{display:table-cell;}
+@media (max-width:640px){
+  .hideMobile{display:none;}
+  .hideOnMobile{display:none !important;}
+  table{min-width:0;}
+  thead th, tbody td{padding:10px 10px;font-size:12px;}
+  .assetCell{gap:8px;}
+  .logo{width:28px;height:28px;}
+  .assetName{font-size:12px;}
+  .badge{font-size:10px;padding:2px 6px;}
+}
+.footer{margin-top:24px;color:var(--muted);font-size:12px;text-align:center;line-height:1.7;}
+
+
+/* --- Compact legal footer (shared) --- */
+.footer{margin-top:24px;color:var(--muted);font-size:12px;text-align:center;line-height:1.7;}
+.footLine{max-width:980px;margin:0 auto;}
+.legal{margin-top:10px;display:inline-block;text-align:left;max-width:980px;}
+.legal summary{cursor:pointer;color:var(--link);font-weight:900;outline:none;}
+.legal summary::-webkit-details-marker{display:none;}
+.legalBody{margin-top:8px;color:var(--muted);line-height:1.7;}
+
+/* --- Mobile header fixes (shared) --- */
+@media (max-width: 520px){
+  .topbar{flex-direction:column;align-items:flex-start;}
+  .brand{flex-wrap:wrap;row-gap:8px;}
+  .modeToggle{margin-left:0;}
+  .updated{margin-top:6px;}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px;}
+  .tabs::-webkit-scrollbar{display:none;}
+  .tab{flex:0 0 auto;}
+}
+
+/* --- Dropdown / select readability (dark theme) --- */
+:root { color-scheme: dark; }
+select, option, optgroup{
+  background-color:#0b1220;
+  color:#ffffff;
+}
+select{
+  border:1px solid rgba(122,183,255,0.22);
+}
+select:focus{
+  outline:none;
+  border-color: rgba(122,183,255,0.55);
+  box-shadow: 0 0 0 3px rgba(122,183,255,0.15);
+}
+
+
+
+/* --- Mobile pan override (hotfix) --- */
+@media (max-width: 980px){
+  html, body { overflow-x: auto !important; }
+  body { touch-action: pan-x pan-y !important; }
+  .container { overflow-x: visible !important; }
+  .tableWrap { overflow-x: auto !important; -webkit-overflow-scrolling: touch; }
+}
+
+
+
+/* Subtle source links: footer stays visually calm, but clickable text is marked. */
+.sourceLink{
+  color:inherit !important;
+  text-decoration:none !important;
+  border-bottom:1px solid rgba(230,237,243,0.42);
+  padding-bottom:1px;
+}
+.sourceLink:hover{border-bottom-color:rgba(230,237,243,0.86);}
+
+.spark{
+  width:132px;
+  height:38px;
+  display:flex;
+  align-items:center;
+}
+.spark svg{
+  width:132px;
+  height:38px;
+  display:block;
+  overflow:visible;
+}
+@media (max-width:640px){
+  .spark{width:108px;}
+  .spark svg{width:108px;}
+}
+
+</style><style id="contrast-override">
+:root{
+  --text:#E6EDF3 !important;
+  --muted:#A8B3C2 !important;
+  --panel:#161b22 !important;
+  --panel2:#1f2630 !important;
+  --border:rgba(230,237,243,.12) !important;
+}
+body,.panel,.tableWrap{ color:var(--text) !important; }
+.small,.muted,.subtle,.meta{ color:var(--muted) !important; }
+a{ color:#4DA3FF !important; }
+</style>
+<style id="clean-bg-override">
+body{ background:#0b1220 !important; background-image:none !important; }
+html,body,.container{ background-image:none !important; }
+tbody td, thead th{ border-bottom:none !important; }
+td,th,.panel,.tableWrap{ border-left:none !important; border-right:none !important; }
+tbody tr:hover{ background:rgba(77,163,255,0.04) !important; }
+</style>
+<style id="delta-blue-override">
+.chg.pos{ color:#6EC1FF !important; font-weight:700 !important; }
+.chg.neg{ color:#2F6BFF !important; font-weight:700 !important; }
+.chg.na { color:var(--muted) !important; font-weight:600 !important; }
+</style>
+<style id="delta-toggle-style">
+:root{
+  --posBlue:#5ED6FF;
+  --negBlue:#4DA3FF;
+  --posClassic:#5EE6A8;
+  --negClassic:#FF6B7A;
+  --pos:var(--posBlue);
+  --neg:var(--negBlue);
+  --zero:#FFFFFF;
+}
+html[data-delta-mode="classic"]{
+  --pos:var(--posClassic);
+  --neg:var(--negClassic);
+}
+.chg{font-weight:900;}
+.chg.pos{color:var(--pos)!important;text-shadow:0 0 8px rgba(94,214,255,0.38);}
+.chg.neg{color:var(--neg)!important;text-shadow:0 0 6px rgba(255,107,122,0.22);}
+.chg.zero{color:var(--zero)!important;}
+.chg.na{color:var(--zero)!important;font-weight:800;}
+.modeToggle{display:inline-flex;gap:6px;align-items:center;margin-left:10px;flex-wrap:wrap;}
+.modeBtn{
+  border:1px solid var(--border);
+  background:rgba(0,0,0,0.18);
+  color:#fff;
+  padding:6px 10px;
+  border-radius:999px;
+  cursor:pointer;
+  font-weight:900;
+  font-size:12px;
+  line-height:1;
+}
+.modeBtn.active{border-color:var(--link);}
+
+/* neutralize helper texts under top KPI cards */
+.kpiDelta{color:var(--muted)!important;}
+.kpiDelta.neg{color:var(--muted)!important;}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <div>
+      <div class="brand">
+        <h1>RWA.watch</h1>
+        <span class="beta">Beta Version</span>
+      <!-- DELTA TOGGLE BEGIN -->
+      <div class="modeToggle" title="Delta color mode">
+        <button class="modeBtn" id="modeBlue" type="button">Blue</button>
+        <button class="modeBtn" id="modeClassic" type="button">Classic</button>
+      </div>
+      <!-- DELTA TOGGLE END -->
+      </div>
+      <div class="headline">
+        <h2>Real-World Asset Intelligence &amp; Monitoring</h2>
+        <p>Daily monitoring for public real-world asset markets. Focused on tracked RWA assets only: market value trends, capital flows, categories and monitoring signals.</p>
+      </div>
+    </div>
+    <div class="updated" id="updated">Updated: —</div>
+  </div>
+
+  <div class="tabs"><a id="tabDashboard" class="tab active" href="#dashboard">Dashboard</a><a class="tab" href="analysis/index.html">Analysis</a><a class="tab" href="about.html">About</a></div>
+
+  <div class="gridTop">
+    <div class="card snapshotCard">
+      <div class="cardTitle">
+        <span>RWA Market Snapshot — Today</span>
+        <span class="subtle">Facts only · No ratings</span>
+      </div>
+
+      <div class="kpis">
+        <div class="kpi">
+          <div class="kpiLabel">Tracked RWA Market Value</div>
+          <div class="kpiValue" id="kpiTotal">$23.82B</div>
+          <div class="kpiDelta" id="kpiTotalDelta">N/A</div>
+          <div class="kpiNote" id="kpiTotalNote">Based on tracked RWA asset list</div>
+        </div>
+
+        <div class="kpi">
+          <div class="kpiLabel">7D Net Capital Flow</div>
+          <div class="kpiValue" id="kpiFlow">N/A</div>
+          <div class="kpiDelta" id="kpiFlags">Flags: 2 low-coverage · 0 high-APY</div>
+        </div>
+
+        <div class="kpi">
+          <div class="kpiLabel">RWA Category with Highest Momentum</div>
+          <div class="kpiValue" style="font-size:18px;" id="kpiSector">RWA</div>
+          <div class="kpiDelta" style="color:rgba(255,255,255,0.70);">Based on avg 7D TVL change</div>
+        </div>
+
+        <div class="kpi">
+          <div class="kpiLabel">24H Net Capital Flow</div>
+          <div class="kpiValue" id="kpiFlow24">N/A</div>
+          <div class="kpiDelta" style="color:rgba(255,255,255,0.70);">Estimated from latest daily snapshots</div>
+        </div>
+      </div>
+
+    </div><div class="card monitorCard">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;">
+        <div style="font-weight:900;color:#fff !important;">RWA Asset Dashboard</div>
+        <div class="subtle">RWA-only dataset · Sorted by market value · Sparklines show 7D trend</div>
+      </div>
+
+      <div class="filterToggleRow">
+        <button class="filterToggleBtn" onclick="toggleFilters()" id="filterToggleBtn">
+          <span>Filters &amp; Paging</span>
+          <span style="color:var(--muted);font-size:12px;" id="filterToggleHint">Tap to open</span>
+        </button>
+      </div>
+
+      <div class="filterPanel" id="filterPanel">
+        <div class="controls" id="controls">
+          <input id="searchInput" placeholder="Search by name..." oninput="queueApplyFilters()" />
+          <select id="categoryFilter" onchange="applyFilters()"><option value="">All Categories</option></select>
+          <select id="chainFilter" onchange="applyFilters()"><option value="">All Chains</option></select>
+
+          <select id="sortSelect" onchange="applyFilters()">
+            <option value="tvl" selected>Sort: TVL</option>
+            <option value="stability">Sort: TVL Change (7D)</option>
+            <option value="trend_abs">Sort: 7D TVL Change ($)</option>
+            <option value="trend_pct">Sort: 7D TVL Change (%)</option>
+          </select>
+
+          <select id="minTvlSelect" onchange="applyFilters()">
+            <option value="0" selected>Min TVL: Any</option>
+            <option value="1000000">Min TVL: $1M</option>
+            <option value="10000000">Min TVL: $10M</option>
+            <option value="100000000">Min TVL: $100M</option>
+          </select>
+
+          <select id="integrityFilter" onchange="applyFilters()">
+            <option value="" selected>Monitoring Flags: Any</option>
+            <option value="low_cov">Low Coverage</option>
+            <option value="high_apy">High APY (reported)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="tableWrap">
+        <table>
+          <thead>
+            <tr>
+              <th class="stickyCol">Asset</th>
+              <th>Market Value</th>
+              <th>7D Change</th>
+              <th class="hideMobile">Chains</th>
+              <th class="hideOnMobile">Trend</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+
+      <div class="panel" id="pager" style="margin-top:12px;background:rgba(0,0,0,0.18);display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+          <button class="btnPager" onclick="prevPage()">← Prev</button>
+          <button class="btnPager" onclick="nextPage()">Next →</button>
+          <span class="subtle">Page</span>
+          <input id="pageInput" type="number" min="1" value="1" style="width:90px;" onkeydown="if(event.key==='Enter') gotoPageFromInput()" />
+          <span id="pageInfo" class="subtle"></span>
+        </div>
+
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+          <span class="subtle">Rows</span>
+          <select id="pageSize" onchange="changePageSize()">
+            <option value="50">50</option>
+            <option value="100" selected>100</option>
+            <option value="200">200</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+  <div class="footLine">Data source: <a class="sourceLink" href="https://defillama.com" target="_blank" rel="noopener noreferrer">DeFiLlama</a> public APIs • Educational only • Not investment advice. • <a href="terms.html">Terms</a> • <a href="privacy.html">Privacy</a></div><div style="margin-top:10px;">© 2026 RWA.watch — All rights reserved.</div>
+</div>
+
+</div>
+
+<script>
+// =====================
+// Embedded data (safe placeholders replaced in Python)
+// =====================
+const DATA_RWA = [{"id": "tether-gold", "name": "Tether Gold", "slug": "tether-gold", "logo": "https://icons.llama.fi/tether-gold.png", "chains": ["Ethereum", "Plasma", "Monad", "Avalanche", "Arbitrum", "Celo", "Ink", "Polygon"], "protocol_category": "RWA", "tvl_usd": 3582095316.3520775, "tvl_change_7d_pct": -3.236600810661244, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/tether-gold", "project_url": "https://gold.tether.to/"}, {"id": "blackrock-buidl", "name": "BlackRock BUIDL", "slug": "blackrock-buidl", "logo": "https://icons.llama.fi/blackrock-buidl.png", "chains": ["Ethereum", "Aptos", "Solana", "Binance", "Avalanche", "Arbitrum", "Optimism", "Polygon"], "protocol_category": "RWA", "tvl_usd": 2531343957.160449, "tvl_change_7d_pct": 0.07500093711239231, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/blackrock-buidl", "project_url": "https://securitize.io/"}, {"id": "paxos-gold", "name": "Paxos Gold", "slug": "paxos-gold", "logo": "https://icons.llama.fi/paxos-gold.png", "chains": ["Ethereum"], "protocol_category": "RWA", "tvl_usd": 2508862510.634991, "tvl_change_7d_pct": -3.0429460160139428, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/paxos-gold", "project_url": "https://paxos.com/paxgold/"}, {"id": "circle-usyc", "name": "Circle USYC", "slug": "circle-usyc", "logo": "https://icons.llama.fi/circle-usyc.png", "chains": ["Binance", "Ethereum", "Near", "Noble"], "protocol_category": "RWA", "tvl_usd": 2367767565.652513, "tvl_change_7d_pct": 18.905183246251852, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/circle-usyc", "project_url": "https://www.circle.com/usyc"}, {"id": "ondo-yield-assets", "name": "Ondo Yield Assets", "slug": "ondo-yield-assets", "logo": "https://icons.llama.fi/ondo-yield-assets.jpg", "chains": ["Ethereum", "Solana", "Plume Mainnet", "Ripple", "Stellar", "Aptos", "Sei", "Mantle", "Sui", "Noble", "Arbitrum", "Polygon"], "protocol_category": "RWA", "tvl_usd": 2042812628.5478404, "tvl_change_7d_pct": 0.9996631917367722, "confidence": "HIGH", "yield_coverage_pct": 85.26775494031598, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/ondo-yield-assets", "project_url": "https://ondo.finance"}, {"id": "centrifuge-protocol", "name": "Centrifuge Protocol", "slug": "centrifuge-protocol", "logo": "https://icons.llama.fi/centrifuge-protocol.jpg", "chains": ["Ethereum", "Avalanche", "Plume Mainnet", "Binance", "Base", "Optimism", "Arbitrum", "Monad", "Hyperliquid L1"], "protocol_category": "RWA", "tvl_usd": 1243539827.0033605, "tvl_change_7d_pct": -9.572882638692903, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/centrifuge-protocol", "project_url": "https://centrifuge.io"}, {"id": "spiko", "name": "Spiko", "slug": "spiko", "logo": "https://icons.llama.fi/spiko.png", "chains": ["Stellar", "Arbitrum", "Polygon", "Ethereum", "Starknet", "Base", "Etherlink"], "protocol_category": "RWA", "tvl_usd": 1224793776.4533122, "tvl_change_7d_pct": 2.452809854350207, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/spiko", "project_url": "https://www.spiko.io/"}, {"id": "ethena-usdtb", "name": "Ethena USDtb", "slug": "ethena-usdtb", "logo": "https://icons.llama.fi/ethena-usdtb.jpg", "chains": ["Ethereum"], "protocol_category": "RWA", "tvl_usd": 835172483.9848032, "tvl_change_7d_pct": -0.04937730520214245, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/ethena-usdtb", "project_url": "https://usdtb.money"}, {"id": "anemoy-capital", "name": "Anemoy Capital", "slug": "anemoy-capital", "logo": "https://icons.llama.fi/anemoy-capital.png", "chains": ["Ethereum", "Celo", "Base"], "protocol_category": "RWA", "tvl_usd": 764346960.9688253, "tvl_change_7d_pct": 34.475335163588085, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/anemoy-capital", "project_url": "https://www.anemoy.io"}, {"id": "wisdomtree", "name": "WisdomTree", "slug": "wisdomtree", "logo": "https://icons.llama.fi/wisdomtree.jpg", "chains": ["Ethereum", "Stellar"], "protocol_category": "RWA", "tvl_usd": 756760748.8649677, "tvl_change_7d_pct": -3.6706898794427616, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/wisdomtree", "project_url": "https://www.wisdomtreeprime.com/"}, {"id": "ondo-global-markets", "name": "Ondo Global Markets", "slug": "ondo-global-markets", "logo": "https://icons.llama.fi/ondo-global-markets.jpg", "chains": ["Ethereum", "Binance", "Solana"], "protocol_category": "RWA", "tvl_usd": 699373031.5176533, "tvl_change_7d_pct": -1.1453869792561306, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/ondo-global-markets", "project_url": "https://ondo.finance"}, {"id": "superstate-ustb", "name": "Superstate USTB", "slug": "superstate-ustb", "logo": "https://icons.llama.fi/superstate-ustb.jpg", "chains": ["Ethereum", "Plume Mainnet", "Solana"], "protocol_category": "RWA", "tvl_usd": 660072366.0850817, "tvl_change_7d_pct": 8.352373073579898, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/superstate-ustb", "project_url": "https://superstate.com/"}, {"id": "xstocks", "name": "xStocks", "slug": "xstocks", "logo": "https://icons.llama.fi/xstocks.jpg", "chains": ["Solana", "Arbitrum"], "protocol_category": "RWA", "tvl_usd": 389857658.711916, "tvl_change_7d_pct": 2.6350042029270355, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/xstocks", "project_url": "https://defi.xstocks.fi/points?ref=8QG15V04"}, {"id": "hastra", "name": "Hastra", "slug": "hastra", "logo": "https://icons.llama.fi/hastra.jpg", "chains": ["Solana"], "protocol_category": "RWA", "tvl_usd": 327067637.3844984, "tvl_change_7d_pct": 3.3095470222053223, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/hastra", "project_url": "https://hastra.io/"}, {"id": "exod", "name": "Exod", "slug": "exod", "logo": "https://icons.llama.fi/exod.jpg", "chains": ["Arbitrum", "Algorand"], "protocol_category": "RWA", "tvl_usd": 276782191.19992846, "tvl_change_7d_pct": -16.636702746100383, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/exod", "project_url": "https://www.exodus.com/"}, {"id": "midas-rwa", "name": "Midas RWA", "slug": "midas-rwa", "logo": "https://icons.llama.fi/midas-rwa.png", "chains": ["Ethereum", "Monad", "Plasma", "Katana", "Solana", "Arbitrum", "Binance", "Etherlink", "Base", "Celo", "XRPL EVM", "Avalanche", "Hyperliquid L1", "Flare", "Plume Mainnet", "RSK", "Mantle", "Optimism", "Sonic", "Linea", "Unichain", "Ink", "TAC", "Sui", "Sei", "Berachain", "0G", "Polygon", "Sapphire", "Scroll", "Bitcoin"], "protocol_category": "RWA", "tvl_usd": 226837377.36000007, "tvl_change_7d_pct": null, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/midas-rwa", "project_url": "https://midas.app"}, {"id": "afi-protocol", "name": "AFI Protocol", "slug": "afi-protocol", "logo": "https://icons.llama.fi/afi-protocol.jpg", "chains": ["Base", "Ethereum", "Monad"], "protocol_category": "RWA", "tvl_usd": 226404770.85073113, "tvl_change_7d_pct": 28.369386491823207, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/afi-protocol", "project_url": "https://afiprotocol.xyz/"}, {"id": "blockchain-capital", "name": "Blockchain Capital", "slug": "blockchain-capital", "logo": "https://icons.llama.fi/blockchain-capital.jpg", "chains": ["zkSync Era"], "protocol_category": "RWA", "tvl_usd": 209487431.89, "tvl_change_7d_pct": 0.5247048535198786, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/blockchain-capital", "project_url": "https://www.blockchaincapital.com/"}, {"id": "gaib", "name": "GAIB", "slug": "gaib", "logo": "https://icons.llama.fi/gaib.jpg", "chains": ["Ethereum", "Sei", "Arbitrum", "Binance", "Base", "Story"], "protocol_category": "RWA", "tvl_usd": 202054043.83826646, "tvl_change_7d_pct": -0.005988559267819937, "confidence": "MEDIUM", "yield_coverage_pct": 8.523533938170232, "flag_low_yield_coverage": true, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/gaib", "project_url": "https://aid.gaib.ai/spice?ref=4A3909EB"}, {"id": "digift", "name": "DigiFT", "slug": "digift", "logo": "https://icons.llama.fi/digift.png", "chains": ["Ethereum", "Plume Mainnet", "Binance", "Arbitrum"], "protocol_category": "RWA", "tvl_usd": 197937402.16207325, "tvl_change_7d_pct": 5.551548326076656, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/digift", "project_url": "https://www.digift.io/"}, {"id": "re", "name": "Re", "slug": "re", "logo": "https://icons.llama.fi/re.jpg", "chains": ["Ethereum"], "protocol_category": "RWA", "tvl_usd": 158262304.18149084, "tvl_change_7d_pct": 31.423880711064214, "confidence": "MEDIUM", "yield_coverage_pct": 61.18982185988274, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/re", "project_url": "https://app.re.xyz/?ref=nuu0c"}, {"id": "realt-tokens", "name": "RealT Tokens", "slug": "realt-tokens", "logo": "https://icons.llama.fi/realt.png", "chains": ["xDai"], "protocol_category": "RWA", "tvl_usd": 156923209.9860015, "tvl_change_7d_pct": -1.5505992678299663e-05, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/realt-tokens", "project_url": "https://realt.co"}, {"id": "onre", "name": "OnRe", "slug": "onre", "logo": "https://icons.llama.fi/onre.jpg", "chains": ["Solana"], "protocol_category": "RWA", "tvl_usd": 137355492.75569716, "tvl_change_7d_pct": 6.684356100517945, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/onre", "project_url": "https://app.onre.finance/earn/leaderboard?ref=FDHRTE658"}, {"id": "raac", "name": "RAAC", "slug": "raac", "logo": "https://icons.llama.fi/raac.jpg", "chains": ["Ethereum"], "protocol_category": "RWA", "tvl_usd": 132108916.51595038, "tvl_change_7d_pct": -3.2541232240662907, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/raac", "project_url": "https://raac.io/"}, {"id": "theo-network-thbill", "name": "Theo Network thBill", "slug": "theo-network-thbill", "logo": "https://icons.llama.fi/theo-network-thbill.jpg", "chains": ["Ethereum", "Arbitrum", "Solana"], "protocol_category": "RWA", "tvl_usd": 129607433.17411338, "tvl_change_7d_pct": 0.05803890723234417, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/theo-network-thbill", "project_url": "https://app.theo.xyz/invite?invite=defillama"}, {"id": "matrixdock-stbt", "name": "MatrixDock STBT", "slug": "matrixdock-stbt", "logo": "https://icons.llama.fi/matrixdock-stbt.jpg", "chains": ["Ethereum"], "protocol_category": "RWA", "tvl_usd": 125114832.4864986, "tvl_change_7d_pct": 147.220247321274, "confidence": "HIGH", "yield_coverage_pct": 99.99999961115834, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/matrixdock-stbt", "project_url": "https://www.matrixdock.com/home"}, {"id": "usual-usd0", "name": "Usual USD0", "slug": "usual-usd0", "logo": "https://icons.llama.fi/usual-usd0.jpg", "chains": ["Ethereum"], "protocol_category": "RWA", "tvl_usd": 107348406.8486365, "tvl_change_7d_pct": -0.5582016753365906, "confidence": "MEDIUM", "yield_coverage_pct": 100.0, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/usual-usd0", "project_url": "https://usual.money"}, {"id": "securitize-tokenized-aaa-clo-fund", "name": "Securitize Tokenized AAA CLO Fund", "slug": "securitize-tokenized-aaa-clo-fund", "logo": "https://icons.llama.fi/securitize-tokenized-aaa-clo-fund.jpg", "chains": ["Ethereum"], "protocol_category": "RWA", "tvl_usd": 105985926.29829578, "tvl_change_7d_pct": 0.07218127031039501, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/securitize-tokenized-aaa-clo-fund", "project_url": "https://www.bny.com/corporate/global/en/about-us/newsroom/company-news/securitize-launches-tokenized-aaa-clo-fund-with-services-provided-by-bny-bringing-institutional-structured-credit-on-chain.html"}, {"id": "lofty", "name": "Lofty", "slug": "lofty", "logo": "https://icons.llama.fi/lofty.png", "chains": ["Algorand"], "protocol_category": "RWA", "tvl_usd": 99273883.61712217, "tvl_change_7d_pct": -0.0010119375778145923, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/lofty", "project_url": "https://www.lofty.ai"}, {"id": "pleasing-gold", "name": "Pleasing Gold", "slug": "pleasing-gold", "logo": "https://icons.llama.fi/pleasing-gold.jpg", "chains": ["Arbitrum"], "protocol_category": "RWA", "tvl_usd": 98023752.32889141, "tvl_change_7d_pct": -2.09672825253503, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/pleasing-gold", "project_url": "https://www.pleasinggold.com/"}, {"id": "apollo-diversified-credit-securitize-fund", "name": "Apollo Diversified Credit Securitize Fund", "slug": "apollo-diversified-credit-securitize-fund", "logo": "https://icons.llama.fi/apollo-diversified-credit-securitize-fund.jpg", "chains": ["Ethereum", "Aptos", "Sei", "Ink", "Avalanche", "Polygon", "Solana"], "protocol_category": "RWA", "tvl_usd": 95967717.4988937, "tvl_change_7d_pct": -0.14213140745894748, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/apollo-diversified-credit-securitize-fund", "project_url": "https://securitize.io/primary-market/apollo-diversified-credit-securitize-fund"}, {"id": "sky-rwa", "name": "Sky RWA", "slug": "sky-rwa", "logo": "https://icons.llama.fi/sky-rwa.jpg", "chains": ["Ethereum"], "protocol_category": "RWA", "tvl_usd": 90140413.12924246, "tvl_change_7d_pct": 1.7380967015488267, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/sky-rwa", "project_url": "https://sky.money/"}, {"id": "kaio", "name": "KAIO", "slug": "kaio", "logo": "https://icons.llama.fi/kaio.jpg", "chains": ["Sui", "Sei", "Immutable zkEVM", "Near", "Aptos", "Hedera", "Avalanche", "Mantra", "Polygon", "XDC", "Solana", "Ethereum", "Cardano", "Injective"], "protocol_category": "RWA", "tvl_usd": 89386241.89759888, "tvl_change_7d_pct": -0.01163988873477706, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/kaio", "project_url": "https://www.kaio.xyz/"}, {"id": "matrixdock-xaum", "name": "MatrixDock XAUM", "slug": "matrixdock-xaum", "logo": "https://icons.llama.fi/matrixdock-xaum.jpg", "chains": ["Ethereum", "Binance", "Sui", "Plume Mainnet", "Solana"], "protocol_category": "RWA", "tvl_usd": 80432713.77611415, "tvl_change_7d_pct": -3.270364931468066, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/matrixdock-xaum", "project_url": "https://www.matrixdock.com/home"}, {"id": "openeden-tbill", "name": "OpenEden TBILL", "slug": "openeden-tbill", "logo": "https://icons.llama.fi/openeden-tbill.jpg", "chains": ["Ripple", "Ethereum", "Solana", "Arbitrum"], "protocol_category": "RWA", "tvl_usd": 79958342.64142293, "tvl_change_7d_pct": -8.362352710860037, "confidence": "HIGH", "yield_coverage_pct": 100.0, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/openeden-tbill", "project_url": "https://portal.openeden.com/bills-campaign?refCode=x1z3OOidAS"}, {"id": "frax-usd", "name": "Frax USD", "slug": "frax-usd", "logo": "https://icons.llama.fi/frax-usd.jpg", "chains": ["Ethereum"], "protocol_category": "RWA", "tvl_usd": 77257205.31314698, "tvl_change_7d_pct": 15.371005406985148, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/frax-usd", "project_url": "https://frax.com/"}, {"id": "vaneck-treasury-fund", "name": "VanEck Treasury Fund", "slug": "vaneck-treasury-fund", "logo": "https://icons.llama.fi/vaneck-treasury-fund.jpg", "chains": ["Ethereum", "Binance", "Solana", "Avalanche"], "protocol_category": "RWA", "tvl_usd": 63031364.83279, "tvl_change_7d_pct": -18.487506705784995, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/vaneck-treasury-fund", "project_url": "https://securitize.io/primary-market/vaneck-vbill"}, {"id": "stusdt", "name": "stUSDT", "slug": "stusdt", "logo": "https://icons.llama.fi/stusdt.jpg", "chains": ["Tron", "Ethereum"], "protocol_category": "RWA", "tvl_usd": 62633005.44352573, "tvl_change_7d_pct": -0.017908161031400027, "confidence": "MEDIUM", "yield_coverage_pct": 100.0, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/stusdt", "project_url": "https://stusdt.io/#/home"}, {"id": "nest-credit", "name": "Nest Credit", "slug": "nest-credit", "logo": "https://icons.llama.fi/nest-credit.png", "chains": ["Plume Mainnet", "Ethereum", "Solana"], "protocol_category": "RWA", "tvl_usd": 56769752.50049846, "tvl_change_7d_pct": 81.79551889885366, "confidence": "MEDIUM", "yield_coverage_pct": 100.0, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/nest-credit", "project_url": "https://nest.credit/"}, {"id": "openeden-usdo", "name": "OpenEden USDO", "slug": "openeden-usdo", "logo": "https://icons.llama.fi/openeden-usdo.jpg", "chains": ["Ripple", "Ethereum", "Polygon", "Binance", "Base", "Arbitrum"], "protocol_category": "RWA", "tvl_usd": 56132551.68223589, "tvl_change_7d_pct": -7.098560235386401, "confidence": "HIGH", "yield_coverage_pct": 99.11972346271894, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/openeden-usdo", "project_url": "https://openeden.com/usdo"}, {"id": "origyn", "name": "ORIGYN", "slug": "origyn", "logo": "https://icons.llama.fi/origyn.png", "chains": ["ICP"], "protocol_category": "RWA", "tvl_usd": 51300230.53229489, "tvl_change_7d_pct": 0.0004989970582016667, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/origyn", "project_url": "https://www.origyn.com/"}, {"id": "sygnum-fiusd-liquidity-fund", "name": "Sygnum FIUSD Liquidity Fund", "slug": "sygnum-fiusd-liquidity-fund", "logo": "https://icons.llama.fi/sygnum-fiusd-liquidity-fund.jpg", "chains": ["zkSync Era"], "protocol_category": "RWA", "tvl_usd": 47200331.6434, "tvl_change_7d_pct": 0.06975309269787999, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/sygnum-fiusd-liquidity-fund", "project_url": "https://www.sygnum.com/"}, {"id": "tangible-rwa", "name": "Tangible RWA", "slug": "tangible-rwa", "logo": "https://icons.llama.fi/tangible-rwa.png", "chains": ["Polygon", "Arbitrum", "Optimism", "re.al", "Base", "Ethereum"], "protocol_category": "RWA", "tvl_usd": 41819575.2044454, "tvl_change_7d_pct": -0.7436547826697506, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/tangible-rwa", "project_url": "https://www.tangible.store"}, {"id": "brickken", "name": "Brickken", "slug": "brickken", "logo": "https://icons.llama.fi/brickken.jpg", "chains": ["Binance", "Ethereum", "Base", "Avalanche", "Polygon"], "protocol_category": "RWA", "tvl_usd": 41105497.89156448, "tvl_change_7d_pct": 0.01269792336881892, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/brickken", "project_url": "https://www.brickken.com"}, {"id": "clearpool-tpool", "name": "Clearpool TPOOL", "slug": "clearpool-tpool", "logo": "https://icons.llama.fi/clearpool-tpool.jpg", "chains": ["Flare", "Ethereum"], "protocol_category": "RWA", "tvl_usd": 39825246.49510238, "tvl_change_7d_pct": 0.2953935758954458, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/clearpool-tpool", "project_url": "https://vaults.clearpool.finance/"}, {"id": "t-rize", "name": "T RIZE", "slug": "t-rize", "logo": "https://icons.llama.fi/t-rize.jpg", "chains": ["Base"], "protocol_category": "RWA", "tvl_usd": 23000000.0, "tvl_change_7d_pct": 0.0, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/t-rize", "project_url": "https://www.t-rize.io"}, {"id": "goldfinger", "name": "GoldFinger", "slug": "goldfinger", "logo": "https://icons.llama.fi/goldfinger.jpg", "chains": ["Binance"], "protocol_category": "RWA", "tvl_usd": 22616463.656490564, "tvl_change_7d_pct": 0.02489505688869542, "confidence": "MEDIUM", "yield_coverage_pct": 100.0, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/goldfinger", "project_url": "https://goldfinger.finance/en"}, {"id": "stobox", "name": "Stobox", "slug": "stobox", "logo": "https://icons.llama.fi/stobox.jpg", "chains": ["Arbitrum", "Binance", "Polygon"], "protocol_category": "RWA", "tvl_usd": 21122059.0, "tvl_change_7d_pct": -8.649748709662916, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/stobox", "project_url": "https://www.stobox.io"}, {"id": "vesta-equity", "name": "Vesta Equity", "slug": "vesta-equity", "logo": "https://icons.llama.fi/vesta-equity.jpg", "chains": ["Algorand"], "protocol_category": "RWA", "tvl_usd": 20634337.0, "tvl_change_7d_pct": null, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/vesta-equity", "project_url": "https://vestaequity.net"}, {"id": "asseto-aoabt", "name": "Asseto AoABT", "slug": "asseto-aoabt", "logo": "https://icons.llama.fi/asseto-aoabt.jpg", "chains": ["Avalanche", "HashKey Chain"], "protocol_category": "RWA", "tvl_usd": 18922111.07849029, "tvl_change_7d_pct": 0.1650029775919677, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/asseto-aoabt", "project_url": "https://asseto.finance/product"}, {"id": "anzen-v2", "name": "Anzen V2", "slug": "anzen-v2", "logo": "https://icons.llama.fi/anzen-finance.jpg", "chains": ["Base", "Ethereum", "Manta", "Arbitrum", "Blast"], "protocol_category": "RWA", "tvl_usd": 17454393.210715767, "tvl_change_7d_pct": -80.55396008283624, "confidence": "MEDIUM", "yield_coverage_pct": 1.843152014029867, "flag_low_yield_coverage": true, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/anzen-v2", "project_url": "https://anzen.finance"}, {"id": "opentrade", "name": "OpenTrade", "slug": "opentrade", "logo": "https://icons.llama.fi/opentrade.png", "chains": ["Avalanche", "Plume Mainnet", "Ethereum"], "protocol_category": "RWA", "tvl_usd": 17198520.564126257, "tvl_change_7d_pct": -0.508679357450589, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/opentrade", "project_url": "https://www.opentrade.io"}, {"id": "republic-note", "name": "Republic Note", "slug": "republic-note", "logo": "https://icons.llama.fi/republic-note.png", "chains": ["Avalanche"], "protocol_category": "RWA", "tvl_usd": 15073399.42578289, "tvl_change_7d_pct": 7.271633903920332, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/republic-note", "project_url": "https://republic.com/note"}, {"id": "estate-protocol", "name": "Estate Protocol", "slug": "estate-protocol", "logo": "https://icons.llama.fi/estate-protocol.jpg", "chains": ["Arbitrum"], "protocol_category": "RWA", "tvl_usd": 13262350.843436046, "tvl_change_7d_pct": 8.87054642491698, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/estate-protocol", "project_url": "https://www.estateprotocol.com"}, {"id": "mu-digital", "name": "Mu Digital", "slug": "mu-digital", "logo": "https://icons.llama.fi/mu-digital.jpg", "chains": ["Monad"], "protocol_category": "RWA", "tvl_usd": 12838675.942536775, "tvl_change_7d_pct": 1.2652244116617908, "confidence": "MEDIUM", "yield_coverage_pct": 60.64755458312088, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/mu-digital", "project_url": "https://mudigital.net"}, {"id": "meld-gold", "name": "Meld Gold", "slug": "meld-gold", "logo": "https://icons.llama.fi/meld-gold.jpg", "chains": ["Algorand"], "protocol_category": "RWA", "tvl_usd": 12113851.993301436, "tvl_change_7d_pct": -5.722289033413901, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/meld-gold", "project_url": "https://meld.gold"}, {"id": "backedfi", "name": "BackedFi", "slug": "backedfi", "logo": "https://icons.llama.fi/backedfi.jpg", "chains": ["xDai", "Arbitrum", "Ethereum", "Base", "Avalanche", "Polygon", "Fantom", "Binance"], "protocol_category": "RWA", "tvl_usd": 11912855.491785645, "tvl_change_7d_pct": -0.3519688754506092, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/backedfi", "project_url": "https://backed.fi"}, {"id": "dinari", "name": "Dinari", "slug": "dinari", "logo": "https://icons.llama.fi/dinari.png", "chains": ["Ethereum", "Arbitrum", "Base", "Plume Mainnet", "Kinto", "Blast"], "protocol_category": "RWA", "tvl_usd": 10832437.191243, "tvl_change_7d_pct": 0.0, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/dinari", "project_url": "https://dinari.com"}, {"id": "vnx", "name": "VNX", "slug": "vnx", "logo": "https://icons.llama.fi/vnx.jpg", "chains": ["Solana", "Ethereum", "Avalanche", "ICP", "Base", "Stellar", "Q Protocol", "Celo", "Polygon", "Fraxtal", "Arbitrum"], "protocol_category": "RWA", "tvl_usd": 8553095.97608254, "tvl_change_7d_pct": -2.3895452914951107, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/vnx", "project_url": "https://vnx.li"}, {"id": "solv-rwa", "name": "Solv RWA", "slug": "solv-rwa", "logo": "https://icons.llama.fi/solv-rwa.png", "chains": ["Binance", "Mantle"], "protocol_category": "RWA", "tvl_usd": 8506309.49198798, "tvl_change_7d_pct": 3.6989536778896195, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/solv-rwa", "project_url": "https://solv.finance/"}, {"id": "mansory", "name": "Mansory", "slug": "mansory", "logo": "https://icons.llama.fi/mansory.jpg", "chains": ["Binance", "Solana"], "protocol_category": "RWA", "tvl_usd": 8489072.88419192, "tvl_change_7d_pct": 0.9948543134707677, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/mansory", "project_url": "https://www.mansory.com/"}, {"id": "binaryx-platform", "name": "Binaryx Platform", "slug": "binaryx-platform", "logo": "https://icons.llama.fi/binaryx-platform.jpg", "chains": ["Polygon"], "protocol_category": "RWA", "tvl_usd": 8044265.607946741, "tvl_change_7d_pct": 0.36511241053811716, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/binaryx-platform", "project_url": "https://www.binaryx.com"}, {"id": "uraniumio", "name": "Uranium.io", "slug": "uraniumio", "logo": "https://icons.llama.fi/uranium.io.jpg", "chains": ["Etherlink"], "protocol_category": "RWA", "tvl_usd": 7429058.126818537, "tvl_change_7d_pct": 0.2663507731152066, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/uraniumio", "project_url": "https://uranium.io/en"}, {"id": "comtech-gold", "name": "ComTech Gold", "slug": "comtech-gold", "logo": "https://icons.llama.fi/comtech-gold.jpg", "chains": ["XDC"], "protocol_category": "RWA", "tvl_usd": 6914523.679935943, "tvl_change_7d_pct": -38.73943322146617, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/comtech-gold", "project_url": "https://comtechgold.com/Digitalgold"}, {"id": "asseto-cash", "name": "Asseto CASH+", "slug": "asseto-cash", "logo": "https://icons.llama.fi/cash+.jpg", "chains": ["Ethereum", "Binance"], "protocol_category": "RWA", "tvl_usd": 5901383.2605412975, "tvl_change_7d_pct": 0.6003859837263548, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/asseto-cash", "project_url": "https://asseto.finance/#invest"}, {"id": "axc-gift", "name": "AXC GIFT", "slug": "axc-gift", "logo": "https://icons.llama.fi/axc-gift.jpg", "chains": ["Binance"], "protocol_category": "RWA", "tvl_usd": 5290517.0, "tvl_change_7d_pct": 0.0, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/axc-gift", "project_url": "https://axc.xyz"}, {"id": "hamilton-lane-senior-credit-opportunities-securitize-fund", "name": "Hamilton Lane Senior Credit Opportunities Securitize Fund", "slug": "hamilton-lane-senior-credit-opportunities-securitize-fund", "logo": "https://icons.llama.fi/hamilton-lane-senior-credit-opportunities-securitize-fund.jpg", "chains": ["Polygon", "Ethereum", "Optimism"], "protocol_category": "RWA", "tvl_usd": 4954966.377698094, "tvl_change_7d_pct": 0.11713458111695729, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/hamilton-lane-senior-credit-opportunities-securitize-fund", "project_url": "https://securitize.io/primary-market/hl-scope"}, {"id": "etherfuse", "name": "Etherfuse", "slug": "etherfuse", "logo": "https://icons.llama.fi/etherfuse.jpg", "chains": ["Stellar", "Solana", "Base", "Monad", "Polygon"], "protocol_category": "RWA", "tvl_usd": 4422270.406442815, "tvl_change_7d_pct": -71.2237945811745, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/etherfuse", "project_url": "https://www.etherfuse.com/"}, {"id": "defa-by-invoicemate", "name": "Defa By InvoiceMate", "slug": "defa-by-invoicemate", "logo": "https://icons.llama.fi/defa-by-invoicemate.jpg", "chains": ["Stellar"], "protocol_category": "RWA", "tvl_usd": 3764517.2935261065, "tvl_change_7d_pct": -0.002261454659119977, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/defa-by-invoicemate", "project_url": "https://imdefa.com/"}, {"id": "kuma-protocol", "name": "KUMA Protocol", "slug": "kuma-protocol", "logo": "https://icons.llama.fi/kuma-protocol.png", "chains": ["Ethereum", "Linea", "Polygon", "Telos"], "protocol_category": "RWA", "tvl_usd": 3011601.664272756, "tvl_change_7d_pct": -0.9524376146998321, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/kuma-protocol", "project_url": "https://kuma.bond"}, {"id": "hiyield", "name": "HiYield", "slug": "hiyield", "logo": "https://icons.llama.fi/hiyield.jpg", "chains": ["Avalanche", "Canto"], "protocol_category": "RWA", "tvl_usd": 2717132.762215193, "tvl_change_7d_pct": 0.037061725335703954, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/hiyield", "project_url": "https://www.hiyield.xyz"}, {"id": "denario", "name": "Denario", "slug": "denario", "logo": "https://icons.llama.fi/denario.jpg", "chains": ["Polygon"], "protocol_category": "RWA", "tvl_usd": 2539579.006560645, "tvl_change_7d_pct": -9.296737508203506, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/denario", "project_url": "https://www.denario.swiss"}, {"id": "international-stable-currency", "name": "International Stable Currency", "slug": "international-stable-currency", "logo": "https://icons.llama.fi/international-stable-currency.png", "chains": ["Solana"], "protocol_category": "RWA", "tvl_usd": 2460582.2833932326, "tvl_change_7d_pct": -0.8976366721538369, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/international-stable-currency", "project_url": "https://www.isc.money"}, {"id": "ztln-p", "name": "ZTLN-P", "slug": "ztln-p", "logo": "https://icons.llama.fi/ztln-p.png", "chains": ["Ethereum"], "protocol_category": "RWA", "tvl_usd": 2200021.706204566, "tvl_change_7d_pct": -0.0036480849698961038, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/ztln-p", "project_url": "https://zoth.io/"}, {"id": "remora-markets", "name": "Remora Markets", "slug": "remora-markets", "logo": "https://icons.llama.fi/remora-markets.jpg", "chains": ["Solana"], "protocol_category": "RWA", "tvl_usd": 1915692.1118867956, "tvl_change_7d_pct": 1.9329552663541705, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/remora-markets", "project_url": "https://remoramarkets.xyz/"}, {"id": "landx-finance", "name": "LandX Finance", "slug": "landx-finance", "logo": "https://icons.llama.fi/landx-finance.png", "chains": ["Ethereum"], "protocol_category": "RWA", "tvl_usd": 1756935.3854307076, "tvl_change_7d_pct": -11.840113114828071, "confidence": "MEDIUM", "yield_coverage_pct": 100.0, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/landx-finance", "project_url": "https://landx.fi"}, {"id": "kea-credit", "name": "Kea Credit", "slug": "kea-credit", "logo": "https://icons.llama.fi/kea-credit.jpg", "chains": ["Hedera"], "protocol_category": "RWA", "tvl_usd": 1546187.0, "tvl_change_7d_pct": 0.0, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/kea-credit", "project_url": "https://kea.credit"}, {"id": "paimon", "name": "Paimon", "slug": "paimon", "logo": "https://icons.llama.fi/paimon.jpg", "chains": ["Binance"], "protocol_category": "RWA", "tvl_usd": 1512514.4673703266, "tvl_change_7d_pct": 23.974493580498788, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/paimon", "project_url": "https://paimon.finance/"}, {"id": "mountain-protocol", "name": "Mountain Protocol", "slug": "mountain-protocol", "logo": "https://icons.llama.fi/mountain-protocol.png", "chains": ["Ethereum", "zkSync Era", "Arbitrum", "Base", "Optimism", "Polygon"], "protocol_category": "RWA", "tvl_usd": 1399312.7879878548, "tvl_change_7d_pct": -0.2656655678180897, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/mountain-protocol", "project_url": "https://mountainprotocol.com"}, {"id": "gold-dao", "name": "Gold DAO", "slug": "gold-dao", "logo": "https://icons.llama.fi/gold-dao.png", "chains": ["ICP"], "protocol_category": "RWA", "tvl_usd": 1368696.6571300877, "tvl_change_7d_pct": null, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/gold-dao", "project_url": "https://www.gold-dao.org/"}, {"id": "propbase", "name": "Propbase", "slug": "propbase", "logo": "https://icons.llama.fi/propbase.jpg", "chains": ["Aptos"], "protocol_category": "RWA", "tvl_usd": 1096324.0936751033, "tvl_change_7d_pct": -0.28660161381414184, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/propbase", "project_url": "https://www.propbase.app/"}, {"id": "chateau", "name": "CHATEAU", "slug": "chateau", "logo": "https://icons.llama.fi/chateau.jpg", "chains": ["Plasma"], "protocol_category": "RWA", "tvl_usd": 1036575.5465182834, "tvl_change_7d_pct": -8.924370388623075, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/chateau", "project_url": "https://www.chateau.capital"}, {"id": "realtyx", "name": "RealtyX", "slug": "realtyx", "logo": "https://icons.llama.fi/realtyx.jpg", "chains": ["Base", "Plume Mainnet"], "protocol_category": "RWA", "tvl_usd": 1022224.2869761989, "tvl_change_7d_pct": 0.033705984254211785, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/realtyx", "project_url": "https://realtyx.co/"}, {"id": "lista-rwa", "name": "Lista RWA", "slug": "lista-rwa", "logo": "https://icons.llama.fi/lista-rwa.jpg", "chains": ["Binance"], "protocol_category": "RWA", "tvl_usd": 1006530.9748633568, "tvl_change_7d_pct": 0.05253076458436112, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/lista-rwa", "project_url": "https://lista.org/rwa"}, {"id": "goldstation-rwa", "name": "GOLDSTATION RWA", "slug": "goldstation-rwa", "logo": "https://icons.llama.fi/goldstation.jpg", "chains": ["Klaytn", "Avalanche"], "protocol_category": "RWA", "tvl_usd": 925599.7578576835, "tvl_change_7d_pct": 3.720066958434714, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/goldstation-rwa", "project_url": "https://goldstation.io"}, {"id": "cana-holdings-california-carbon-credits", "name": "CANA Holdings California Carbon Credits", "slug": "cana-holdings-california-carbon-credits", "logo": "https://icons.llama.fi/cana-holdings-california-carbon-credits.jpg", "chains": ["Ethereum"], "protocol_category": "RWA", "tvl_usd": 915557.274400514, "tvl_change_7d_pct": -0.48633564416830666, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/cana-holdings-california-carbon-credits", "project_url": "https://maseer.finance/"}, {"id": "cachegold", "name": "CACHE.Gold", "slug": "cachegold", "logo": "https://icons.llama.fi/cache.gold.png", "chains": ["Ethereum"], "protocol_category": "RWA", "tvl_usd": 645218.4004956757, "tvl_change_7d_pct": -3.1179185933915647, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/cachegold", "project_url": "https://cache.gold/"}, {"id": "toucan-protocol", "name": "Toucan Protocol", "slug": "toucan-protocol", "logo": "https://icons.llama.fi/toucan-protocol.jpg", "chains": ["Polygon", "Celo", "Base", "Regen"], "protocol_category": "RWA", "tvl_usd": 629563.3210897091, "tvl_change_7d_pct": 0.32950966957494643, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/toucan-protocol", "project_url": "https://toucan.earth"}, {"id": "landshare", "name": "Landshare", "slug": "landshare", "logo": "https://icons.llama.fi/landshare.jpg", "chains": ["Binance"], "protocol_category": "RWA", "tvl_usd": 618330.24, "tvl_change_7d_pct": -0.9792914153676691, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/landshare", "project_url": "https://landshare.io"}, {"id": "aria-protocol", "name": "Aria Protocol", "slug": "aria-protocol", "logo": "https://icons.llama.fi/aria-protocol.jpg", "chains": ["Story"], "protocol_category": "RWA", "tvl_usd": 593039.6555910745, "tvl_change_7d_pct": -74.99362913497993, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/aria-protocol", "project_url": "https://ariaprotocol.xyz"}, {"id": "arca-labs-arcoin", "name": "Arca Labs ArCoin", "slug": "arca-labs-arcoin", "logo": "https://icons.llama.fi/arca-labs-arcoin.png", "chains": ["Ethereum"], "protocol_category": "RWA", "tvl_usd": 444117.23497581325, "tvl_change_7d_pct": -0.0004881817374808861, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/arca-labs-arcoin", "project_url": "https://www.arcalabs.com/"}, {"id": "klimadao", "name": "KlimaDAO", "slug": "klimadao", "logo": "https://icons.llama.fi/klimadao.png", "chains": ["Polygon", "Base"], "protocol_category": "RWA", "tvl_usd": 340420.70637710637, "tvl_change_7d_pct": -64.54630924938498, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/klimadao", "project_url": "https://www.klimadao.finance"}, {"id": "aktionariat", "name": "Aktionariat", "slug": "aktionariat", "logo": "https://icons.llama.fi/aktionariat.png", "chains": ["Ethereum", "Optimism", "Polygon"], "protocol_category": "RWA", "tvl_usd": 315522.1267693763, "tvl_change_7d_pct": -1.6638693406400904, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/aktionariat", "project_url": "https://www.aktionariat.com/"}, {"id": "zivoe", "name": "Zivoe", "slug": "zivoe", "logo": "https://icons.llama.fi/zivoe.jpg", "chains": ["Ethereum"], "protocol_category": "RWA", "tvl_usd": 256123.3661643872, "tvl_change_7d_pct": -0.0974658951871703, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/zivoe", "project_url": "https://zivoe.com/"}, {"id": "boson-protocol", "name": "Boson Protocol", "slug": "boson-protocol", "logo": "https://icons.llama.fi/boson-protocol.jpg", "chains": ["Polygon", "Ethereum", "Optimism", "Arbitrum", "Base"], "protocol_category": "RWA", "tvl_usd": 230189.9624823117, "tvl_change_7d_pct": 0.09624800280516865, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/boson-protocol", "project_url": "https://www.bosonprotocol.io"}, {"id": "fortunafi", "name": "Fortunafi", "slug": "fortunafi", "logo": "https://icons.llama.fi/fortunafi-fbill.png", "chains": ["Ethereum", "Canto", "Arbitrum", "Blast"], "protocol_category": "RWA", "tvl_usd": 221821.20394590544, "tvl_change_7d_pct": 0.0, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/fortunafi", "project_url": "https://fortunafi.com/"}, {"id": "usual-eur0", "name": "Usual EUR0", "slug": "usual-eur0", "logo": "https://icons.llama.fi/usual-eur0.jpg", "chains": ["Ethereum"], "protocol_category": "RWA", "tvl_usd": 198118.91771081186, "tvl_change_7d_pct": -0.9294381778769463, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/usual-eur0", "project_url": "https://usual.money"}, {"id": "friggeco", "name": "Frigg.eco", "slug": "friggeco", "logo": "https://icons.llama.fi/frigg.eco.png", "chains": ["Ethereum"], "protocol_category": "RWA", "tvl_usd": 182532.150863, "tvl_change_7d_pct": 0.0, "confidence": "MEDIUM", "yield_coverage_pct": 99.99991734990287, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/friggeco", "project_url": "https://www.frigg.eco/"}, {"id": "bondlink-finance", "name": "Bondlink Finance", "slug": "bondlink-finance", "logo": "https://icons.llama.fi/bondlink-finance.png", "chains": ["Ethereum"], "protocol_category": "RWA", "tvl_usd": 151991.52420435377, "tvl_change_7d_pct": 0.0, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/bondlink-finance", "project_url": "https://www.bondlink.finance"}, {"id": "solv-vesting", "name": "Solv Vesting", "slug": "solv-vesting", "logo": "https://icons.llama.fi/solv-vesting.png", "chains": ["Ethereum", "Binance", "Polygon", "Arbitrum"], "protocol_category": "RWA", "tvl_usd": 144810.86538342724, "tvl_change_7d_pct": 4.655229358220495, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/solv-vesting", "project_url": "https://solv.finance/"}, {"id": "verified-network", "name": "Verified Network", "slug": "verified-network", "logo": "https://icons.llama.fi/verified-network.jpg", "chains": ["Ethereum", "Base"], "protocol_category": "RWA", "tvl_usd": 126718.45523894412, "tvl_change_7d_pct": -0.0021065934240738216, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/verified-network", "project_url": "https://www.verified.network/"}, {"id": "liveart", "name": "LiveArt", "slug": "liveart", "logo": "https://icons.llama.fi/liveart.jpg", "chains": ["Binance", "Base"], "protocol_category": "RWA", "tvl_usd": 95011.75725360672, "tvl_change_7d_pct": -0.010467346280179868, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/liveart", "project_url": "https://liveart.io/"}, {"id": "tprotocol-v1", "name": "TProtocol V1", "slug": "tprotocol-v1", "logo": "https://icons.llama.fi/tprotocol.jpg", "chains": ["Ethereum"], "protocol_category": "RWA", "tvl_usd": 71550.3650665514, "tvl_change_7d_pct": 0.06750365303560102, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/tprotocol-v1", "project_url": "https://legacy.tprotocol.io/"}, {"id": "gemswap-by-golden-swan-solutions", "name": "GemSwap by Golden Swan Solutions", "slug": "gemswap-by-golden-swan-solutions", "logo": "https://icons.llama.fi/gemswap-by-golden-swan-solutions.jpg", "chains": ["Sei"], "protocol_category": "RWA", "tvl_usd": 71274.23442950234, "tvl_change_7d_pct": -78.60160043672072, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/gemswap-by-golden-swan-solutions", "project_url": "https://goldenasset.org"}, {"id": "newrlrwa", "name": "NewrlRWA", "slug": "newrlrwa", "logo": "https://icons.llama.fi/newrlrwa.jpg", "chains": ["Aptos"], "protocol_category": "RWA", "tvl_usd": 57769.65225, "tvl_change_7d_pct": 0.0, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/newrlrwa", "project_url": "https://newrl.net/"}, {"id": "tprotocol-v2", "name": "TProtocol V2", "slug": "tprotocol-v2", "logo": "https://icons.llama.fi/tprotocol.jpg", "chains": ["Ethereum"], "protocol_category": "RWA", "tvl_usd": 43445.12266560052, "tvl_change_7d_pct": 0.06844408976893135, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/tprotocol-v2", "project_url": "https://www.tprotocol.io"}, {"id": "asagold", "name": "ASA.Gold", "slug": "asagold", "logo": "https://icons.llama.fi/asa.gold.jpg", "chains": ["Algorand"], "protocol_category": "RWA", "tvl_usd": 35084.52352139724, "tvl_change_7d_pct": -3.1839451975493205, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/asagold", "project_url": "https://www.asa.gold"}, {"id": "altai-exchange", "name": "Altai Exchange", "slug": "altai-exchange", "logo": "https://icons.llama.fi/altai-exchange.jpg", "chains": ["Binance"], "protocol_category": "RWA", "tvl_usd": 24206.106976044648, "tvl_change_7d_pct": -4.9439138504572355, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/altai-exchange", "project_url": "https://altai.exchange/trade"}, {"id": "naos-finance", "name": "NAOS Finance", "slug": "naos-finance", "logo": "https://icons.llama.fi/naos-finance.png", "chains": ["Binance", "Ethereum"], "protocol_category": "RWA", "tvl_usd": 24028.918155211282, "tvl_change_7d_pct": 0.026508344329599254, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/naos-finance", "project_url": null}, {"id": "xassets", "name": "xAssets", "slug": "xassets", "logo": "https://icons.llama.fi/xassets.jpg", "chains": ["CrossFi"], "protocol_category": "RWA", "tvl_usd": 17232.45143784538, "tvl_change_7d_pct": -1.4735045346343298, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/xassets", "project_url": "https://xassets.ms/mint"}, {"id": "tokeniza", "name": "Tokeniza", "slug": "tokeniza", "logo": "https://icons.llama.fi/tokeniza.jpg", "chains": ["Ethereum", "Moonbeam", "Polygon"], "protocol_category": "RWA", "tvl_usd": 10875.8698605756, "tvl_change_7d_pct": -68.25372536006873, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/tokeniza", "project_url": "https://tokeniza.com.br/"}, {"id": "sweep", "name": "Sweep", "slug": "sweep", "logo": "https://icons.llama.fi/sweep.png", "chains": ["Ethereum", "Arbitrum", "Base", "Polygon", "Avalanche", "Optimism", "Binance"], "protocol_category": "RWA", "tvl_usd": 8151.368274035366, "tvl_change_7d_pct": -0.03415014355194046, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/sweep", "project_url": "https://sweepr.finance"}, {"id": "anzen-v1", "name": "Anzen V1", "slug": "anzen-v1", "logo": "https://icons.llama.fi/anzen-finance.jpg", "chains": ["Ethereum"], "protocol_category": "RWA", "tvl_usd": 6298.9005841494345, "tvl_change_7d_pct": -0.006016294923654186, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/anzen-v1", "project_url": "https://anzen.finance"}, {"id": "spice-protocol", "name": "SPICE Protocol", "slug": "spice-protocol", "logo": "https://icons.llama.fi/spice-protocol.jpg", "chains": ["Plume Mainnet"], "protocol_category": "RWA", "tvl_usd": 3489.8535242456855, "tvl_change_7d_pct": -93.85936843802733, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/spice-protocol", "project_url": "http://spiceprotocol.xyz/"}, {"id": "tangible-ustb", "name": "Tangible USTB", "slug": "tangible-ustb", "logo": "https://icons.llama.fi/tangible-ustb.jpg", "chains": ["Ethereum"], "protocol_category": "RWA", "tvl_usd": 2891.6209194140283, "tvl_change_7d_pct": -0.014110594876569849, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/tangible-ustb", "project_url": "https://www.tangible.store"}, {"id": "subunit", "name": "Subunit", "slug": "subunit", "logo": "https://icons.llama.fi/subunit.jpg", "chains": ["Base"], "protocol_category": "RWA", "tvl_usd": 785.7530114537896, "tvl_change_7d_pct": -0.0067014553032578306, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/subunit", "project_url": "https://www.subunit.xyz"}, {"id": "worldes", "name": "WorldEs", "slug": "worldes", "logo": "https://icons.llama.fi/worldes.jpg", "chains": ["Arbitrum"], "protocol_category": "RWA", "tvl_usd": 568.0361432404497, "tvl_change_7d_pct": 0.050993805128143777, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/worldes", "project_url": "https://www.worldes.io"}, {"id": "invar-finance", "name": "InVar Finance", "slug": "invar-finance", "logo": "https://icons.llama.fi/invar-finance.png", "chains": ["Ethereum"], "protocol_category": "RWA", "tvl_usd": 261.96303064192006, "tvl_change_7d_pct": null, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/invar-finance", "project_url": null}, {"id": "basafish", "name": "BasaFish", "slug": "basafish", "logo": "https://icons.llama.fi/basafish.jpg", "chains": ["Base"], "protocol_category": "RWA", "tvl_usd": 99.99567716364263, "tvl_change_7d_pct": null, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/basafish", "project_url": "https://basafish.network"}, {"id": "elyfi", "name": "ELYFI", "slug": "elyfi", "logo": "https://icons.llama.fi/elyfi.png", "chains": ["Ethereum", "Binance", "Klaytn"], "protocol_category": "RWA", "tvl_usd": 40.81799013174852, "tvl_change_7d_pct": -0.011656060234244592, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/elyfi", "project_url": null}, {"id": "untangled-rwa", "name": "Untangled RWA", "slug": "untangled-rwa", "logo": "https://icons.llama.fi/untangled.png", "chains": ["Celo"], "protocol_category": "RWA", "tvl_usd": 12.017196057988, "tvl_change_7d_pct": null, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/untangled-rwa", "project_url": "https://untangled.finance/"}, {"id": "fractit-fleet", "name": "Fractit Fleet", "slug": "fractit-fleet", "logo": "https://icons.llama.fi/fractit-fleet.jpg", "chains": ["Plume Mainnet", "Botanix"], "protocol_category": "RWA", "tvl_usd": 9.009496749834032, "tvl_change_7d_pct": 0.07071456429508771, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/fractit-fleet", "project_url": null}, {"id": "mineral-vault", "name": "Mineral Vault", "slug": "mineral-vault", "logo": "https://icons.llama.fi/mineral-vault.jpg", "chains": ["Plume Mainnet", "Ethereum"], "protocol_category": "RWA", "tvl_usd": 7.846844787496, "tvl_change_7d_pct": 0.0, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/mineral-vault", "project_url": "https://mineralvault.io/"}, {"id": "citadao", "name": "CitaDAO", "slug": "citadao", "logo": "https://icons.llama.fi/citadao.jpg", "chains": ["Ethereum"], "protocol_category": "RWA", "tvl_usd": 0.0, "tvl_change_7d_pct": null, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/citadao", "project_url": "https://citadao.io"}, {"id": "solid-world", "name": "Solid World", "slug": "solid-world", "logo": "https://icons.llama.fi/solid-world.jpg", "chains": ["Polygon"], "protocol_category": "RWA", "tvl_usd": 0.0, "tvl_change_7d_pct": null, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/solid-world", "project_url": null}, {"id": "bloom", "name": "Bloom", "slug": "bloom", "logo": "https://icons.llama.fi/bloom.jpg", "chains": ["Ethereum"], "protocol_category": "RWA", "tvl_usd": 0.0, "tvl_change_7d_pct": null, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/bloom", "project_url": null}, {"id": "sailing-protocol", "name": "Sailing Protocol", "slug": "sailing-protocol", "logo": "https://icons.llama.fi/sailing-protocol.png", "chains": ["Kava"], "protocol_category": "RWA", "tvl_usd": 0.0, "tvl_change_7d_pct": null, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/sailing-protocol", "project_url": "https://sailing.global/"}, {"id": "aurus", "name": "Aurus", "slug": "aurus", "logo": "https://icons.llama.fi/aurus.png", "chains": ["Ethereum"], "protocol_category": "RWA", "tvl_usd": 0.0, "tvl_change_7d_pct": null, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/aurus", "project_url": "https://aurus.io/marketplace?token=tXAU"}, {"id": "real-protocol", "name": "re.al protocol", "slug": "real-protocol", "logo": "https://icons.llama.fi/re.al-protocol.jpg", "chains": ["re.al"], "protocol_category": "RWA", "tvl_usd": 0.0, "tvl_change_7d_pct": null, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/real-protocol", "project_url": "https://www.re.al"}, {"id": "zoth-ztln", "name": "Zoth ZTLN", "slug": "zoth-ztln", "logo": "https://icons.llama.fi/zoth.jpg", "chains": ["Ethereum"], "protocol_category": "RWA", "tvl_usd": 0.0, "tvl_change_7d_pct": null, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/zoth-ztln", "project_url": "https://zoth.io"}, {"id": "xend-finance", "name": "Xend Finance", "slug": "xend-finance", "logo": "https://icons.llama.fi/xend-finance.jpg", "chains": [], "protocol_category": "RWA", "tvl_usd": 0.0, "tvl_change_7d_pct": null, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/xend-finance", "project_url": "https://xend.finance"}, {"id": "solayer-usd", "name": "Solayer USD", "slug": "solayer-usd", "logo": "https://icons.llama.fi/solayer-usd.jpg", "chains": ["Solana"], "protocol_category": "RWA", "tvl_usd": 0.0, "tvl_change_7d_pct": null, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/solayer-usd", "project_url": "https://solayer.org"}, {"id": "pv01", "name": "PV01", "slug": "pv01", "logo": "https://icons.llama.fi/pv01.jpg", "chains": ["Ethereum"], "protocol_category": "RWA", "tvl_usd": 0.0, "tvl_change_7d_pct": null, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/pv01", "project_url": null}, {"id": "maple-rwa", "name": "Maple RWA", "slug": "maple-rwa", "logo": "https://icons.llama.fi/maple-rwa.jpg", "chains": ["Ethereum"], "protocol_category": "RWA", "tvl_usd": 0.0, "tvl_change_7d_pct": null, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/maple-rwa", "project_url": "https://www.maple.finance"}, {"id": "prosper", "name": "Prosper", "slug": "prosper", "logo": "https://icons.llama.fi/prosper.jpg", "chains": ["Binance"], "protocol_category": "RWA", "tvl_usd": 0.0, "tvl_change_7d_pct": null, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/prosper", "project_url": "https://www.prosper-fi.com"}, {"id": "chips", "name": "Chips", "slug": "chips", "logo": "https://icons.llama.fi/chips.jpg", "chains": ["Kadena"], "protocol_category": "RWA", "tvl_usd": 0.0, "tvl_change_7d_pct": null, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/chips", "project_url": "https://chips.finance"}, {"id": "oro-finance", "name": "Oro Finance", "slug": "oro-finance", "logo": "https://icons.llama.fi/oro-finance.jpg", "chains": ["Solana"], "protocol_category": "RWA", "tvl_usd": 0.0, "tvl_change_7d_pct": null, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/oro-finance", "project_url": "https://app.oro.finance/"}, {"id": "yieldbricks", "name": "YieldBricks", "slug": "yieldbricks", "logo": "https://icons.llama.fi/yieldbricks.jpg", "chains": ["Arbitrum", "Ethereum"], "protocol_category": "RWA", "tvl_usd": 0.0, "tvl_change_7d_pct": null, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/yieldbricks", "project_url": null}, {"id": "grayscale", "name": "Grayscale", "slug": "grayscale", "logo": "https://icons.llama.fi/grayscale.jpg", "chains": [], "protocol_category": "RWA", "tvl_usd": 0.0, "tvl_change_7d_pct": null, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/grayscale", "project_url": "https://etfs.grayscale.com/"}, {"id": "digital-gold", "name": "Digital Gold", "slug": "digital-gold", "logo": "https://icons.llama.fi/digital-gold.jpg", "chains": ["Ethereum"], "protocol_category": "RWA", "tvl_usd": 0.0, "tvl_change_7d_pct": null, "confidence": "LOW", "yield_coverage_pct": null, "flag_low_yield_coverage": false, "reported_high_apy_detected": false, "reported_strong_apy_detected": false, "defillama_url": "https://defillama.com/protocol/digital-gold", "project_url": "https://dgld.ch/"}];
+let SPARK_RWA = null;
+let SPARK_ALL = null;
+
+// Public dataset (JSON) - loaded at runtime (preferred), with embedded DATA_* as fallback.
+let DATASET_ALL = null;
+let DATASET_RWA = null;
+let DATASET_META = null;
+
+// Analytics snapshot (from private -> published as data/latest.json)
+let LATEST_META = null;
+let LATEST_ASSETS = null;
+let UPDATED_FROM_LATEST = false;
+
+// Sparkline SVG cache per tab
+let SPARK_CACHE_RWA = {};
+let SPARK_CACHE_ALL = {};
+
+const W = 132, H = 38, P = 4;
+let currentTab = 'dashboard';
+let filtered = [];
+let activeData = DATA_RWA;
+
+// Pagination
+let page = 1;
+let pageSize = 100;
+let totalPages = 1;
+
+
+// Lightweight event tracking (no external dependency). Stored in localStorage.
+// If window.plausible or gtag exists, events are also forwarded.
+function trackEvent(name, props){
+  try{
+    const evt = {t: new Date().toISOString(), name: name, props: props||{}};
+    const k = 'rwa_watch_events';
+    const cur = JSON.parse(localStorage.getItem(k) || '[]');
+    cur.push(evt);
+    // cap to 5000
+    if (cur.length > 5000) cur.splice(0, cur.length-5000);
+    localStorage.setItem(k, JSON.stringify(cur));
+  }catch(e){}
+  try{ if (typeof window.plausible === 'function') window.plausible(name, {props: props||{}}); }catch(e){}
+  try{ if (typeof window.gtag === 'function') window.gtag('event', name, props||{}); }catch(e){}
+}
+
+
+// Debounce
+let _t = null;
+function queueApplyFilters() {
+  if (_t) clearTimeout(_t);
+  _t = setTimeout(function(){ applyFilters(); }, 180);
+}
+
+function toggleFilters() {
+  const panel = document.getElementById('filterPanel');
+  const hint = document.getElementById('filterToggleHint');
+  if (!panel) return;
+  const isOpen = panel.classList.toggle('open');
+  if (hint) hint.textContent = isOpen ? 'Tap to close' : 'Tap to open';
+}
+
+function uniq(arr) {
+  return Array.from(new Set(arr)).filter(Boolean);
+}
+
+
+function chainsSummary(ch){
+  if (!ch) return '—';
+  if (Array.isArray(ch)) {
+    if (ch.length === 0) return '—';
+    if (ch.length === 1) return String(ch[0]);
+    return String(ch[0]) + ' +' + String(ch.length-1);
+  }
+  // sometimes chains are stored as comma-separated string
+  const s = String(ch);
+  if (s.indexOf(',') !== -1) {
+    const parts = s.split(',').map(function(x){return x.trim();}).filter(Boolean);
+    if (parts.length === 1) return parts[0];
+    if (parts.length > 1) return parts[0] + ' +' + String(parts.length-1);
+  }
+  return s;
+}
+
+
+// No template literals anywhere -> avoids Python f-string brace issues
+function fmtUsdCompact(v) {
+  const x = Number(v);
+  if (!Number.isFinite(x)) return "N/A";
+  if (x >= 1e12) return "$" + (x/1e12).toFixed(2) + "T";
+  if (x >= 1e9)  return "$" + (x/1e9).toFixed(2)  + "B";
+  if (x >= 1e6)  return "$" + (x/1e6).toFixed(2)  + "M";
+  return "$" + Math.round(x).toLocaleString();
+}
+
+// --- Display guards for % changes ---
+const MIN_PAST_USD_FOR_PCT = 10_000_000; // hide % if inferred past TVL is tiny (low base)
+const MAX_ABS_PCT_DISPLAY = 200;         // hide extreme % swings to reduce obvious artifacts
+
+function safePctFromTvl(pct, tvlNow){
+  if (pct === null || pct === undefined) return null;
+  const p = Number(pct);
+  if (!isFinite(p)) return null;
+  if (Math.abs(p) > MAX_ABS_PCT_DISPLAY) return null;
+  const denom = 1 + (p / 100);
+  if (!(denom > 0)) return null;
+  const now = Number(tvlNow) || 0;
+  const past = now / denom;
+  if (past > 0 && past < MIN_PAST_USD_FOR_PCT) return null;
+  return p;
+}
+
+function fmtPctSignedSafe(pct, tvlNow){
+  const p = safePctFromTvl(pct, tvlNow);
+  if (p === null) return "N/A";
+  const rounded = Number(p.toFixed(2));
+  if (rounded === 0) return "0.00%";
+  return (rounded > 0 ? "+" : "-") + Math.abs(rounded).toFixed(2) + "%";
+}
+
+function fmtPctSignedRaw(pct){
+  const p = Number(pct);
+  if (!Number.isFinite(p)) return "N/A";
+  const rounded = Number(p.toFixed(2));
+  if (rounded === 0) return "0.00%";
+  return (rounded > 0 ? "+" : "-") + Math.abs(rounded).toFixed(2) + "%";
+}
+
+
+
+
+// Load analytics snapshot (data/latest.json). This file may contain NaN (non-JSON),
+// so we fetch as text and sanitize to JSON-safe before parsing.
+async function loadLatestSnapshot() {
+  try {
+    const url = 'data/latest.json?ts=' + Date.now();
+    const res = await fetch(url, { cache: 'no-store' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+
+    const raw = await res.text();
+
+    // Replace bare NaN / Infinity tokens with null (keeps file JSON-parseable)
+    // This is safe for our use because those fields mean "missing".
+    const cleaned = raw
+      .replace(/([:\s\[,])NaN(?=[,\s\]\}])/g, '$1null')
+      .replace(/([:\s\[,])Infinity(?=[,\s\]\}])/g, '$1null')
+      .replace(/([:\s\[,])-Infinity(?=[,\s\]\}])/g, '$1null');
+
+    const j = JSON.parse(cleaned);
+
+    if (j && Array.isArray(j.assets)) {
+      LATEST_META = j;
+
+      // Normalize into the shape used by KPI computations.
+      // We do NOT replace the monitoring table list (DATA_RWA) to avoid breaking asset pages.
+      LATEST_ASSETS = j.assets.map(function(a){
+        const slug = a && (a.slug || a.asset_id || a.asset_key) ? String(a.slug || a.asset_id || a.asset_key) : '';
+        return {
+          slug: slug,
+          id: slug,
+          name: (a && a.name) ? String(a.name) : slug,
+          tvl_usd: Number(a && a.tvl_usd) || 0,
+
+          // analytics snapshot doesn't always carry 7d change; keep null (UI shows N/A)
+          tvl_change_7d_pct: (a && a.tvl_change_7d_pct !== undefined) ? a.tvl_change_7d_pct : null,
+
+          protocol_category: (a && (a.protocol_category || a.category)) ? String(a.protocol_category || a.category) : null,
+          chains: Array.isArray(a && a.chains) ? a.chains : [],
+
+          flag_low_yield_coverage: !!(a && a.flag_low_yield_coverage),
+          reported_high_apy_detected: !!(a && a.reported_high_apy_detected)
+        };
+      });
+
+      // Update "Updated" label from analytics if present
+      const up = document.getElementById('updated');
+      const stamp = (j.generated_at || j.generatedAt || j.date || null);
+      if (up && stamp) {
+        up.textContent = 'Updated: ' + String(stamp);
+        UPDATED_FROM_LATEST = true;
+      }
+    }
+
+    return true;
+  } catch (e) {
+    LATEST_META = null;
+    LATEST_ASSETS = null;
+    return false;
+  }
+}
+
+async function loadDatasetFiles() {
+  try {
+    // cache-bust + no-store to avoid stale GH Pages/browser caches
+    const res = await fetch('data/dataset.json?ts=' + Date.now(), { cache: 'no-store' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const j = await res.json();
+
+    if (j && Array.isArray(j.assets) && j.assets.length) {
+      DATASET_META = j;
+      DATASET_ALL = j.assets;
+
+      // Dashboard is intentionally RWA-only. Do not fall back to the full DeFi dataset.
+      DATASET_RWA = j.assets.filter(function(a){ return isRwaAsset(a); });
+      if (!DATASET_RWA.length) DATASET_RWA = (Array.isArray(DATA_RWA) ? DATA_RWA : []);
+    }
+  } catch (e) {
+    DATASET_META = null;
+    DATASET_ALL = null;
+    DATASET_RWA = null;
+  }
+}
+
+
+
+function updateSnapshotKPIs() {
+  try {
+    // Snapshot should reflect the full RWA universe (not filtered / paginated)
+    const base = (LATEST_ASSETS || DATASET_RWA || DATA_RWA) || [];
+
+    let total = 0;
+    let totalPast = 0;
+    let lowCov = 0;
+    let highApy = 0;
+
+    // Keep per-asset today/past for concentration + net flow
+    const rows = [];
+
+    // category momentum proxy: weighted avg 7D TVL change
+    const catAgg = new Map(); // cat -> {w,sum}
+
+    for (const r of base) {
+      const tvl = Number(r && r.tvl_usd) || 0;
+      total += tvl;
+
+      if (r && r.flag_low_yield_coverage) lowCov += 1;
+      if (r && r.reported_high_apy_detected) highApy += 1;
+
+      // If 7D % change is available, infer past TVL; otherwise assume unchanged (past=today)
+      const chgRaw = (r && r.tvl_change_7d_pct !== null && r.tvl_change_7d_pct !== undefined) ? Number(r.tvl_change_7d_pct) : null;
+      let past = tvl;
+
+      if (chgRaw !== null && isFinite(chgRaw) && tvl > 0 && chgRaw > -99) {
+        const inferred = tvl / (1 + chgRaw / 100);
+        if (isFinite(inferred) && inferred > 0) past = inferred;
+
+        const cat = getDisplayCategory(r);
+        const cur = catAgg.get(cat) || { w: 0, sum: 0 };
+        cur.w += tvl;
+        cur.sum += tvl * chgRaw;
+        catAgg.set(cat, cur);
+      }
+
+      totalPast += past;
+      rows.push({ tvl, past });
+    }
+
+    // Total TVL
+    const elTotal = document.getElementById("kpiTotal");
+    if (elTotal) elTotal.textContent = total > 0 ? fmtUsdCompact(total) : "N/A";
+
+    // Total 7D %
+    const elDelta = document.getElementById("kpiTotalDelta");
+    if (elDelta) {
+      if (totalPast > 0 && total > 0) {
+        const pct = (((total / totalPast) - 1) * 100);
+        const pSafe = safePctFromTvl(pct, total);
+        if (pSafe === null) {
+          elDelta.textContent = "N/A";
+        } else {
+          const s = (pSafe > 0 ? "+" : "") + pSafe.toFixed(2) + "%";
+          elDelta.textContent = s;
+        }
+      } else {
+        elDelta.textContent = "N/A";
+      }
+    }
+
+    // 7D Net Capital Flow (proxy): total change in TVL vs inferred past
+    const elFlow = document.getElementById("kpiFlow");
+    if (elFlow) {
+      if (total > 0 && totalPast > 0) {
+        const flow = total - totalPast;
+        const s = (flow > 0 ? "+" : "") + fmtUsdCompact(Math.abs(flow));
+        elFlow.textContent = s;
+      } else {
+        elFlow.textContent = "N/A";
+      }
+    }
+
+    // Flags line
+    const elFlags = document.getElementById("kpiFlags");
+    if (elFlags) elFlags.textContent = `Flags: ${lowCov} low-coverage · ${highApy} high-APY`;
+
+    // Sector momentum (proxy): best weighted avg % change
+    let bestCat = "RWA";
+    let bestScore = -Infinity;
+    for (const [cat, v] of catAgg.entries()) {
+      if (!v.w) continue;
+      const score = v.sum / v.w; // weighted avg %
+      if (isFinite(score) && score > bestScore) {
+        bestScore = score;
+        bestCat = cat;
+      }
+    }
+    const elSector = document.getElementById("kpiSector");
+    if (elSector) elSector.textContent = bestCat;
+
+    // 24H Net Capital Flow: estimated from the last two available daily sparkline points.
+    const elFlow24 = document.getElementById("kpiFlow24");
+    if (elFlow24) {
+      const seriesMap = getSeriesMap ? getSeriesMap() : null;
+      let todaySum = 0;
+      let prevSum = 0;
+      let counted = 0;
+
+      for (const r of base) {
+        const sp = seriesMap && r ? (seriesMap[r.slug] || seriesMap[r.id]) : null;
+        if (!Array.isArray(sp) || sp.length < 2) continue;
+
+        let last = null;
+        let prev = null;
+        for (let i = sp.length - 1; i >= 0; i--) {
+          const x = Number(sp[i]);
+          if (!Number.isFinite(x)) continue;
+          if (last === null) { last = x; continue; }
+          prev = x;
+          break;
+        }
+        if (last === null || prev === null) continue;
+        todaySum += last;
+        prevSum += prev;
+        counted += 1;
+      }
+
+      if (counted > 0) {
+        const flow24 = todaySum - prevSum;
+        elFlow24.textContent = (flow24 > 0 ? "+" : flow24 < 0 ? "-" : "") + fmtUsdCompact(Math.abs(flow24));
+      } else {
+        elFlow24.textContent = "N/A";
+      }
+    }
+  } catch (e) {
+    // ignore KPI errors
+  }
+}
+
+async function loadSparkFiles() {
+  try {
+    const rwaRes = await fetch('data/sparklines_rwa_7d.json?ts=' + Date.now(), { cache: 'no-store' });
+    SPARK_RWA = await rwaRes.json();
+  } catch (e) {
+    SPARK_RWA = { dates: [], series: {} };
+  }
+}
+
+function getSparkData() {
+  return SPARK_RWA || { dates: [], series: {} };
+}
+
+function sparkCache() {
+  return SPARK_CACHE_RWA;
+}
+
+function buildSparkline(slug, expectedSign) {
+  const cache = sparkCache();
+  if (cache[slug] !== undefined) return cache[slug];
+
+  const sd = getSparkData();
+  if (!sd || !sd.series || !sd.series[slug]) {
+    cache[slug] = '';
+    return '';
+  }
+  const values = sd.series[slug];
+
+  const clean = values.filter(function(v){ return v !== null && v !== undefined; });
+  if (clean.length < 2) {
+    cache[slug] = '';
+    return '';
+  }
+
+  const min = Math.min.apply(null, clean);
+  const max = Math.max.apply(null, clean);
+  // If the whole series is zeros, treat as missing (avoid misleading flat line)
+  if (min === 0 && max === 0) {
+    const na = document.createElement("span");
+    na.textContent = "N/A";
+    na.style.opacity = "0.6";
+    na.style.fontSize = "12px";
+    na.style.letterSpacing = "0.02em";
+    cache[slug] = na.outerHTML;
+    return cache[slug];
+  }
+
+  const range = (max - min) || 1;
+
+  // If caller provided expected sign (+1 or -1), check if sparkline direction agrees.
+  // If not, reverse the values array so the visual matches the reported % change.
+  if (expectedSign !== undefined && clean.length >= 2) {
+    const spFirst = clean[0];
+    const spLast = clean[clean.length - 1];
+    const spSign = spLast > spFirst ? 1 : (spLast < spFirst ? -1 : 0);
+    if (spSign !== 0 && expectedSign !== 0 && spSign !== expectedSign) {
+      values.reverse();
+    }
+  }
+
+  const stepX = (W - P*2) / (values.length - 1);
+
+  const pts = values.map(function(v, i){
+    if (v === null || v === undefined) return null;
+    const x = P + i * stepX;
+    const norm = (v - min) / range;
+    const y = H - P - norm * (H - P*2);
+    return [x, y];
+  });
+
+  const segments = [];
+  let cur = [];
+  for (let i=0;i<pts.length;i++){
+    const p = pts[i];
+    if (!p){
+      if (cur.length >= 2) segments.push(cur);
+      cur = [];
+    } else {
+      cur.push(p);
+    }
+  }
+  if (cur.length >= 2) segments.push(cur);
+  if (!segments.length){
+    cache[slug] = '';
+    return '';
+  }
+
+  function poly(seg){
+    return seg.map(function(p){ return String(p[0]) + "," + String(p[1]); }).join(" ");
+  }
+
+  const blue = "#5ED6FF";
+  const gradId = "sg" + slug.replace(/[^a-z0-9]/gi,"_");
+
+  // last valid point for endpoint dot
+  let lastPt = null;
+  for (let i=pts.length-1;i>=0;i--){ if(pts[i]){ lastPt=pts[i]; break; } }
+
+  let svg = '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '" aria-label="7D TVL trend" role="img">';
+  svg += '<defs><linearGradient id="' + gradId + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="' + blue + '" stop-opacity="0.35"/><stop offset="100%" stop-color="' + blue + '" stop-opacity="0"/></linearGradient></defs>';
+
+  for (let i=0;i<segments.length;i++){
+    const seg = segments[i];
+    if (seg.length >= 2) {
+      const area = seg.map(function(p){ return String(p[0]) + "," + String(p[1]); }).join(" ") + " " + String(seg[seg.length-1][0]) + "," + String(H-P) + " " + String(seg[0][0]) + "," + String(H-P);
+      svg += '<polygon points="' + area + '" fill="url(#' + gradId + ')" />';
+    }
+  }
+  for (let i=0;i<segments.length;i++){
+    svg += '<polyline points="' + poly(segments[i]) + '" fill="none" stroke="' + blue + '" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />';
+  }
+  if (lastPt) {
+    svg += '<circle cx="' + lastPt[0].toFixed(1) + '" cy="' + lastPt[1].toFixed(1) + '" r="2.5" fill="' + blue + '"/>';
+    svg += '<circle cx="' + lastPt[0].toFixed(1) + '" cy="' + lastPt[1].toFixed(1) + '" r="5" fill="' + blue + '" opacity="0.2"/>';
+  }
+  svg += '</svg>';
+
+  cache[slug] = svg;
+  return svg;
+}
+
+function getTrendAbs(slug) {
+  const sd = getSparkData();
+  const arr = (sd && sd.series) ? sd.series[slug] : null;
+  if (!arr) return -Infinity;
+  let first = undefined;
+  for (let i=0;i<arr.length;i++){
+    if (arr[i] !== null && arr[i] !== undefined){ first = arr[i]; break; }
+  }
+  let last = undefined;
+  for (let i=arr.length-1;i>=0;i--){
+    if (arr[i] !== null && arr[i] !== undefined){ last = arr[i]; break; }
+  }
+  if (first === undefined || last === undefined) return -Infinity;
+  return (last - first);
+}
+
+function getTrendPct(slug) {
+  const sd = getSparkData();
+  const arr = (sd && sd.series) ? sd.series[slug] : null;
+  if (!arr) return -Infinity;
+  let first = undefined;
+  for (let i=0;i<arr.length;i++){
+    if (arr[i] !== null && arr[i] !== undefined){ first = arr[i]; break; }
+  }
+  let last = undefined;
+  for (let i=arr.length-1;i>=0;i--){
+    if (arr[i] !== null && arr[i] !== undefined){ last = arr[i]; break; }
+  }
+  if (first === undefined || last === undefined || first === 0) return -Infinity;
+  return ((last - first) / first) * 100.0;
+}
+
+
+// --- RWA-only guards + display categories ---
+function normTxt(v){ return String(v || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim(); }
+function isRwaAsset(r){
+  if (!r) return false;
+  const c = normTxt(r.protocol_category || r.category || '');
+  const id = normTxt((r.id || '') + ' ' + (r.slug || '') + ' ' + (r.name || ''));
+  return c === 'rwa' || c === 'rwa lending' || /(^| )rwa( |$)/.test(id) || id.includes('tokenized');
+}
+function getDisplayCategory(r){
+  const text = normTxt((r && (r.name || r.slug || r.id)) || '');
+  const raw = normTxt((r && (r.protocol_category || r.category)) || '');
+
+  if (raw.includes('lending') || /credit|loan|lending|tpool|t bill|tbill|clo|apollo|clearpool|centrifuge|anzen|nest credit|opentrade|re xyz|onre|kaio|gaib|pinjam/.test(text)) return 'Private Credit / Lending';
+  if (/gold|xaum|xaut|paxg|meld|tether gold|paxos gold|pleasing gold|goldfinger|commodity|commodities/.test(text)) return 'Commodities';
+  if (/treasury|buidl|usyc|ustb|usdtb|stbt|tbill|t bill|usd0|usdo|vbill|fiusd|spiko|superstate|openeden|matrixdock stbt|ondo yield|midas/.test(text)) return 'Tokenized Treasuries';
+  if (/real estate|realt|lofty|estate|property|tangible|vesta|realty|brickken|raac/.test(text)) return 'Real Estate';
+  if (/stock|stocks|equity|equities|shares|global markets|backedfi|dinari|exod|wisdomtree|blockchain capital|republic note|xstocks/.test(text)) return 'Tokenized Equities / Funds';
+  if (/stablecoin|stable|frax usd|stusdt/.test(text)) return 'Yield / Stablecoin RWA';
+  return 'Other RWA';
+}
+function categoryValue(c){ return String(c || '').toLowerCase(); }
+
+function rebuildFilters() {
+  const chains = [];
+  for (let i=0;i<activeData.length;i++){
+    const r = activeData[i];
+    if (Array.isArray(r.chains)){
+      for (let j=0;j<r.chains.length;j++) chains.push(r.chains[j]);
+    }
+  }
+  const chainSel = document.getElementById('chainFilter');
+  const prevChain = chainSel.value;
+  chainSel.innerHTML = '<option value="">All Chains</option>' +
+    uniq(chains).sort().map(function(c){
+      return '<option value="' + String(c).toLowerCase() + '">' + c + '</option>';
+    }).join('');
+  chainSel.value = prevChain;
+
+  const catSel = document.getElementById('categoryFilter');
+  const prevCat = catSel.value;
+  const cats = uniq(activeData.map(function(r){ return getDisplayCategory(r); })).sort();
+  catSel.innerHTML = '<option value="">All Categories</option>' +
+    cats.map(function(c){
+      return '<option value="' + String(c).toLowerCase() + '">' + c + '</option>';
+    }).join('');
+  catSel.value = prevCat;
+}
+
+function computeTotalPages() {
+  const n = filtered.length;
+  totalPages = Math.max(1, Math.ceil(n / pageSize));
+  page = Math.min(page, totalPages);
+  page = Math.max(page, 1);
+}
+
+function updatePagerUI() {
+  const pageInput = document.getElementById('pageInput');
+  const info = document.getElementById('pageInfo');
+  if (pageInput) pageInput.value = String(page);
+  if (info) info.textContent = 'of ' + totalPages + ' · ' + filtered.length.toLocaleString() + ' items';
+
+  const btns = document.querySelectorAll('#pager .btnPager');
+  if (btns.length >= 2) {
+    btns[0].disabled = (page <= 1);
+    btns[1].disabled = (page >= totalPages);
+  }
+}
+
+function prevPage() { if (page > 1) { page -= 1; render(); } }
+function nextPage() { if (page < totalPages) { page += 1; render(); } }
+
+function gotoPageFromInput() {
+  const v = Number(document.getElementById('pageInput').value || '1');
+  if (!Number.isFinite(v)) return;
+  page = Math.max(1, Math.min(totalPages, Math.floor(v)));
+  render();
+}
+
+function changePageSize() {
+  pageSize = Number(document.getElementById('pageSize').value || '100');
+  if (!Number.isFinite(pageSize) || pageSize <= 0) pageSize = 100;
+  page = 1;
+  computeTotalPages();
+  render();
+}
+
+
+// --- Helpers: data-aware TVL + 7D change + sorting (v9) ---
+function getSeriesMap(){
+  const sd = getSparkData();
+  return (sd && sd.series) ? sd.series : sd;
+}
+function getSeriesForRow(r){
+  try{
+    const m = getSeriesMap();
+    if (!m || !r) return null;
+    return m[r.slug] || m[r.id] || null;
+  } catch(e){ return null; }
+}
+function hasAnyPositive(series){
+  if (!Array.isArray(series)) return false;
+  for (let i=0;i<series.length;i++){
+    const x = Number(series[i]);
+    if (Number.isFinite(x) && x > 0) return true;
+  }
+  return false;
+}
+// TVL that we consider "has data" for display/sort
+function tvlDisplayNum(r){
+  const tvl = Number(r && r.tvl_usd);
+  if (Number.isFinite(tvl) && tvl > 0) return tvl;
+  if (tvl === 0) {
+    const sp = getSeriesForRow(r);
+    if (hasAnyPositive(sp)) return 0; // dropped to zero / valid data
+  }
+  return null; // treat as missing
+}
+function chg7FromSeries(sp){
+  if (!Array.isArray(sp) || sp.length < 2) return null;
+  let first = null;
+  for (let i=0;i<sp.length;i++){
+    const x = Number(sp[i]);
+    if (Number.isFinite(x) && x > 0){ first = x; break; }
+  }
+  let last = null;
+  for (let i=sp.length-1;i>=0;i--){
+    const x = Number(sp[i]);
+    if (Number.isFinite(x)){ last = x; break; }
+  }
+  if (first === null || last === null) return null;
+  const pct = (last - first) / first * 100;
+  return Number.isFinite(pct) ? pct : null;
+}
+function getChg7(r){
+  const raw7 = (r && r.tvl_change_7d_pct !== undefined && r.tvl_change_7d_pct !== null) ? Number(r.tvl_change_7d_pct) : null;
+  if (Number.isFinite(raw7)) return raw7;
+  const sp = getSeriesForRow(r);
+  return chg7FromSeries(sp);
+}
+function sortMissingKey(r, sort){
+  if (sort === 'tvl') return tvlDisplayNum(r) === null;
+  if (sort === 'stability') return getChg7(r) === null;
+  if (sort === 'trend_abs') return getTrendAbs(r && r.slug) === -Infinity;
+  if (sort === 'trend_pct') return getTrendPct(r && r.slug) === -Infinity;
+  return false;
+}
+
+function applyFilters() {
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  const chain = document.getElementById('chainFilter').value;
+  const cat = document.getElementById('categoryFilter').value;
+  const minTvl = Number(document.getElementById('minTvlSelect').value || '0');
+  const sort = document.getElementById('sortSelect').value;
+  const integrity = document.getElementById('integrityFilter').value;
+
+  filtered = activeData.filter(function(r){
+    const name = String(r.name || '').toLowerCase();
+    if (q && name.indexOf(q) === -1) return false;
+    if (minTvl && (r.tvl_usd || 0) < minTvl) return false;
+
+    if (chain) {
+      const cs = (r.chains || []).map(function(x){ return String(x).toLowerCase(); }).join(',');
+      if (cs.indexOf(chain) === -1) return false;
+    }
+
+    if (cat) {
+      const rc = categoryValue(getDisplayCategory(r));
+      if (rc !== cat) return false;
+    }
+
+    if (integrity === 'low_cov' && !r.flag_low_yield_coverage) return false;
+    if (integrity === 'high_apy' && !r.reported_high_apy_detected) return false;
+
+    return true;
+  });
+
+  filtered.sort(function(a,b){
+    // Always push missing-data rows to the bottom for the active sort
+    const amiss = sortMissingKey(a, sort);
+    const bmiss = sortMissingKey(b, sort);
+    if (amiss && !bmiss) return 1;
+    if (!amiss && bmiss) return -1;
+
+    if (sort === 'tvl') return (tvlDisplayNum(b) ?? -Infinity) - (tvlDisplayNum(a) ?? -Infinity);
+
+    if (sort === 'stability') {
+      const av = getChg7(a); const bv = getChg7(b);
+      return (bv ?? -Infinity) - (av ?? -Infinity);
+    }
+
+    if (sort === 'trend_abs') return getTrendAbs(b && b.slug) - getTrendAbs(a && a.slug);
+    if (sort === 'trend_pct') return getTrendPct(b && b.slug) - getTrendPct(a && a.slug);
+    return (tvlDisplayNum(b) ?? -Infinity) - (tvlDisplayNum(a) ?? -Infinity);
+  });
+
+page = 1;
+  computeTotalPages();
+  render();
+}
+
+function render() {
+  computeTotalPages();
+  updatePagerUI();
+
+  const start = (page - 1) * pageSize;
+  const end = start + pageSize;
+  const pageRows = filtered.slice(start, end);
+
+  const tb = document.getElementById('tbody');
+  tb.innerHTML = '';
+
+  for (let i=0;i<pageRows.length;i++){
+    const r = pageRows[i];
+    const chainBadge = '';
+    const catBadge = '<span class="badge" title="RWA Category">' + getDisplayCategory(r) + '</span>';
+
+    const lowCovBadge = r.flag_low_yield_coverage
+      ? '<span class="badge dim" title="Low coverage: monitoring signals may represent only part of protocol TVL.">Low Coverage</span>'
+      : '';
+
+    const highApyBadge = r.reported_high_apy_detected
+      ? '<span class="badge dim" title="Reported high-APY pools exist (often incentives/anomalies).">High APY</span>'
+      : '';
+
+    const logo = r.logo ? '<img class="logo" src="' + r.logo + '" onerror="this.style.visibility=\'hidden\'">' : '<span class="logo"></span>';
+    const tvlNum = Number(r.tvl_usd);
+    const sd = getSparkData();
+    const seriesMap = (sd && sd.series) ? sd.series : sd;
+    const sp = seriesMap && (seriesMap[r.slug] || seriesMap[r.id]);
+    let droppedToZero = false;
+
+    // Treat literal 0 as "no data" only when the 7D series has no positive values.
+    let tvlTxt = 'N/A';
+    if (Number.isFinite(tvlNum)) {
+      if (tvlNum > 0) {
+        tvlTxt = fmtUsdCompact(tvlNum);
+      } else if (tvlNum === 0 && Array.isArray(sp)) {
+        let anyPos = false;
+        for (let k=0;k<sp.length;k++){
+          const x = Number(sp[k]);
+          if (Number.isFinite(x) && x > 0) { anyPos = true; break; }
+        }
+        if (anyPos) { droppedToZero = true; tvlTxt = '$0*'; } else { tvlTxt = 'N/A'; }
+      } else {
+        tvlTxt = 'N/A';
+      }
+    }
+
+  const noDataRow = (tvlTxt === 'N/A');
+  const tvlTitleAttr = droppedToZero ? ' title="Dropped to zero (7D)"' : '';
+
+  const raw7 = (!noDataRow && r.tvl_change_7d_pct !== undefined && r.tvl_change_7d_pct !== null) ? Number(r.tvl_change_7d_pct) : null;
+  let chg7 = Number.isFinite(raw7) ? raw7 : null;
+  if (!noDataRow && chg7 === null) {
+    /* sp already resolved above */
+    if (Array.isArray(sp) && sp.length >= 2) {
+      let first = null; for (let i=0;i<sp.length;i++){ const x=Number(sp[i]); if(Number.isFinite(x) && x>0){ first=x; break; } }
+      let last = null; for (let i=sp.length-1;i>=0;i--){ const x=Number(sp[i]); if(Number.isFinite(x)){ last=x; break; } }
+      if (first !== null && last !== null) {
+        const pct = (last - first) / first * 100;
+        if (Number.isFinite(pct)) chg7 = pct;
+      }
+    }
+  }
+  const ch7 = fmtPctSignedRaw(chg7);
+  const ch7Display = noDataRow ? 'N/A' : ((ch7 === 'N/A' && r.tvl_change_7d_label) ? r.tvl_change_7d_label : ch7);
+  const chg7r = (Number.isFinite(chg7) ? Number(Number(chg7).toFixed(2)) : null);
+    const chgClass = (noDataRow || ch7 === 'N/A') ? 'na' : (chg7r === 0 ? 'zero' : (chg7r > 0 ? 'pos' : 'neg'));
+    const sparkSign = (Number.isFinite(chg7) && Math.abs(chg7) >= 0.01) ? (chg7 > 0 ? 1 : -1) : 0;
+  const spark = '<div class="spark" data-slug="' + r.slug + '" data-sign="' + sparkSign + '"></div>';
+
+    const tr = document.createElement('tr');
+    tr.onclick = function(){ if(!r.slug){return;} trackEvent('asset_open', {slug:r.slug, tab:currentTab}); window.location.href = 'asset/' + r.slug + '.html'; };
+
+    tr.innerHTML =
+      '<td class="stickyCol">' +
+        '<div class="assetCell">' +
+          logo +
+          '<div>' +
+            '<div class="assetName">' + r.name + '</div>' +
+            '<div class="badges">' +
+              catBadge + lowCovBadge + highApyBadge +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</td>' +
+      '<td style="font-weight:900;color:#fff !important;"' + tvlTitleAttr + '>' + tvlTxt + '</td>' +
+      '<td><span class="chg ' + chgClass + '">' + ch7Display + '</span></td>' /* delta-blue-patched */ +
+      '<td class="hideMobile">' + chainsSummary(r.chains || r.chain || '') + '</td>' +
+      '<td class="hideOnMobile">' + spark + '</td>';
+
+    tb.appendChild(tr);
+  }
+
+  const els = document.querySelectorAll('.spark');
+  for (let i=0;i<els.length;i++){
+    const el = els[i];
+    const slug = el.dataset.slug;
+    const sign = parseInt(el.dataset.sign || '0', 10);
+    el.innerHTML = buildSparkline(slug, sign || undefined);
+  }
+}
+
+function applyHash() {
+  currentTab = 'dashboard';
+  activeData = (DATASET_RWA && DATASET_RWA.length) ? DATASET_RWA : DATA_RWA;
+  // Final guard: the homepage must never show the full DeFi dataset.
+  activeData = (activeData || []).filter(function(r){ return isRwaAsset(r); });
+  SPARK_CACHE_RWA = {};
+
+  const td = document.getElementById('tabDashboard');
+  if (td) td.classList.add('active');
+
+  updateSnapshotKPIs();
+  rebuildFilters();
+  applyFilters();
+}
+
+(async function init(){
+  await loadLatestSnapshot();
+  await loadDatasetFiles();
+  await loadSparkFiles();
+  applyHash();
+  window.addEventListener('hashchange', () => { applyHash(); render(); });
+})();
+</script>
+<script id="delta-toggle-script">
+(function(){
+  function getMode(){
+    try { return localStorage.getItem('rwa_delta_mode') || 'blue'; }
+    catch(e){ return 'blue'; }
+  }
+  function applyMode(mode){
+    var m = (mode === 'classic') ? 'classic' : 'blue';
+    document.documentElement.setAttribute('data-delta-mode', m);
+    var b = document.getElementById('modeBlue');
+    var c = document.getElementById('modeClassic');
+    if (b) b.classList.toggle('active', m === 'blue');
+    if (c) c.classList.toggle('active', m === 'classic');
+  }
+  function setMode(mode){
+    try { localStorage.setItem('rwa_delta_mode', mode); } catch(e){}
+    applyMode(mode);
+  }
+
+  function pctSpan(num, dec){
+    dec = (dec === undefined ? 1 : dec);
+    if (!isFinite(num)) return null;
+    if (Math.abs(num) < 1e-12) return '<span class="chg zero">0.00%</span>';
+    if (num > 0) return '<span class="chg pos">+' + num.toFixed(dec) + '%</span>';
+    return '<span class="chg neg">-' + Math.abs(num).toFixed(dec) + '%</span>';
+  }
+
+  function patchHtmlPercentsIn(el, decimals){
+    if (!el) return;
+
+    // Don't patch percent strings inside tables (the monitoring table formats TVL Change (7D) separately)
+    if (el.closest && el.closest('table')) return;
+    if (el.querySelector && el.querySelector('table')) return;
+
+    var html = el.innerHTML || '';
+    if (!/%/.test(html)) return;
+    html = html.replace(/([+\-]?\d+(?:\.\d+)?)%/g, function(_, n){
+      var v = parseFloat(n);
+      var rep = pctSpan(v, decimals);
+      return rep || _;
+    });
+    el.innerHTML = html;
+  }
+
+  function neutralizeSnapshotHelpers(){
+    Array.from(document.querySelectorAll('div, span, p')).forEach(function(el){
+      var txt = (el.textContent || '').replace(/\s+/g,' ').trim();
+      if (!txt) return;
+      if (txt === 'N/A') {
+        var cs = window.getComputedStyle(el);
+        if (cs && (cs.color === 'rgb(118, 131, 144)' || cs.color === 'rgb(168, 179, 194)')) {
+          el.style.color = 'var(--zero)';
+        }
+      }
+      if (
+        txt.indexOf('Flags:') === 0 ||
+        txt === 'vs 7 days ago' ||
+        txt === 'Based on avg 7D TVL change'
+      ){
+        el.style.color = 'var(--muted)';
+      }
+    });
+  }
+
+  function patchUnusualActivity(){
+    var heading = Array.from(document.querySelectorAll('div, h2, h3, h4')).find(function(el){
+      return (el.textContent || '').replace(/\s+/g,' ').trim() === 'Unusual Activity';
+    });
+    if (!heading) return;
+    var panel = heading.closest('div[class], .panel') || heading.parentElement;
+    if (!panel) return;
+    panel.querySelectorAll('div, span, b, strong').forEach(function(el){
+      if (!/%/.test(el.textContent || '')) return;
+      patchHtmlPercentsIn(el, 1);
+    });
+  }
+
+  function patchDivergencePanel(){
+    var heading = Array.from(document.querySelectorAll('div, h2, h3, h4')).find(function(el){
+      return (el.textContent || '').replace(/\s+/g,' ').trim().indexOf('Attention vs Capital Divergence') !== -1;
+    });
+    if (!heading) return;
+    var panel = heading.closest('div[class], .panel') || heading.parentElement;
+    if (!panel) return;
+    panel.querySelectorAll('div, span').forEach(function(el){
+      if (!/%/.test(el.textContent || '')) return;
+      patchHtmlPercentsIn(el, 1);
+    });
+  }
+
+  function wire(){
+    var b = document.getElementById('modeBlue');
+    var c = document.getElementById('modeClassic');
+    if (b) b.onclick = function(){ setMode('blue'); patchUnusualActivity(); patchDivergencePanel(); neutralizeSnapshotHelpers(); };
+    if (c) c.onclick = function(){ setMode('classic'); patchUnusualActivity(); patchDivergencePanel(); neutralizeSnapshotHelpers(); };
+
+    applyMode(getMode());
+    neutralizeSnapshotHelpers();
+    patchUnusualActivity();
+    patchDivergencePanel();
+    setTimeout(function(){
+      neutralizeSnapshotHelpers();
+      patchUnusualActivity();
+      patchDivergencePanel();
+    }, 500);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wire);
+  else wire();
+})();
+</script>
+
+<script id="update-timestamp">
+(async function(){
+  try{
+    const r = await fetch('data/sparklines_rwa_7d.json', { cache: 'no-store' });
+    const j = await r.json();
+    const el = document.getElementById('updated');
+    if (el && j && j.generated_at) el.textContent = 'Updated: ' + j.generated_at;
+  } catch(e) {}
+})();
+</script>
+
+<style id="ucOverlayStyles">
+/* Beta notice overlay (dismissible) */
+#ucOverlay{
+  position:fixed; inset:0; z-index:9999;
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(0,0,0,0.55);
+  backdrop-filter: blur(4px);
+}
+#ucOverlay[hidden]{ display:none; }
+#ucOverlay .uc-card{
+  width:min(520px, calc(100vw - 32px));
+  background: rgba(12,16,28,0.85);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 16px;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.55);
+  padding: 22px 22px 18px;
+  position: relative;
+}
+#ucOverlay .uc-close{
+  position:absolute; top:14px; right:14px;
+  width:38px; height:38px;
+  border-radius: 12px;
+  border:1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.06);
+  color:#fff;
+  cursor:pointer;
+  font-size: 22px;
+  line-height: 1;
+}
+#ucOverlay h2{
+  margin: 0 48px 10px 0;
+  font-size: 24px;
+  line-height: 1.05;
+  letter-spacing: 0.2px;
+}
+#ucOverlay p{
+  margin: 0 0 14px 0;
+  opacity: 0.92;
+  line-height:1.6;
+}
+#ucOverlay .uc-actions{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-top: 18px;
+}
+#ucOverlay .uc-btn{
+  padding: 10px 18px;
+  border-radius: 12px;
+  border:1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.06);
+  color:#fff;
+  cursor:pointer;
+  font-weight: 600;
+}
+#ucOverlay .uc-checkbox{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-left:auto;
+  opacity: 0.95;
+}
+#ucOverlay .uc-checkbox input{ transform: scale(1.05); }
+#ucOverlay .uc-checkbox span{ font-size: 13px; line-height: 1.2; text-align:left; }
+@media (max-width: 720px){
+  #ucOverlay h2{ font-size: 22px; }
+  #ucOverlay .uc-actions{ flex-direction: column; align-items: stretch; }
+  #ucOverlay .uc-checkbox{ margin-left: 0; justify-content: center; }
+}
+</style>
+<!-- Beta notice overlay -->
+<div id="ucOverlay" hidden>
+  <div class="uc-card" role="dialog" aria-modal="true" aria-labelledby="ucTitle">
+    <button id="ucClose" class="uc-close" aria-label="Close">×</button>
+    <h2 id="ucTitle">Beta notice</h2>
+    <p>RWA.watch is currently in beta testing. Data may be incomplete, delayed or inaccurate. Please use it for informational purposes only.</p>
+    <div class="uc-actions">
+      <button id="ucContinue" class="uc-btn">I understand</button>
+      <label class="uc-checkbox">
+        <input id="ucDontShow" type="checkbox" />
+        <span>Don’t show<br/>again on this device</span>
+      </label>
+    </div>
+  </div>
+</div>
+
+<script id="ucOverlayScript">
+(function(){
+  var STORAGE_KEY = "rwa_beta_notice_dismissed_v1";
+  function qs(sel){ return document.querySelector(sel); }
+  function shouldShow(){
+    try{
+      var u = new URL(window.location.href);
+      if (u.searchParams.get("uc") === "0") return false;
+      if (window.localStorage && localStorage.getItem(STORAGE_KEY) === "1") return false;
+    } catch(e){}
+    return true;
+  }
+  function hide(){
+    var ov = qs("#ucOverlay");
+    if (!ov) return;
+    var cb = qs("#ucDontShow");
+    try{
+      if (cb && cb.checked && window.localStorage) localStorage.setItem(STORAGE_KEY, "1");
+    } catch(e){}
+    ov.setAttribute("hidden", "");
+  }
+  function show(){
+    var ov = qs("#ucOverlay");
+    if (!ov) return;
+    ov.removeAttribute("hidden");
+  }
+  document.addEventListener("DOMContentLoaded", function(){
+    if (!shouldShow()) return;
+    show();
+
+    var ov = qs("#ucOverlay");
+    var closeBtn = qs("#ucClose");
+    var contBtn = qs("#ucContinue");
+
+    if (closeBtn) closeBtn.addEventListener("click", hide);
+    if (contBtn) contBtn.addEventListener("click", hide);
+
+    if (ov) ov.addEventListener("click", function(e){
+      if (e.target === ov) hide();
+    });
+
+    document.addEventListener("keydown", function(e){
+      if (e.key === "Escape") hide();
+    });
+  });
+})();
+</script>
+<script id="lock-updated-latest">(async()=>{const el=document.getElementById("updated")||document.querySelector(".updated");if(!el)return;const setUpdated=v=>{el.textContent="Updated: "+v;};try{const res=await fetch("data/latest.json",{cache:"no-store"});const txt=(await res.text()).replace(/\bNaN\b/g,"null");const j=JSON.parse(txt);const v=j.generated_at||j.date||"—";setUpdated(v);const good=el.textContent;const obs=new MutationObserver(()=>{if(el.textContent!==good)el.textContent=good;});obs.observe(el,{childList:true,characterData:true,subtree:true});}catch(e){console.warn("Failed to load latest.json for updated",e);}})();</script>
+</body>
+</html>
