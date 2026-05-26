@@ -3,46 +3,47 @@
   "week_label": "2026-W22",
   "display_week": "Week 22, 2026",
   "dates_included": [
-    "2026-05-25"
+    "2026-05-25",
+    "2026-05-26"
   ],
   "summary": "This weekly recap aggregates the UTC snapshots available for 2026-W22. It tracks market value, investor-facing category shifts, concentration, asset-level changes, and rank pressure using the analytics namespace.",
   "headline_metrics": {
-    "total_rwa_tvl": 26929103716.78429,
-    "top500_rwa_tvl": 26929103716.78429,
-    "top500_change_1d_usd": 25054821.281288147,
-    "top500_change_1d_pct": 0.09312658246571903,
-    "top500_change_7d_usd": -261894808.3852005,
-    "top500_change_7d_pct": -0.9631673075292779,
-    "change_1d_usd": 25054821.281288147,
-    "change_1d_pct": 0.09312658246571903,
-    "change_7d_usd": -261894808.3852005,
-    "change_7d_pct": -0.9631673075292779,
-    "market_breadth": 0.5185185185185185,
+    "total_rwa_tvl": 26973832253.272785,
+    "top500_rwa_tvl": 26973832253.272785,
+    "top500_change_1d_usd": 44728536.48849487,
+    "top500_change_1d_pct": 0.16609738281270214,
+    "top500_change_7d_usd": -122068814.61179733,
+    "top500_change_7d_pct": -0.45050657037007946,
+    "change_1d_usd": 44728536.48849487,
+    "change_1d_pct": 0.16609738281270214,
+    "change_7d_usd": -122068814.61179733,
+    "change_7d_pct": -0.45050657037007946,
+    "market_breadth": 0.5,
     "protocols_tracked": 145,
     "top3_details": [
       {
         "slug": "tether-gold",
         "name": "Tether Gold",
-        "tvl_usd": 3245354326.6320114,
-        "share_pct": 12.051475462249627,
+        "tvl_usd": 3229007303.664179,
+        "share_pct": 11.970888205076598,
         "rank_by_tvl": 1
       },
       {
         "slug": "blackrock-buidl",
         "name": "BlackRock BUIDL",
-        "tvl_usd": 3054831568.7104487,
-        "share_pct": 11.343977879243127,
+        "tvl_usd": 3054831568.710449,
+        "share_pct": 11.325167073135486,
         "rank_by_tvl": 2
       },
       {
         "slug": "circle-usyc",
         "name": "Circle USYC",
         "tvl_usd": 2985476933.2019,
-        "share_pct": 11.086432599467175,
+        "share_pct": 11.068048859982312,
         "rank_by_tvl": 3
       }
     ],
-    "top4_10_share_pct": 39.54564477343463,
+    "top4_10_share_pct": 39.547603173832044,
     "near_top10_focus": {
       "name": "WisdomTree",
       "slug": "wisdomtree",
@@ -54,199 +55,199 @@
       "rank_change": 0
     },
     "biggest_asset_gainer": {
-      "name": "Tether Gold",
-      "slug": "tether-gold",
-      "tvl_usd": 3245354326.6320114,
-      "change_1d_usd": 25762510.6583066,
-      "change_1d_pct": 0.8001794056777145,
-      "rank_by_tvl": 1,
-      "previous_rank": 1,
-      "rank_change": 0,
-      "analytics_category": "Commodities"
+      "name": "Republic Note",
+      "slug": "republic-note",
+      "tvl_usd": 16054934.83585173,
+      "change_1d_usd": 16054934.83585173,
+      "change_1d_pct": null,
+      "rank_by_tvl": 51,
+      "previous_rank": 139,
+      "rank_change": 88,
+      "analytics_category": "Funds"
     },
     "category_leader_24h": {
-      "category": "Commodities",
-      "change_1d_usd": 35985278.85636139,
-      "change_1d_pct": 0.6507624179773019
+      "category": "Funds",
+      "change_1d_usd": 31349103.277589798,
+      "change_1d_pct": 0.5381236063903394
     },
-    "top3_concentration": 34.481885940959934,
-    "top10_concentration": 74.02753071439456,
+    "top3_concentration": 34.3641041381944,
+    "top10_concentration": 73.91170731202644,
     "top3_assets": [
       "Tether Gold",
       "BlackRock BUIDL",
       "Circle USYC"
     ],
-    "largest_capital_increase_category": "Commodities",
-    "largest_capital_increase_usd": 35985278.85636139,
-    "strongest_category_growth": "Commodities",
-    "strongest_category_growth_pct": 0.6507624179773019,
-    "largest_asset_tvl_increase": "Tether Gold",
-    "largest_asset_tvl_increase_usd": 25762510.6583066,
-    "largest_asset_tvl_decline": "Ondo Yield Assets",
-    "largest_asset_tvl_decline_usd": -9538873.570841312,
-    "new_entrants": 0,
+    "largest_capital_increase_category": "Funds",
+    "largest_capital_increase_usd": 31349103.277589798,
+    "strongest_category_growth": "Other RWA",
+    "strongest_category_growth_pct": 0.878602857966948,
+    "largest_asset_tvl_increase": "Republic Note",
+    "largest_asset_tvl_increase_usd": 16054934.83585173,
+    "largest_asset_tvl_decline": "Tether Gold",
+    "largest_asset_tvl_decline_usd": -16347022.967832565,
+    "new_entrants": 1,
     "new_top10_entrants": 0,
     "market_regime": "Contraction with moderate concentration."
   },
   "category_shifts": [
     {
       "category": "Treasury",
-      "tvl_usd": 6439932357.638079,
-      "share": 0.2391439546361217,
-      "change_1d_usd": 7348657.70261097,
-      "change_1d_pct": 0.1142411516959374,
-      "change_7d_usd": -68420750.82838726,
-      "change_7d_pct": -1.0512759478182199,
+      "tvl_usd": 6453464026.822105,
+      "share": 0.23924906057941006,
+      "change_1d_usd": 13531669.184026718,
+      "change_1d_pct": 0.21012129371169586,
+      "change_7d_usd": -7840890.823516846,
+      "change_7d_pct": -0.1213515059799053,
       "trend_arrow": "↑"
     },
     {
       "category": "Funds",
-      "tvl_usd": 5825632420.7510395,
-      "share": 0.21633220630065222,
-      "change_1d_usd": -25838315.677131653,
-      "change_1d_pct": -0.44156959576463484,
-      "change_7d_usd": -160644217.25776768,
-      "change_7d_pct": -2.683541489509278,
-      "trend_arrow": "↓"
-    },
-    {
-      "category": "Commodities",
-      "tvl_usd": 5565695947.799158,
-      "share": 0.20667958378169815,
-      "change_1d_usd": 35985278.85636139,
-      "change_1d_pct": 0.6507624179773019,
-      "change_7d_usd": 1335058.9418201447,
-      "change_7d_pct": 0.0239930329553939,
+      "tvl_usd": 5856981524.028629,
+      "share": 0.2171356842822358,
+      "change_1d_usd": 31349103.277589798,
+      "change_1d_pct": 0.5381236063903394,
+      "change_7d_usd": -87097522.5402565,
+      "change_7d_pct": -1.4652820370976039,
       "trend_arrow": "↑"
     },
     {
+      "category": "Commodities",
+      "tvl_usd": 5537586144.2613945,
+      "share": 0.20529474982515727,
+      "change_1d_usd": -28109803.537763596,
+      "change_1d_pct": -0.5050546023607216,
+      "change_7d_usd": -44527591.52284622,
+      "change_7d_pct": -0.7976833441676656,
+      "trend_arrow": "↓"
+    },
+    {
       "category": "Stablecoins",
-      "tvl_usd": 4170594574.2473626,
-      "share": 0.1548731297599009,
-      "change_1d_usd": -9359.915844917297,
-      "change_1d_pct": -0.00022442591031124337,
-      "change_7d_usd": 20348161.43599558,
-      "change_7d_pct": 0.490288031409003,
+      "tvl_usd": 4170456210.846895,
+      "share": 0.15461118656363285,
+      "change_1d_usd": -138363.40046739578,
+      "change_1d_pct": -0.0033175941224761196,
+      "change_7d_usd": 20710175.303365707,
+      "change_7d_pct": 0.4990709100262558,
       "trend_arrow": "↓"
     },
     {
       "category": "Other RWA",
-      "tvl_usd": 3143752032.792482,
-      "share": 0.11674179972180261,
-      "change_1d_usd": 7525568.467145443,
-      "change_1d_pct": 0.23995615599667897,
-      "change_7d_usd": 60745932.192638874,
-      "change_7d_pct": 1.9703474534422671,
+      "tvl_usd": 3171373127.999991,
+      "share": 0.1175722121433154,
+      "change_1d_usd": 27621095.20750904,
+      "change_1d_pct": 0.878602857966948,
+      "change_7d_usd": 85673919.62621164,
+      "change_7d_pct": 2.776483183899292,
       "trend_arrow": "↑"
     },
     {
       "category": "Private Credit",
-      "tvl_usd": 1609604975.9002388,
-      "share": 0.05977194758609842,
-      "change_1d_usd": 30518.648745775223,
-      "change_1d_pct": 0.0018960693994873878,
-      "change_7d_usd": -115244755.27573872,
-      "change_7d_pct": -6.681437414096736,
+      "tvl_usd": 1610086720.6110547,
+      "share": 0.05969069227883627,
+      "change_1d_usd": 481744.7108159065,
+      "change_1d_pct": 0.0299293750969154,
+      "change_7d_usd": -88968597.31887484,
+      "change_7d_pct": -5.2363567201137995,
       "trend_arrow": "↑"
     },
     {
       "category": "Real Estate",
-      "tvl_usd": 173891407.6559334,
-      "share": 0.0064573782137261,
-      "change_1d_usd": 12473.199406921864,
-      "change_1d_pct": 0.007173496574441884,
-      "change_7d_usd": -14237.593757420778,
-      "change_7d_pct": -0.00818696468247726,
-      "trend_arrow": "↑"
+      "tvl_usd": 173884498.70271224,
+      "share": 0.006446414327412246,
+      "change_1d_usd": -6908.953221172094,
+      "change_1d_pct": -0.0039731423848388125,
+      "change_7d_usd": -18307.33588016033,
+      "change_7d_pct": -0.010527337825760874,
+      "trend_arrow": "↓"
     }
   ],
   "concentration_change": {
-    "top3_concentration_pct": 34.481885940959934,
-    "top10_concentration_pct": 74.02753071439456
+    "top3_concentration_pct": 34.3641041381944,
+    "top10_concentration_pct": 73.91170731202644
   },
   "largest_asset_change": {
     "largest_increase": [
       {
-        "name": "Tether Gold",
-        "slug": "tether-gold",
-        "analytics_category": "Commodities",
-        "tvl_usd": 3245354326.6320114,
-        "change_1d_usd": 25762510.6583066,
-        "change_1d_pct": 0.8001794056777145
+        "name": "Republic Note",
+        "slug": "republic-note",
+        "analytics_category": "Funds",
+        "tvl_usd": 16054934.83585173,
+        "change_1d_usd": 16054934.83585173,
+        "change_1d_pct": NaN
       },
       {
-        "name": "Paxos Gold",
-        "slug": "paxos-gold",
-        "analytics_category": "Commodities",
-        "tvl_usd": 2142489742.8742945,
-        "change_1d_usd": 9380445.249403954,
-        "change_1d_pct": 0.43975455265459207
+        "name": "Ondo Yield Assets",
+        "slug": "ondo-yield-assets",
+        "analytics_category": "Funds",
+        "tvl_usd": 2695276388.075862,
+        "change_1d_usd": 15088895.516870499,
+        "change_1d_pct": 0.5629791034680087
       },
       {
-        "name": "Superstate USTB",
-        "slug": "superstate-ustb",
+        "name": "Ondo Global Markets",
+        "slug": "ondo-global-markets",
         "analytics_category": "Treasury",
-        "tvl_usd": 837397776.3490077,
-        "change_1d_usd": 3977868.025784135,
-        "change_1d_pct": 0.47729457696628064
+        "tvl_usd": 1090474908.548611,
+        "change_1d_usd": 14409624.06587243,
+        "change_1d_pct": 1.339103144917364
       },
       {
-        "name": "Spiko",
-        "slug": "spiko",
-        "analytics_category": "Treasury",
-        "tvl_usd": 1244248619.3673902,
-        "change_1d_usd": 3370806.8711414337,
-        "change_1d_pct": 0.2716469613039951
+        "name": "Mu Digital",
+        "slug": "mu-digital",
+        "analytics_category": "Other RWA",
+        "tvl_usd": 19415924.839745738,
+        "change_1d_usd": 12852477.520037107,
+        "change_1d_pct": 195.8190093404706
       },
       {
         "name": "xStocks",
         "slug": "xstocks",
         "analytics_category": "Other RWA",
-        "tvl_usd": 437567895.7643957,
-        "change_1d_usd": 3138891.7468043566,
-        "change_1d_pct": 0.7225327309585472
+        "tvl_usd": 445601106.8275264,
+        "change_1d_usd": 8033211.063130677,
+        "change_1d_pct": 1.835877618283055
       }
     ],
     "largest_decline": [
       {
-        "name": "Ondo Yield Assets",
-        "slug": "ondo-yield-assets",
-        "analytics_category": "Funds",
-        "tvl_usd": 2680187492.5589914,
-        "change_1d_usd": -9538873.570841312,
-        "change_1d_pct": -0.3546410404775324
+        "name": "Tether Gold",
+        "slug": "tether-gold",
+        "analytics_category": "Commodities",
+        "tvl_usd": 3229007303.664179,
+        "change_1d_usd": -16347022.967832565,
+        "change_1d_pct": -0.5037053376170886
       },
       {
-        "name": "Hastra",
-        "slug": "hastra",
+        "name": "Paxos Gold",
+        "slug": "paxos-gold",
+        "analytics_category": "Commodities",
+        "tvl_usd": 2131297997.4351158,
+        "change_1d_usd": -11191745.439178705,
+        "change_1d_pct": -0.5223710160761064
+      },
+      {
+        "name": "Spiko",
+        "slug": "spiko",
+        "analytics_category": "Treasury",
+        "tvl_usd": 1243535741.6750722,
+        "change_1d_usd": -712877.6923179626,
+        "change_1d_pct": -0.057293830286142544
+      },
+      {
+        "name": "RAAC",
+        "slug": "raac",
         "analytics_category": "Other RWA",
-        "tvl_usd": 372770355.9125267,
-        "change_1d_usd": -392265.9360564947,
-        "change_1d_pct": -0.10511930002884418
+        "tvl_usd": 120054671.09037574,
+        "change_1d_usd": -540820.8832020462,
+        "change_1d_pct": -0.44845862341234
       },
       {
-        "name": "Nest Credit",
-        "slug": "nest-credit",
-        "analytics_category": "Private Credit",
-        "tvl_usd": 50499332.03099209,
-        "change_1d_usd": -59148.426611952484,
-        "change_1d_pct": -0.11699011931648462
-      },
-      {
-        "name": "Mansory",
-        "slug": "mansory",
-        "analytics_category": "Other RWA",
-        "tvl_usd": 6263510.057963298,
-        "change_1d_usd": -57833.94357183203,
-        "change_1d_pct": -0.9148994827332113
-      },
-      {
-        "name": "MatrixDock STBT",
-        "slug": "matrixdock-stbt",
-        "analytics_category": "Other RWA",
-        "tvl_usd": 69306433.3315173,
-        "change_1d_usd": -52230.30616725981,
-        "change_1d_pct": -0.0753046604820673
+        "name": "MatrixDock XAUM",
+        "slug": "matrixdock-xaum",
+        "analytics_category": "Commodities",
+        "tvl_usd": 70434804.60340284,
+        "change_1d_usd": -460311.8509260118,
+        "change_1d_pct": -0.6492856968823069
       }
     ],
     "rank_watch": [
@@ -255,7 +256,7 @@
         "slug": "tether-gold",
         "rank_by_tvl": 1,
         "previous_rank": 1,
-        "tvl_usd": 3245354326.6320114,
+        "tvl_usd": 3229007303.664179,
         "status": "Held rank #1"
       },
       {
@@ -263,7 +264,7 @@
         "slug": "blackrock-buidl",
         "rank_by_tvl": 2,
         "previous_rank": 2,
-        "tvl_usd": 3054831568.7104487,
+        "tvl_usd": 3054831568.710449,
         "status": "Held rank #2"
       },
       {
@@ -279,7 +280,7 @@
         "slug": "ondo-yield-assets",
         "rank_by_tvl": 4,
         "previous_rank": 4,
-        "tvl_usd": 2680187492.5589914,
+        "tvl_usd": 2695276388.075862,
         "status": "Held rank #4"
       },
       {
@@ -287,7 +288,7 @@
         "slug": "paxos-gold",
         "rank_by_tvl": 5,
         "previous_rank": 5,
-        "tvl_usd": 2142489742.8742945,
+        "tvl_usd": 2131297997.4351158,
         "status": "Held rank #5"
       },
       {
@@ -295,7 +296,7 @@
         "slug": "centrifuge-protocol",
         "rank_by_tvl": 6,
         "previous_rank": 6,
-        "tvl_usd": 1454623869.5944939,
+        "tvl_usd": 1455123407.5424502,
         "status": "Held rank #6"
       },
       {
@@ -303,24 +304,24 @@
         "slug": "spiko",
         "rank_by_tvl": 7,
         "previous_rank": 7,
-        "tvl_usd": 1244248619.3673902,
+        "tvl_usd": 1243535741.6750722,
         "status": "Held rank #7"
-      },
-      {
-        "name": "Ethena USDtb",
-        "slug": "ethena-usdtb",
-        "rank_by_tvl": 8,
-        "previous_rank": 8,
-        "tvl_usd": 1088158070.4913886,
-        "status": "Held rank #8"
       },
       {
         "name": "Ondo Global Markets",
         "slug": "ondo-global-markets",
-        "rank_by_tvl": 9,
+        "rank_by_tvl": 8,
         "previous_rank": 9,
-        "tvl_usd": 1076065284.4827385,
-        "status": "Held rank #9"
+        "tvl_usd": 1090474908.548611,
+        "status": "Moved up from #9"
+      },
+      {
+        "name": "Ethena USDtb",
+        "slug": "ethena-usdtb",
+        "rank_by_tvl": 9,
+        "previous_rank": 8,
+        "tvl_usd": 1088281079.8823316,
+        "status": "Moved down from #8"
       },
       {
         "name": "Blockchain Capital",
@@ -332,11 +333,19 @@
       }
     ]
   },
-  "new_entrants": [],
+  "new_entrants": [
+    {
+      "name": "Republic Note",
+      "slug": "republic-note",
+      "analytics_category": "Funds",
+      "tvl_usd": 16054934.83585173,
+      "rank_by_tvl": 51
+    }
+  ],
   "what_to_watch_next_week": [
     "Capital remained concentrated in Tether Gold, BlackRock BUIDL, Circle USYC. The next snapshot will show whether participation broadens beyond the current leaders.",
     "Tether Gold, BlackRock BUIDL, Circle USYC remain relevant to the Top 10 threshold, making rank reordering a key point to monitor in the next UTC update.",
-    "Breadth closed at 51.9% today. The next update will show whether positive participation stays above the recent pattern.",
-    "Commodities led category-level value expansion today. Tomorrow's snapshot will confirm whether that move is sustained on a 2-day basis."
+    "Breadth closed at 50.0% today. The next update will show whether positive participation stays above the recent pattern.",
+    "Funds led category-level value expansion today. Tomorrow's snapshot will confirm whether that move is sustained on a 2-day basis."
   ]
 }
