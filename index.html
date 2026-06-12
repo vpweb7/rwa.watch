@@ -14,8 +14,36 @@
 <link rel="stylesheet" href="asset/home-mobile.css">
 
 <link rel="prefetch" href="analysis/index.html">
-<title>RWA.watch — Real-World Asset Intelligence & Monitoring</title>
-<meta name="description" content="RWA.watch tracks public real-world asset protocols and tokenized asset markets with daily monitoring, market value trends, and category views." />
+<title>RWA.Watch — Real-World Asset Intelligence & Monitoring</title>
+<meta name="description" content="Daily monitoring of real-world asset (RWA) protocols: market value, capital flows, category trends and rankings. Tracked RWA assets only, updated daily." />
+<link rel="canonical" href="https://rwa.watch/" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RWA.Watch" />
+<meta property="og:title" content="RWA.Watch — Real-World Asset Intelligence & Monitoring" />
+<meta property="og:description" content="Daily monitoring of real-world asset (RWA) protocols: market value, capital flows, category trends and rankings." />
+<meta property="og:url" content="https://rwa.watch/" />
+<meta property="og:image" content="https://rwa.watch/og.jpg" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="RWA.Watch — Real-World Asset Intelligence & Monitoring" />
+<meta name="twitter:description" content="Daily monitoring of real-world asset (RWA) protocols: market value, capital flows, category trends and rankings." />
+<meta name="twitter:image" content="https://rwa.watch/og.jpg" />
+
+<!-- Structured data: tells search engines the official brand name -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "RWA.Watch",
+  "alternateName": "RWA Watch",
+  "url": "https://rwa.watch/",
+  "description": "Daily monitoring of real-world asset (RWA) protocols: market value, capital flows, category trends and rankings.",
+  "inLanguage": "en"
+}
+</script>
 <style>
 
 :root{
@@ -381,7 +409,7 @@ html[data-delta-mode="classic"]{
   <div class="topbar">
     <div>
       <div class="brand">
-        <h1>RWA.watch</h1>
+        <h1>RWA.Watch</h1>
         <span class="beta">Beta Version</span>
       <!-- DELTA TOGGLE BEGIN -->
       <div class="modeToggle" title="Delta color mode">
@@ -392,7 +420,7 @@ html[data-delta-mode="classic"]{
       </div>
       <div class="headline">
         <h2>Real-World Asset Intelligence &amp; Monitoring</h2>
-        <p>Daily monitoring for public real-world asset markets. Focused on tracked RWA assets only: market value trends, capital flows, categories and monitoring signals.</p>
+        <p>Daily market value, capital flows and category trends across tracked real-world asset protocols. One place to see where RWA capital moves — facts only, no ratings.</p>
       </div>
     </div>
     <div class="updated" id="updated">Updated: —</div>
@@ -511,8 +539,17 @@ html[data-delta-mode="classic"]{
     </div>
   </div>
 
+  <div class="panel" style="margin-top:22px;text-align:center;">
+    <p style="color:var(--muted);line-height:1.8;margin:0 auto;max-width:760px;">
+      RWA.Watch is a daily monitor for tokenized real-world asset (RWA) protocols — tokenized treasuries, private credit, commodities, real estate and other on-chain RWA products. We track market value, 24H and 7D capital flows, category trends and rankings. Underlying TVL comes from DeFiLlama's open API; all flow calculations, coverage adjustments and rankings are computed by RWA.Watch.
+    </p>
+    <p style="color:var(--muted);line-height:1.8;margin:14px auto 0;max-width:760px;">
+      See <a href="analysis/index.html">Analysis</a> for daily and weekly recaps and <a href="about.html">About &amp; Methodology</a> for how the numbers are calculated. Facts only — no ratings.
+    </p>
+  </div>
+
   <div class="footer">
-  <div class="footLine">Data source: <a class="sourceLink" href="https://defillama.com" target="_blank" rel="noopener noreferrer">DeFiLlama</a> public APIs • Educational only • Not investment advice. • <a href="terms.html">Terms</a> • <a href="privacy.html">Privacy</a></div><div style="margin-top:10px;">© 2026 RWA.watch — All rights reserved.</div>
+  <div class="footLine">Underlying TVL data: <a class="sourceLink" href="https://defillama.com" target="_blank" rel="noopener noreferrer">DeFiLlama</a> (open API, cited with thanks). All flow calculations, coverage adjustments and rankings are produced by RWA.Watch and are not provided or endorsed by DeFiLlama. Data "as is" • Educational only • Not investment advice. • <a href="terms.html">Terms</a> • <a href="privacy.html">Privacy</a></div><div style="margin-top:10px;">© 2026 RWA.Watch — All rights reserved.</div>
 </div>
 
 </div>
@@ -1538,7 +1575,7 @@ function applyHash() {
   <div class="uc-card" role="dialog" aria-modal="true" aria-labelledby="ucTitle">
     <button id="ucClose" class="uc-close" aria-label="Close">×</button>
     <h2 id="ucTitle">Beta notice</h2>
-    <p>RWA.watch is currently in beta testing. Data may be incomplete, delayed or inaccurate. Please use it for informational purposes only.</p>
+    <p>RWA.Watch is currently in beta testing. Data may be incomplete, delayed or inaccurate. Please use it for informational purposes only.</p>
     <div class="uc-actions">
       <button id="ucContinue" class="uc-btn">I understand</button>
       <label class="uc-checkbox">
