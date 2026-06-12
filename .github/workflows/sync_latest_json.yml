@@ -182,9 +182,80 @@ jobs:
             a2["tvl_change_7d_days"] = baseline_days
             out_assets.append(a2)
 
+          # ── Net capital flow (24H / 7D) with coverage-artifact handling ──
+          # Mirrors the Analysis pipeline so the homepage shows the SAME figures.
+          # An asset present today but absent in a comparison snapshot is treated
+          # as dataset coverage (new listing), NOT a capital flow, and excluded.
+          # Same for assets that left the dataset. This prevents listing changes
+          # from showing up as billion-dollar one-day flows.
+          EXTREME_PCT = 0.50          # > 50% of prior value ...
+          EXTREME_ABS = 100_000_000.0 # ... AND > $100M absolute -> excluded pending confirmation
+
+          def total_tvl(assets):
+            t = 0.0
+            for a in assets:
+              if not isinstance(a, dict):
+                continue
+              v = safe_float(a.get("tvl_usd"))
+              if v is not None:
+                t += v
+            return t
+
+          def adjusted_net_flow(today_assets, prev_assets):
+            """Sum of per-asset deltas, excluding coverage artifacts."""
+            if not prev_assets:
+              return None, None
+            prev_by_slug = {x.get("slug"): x for x in prev_assets if isinstance(x, dict) and x.get("slug")}
+            prev_total = 0.0
+            for x in prev_assets:
+              if isinstance(x, dict):
+                pv = safe_float(x.get("tvl_usd"))
+                if pv is not None:
+                  prev_total += pv
+            net = 0.0
+            for a in today_assets:
+              if not isinstance(a, dict):
+                continue
+              slug = a.get("slug")
+              tvl_t = safe_float(a.get("tvl_usd"))
+              if tvl_t is None or not slug:
+                continue
+              prev = prev_by_slug.get(slug)
+              tvl_p = safe_float(prev.get("tvl_usd")) if prev else None
+              if tvl_p is None:
+                continue  # new in dataset -> coverage, not flow
+              delta = tvl_t - tvl_p
+              # extreme single-asset move -> exclude pending confirmation
+              if tvl_p > 0 and abs(delta) > EXTREME_ABS and abs(delta) / tvl_p > EXTREME_PCT:
+                continue
+              net += delta
+            pct = (net / prev_total * 100.0) if prev_total > 0 else None
+            return net, pct
+
+          # 24H: compare today vs the most recent prior daily snapshot
+          prev_day_assets = None
+          if len(daily_files) >= 2:
+            prev_day_assets = load(daily_files[-2]).get("assets", [])
+          # 7D: reuse the baseline already selected above (~7 days back)
+          base_assets_for_flow = baseline.get("assets", []) if baseline else None
+
+          flow_1d_usd, flow_1d_pct = adjusted_net_flow(assets_today, prev_day_assets)
+          flow_7d_usd, flow_7d_pct = adjusted_net_flow(assets_today, base_assets_for_flow)
+
+          headline = {
+            "change_1d_usd": flow_1d_usd,
+            "change_1d_pct": flow_1d_pct,
+            "change_7d_usd": flow_7d_usd,
+            "change_7d_pct": flow_7d_pct,
+            "flow_basis": "adjusted (coverage artifacts excluded)",
+            "total_rwa_tvl": total_tvl(assets_today),
+          }
+          print("Headline 24H:", flow_1d_usd, "| 7D:", flow_7d_usd)
+
           latest2 = dict(latest)
           latest2["generated_at"] = latest.get("generated_at") or datetime.utcnow().isoformat(timespec="seconds")+"Z"
           latest2["assets"] = out_assets
+          latest2["headline"] = headline
 
           with open("data/latest.json","w",encoding="utf-8") as f:
             json.dump(latest2, f, ensure_ascii=False)
