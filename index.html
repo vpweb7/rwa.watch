@@ -420,7 +420,7 @@ html[data-delta-mode="classic"]{
       </div>
       <div class="headline">
         <h2>Real-World Asset Intelligence &amp; Monitoring</h2>
-        <p>Daily market value, capital flows and category trends across tracked real-world asset protocols. One place to see where RWA capital moves — facts only, no ratings.</p>
+        <p>Daily market value, capital flows and category trends across tracked real-world asset protocols. One place to see where RWA capital moves.</p>
       </div>
     </div>
     <div class="updated" id="updated">Updated: —</div>
@@ -840,7 +840,7 @@ function updateSnapshotKPIs() {
     if (elFlow) {
       if (total > 0 && totalPast > 0) {
         const flow = total - totalPast;
-        const s = (flow > 0 ? "+" : "") + fmtUsdCompact(Math.abs(flow));
+        const s = (flow > 0 ? "+" : flow < 0 ? "-" : "") + fmtUsdCompact(Math.abs(flow));
         elFlow.textContent = s;
       } else {
         elFlow.textContent = "N/A";
@@ -1500,136 +1500,57 @@ function applyHash() {
 })();
 </script>
 
-<style id="ucOverlayStyles">
-/* Beta notice overlay (dismissible) */
-#ucOverlay{
-  position:fixed; inset:0; z-index:9999;
-  display:flex; align-items:center; justify-content:center;
-  background:rgba(0,0,0,0.55);
-  backdrop-filter: blur(4px);
+<style id="betaBarStyles">
+#betaBar{
+  position:fixed; left:0; right:0; bottom:0; z-index:9999;
+  background:var(--betaBg);
+  border-top:1px solid var(--betaBorder);
+  box-shadow:0 -8px 30px rgba(0,0,0,0.35);
+  transform:translateY(100%);
+  transition:transform .35s ease;
 }
-#ucOverlay[hidden]{ display:none; }
-#ucOverlay .uc-card{
-  width:min(520px, calc(100vw - 32px));
-  background: rgba(12,16,28,0.85);
-  border: 1px solid rgba(255,255,255,0.14);
-  border-radius: 16px;
-  box-shadow: 0 24px 80px rgba(0,0,0,0.55);
-  padding: 22px 22px 18px;
-  position: relative;
+#betaBar.show{ transform:translateY(0); }
+#betaBar .bar-inner{
+  max-width:1100px; margin:0 auto; padding:12px 20px;
+  display:flex; align-items:center; gap:14px; flex-wrap:wrap;
 }
-#ucOverlay .uc-close{
-  position:absolute; top:14px; right:14px;
-  width:38px; height:38px;
-  border-radius: 12px;
-  border:1px solid rgba(255,255,255,0.18);
-  background: rgba(255,255,255,0.06);
-  color:#fff;
-  cursor:pointer;
-  font-size: 22px;
-  line-height: 1;
+#betaBar .bar-text{ color:rgba(255,255,255,0.92); font-size:13px; line-height:1.5; flex:1; min-width:220px; }
+#betaBar .bar-text strong{ color:#fff; font-weight:800; }
+#betaBar .bar-btn{
+  border:1px solid rgba(255,255,255,0.45);
+  background:rgba(255,255,255,0.14);
+  color:#fff; cursor:pointer; font-weight:700; font-size:13px;
+  padding:9px 18px; border-radius:10px; white-space:nowrap;
 }
-#ucOverlay h2{
-  margin: 0 48px 10px 0;
-  font-size: 24px;
-  line-height: 1.05;
-  letter-spacing: 0.2px;
-}
-#ucOverlay p{
-  margin: 0 0 14px 0;
-  opacity: 0.92;
-  line-height:1.6;
-}
-#ucOverlay .uc-actions{
-  display:flex;
-  align-items:center;
-  gap:16px;
-  margin-top: 18px;
-}
-#ucOverlay .uc-btn{
-  padding: 10px 18px;
-  border-radius: 12px;
-  border:1px solid rgba(255,255,255,0.18);
-  background: rgba(255,255,255,0.06);
-  color:#fff;
-  cursor:pointer;
-  font-weight: 600;
-}
-#ucOverlay .uc-checkbox{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-left:auto;
-  opacity: 0.95;
-}
-#ucOverlay .uc-checkbox input{ transform: scale(1.05); }
-#ucOverlay .uc-checkbox span{ font-size: 13px; line-height: 1.2; text-align:left; }
-@media (max-width: 720px){
-  #ucOverlay h2{ font-size: 22px; }
-  #ucOverlay .uc-actions{ flex-direction: column; align-items: stretch; }
-  #ucOverlay .uc-checkbox{ margin-left: 0; justify-content: center; }
+#betaBar .bar-btn:hover{ background:rgba(255,255,255,0.24); }
+@media (max-width:560px){
+  #betaBar .bar-inner{ padding:12px 16px; }
+  #betaBar .bar-btn{ width:100%; }
 }
 </style>
-<!-- Beta notice overlay -->
-<div id="ucOverlay" hidden>
-  <div class="uc-card" role="dialog" aria-modal="true" aria-labelledby="ucTitle">
-    <button id="ucClose" class="uc-close" aria-label="Close">×</button>
-    <h2 id="ucTitle">Beta notice</h2>
-    <p>RWA.Watch is currently in beta testing. Data may be incomplete, delayed or inaccurate. Please use it for informational purposes only.</p>
-    <div class="uc-actions">
-      <button id="ucContinue" class="uc-btn">I understand</button>
-      <label class="uc-checkbox">
-        <input id="ucDontShow" type="checkbox" />
-        <span>Don’t show<br/>again on this device</span>
-      </label>
-    </div>
+<!-- Beta notice bar (bottom, non-blocking) -->
+<div id="betaBar" role="region" aria-label="Beta notice">
+  <div class="bar-inner">
+    <div class="bar-text"><strong>Beta:</strong> RWA.Watch is in beta testing. Data may be incomplete, delayed or inaccurate — for informational purposes only.</div>
+    <button id="betaDismiss" class="bar-btn" type="button">Got it</button>
   </div>
 </div>
 
-<script id="ucOverlayScript">
+<script id="betaBarScript">
 (function(){
-  var STORAGE_KEY = "rwa_beta_notice_dismissed_v1";
-  function qs(sel){ return document.querySelector(sel); }
-  function shouldShow(){
-    try{
-      var u = new URL(window.location.href);
-      if (u.searchParams.get("uc") === "0") return false;
-      if (window.localStorage && localStorage.getItem(STORAGE_KEY) === "1") return false;
-    } catch(e){}
-    return true;
-  }
-  function hide(){
-    var ov = qs("#ucOverlay");
-    if (!ov) return;
-    var cb = qs("#ucDontShow");
-    try{
-      if (cb && cb.checked && window.localStorage) localStorage.setItem(STORAGE_KEY, "1");
-    } catch(e){}
-    ov.setAttribute("hidden", "");
-  }
-  function show(){
-    var ov = qs("#ucOverlay");
-    if (!ov) return;
-    ov.removeAttribute("hidden");
-  }
-  document.addEventListener("DOMContentLoaded", function(){
-    if (!shouldShow()) return;
-    show();
-
-    var ov = qs("#ucOverlay");
-    var closeBtn = qs("#ucClose");
-    var contBtn = qs("#ucContinue");
-
-    if (closeBtn) closeBtn.addEventListener("click", hide);
-    if (contBtn) contBtn.addEventListener("click", hide);
-
-    if (ov) ov.addEventListener("click", function(e){
-      if (e.target === ov) hide();
-    });
-
-    document.addEventListener("keydown", function(e){
-      if (e.key === "Escape") hide();
-    });
+  var KEY = "rwa_beta_notice_dismissed_v1";
+  var bar = document.getElementById("betaBar");
+  if (!bar) return;
+  var dismissed = false;
+  try { dismissed = (localStorage.getItem(KEY) === "1"); } catch(e){}
+  if (dismissed) return;
+  // slide up shortly after load
+  setTimeout(function(){ bar.classList.add("show"); }, 600);
+  var btn = document.getElementById("betaDismiss");
+  if (btn) btn.addEventListener("click", function(){
+    bar.classList.remove("show");
+    try { localStorage.setItem(KEY, "1"); } catch(e){}
+    setTimeout(function(){ bar.style.display = "none"; }, 400);
   });
 })();
 </script>
