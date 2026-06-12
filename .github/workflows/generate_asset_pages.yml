@@ -111,7 +111,7 @@ jobs:
           def meta_desc(r, name, cat, tvl_fmt, n_chains, pct_fmt):
               return (f"{name} is a {cat} protocol with {tvl_fmt} in tracked TVL "
                       f"across {n_chains} chain{'s' if n_chains != 1 else ''}. "
-                      f"7-day change: {pct_fmt}. Real-time RWA monitoring on RWA.watch.")
+                      f"7-day change: {pct_fmt}. Real-time RWA monitoring on RWA.Watch.")
 
           def generate_desc(r, name, cat, tvl_fmt, pct_fmt, chains, n_chains, conf):
               cat_desc = {
@@ -122,7 +122,7 @@ jobs:
                   "Real Estate": "tokenized real estate protocol",
               }.get(cat, "real-world asset protocol")
 
-              p1 = (f"<strong>{name}</strong> is a {cat_desc} tracked by RWA.watch with "
+              p1 = (f"<strong>{name}</strong> is a {cat_desc} tracked by RWA.Watch with "
                     f"<strong>{tvl_fmt}</strong> in total value locked. ")
               if n_chains > 1:
                   sample = ", ".join(chains[:3])
@@ -133,10 +133,10 @@ jobs:
                   p1 += f"The protocol operates on the <strong>{chains[0]}</strong> blockchain."
 
               p2 = (f"Over the past 7 days, {name} recorded a change of <strong>{pct_fmt}</strong>. "
-                    f"It is categorized under <strong>{cat}</strong> within the RWA.watch monitoring dataset. "
+                    f"It is categorized under <strong>{cat}</strong> within the RWA.Watch monitoring dataset. "
                     f"Data is sourced from DeFiLlama public APIs and updated daily.")
 
-              p3 = (f"RWA.watch tracks {name} as part of its comprehensive real-world asset dashboard, "
+              p3 = (f"RWA.Watch tracks {name} as part of its comprehensive real-world asset dashboard, "
                     f"covering tokenized treasuries, commodities, private credit, real estate, "
                     f"and other on-chain asset categories. "
                     f"Data confidence is rated <strong>{conf}</strong>. "
@@ -184,7 +184,7 @@ jobs:
               p1, p2, p3  = generate_desc(r, name, cat, tvl_fmt, pct_fmt, chains, n_chains, conf)
 
               meta_d = meta_desc(r, name, cat, tvl_fmt, n_chains, pct_fmt)
-              og_d   = f"{cat} protocol with {tvl_fmt} TVL across {n_chains} chains. 7D change: {pct_fmt}. Track on RWA.watch."
+              og_d   = f"{cat} protocol with {tvl_fmt} TVL across {n_chains} chains. 7D change: {pct_fmt}. Track on RWA.Watch."
 
               links = ""
               if project_url:
@@ -201,7 +201,7 @@ jobs:
                   "@context": "https://schema.org",
                   "@type": "FinancialProduct",
                   "name": name,
-                  "description": f"{name} is a real-world asset protocol tracked on RWA.watch with {tvl_fmt} TVL.",
+                  "description": f"{name} is a real-world asset protocol tracked on RWA.Watch with {tvl_fmt} TVL.",
                   "url": f"https://rwa.watch/asset/{slug}.html",
                   **({"provider": {"@type": "Organization", "name": name, "url": project_url}} if project_url else {}),
                   **({"sameAs": defillama} if defillama else {}),
@@ -212,14 +212,14 @@ jobs:
           <head>
           <meta charset="utf-8" />
           <meta name="viewport" content="width=device-width,initial-scale=1" />
-          <title>{name} – {tvl_fmt} TVL | RWA Protocol Analytics | RWA.watch</title>
+          <title>{name} – {tvl_fmt} TVL | RWA Protocol Analytics | RWA.Watch</title>
           <meta name="description" content="{meta_d}" />
-          <meta property="og:title" content="{name} – {tvl_fmt} TVL | RWA.watch" />
+          <meta property="og:title" content="{name} – {tvl_fmt} TVL | RWA.Watch" />
           <meta property="og:description" content="{og_d}" />
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://rwa.watch/asset/{slug}.html" />
           <meta name="twitter:card" content="summary" />
-          <meta name="twitter:title" content="{name} – {tvl_fmt} TVL | RWA.watch" />
+          <meta name="twitter:title" content="{name} – {tvl_fmt} TVL | RWA.Watch" />
           <meta name="twitter:description" content="{og_d}" />
           <script type="application/ld+json">
           {jsonld}
@@ -280,12 +280,12 @@ jobs:
           <body>
           <div class="container">
             <div class="topbar">
-              <div class="brand"><h1>RWA.watch</h1><span class="beta">Beta Version</span></div>
+              <div class="brand"><h1>RWA.Watch</h1><span class="beta">Beta Version</span></div>
               <a class="back" href="../index.html#dashboard">← Back</a>
             </div>
             <div class="brandSub">
               <div class="brandTitle">Real-World Asset Intelligence &amp; Monitoring</div>
-              <div class="brandDesc">Daily monitoring for public real-world asset markets. Focused on tracked RWA assets only: market value trends, capital flows, categories and monitoring signals.</div>
+              <div class="brandDesc">Daily market value, capital flows and category trends across tracked real-world asset protocols. Facts only — no ratings.</div>
             </div>
             <div class="tabs">
               <a class="tab active" href="../index.html#dashboard">Dashboard</a>
@@ -343,8 +343,8 @@ jobs:
               <div class="chainsGrid">{chain_pills}</div>
             </div>
             <div class="footer">
-              <div>Data source: <a href="https://defillama.com" target="_blank" rel="noopener">DeFiLlama</a> (public APIs) &nbsp;·&nbsp; Educational only &nbsp;·&nbsp; Not investment advice. &nbsp;·&nbsp; <a href="../terms.html">Terms</a> &nbsp;·&nbsp; <a href="../privacy.html">Privacy</a></div>
-              <div style="margin-top:10px;">© 2026 RWA.watch — All rights reserved.</div>
+              <div>Underlying TVL data: <a href="https://defillama.com" target="_blank" rel="noopener">DeFiLlama</a> (open API, cited with thanks). All calculations and rankings are produced by RWA.Watch and are not provided or endorsed by DeFiLlama. Data &quot;as is&quot; &nbsp;·&nbsp; Educational only &nbsp;·&nbsp; Not investment advice. &nbsp;·&nbsp; <a href="../terms.html">Terms</a> &nbsp;·&nbsp; <a href="../privacy.html">Privacy</a></div>
+              <div style="margin-top:10px;">© 2026 RWA.Watch — All rights reserved.</div>
             </div>
           </div>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
