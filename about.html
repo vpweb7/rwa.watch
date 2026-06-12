@@ -8,8 +8,24 @@
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>About & Methodology | RWA.watch</title>
-<meta name="description" content="About RWA.watch: methodology and monitoring signals." />
+<title>About & Methodology | RWA.Watch</title>
+<meta name="description" content="How RWA.Watch works: daily DeFiLlama data ingestion, 24H/7D capital-flow calculation, coverage-artifact adjustments, and monitoring signals. Methodology and data sources explained." />
+<link rel="canonical" href="https://rwa.watch/about.html" />
+
+<!-- Structured data: AboutPage reinforces the official brand name -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About & Methodology",
+  "url": "https://rwa.watch/about.html",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "RWA.Watch",
+    "url": "https://rwa.watch/"
+  }
+}
+</script>
 <style>
 :root{
   --bg:#010409; --panel:#11161d; --panel2:#151b23; --border:(1.0, 1.0, 1.0, 0.1);
@@ -224,16 +240,16 @@ tbody tr:hover{ background:rgba(77,163,255,0.04) !important; }
 <div class="container">
   <div class="topbar">
     <div class="brand">
-      <h1>RWA.watch</h1>
+      <h1>RWA.Watch</h1>
       <span class="beta">Beta Version</span>
     </div>
-    <div class="updated">Updated: 2026-03-17T13:51:25Z</div>
+    <div class="updated"></div>
   </div>
 
 
   <div class="headline">
-    <h2>Real-World Asset Intelligence &amp; Monitoring</h2>
-    <p>Daily and weekly intelligence on tokenized real-world assets. TVL trends, capital flows, market structure and monitoring signals.</p>
+    <h2>About &amp; Methodology</h2>
+    <p>How RWA.Watch collects data and calculates market value, capital flows, coverage adjustments and rankings for tokenized real-world asset protocols.</p>
   </div>
 
   <div class="tabs"><a id="tabProtocols" class="tab" href="./index.html#protocols">Protocols</a><a id="tabDashboard" class="tab" href="./index.html#dashboard">Dashboard</a><a class="tab" href="./analysis/index.html">Analysis</a><a class="tab active" href="./about.html">About</a></div>
@@ -241,27 +257,72 @@ tbody tr:hover{ background:rgba(77,163,255,0.04) !important; }
   <div class="panel">
     <h2 style="margin:0 0 10px 0;color:#fff;">About &amp; Methodology</h2>
     <p style="line-height:1.7;color:var(--text);">
-      RWA.watch aggregates publicly available data to monitor tokenized real-world asset (RWA) protocols.
-      The platform does not provide investment advice or asset ratings.
+      RWA.Watch is a daily monitor for tokenized real-world asset (RWA) protocols. It tracks on-chain market value, capital flows, category trends and rankings, and publishes daily and weekly recaps. The platform reports facts only — it does not provide investment advice or asset ratings.
     </p>
 
-<h3 style="color:#fff;margin-top:18px;">Monitoring Signals</h3>
+    <h3 style="color:#fff;margin-top:22px;">Data source</h3>
+    <p style="line-height:1.7;color:var(--text);">
+      Underlying market-value (TVL) data comes from <a href="https://defillama.com" target="_blank" rel="noopener noreferrer">DeFiLlama</a>'s open API, used with attribution and with thanks. We ingest the structured protocol dataset once per day and keep only protocols classified as RWA. All flow calculations, coverage adjustments, rankings and derived metrics on this site are produced by RWA.Watch and are <strong>not</strong> provided or endorsed by DeFiLlama. Source data is used "as is".
+    </p>
+
+    <h3 style="color:#fff;margin-top:22px;">How a daily snapshot is built</h3>
     <ul style="line-height:1.8;color:var(--text);">
-      <li><strong>Low Coverage:</strong> monitoring signals may represent only part of a protocol’s TVL</li>
-      <li><strong>High APY (reported):</strong> high-APY pools exist in the source dataset (often incentives/anomalies)</li>
+      <li>Once per day we fetch the current RWA protocol universe and record an immutable, timestamped snapshot (UTC).</li>
+      <li>Each asset is tracked by a stable identifier (slug), so renames don't create false "new" entries.</li>
+      <li>Assets are grouped into categories: Tokenized Treasuries, Private Credit / Lending, Commodities, Tokenized Equities / Funds, Real Estate, Yield / Stablecoin RWA, and Other RWA.</li>
+      <li>A $1M market-value threshold defines the "eligible" universe used for breadth, new-entrant and leader calculations, reducing noise from dust-sized entries.</li>
+      <li>Every snapshot passes validation checks (schema, duplicate IDs, negative values, totals) before any derived numbers are published.</li>
     </ul>
-    <h3 style="color:#fff;margin-top:18px;">Contact</h3>
+
+    <h3 style="color:#fff;margin-top:22px;">How capital flows are calculated</h3>
+    <p style="line-height:1.7;color:var(--text);">
+      24-hour and 7-day net capital flow is the change in tracked market value between two snapshots. Rather than assuming yesterday's snapshot is exactly 24 hours old, we select the closest prior snapshot within a tolerance window (about 6 hours for the 24H figure, 12 hours for 7D). If no suitably-timed snapshot exists, the flow is shown as "N/A" rather than estimated — we don't fabricate comparisons.
+    </p>
+
+    <h3 style="color:#fff;margin-top:22px;">Coverage adjustments (why our flow differs from a naïve calculation)</h3>
+    <p style="line-height:1.7;color:var(--text);">
+      When the source dataset starts or stops tracking a protocol, a naïve day-over-day calculation would book that protocol's entire market value as a one-day capital flow — making a data-coverage change look like a multi-billion-dollar inflow or outflow. We detect and exclude these artifacts so the headline flow reflects real movement. Each adjustment is shown openly in Monitoring Signals. The rules:
+    </p>
+    <ul style="line-height:1.8;color:var(--text);">
+      <li><strong>New in dataset:</strong> a protocol present today but absent from local history — its market value is treated as new coverage, not a capital inflow, and excluded from net flow.</li>
+      <li><strong>Coverage gap return:</strong> a protocol that reappears after a short gap — its change is measured against its last-seen value rather than from zero.</li>
+      <li><strong>Left dataset:</strong> a protocol that disappears from the source — excluded from net flow rather than booked as an outflow.</li>
+      <li><strong>Recategorized:</strong> a protocol whose category label changes — category-level flows keep the previous label, since no money actually moved.</li>
+      <li><strong>Unusual move:</strong> an asset present on both days that moves more than 50% <em>and</em> more than $100M in 24 hours — excluded from the adjusted headline until the next snapshot confirms it. If the move is real, it persists and is counted; if it was an upstream glitch, it never contaminates the figure.</li>
+    </ul>
+    <p style="line-height:1.7;color:var(--text);">
+      Both the raw and the adjusted figures are retained internally; the adjusted figure is what we present publicly.
+    </p>
+
+    <h3 style="color:#fff;margin-top:22px;">Rankings and market structure</h3>
+    <p style="line-height:1.7;color:var(--text);">
+      Protocols are ranked by tracked market value (TVL), recomputed every snapshot with deterministic tie-breaking. We also report concentration (the share held by the top 3 and top 10), market breadth (the proportion of eligible assets with positive 7-day change), category-level value changes, and rank movements versus the prior snapshot. Percentage changes are suppressed where the prior value is too small to be meaningful or where the swing is large enough to suggest a data artifact.
+    </p>
+
+    <h3 style="color:#fff;margin-top:22px;">Monitoring Signals</h3>
+    <ul style="line-height:1.8;color:var(--text);">
+      <li><strong>Low Coverage:</strong> our yield/pool data covers only part of a protocol's reported market value, so some signals may be partial.</li>
+      <li><strong>High APY (reported):</strong> unusually high-APY pools appear in the source dataset for this protocol — often incentives or anomalies rather than sustainable yield.</li>
+      <li><strong>Coverage / Recategorized / Unusual move:</strong> flags raised by the coverage-adjustment rules above, shown so any difference from a naïve calculation is transparent.</li>
+    </ul>
+
+    <h3 style="color:#fff;margin-top:22px;">Limitations</h3>
+    <p style="line-height:1.7;color:var(--text);">
+      RWA.Watch is in beta. It reflects only protocols tracked by the source dataset, snapshots are taken once per day (so intraday moves aren't captured), and source data can contain errors or revisions. Coverage adjustments reduce — but cannot fully eliminate — artifacts from upstream listing and categorization changes. The longer the local snapshot history grows, the more reliable the flow and trend figures become.
+    </p>
+
+    <h3 style="color:#fff;margin-top:22px;">Contact</h3>
     <p style="line-height:1.7;color:var(--text);margin:10px 0 0 0;">
       For feedback, questions, or strategic collaboration:
       <a href="mailto:contact@rwa.watch" style="font-weight:900;">contact@rwa.watch</a>
     </p>
 
-
-    <h3>Legal Disclaimer</h3><p>This report is provided for informational and educational purposes only and does not constitute investment advice, financial advice, trading advice, or any other professional advice. RWA.watch does not recommend the purchase, sale, or holding of any asset. Data is compiled from publicly available sources and third-party datasets and is provided “as is” without warranties of accuracy or completeness. Past performance and historical observations do not guarantee future results.</p>
+    <h3 style="color:#fff;margin-top:22px;">Legal Disclaimer</h3>
+    <p style="line-height:1.7;color:var(--text);">This site is provided for informational and educational purposes only and does not constitute investment advice, financial advice, trading advice, or any other professional advice. RWA.Watch does not recommend the purchase, sale, or holding of any asset. Underlying data is compiled from DeFiLlama's public API and other third-party sources and is provided "as is" without warranties of accuracy or completeness; all derived calculations are RWA.Watch's own. Past performance and historical observations do not guarantee future results.</p>
   </div>
 
   <div class="footer">
-  <div class="footLine">Data source: DeFiLlama API • Educational only • Not investment advice. • <a href="terms.html">Terms</a> • <a href="privacy.html">Privacy</a></div><div style="margin-top:10px;">© 2026 RWA.watch — All rights reserved.</div>
+  <div class="footLine">Underlying TVL data: DeFiLlama (open API, cited with thanks). All calculations and rankings are produced by RWA.Watch and are not provided or endorsed by DeFiLlama. Data "as is" • Educational only • Not investment advice. • <a href="terms.html">Terms</a> • <a href="privacy.html">Privacy</a></div><div style="margin-top:10px;">© 2026 RWA.Watch — All rights reserved.</div>
 </div>
 
 </div>
