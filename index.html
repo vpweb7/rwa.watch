@@ -827,7 +827,8 @@ function updateSnapshotKPIs() {
         if (pSafe === null) {
           elDelta.textContent = "N/A";
         } else {
-          const s = (pSafe > 0 ? "+" : "") + pSafe.toFixed(2) + "%";
+          const rounded = Number(pSafe.toFixed(2));
+          const s = (rounded > 0 ? "+" : rounded < 0 ? "-" : "") + Math.abs(rounded).toFixed(2) + "%";
           elDelta.textContent = s;
         }
       } else {
@@ -835,13 +836,20 @@ function updateSnapshotKPIs() {
       }
     }
 
-    // 7D Net Capital Flow (proxy): total change in TVL vs inferred past
+    // 7D Net Capital Flow.
+    // Preferred: adjusted figure from the analytics pipeline (matches Analysis page).
+    // Fallback: proxy = total change in TVL vs inferred past.
     const elFlow = document.getElementById("kpiFlow");
     if (elFlow) {
-      if (total > 0 && totalPast > 0) {
+      const hm7 = (LATEST_META && LATEST_META.headline) ? LATEST_META.headline : null;
+      const published7 = hm7 && (hm7.change_7d_usd !== undefined && hm7.change_7d_usd !== null)
+        ? Number(hm7.change_7d_usd) : null;
+
+      if (published7 !== null && Number.isFinite(published7)) {
+        elFlow.textContent = (published7 > 0 ? "+" : published7 < 0 ? "-" : "") + fmtUsdCompact(Math.abs(published7));
+      } else if (total > 0 && totalPast > 0) {
         const flow = total - totalPast;
-        const s = (flow > 0 ? "+" : flow < 0 ? "-" : "") + fmtUsdCompact(Math.abs(flow));
-        elFlow.textContent = s;
+        elFlow.textContent = (flow > 0 ? "+" : flow < 0 ? "-" : "") + fmtUsdCompact(Math.abs(flow));
       } else {
         elFlow.textContent = "N/A";
       }
@@ -865,38 +873,49 @@ function updateSnapshotKPIs() {
     const elSector = document.getElementById("kpiSector");
     if (elSector) elSector.textContent = bestCat;
 
-    // 24H Net Capital Flow: estimated from the last two available daily sparkline points.
+    // 24H Net Capital Flow.
+    // Preferred: the adjusted figure published by the analytics pipeline
+    // (LATEST_META.headline.change_1d_usd) so the homepage matches the Analysis page.
+    // Fallback: estimate from the last two available daily sparkline points.
     const elFlow24 = document.getElementById("kpiFlow24");
     if (elFlow24) {
-      const seriesMap = getSeriesMap ? getSeriesMap() : null;
-      let todaySum = 0;
-      let prevSum = 0;
-      let counted = 0;
+      const hm = (LATEST_META && LATEST_META.headline) ? LATEST_META.headline : null;
+      const published24 = hm && (hm.change_1d_usd !== undefined && hm.change_1d_usd !== null)
+        ? Number(hm.change_1d_usd) : null;
 
-      for (const r of base) {
-        const sp = seriesMap && r ? (seriesMap[r.slug] || seriesMap[r.id]) : null;
-        if (!Array.isArray(sp) || sp.length < 2) continue;
-
-        let last = null;
-        let prev = null;
-        for (let i = sp.length - 1; i >= 0; i--) {
-          const x = Number(sp[i]);
-          if (!Number.isFinite(x)) continue;
-          if (last === null) { last = x; continue; }
-          prev = x;
-          break;
-        }
-        if (last === null || prev === null) continue;
-        todaySum += last;
-        prevSum += prev;
-        counted += 1;
-      }
-
-      if (counted > 0) {
-        const flow24 = todaySum - prevSum;
-        elFlow24.textContent = (flow24 > 0 ? "+" : flow24 < 0 ? "-" : "") + fmtUsdCompact(Math.abs(flow24));
+      if (published24 !== null && Number.isFinite(published24)) {
+        elFlow24.textContent = (published24 > 0 ? "+" : published24 < 0 ? "-" : "") + fmtUsdCompact(Math.abs(published24));
       } else {
-        elFlow24.textContent = "N/A";
+        const seriesMap = getSeriesMap ? getSeriesMap() : null;
+        let todaySum = 0;
+        let prevSum = 0;
+        let counted = 0;
+
+        for (const r of base) {
+          const sp = seriesMap && r ? (seriesMap[r.slug] || seriesMap[r.id]) : null;
+          if (!Array.isArray(sp) || sp.length < 2) continue;
+
+          let last = null;
+          let prev = null;
+          for (let i = sp.length - 1; i >= 0; i--) {
+            const x = Number(sp[i]);
+            if (!Number.isFinite(x)) continue;
+            if (last === null) { last = x; continue; }
+            prev = x;
+            break;
+          }
+          if (last === null || prev === null) continue;
+          todaySum += last;
+          prevSum += prev;
+          counted += 1;
+        }
+
+        if (counted > 0) {
+          const flow24 = todaySum - prevSum;
+          elFlow24.textContent = (flow24 > 0 ? "+" : flow24 < 0 ? "-" : "") + fmtUsdCompact(Math.abs(flow24));
+        } else {
+          elFlow24.textContent = "N/A";
+        }
       }
     }
   } catch (e) {
@@ -1214,6 +1233,12 @@ function applyFilters() {
   const integrity = document.getElementById('integrityFilter').value;
 
   filtered = activeData.filter(function(r){
+    // Baseline display rule: hide assets the source no longer tracks
+    // (TVL is zero/empty) unless their 7D sparkline shows they were recently
+    // active. Keeps the table to assets that actually carry data.
+    const tvlShown = tvlDisplayNum(r);
+    if (tvlShown === null) return false;
+
     const name = String(r.name || '').toLowerCase();
     if (q && name.indexOf(q) === -1) return false;
     if (minTvl && (r.tvl_usd || 0) < minTvl) return false;
