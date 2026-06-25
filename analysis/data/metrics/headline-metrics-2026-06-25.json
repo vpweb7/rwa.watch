@@ -1,0 +1,97 @@
+{
+  "total_rwa_tvl": 25728590581.30872,
+  "top500_rwa_tvl": 25728590581.30872,
+  "top500_change_1d_usd": -91950174.78992462,
+  "top500_change_1d_pct": -0.3561125061573578,
+  "top500_change_7d_usd": -416077701.9564209,
+  "top500_change_7d_pct": -1.5914437982093133,
+  "change_1d_usd": -86659657.78992368,
+  "change_1d_pct": -0.33562293914954217,
+  "change_7d_usd": -410787184.9564215,
+  "change_7d_pct": -1.5712082498264512,
+  "market_breadth": 0.3625,
+  "protocols_tracked": 148,
+  "top3_details": [
+    {
+      "slug": "circle-usyc",
+      "name": "Circle USYC",
+      "tvl_usd": 3131187237.761948,
+      "share_pct": 12.170069043877941,
+      "rank_by_tvl": 1
+    },
+    {
+      "slug": "blackrock-buidl",
+      "name": "BlackRock BUIDL",
+      "tvl_usd": 3060445692.3404493,
+      "share_pct": 11.895115990394743,
+      "rank_by_tvl": 2
+    },
+    {
+      "slug": "tether-gold",
+      "name": "Tether Gold",
+      "tvl_usd": 2832840687.0068345,
+      "share_pct": 11.010477538807873,
+      "rank_by_tvl": 3
+    }
+  ],
+  "top4_10_share_pct": 38.892737136680545,
+  "near_top10_focus": {
+    "name": "Anemoy Capital",
+    "slug": "anemoy-capital",
+    "rank_by_tvl": 11,
+    "tvl_usd": 869635917.9421778,
+    "gap_to_top10_usd": 49791828.54207826,
+    "gap_to_top10_pct": 5.415523811683323,
+    "previous_rank": 11,
+    "rank_change": 0
+  },
+  "biggest_asset_gainer": {
+    "name": "xStocks",
+    "slug": "xstocks",
+    "tvl_usd": 579146059.3908286,
+    "change_1d_usd": 84075154.25334,
+    "change_1d_pct": 16.982447035539504,
+    "rank_by_tvl": 14,
+    "previous_rank": 14,
+    "rank_change": 0,
+    "analytics_category": "Other RWA"
+  },
+  "category_leader_24h": {
+    "category": "Other RWA",
+    "change_1d_usd": 100781467.82289883,
+    "change_1d_pct": 3.2386711942398123
+  },
+  "top3_concentration": 35.07566257308056,
+  "top10_concentration": 73.9683997097611,
+  "top3_assets": [
+    "Circle USYC",
+    "BlackRock BUIDL",
+    "Tether Gold"
+  ],
+  "largest_capital_increase_category": "Other RWA",
+  "largest_capital_increase_usd": 100781467.82289883,
+  "strongest_category_growth": "Other RWA",
+  "strongest_category_growth_pct": 3.2386711942398123,
+  "largest_asset_tvl_increase": "xStocks",
+  "largest_asset_tvl_increase_usd": 84075154.25334,
+  "largest_asset_tvl_decline": "Invesco USTB",
+  "largest_asset_tvl_decline_usd": -99027214.9060353,
+  "new_entrants": 0,
+  "new_top10_entrants": 0,
+  "market_regime": "Contraction with moderate concentration.",
+  "change_1d_usd_raw": -91950174.78992462,
+  "change_1d_pct_raw": -0.3561125061573578,
+  "change_7d_usd_raw": -416077701.9564209,
+  "change_7d_pct_raw": -1.5914437982093133,
+  "flow_basis": "adjusted (coverage artifacts excluded)",
+  "coverage_flags": [
+    {
+      "slug": "axc-gytw",
+      "name": "AXC GYTW",
+      "flag": "delisted",
+      "tvl_usd": 5290517.0,
+      "delta_1d_usd_raw": -5290517.0,
+      "detail": "left the dataset; its $5.29M TVL is excluded from adjusted net flow"
+    }
+  ]
+}
